@@ -335,8 +335,8 @@ if g:is_win == 1
     inoremap <expr><M-e>  neocomplete#cancel_popup()
 
     set completefunc=neocomplete#complete#auto_complete
-else g:is_unix == 1
-    set completeopt=longest,menu                 " 关掉补全时的预览窗口
+elseif g:is_unix == 1
+    "set completeopt=longest,menu                 " 关掉补全时的预览窗口
     let g:ycm_confirm_extra_conf = 0              " 不用每次提示加载.ycm_extra_conf.py文件
     let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
     let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
