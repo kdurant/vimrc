@@ -1,0 +1,33 @@
+[alias]
+    ad = add -u .
+    st = status
+    me = merge --no-ff
+    br = branch
+    co = checkout
+    cm = commit -m
+    ca = commit -a 
+    lo = log --graph --pretty=oneline
+    da = commit -m "daily backup"
+    gr = grep -ni
+[user]
+	email = kdurant0725@163.com
+	name = kdurant
+
+[core]
+	editor = gvim
+	autocrlf = true
+	quotepath = false
+[diff]
+    tool = gvimdiff
+[difftool]
+	prompt = false
+[push]
+	default = simple
+[gui]
+	encoding = utf-8
+	fontui = -family Consolas -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Consolas -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+[color]
+	ui = true
+;[receive]
+;denyCurrentBranch = ignore
