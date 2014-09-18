@@ -617,6 +617,10 @@ function! CompileFile()
         exe "!%<.py"
     elseif &filetype == 'vhdl'
         echohl comment | echo "Current don't support VHDL file!"
+    elseif &filetype == 'lua'
+        if g:is_win | exe "!luajit %"
+        else | exe "!lua %"
+        endif
     else
         echohl ErrorMsg | echo "This filetype can't be compiled by modelsim!"
     endif
