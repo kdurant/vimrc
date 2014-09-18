@@ -43,8 +43,13 @@ Plug 'vim-scripts/cmdline-completion'
 call plug#end()
 set nocompatible
 filetype plugin indent on
-nmap	,so		:source ~/_vimrc<CR>
-nmap	,se		:tabnew<cr>:e ~/_vimrc<CR>
+if g:is_win == 1
+    nmap	,so		:source ~/_vimrc<CR>
+    nmap	,se		:tabnew<cr>:e ~/_vimrc<CR>
+elseif g:is_unix == 1
+    nmap	,so		:source ~/.vimrc<CR>
+    nmap	,se		:tabnew<cr>:e ~/.vimrc<CR>
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "file coding settings
