@@ -6,8 +6,7 @@ if has('win32') || has('win64')
 elseif has('unix')
     let g:is_unix = 1
 endif
-
-if g:is_win == 1
+if g:is_win 
     call plug#begin('~/vimfiles/bundle')
 else
     call plug#begin('~/.vim/bundle')
@@ -27,7 +26,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'mbriggs/mark.vim'
 Plug 'Shougo/vimproc.vim' "make -f make_mingw32.mak
-if g:is_win == 1
+if g:is_win
     Plug 'Shougo/neocomplete.vim'
 else
     Plug 'Valloric/YouCompleteMe'
@@ -65,7 +64,7 @@ set helplang=cn
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set ambiwidth=double
 "set guifont=YaHei_Mono:h13
-if g:is_win == 1
+if g:is_win
     set guifont=Consolas:h13
     set guifontwide=YaHei\ Consolas\ Hybrid:h13
 endif
@@ -167,7 +166,7 @@ nmap <F6>   :call Search_Word()<cr>
 nmap ,re    :call Replace()<cr>
 
 set path+=../../
-if g:is_win == 1
+if g:is_win
     set path+=E:/MinGW/include/
 endif
 
@@ -181,7 +180,7 @@ nmap    <C-j>   <C-W>j
 nmap    <M-->   <C-W>-
 nmap    <M-=>   <C-W>+
 nmap    <M-c>   :close<cr>
-if g:is_win == 1
+if g:is_win
     nmap    ,sx     :simalt ~x<cr>
     nmap    ,sr     :simalt ~r<cr>
 endif
@@ -247,7 +246,7 @@ nmap    <M-q>   :Calc<space>
 
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 
-if g:is_win == 1
+if g:is_win
     function! Astyle()
         "silent !astyle --add-brackets %
         silent !astyle --style=ansi %       
@@ -293,7 +292,7 @@ nmap    <M-9>   9gt
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "neocomplete settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if g:is_win == 1
+if g:is_win
     let g:neocomplete#enable_insert_char_pre = 1
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
@@ -424,7 +423,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-if g:is_win == 1
+if g:is_win
     let g:UltiSnipsSnippetsDir="E:/Dropbox/home/PluginConfig/UltiSnipsDir/"
     let g:UltiSnipsSnippetDirectories=["E:/Dropbox/home/PluginConfig/UltiSnipsDir/"]
 else
@@ -790,9 +789,11 @@ endfunction
 nmap <M-s>  :Sys<space>
 command! -nargs=1 Sys call System(<f-args>)
 function! System(cmd)
-    if has('win32') || has('win64')
+    if g:is_win
         call LookUpProjectRoot()
         echo iconv(system(a:cmd), "cp936", &enc)
+    else
+        echo "Don't complete this action!"
     endif
 endfunction
 
