@@ -1,0 +1,12 @@
+/.jtag/
+/.neocomplete/
+/vimfiles/
+/PluginConfig/neocomplete/
+/PluginConfig/ctrlp/
+/PluginConfig/BookMark/
+/PluginConfig/session.vim
+.bash_history
+.bashrc
+.gitk
+.lesshst
+_viminfo

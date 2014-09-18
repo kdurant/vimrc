@@ -2,13 +2,13 @@
 """""""""""""""""""""""1st. vimrc config""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('win32') || has('win64')
-    let g:is_win = 1 
+    let g:is_win = 1 | let g:is_unix = 0
 elseif has('unix')
-    let g:is_unix = 1
+    let g:is_unix = 1 | let g:is_win = 0
 endif
-if g:is_win 
+if g:is_win  == 1
     call plug#begin('~/vimfiles/bundle')
-else
+elseif g:is_unix == 1
     call plug#begin('~/.vim/bundle')
 endif
 Plug 'bling/vim-airline'
@@ -26,9 +26,9 @@ Plug 'kien/ctrlp.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'mbriggs/mark.vim'
 Plug 'Shougo/vimproc.vim' "make -f make_mingw32.mak
-if g:is_win
+if g:is_win == 1
     Plug 'Shougo/neocomplete.vim'
-else
+elseif g:is_unix == 1
     Plug 'Valloric/YouCompleteMe'
 endif
 Plug 'SirVer/ultisnips'
@@ -64,7 +64,7 @@ set helplang=cn
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set ambiwidth=double
 "set guifont=YaHei_Mono:h13
-if g:is_win
+if g:is_win == 1
     set guifont=Consolas:h13
     set guifontwide=YaHei\ Consolas\ Hybrid:h13
 endif
@@ -166,7 +166,7 @@ nmap <F6>   :call Search_Word()<cr>
 nmap ,re    :call Replace()<cr>
 
 set path+=../../
-if g:is_win
+if g:is_win == 1
     set path+=E:/MinGW/include/
 endif
 
@@ -180,7 +180,7 @@ nmap    <C-j>   <C-W>j
 nmap    <M-->   <C-W>-
 nmap    <M-=>   <C-W>+
 nmap    <M-c>   :close<cr>
-if g:is_win
+if g:is_win == 1
     nmap    ,sx     :simalt ~x<cr>
     nmap    ,sr     :simalt ~r<cr>
 endif
@@ -246,7 +246,7 @@ nmap    <M-q>   :Calc<space>
 
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 
-if g:is_win
+if g:is_win == 1
     function! Astyle()
         "silent !astyle --add-brackets %
         silent !astyle --style=ansi %       
@@ -292,7 +292,7 @@ nmap    <M-9>   9gt
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "neocomplete settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if g:is_win
+if g:is_win == 1
     let g:neocomplete#enable_insert_char_pre = 1
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
@@ -423,10 +423,10 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-if g:is_win
+if g:is_win == 1
     let g:UltiSnipsSnippetsDir="E:/Dropbox/home/PluginConfig/UltiSnipsDir/"
     let g:UltiSnipsSnippetDirectories=["E:/Dropbox/home/PluginConfig/UltiSnipsDir/"]
-else
+elseif g:is_unix == 1
     let g:UltiSnipsSnippetsDir="~/PluginConfig/UltiSnipsDir/"
     let g:UltiSnipsSnippetDirectories=["~/PluginConfig/UltiSnipsDir/"]
 endif
@@ -601,8 +601,8 @@ function! CompileFile()
     elseif &filetype == 'vhdl'
         echohl comment | echo "Current don't support VHDL file!"
     elseif &filetype == 'lua'
-        if g:is_win | exe "!luajit %"
-        else | exe "!lua %"
+        if g:is_win  == 1| exe "!luajit %"
+        elseif g:is_unix == 1 | exe "!lua %"
         endif
     else
         echohl ErrorMsg | echo "This filetype can't be compiled !"
@@ -773,7 +773,7 @@ endfunction
 nmap <M-s>  :Sys<space>
 command! -nargs=1 Sys call System(<f-args>)
 function! System(cmd)
-    if g:is_win
+    if g:is_win == 1
         call LookUpProjectRoot()
         echo iconv(system(a:cmd), "cp936", &enc)
     else
