@@ -98,8 +98,13 @@ set clipboard+=unnamed
 set linebreak
 set nobackup
 set noswapfile
-set fileformat=dos
-set fileformats=dos
+if g:is_win == 1
+    set fileformat=dos
+    set fileformats=dos
+elseif g:is_unix == 1
+    set fileformat=unix
+    set fileformats=unix
+endif
 set backspace=indent,eol,start
 set confirm
 set wildmenu
