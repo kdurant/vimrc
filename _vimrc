@@ -588,11 +588,12 @@ function! CompileFile()
                 endfor
             endfor
         endif
-        if WarnFlag == 1
-            let select = input('Search current word with current file type, y or n ? ')
-        "if WarnFlag == 1 | exe "cw" | exe "!%<.exe" | exe "cw"
-        "else | exe "cw"
+        "if WarnFlag == 1
+            "let select = input('Search current word with current file type, y or n ? ')
         "endif
+        if WarnFlag == 1 | exe "cw" | exe "!%<.exe" | exe "cw"
+        else | exe "cw"
+        endif
     elseif &filetype == 'cpp'
         set makeprg=g++\ -o\ %<.exe\ %
         silent exe "make"
