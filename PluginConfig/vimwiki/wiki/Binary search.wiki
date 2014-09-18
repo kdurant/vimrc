@@ -1,0 +1,99 @@
+{{{class="brush:c++"
+#include <stdio.h>
+#define	SIZE    15
+
+int binarSearch(const int b[], int searchKey, int low, int high) ;
+void printHeader(void) ;
+void printfRow(const int[], int low, int mid, int high ) ;
+
+int main(int argc, char *argv[])
+{
+    int a[SIZE] ;
+    int i ;
+    int key ;
+    int result ;
+
+    for(i = 0; i < SIZE; i++)
+    {
+        a[i] = 2 * i ;
+    }
+
+    puts("Enter a number between 0 and 28: \n") ;
+    scanf("%d",&key) ;
+    printHeader() ;
+
+    result = binarSearch(a, key, 0, SIZE - 1) ;
+
+    if(result != -1)
+    {
+        printf("\n%d found in array element %d\n", key, result) ;
+    }
+    else
+    {
+        printf("\n%d not found\n", key) ;
+    }
+
+    return 0 ;
+}
+
+int binarSearch(const int b[], int searchKey, int low, int high)
+{
+    int middle ;
+    while(low <= high)
+    {
+        middle = (low + high) / 2 ;
+        printfRow(b,low,middle,high) ;
+
+        if(searchKey == b[middle])
+        {
+            return middle ;
+        }
+        else if(searchKey < b[middle])
+        {
+            return middle ;
+        }
+        else
+        {
+            low = middle = 1 ;
+        }
+    }
+    return -1 ;
+}
+
+void printHeader(void)
+{
+    int i ;
+    puts("\nSubscripts:\n") ;
+    for(i = 0; i < SIZE; i++)
+    {
+        printf("%3d", i) ;
+    }
+
+    puts("\n") ;
+    for(i = 1; i < 4 * SIZE; i++)
+    {
+        printf("-") ;
+    }
+}
+
+void printfRow(const int b[], int low, int high, int middle)
+{
+    int i ;
+    for(i = 0; i < SIZE; i++)
+    {
+        if(i < low || i > high)
+        {
+            puts("    ") ;
+        }
+        else if(i == middle)
+        {
+            printf("%3d", b[i]) ;
+        }
+        else
+        {
+            printf("%3d", b[i]) ;
+        }
+    }
+    puts("\n") ;
+}
+}}}

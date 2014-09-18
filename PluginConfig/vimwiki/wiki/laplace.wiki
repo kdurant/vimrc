@@ -1,0 +1,22 @@
+{{{class="brush:c++"
+//-------------------------------------------------------------------------
+//function		:   laplace
+//description	:   generate laplace distributed random numbers
+//input			:   beta: parameter of laplace distributed
+//return		:    
+//others		:    
+//-------------------------------------------------------------------------
+double laplace(float beta, long int *seed)
+{
+    double u1, u2, x ;
+    u1 = uniform(0., 1., seed) ;
+    u2 = uniform(0., 1., seed) ;
+
+    if(u1 <= 0.5)
+        x = -beta * log(1. -u2) ;
+    else
+        x = beta * log(u2) ;
+
+    return x ;
+}
+}}}

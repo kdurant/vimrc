@@ -1,0 +1,41 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>cscope</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<p>
+download 
+<a href="https://code.google.com/p/cscope-win32/downloads/detail?name=cscope-15.8a-win32rev1-static.zip&amp;can=2&amp;q=">https://code.google.com/p/cscope-win32/downloads/detail?name=cscope-15.8a-win32rev1-static.zip&amp;can=2&amp;q=</a> 
+dir /s /b *.c *.h &gt; cscope.files
+cscope -b
+cscope add cscope.files
+</p>
+
+<p>
+0 或 s: 查找本 C 符号
+1 或 g: 查找本定义                  变量的声明处，函数的定义处，非原型声明
+2 或 d: 查找本函数调用的函数
+3 或 c: 查找调用本函数的函数
+4 或 t: 查找本字符串
+6 或 e: 查找本 egrep 模式
+7 或 f: 查找本文件
+8 或 i: 查找包含本文件的文件
+</p>
+
+<p>
+s,t,e选项查找结果类似
+</p>
+
+</body>
+</html>
+

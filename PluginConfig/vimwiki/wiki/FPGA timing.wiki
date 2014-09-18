@@ -1,0 +1,52 @@
+Tclk1 : Source Clock Delay
+Tclk2 : Destination Clock Delay
+Launch edge : 数据的发送沿
+Latch edge : 数据的锁存沿
+Data arrival times: 数据必须这么长的时间才能到达reg2的输入端
+    = Launch time + Tclk1 + uTco + Tdata
+    从waveform上来说就是 clock delay + data delay
+clock arrival times : 时钟要这么长的时间才能到达reg2的clk端口
+    = Latch time + Tclk2
+    
+Data required time : Latch Edge + Tclk2 + Utsu 
+    从waveform上来说就是 clock delay + clock pressimsm - clock uncertainty - uTsu
+
+Clock Setup Check: Data Required Time - Data Arrival Time
+
+TNS: total negetive slack, 指定时钟域中所有总负裕量的总和。使用这个值来测量指定
+时钟域中失败路径的总和
+
+R   ----Rising output
+F   ----Falling output
+RR  ----Rising input, rising output
+RF  ----Rising input, falling output
+FR  ----Falling input, rising output
+FF  ----Falling input, falling output
+
+CELL: cell delay, 对应为一个LE或者别的单元内部延迟，由于内部延迟，所以时间很短。
+        一般由器件本身决定
+IC: Interconnect delay, 对应为LE或者别的单元之间的连接延迟。可以通过时序约束
+        去约束单元的分布
+iExt: External input delay, 外部输入延迟
+oExt: External output delay, 外部输出延迟
+Unc: clock uncertainty
+Utco: Register micro-Tco time, 对应寄存器输入到输出时间
+Utsu: Register micro-Tsu time
+Uth: Register micro-Th time
+
+
+Minimum Pulse width: 触发器能够识别的最小脉冲宽度
+
+input delay: 表示输入信号相对于主clk的延迟
+
+Multicycle Paths: 一些数据不需要在下一个时钟周期就稳定下来，可能在数据发送后几个时钟周期之后才起作用；一
+                些数据经过的路径太复杂，延时太大，不可能在下一个时钟周期稳定下来，必须要在数据发送后数个时钟周期之后才能被采用
+                
+set clock latency: 用来描述时钟源到寄存器时钟输入端的延迟
+
+set clock uncertainty: 可以理解为clock skew
+
+set false path: 1. 从逻辑上说，与电路正常工作不相关的那些路径，比如测试逻辑，静态
+        或准静态逻辑
+                2. 从时序上考虑，我们在综合时不需要分析的那些路径，比如跨异步时钟域
+        的路径

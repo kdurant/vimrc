@@ -1,0 +1,19 @@
+= 模块功能概述 =
+    此模块决定哪些事件被转换为不同的事件类型,从而产生需要的开关波形
+= 作用 =
+1.根据以下事件产生相关动作(set, clear, toggle, do nothing)
+    CTR = PRD
+    CTR = Zero
+    CTR = [[CMPA]]
+    CTR = [[CMPB]]
+2.管理同时发生时间的优先级
+3.在时基计数器增加或者减少的时候,提供独立的控制事件
+
+= 相关寄存器 =
+[[AQCTLA]]      Control Register For Output A (EPWMxA)
+
+[[AQCTLA|AQCTLB]]      Control Register For Output B (EPWMxB)
+
+[[AQSFRC]]      Software Force Register
+
+[[AQCSFRC]]     Continuous Software Force

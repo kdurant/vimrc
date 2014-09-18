@@ -1,0 +1,17 @@
+比较里程碑B和里程碑A
+git diff B 
+
+比较工作区和里程碑A
+git diff A
+
+比较暂存区和里程碑A
+git diff --cached A
+
+工作区和暂存区比较
+git diff
+
+暂存区和HEAD比较
+git diff --cached
+
+工作区和HEAD比较
+git diff HEAD

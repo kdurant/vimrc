@@ -1,0 +1,20 @@
+
+syn match cFunction /\<\w\+\%(\s*(\)\@=/
+hi default link cFunction cType
+
+
+高亮C宏定义
+function! HighlightDefinedNames()
+    " Clear any existing defined names
+    syn clear DefinedName
+    " Run through the whole file
+    for l in getline('1','$')
+    	" Look for #define
+    	if l =~ '^\s*#\s*define\s\+'
+    		" Find the name part of the #define
+    		let name = substitute(l, '^\s*#\s*define\s\+\(\k\+\).*$', '\1', '')
+    		" Highlight it as DefinedName
+    		exe 'syn keyword DefinedName ' . name
+    	endif
+    endfor
+endfunction

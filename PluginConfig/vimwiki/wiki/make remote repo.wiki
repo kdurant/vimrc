@@ -1,0 +1,5 @@
+假设本地仓库已经建立完成
+
+git remote add origin ssh://software@172.16.0.30/~/yafeng/.git
+
+git push origin master

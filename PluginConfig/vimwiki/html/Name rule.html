@@ -1,0 +1,52 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Name rule</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<pre>
+//=============================================================================
+// FileName   :  Name rule.wiki
+// Author     :  kdurant
+// Email      :  wangjun850725@gmail.com
+// Description:  
+// Version    :  1.0
+/ LastChange :  2013-05-25 22:44:22
+// ChangeLog  :  2013-05-24     initial
+//=============================================================================
+</pre>
+<h1 id="toc_1">命名规则</h1>
+<p>
+原则上采用驼峰命名，每个单词的的首字母大写，WangJun
+对于一些特定的缩写，如VGA，采用驼峰命令的时候比较难看，VGAInit，则使用下划线，VGA_Init
+</p>
+<h2 id="toc_1.1">端口</h2>
+<p>
+除clk，rst以外端口统一以p开头，pFifoWclk， pFifoWen， pFifoRSTn， pFifoData
+</p>
+<h2 id="toc_1.2">寄存器</h2>
+<p>
+内部声明的寄存器统一以r开头，rDelayCount， rDelayFlag 
+</p>
+<h2 id="toc_1.3">线网</h2>
+<p>
+内部声明线网统一以r开头，wFifoRclk， wFifoRen 
+</p>
+<h2 id="toc_1.4">状态机</h2>
+<p>
+状态机状态统一以s开头，sIdleState， sFifoReset
+</p>
+<h2 id="toc_1.5">其他</h2>
+
+</body>
+</html>
+

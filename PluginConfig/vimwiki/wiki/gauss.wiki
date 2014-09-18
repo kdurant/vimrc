@@ -1,0 +1,26 @@
+
+{{{class="brush:c++"
+//-------------------------------------------------------------------------
+//function		:   gauss
+//description	:   generate normally distributed random numbers
+//input			:   mean: Mean of the normal distribution ; 
+//                  sigma: Standard deviation of normal distribution
+//                  seed: Random number seed
+//return		:    
+//others		:    
+//------------------------------------------------------------------------- 
+double gauss(float mean, float sigma, long int *seed)
+{
+    int i ;
+    double x, y ;
+
+    for( i = 0; i < 12; i++ ) 
+    {
+        x += uniform(0.0, 1.0, seed) ;
+    }
+    x = x - 6.0 ;
+    y = mean + x * sigma ;
+    
+    return y ;
+}
+}}}

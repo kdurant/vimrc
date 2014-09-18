@@ -1,0 +1,59 @@
+{{{class="brush:c++"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define LEN		20
+#define	GET_ARRAY_LEN(array)	( sizeof(array) / sizeof(array[0]) )
+#define	SWAP(x, y, t)	( (t) = (x), (x) = (y), (y) = (t) )
+
+void sort (int list[], int len);
+
+int main(int argc, char *argv[])
+{
+    int i ;
+    int array[LEN] ;
+
+    //time_t t;
+    setbuf(stdout,NULL);	//display infomation when use eclipse debug
+    printf("array before sort:") ;
+    for( i = 0; i < LEN; i++ )
+    {
+        //srand((unsigned) time(&t));
+        array[i] = rand() % (LEN*2) ;
+        printf("%4d",array[i]) ;
+    }
+    printf("\n") ;
+
+    sort(array, GET_ARRAY_LEN(array) );
+    //sort(array, (sizeof(array) / sizeof(array[0]) );
+
+    printf("array after sort:") ;
+    for( i = 0; i < LEN; i++ )
+    {
+        //srand((unsigned) time(&t));
+        printf("%4d",array[i]) ;
+    }
+    printf("\n") ;
+    return 0 ;
+}
+
+void sort(int list[], int len)
+{
+    int i, j, min, temp ;
+    for( i = 0; i < len-1; i++ )
+    {
+        min = i ;
+        for( j = i+1; j < len; j++ )
+        {
+            if(list[j] < list[min])
+            {
+                min = j ;
+            }
+            //SWAP(list[i], list[min], temp) ;
+        }
+        SWAP(list[i], list[min], temp) ;
+    }
+
+}
+}}}

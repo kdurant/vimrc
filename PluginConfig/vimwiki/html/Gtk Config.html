@@ -1,0 +1,33 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Gtk Config</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<p>
+在cmd窗口里运行:pkg-config --libs --cflags gtk+-2.0
+输出的结果直接跟在gcc编译命令的最后面
+</p>
+
+<p>
+pkg-config --cflags gtk+-2.0
+-mms-bitfields -IE:/Gtk+/include/gtk-2.0 -IE:/Gtk+/lib/gtk-2.0/include -IE:/Gtk+/include/atk-1.0 -IE:/Gtk+/include/cairo -IE:/Gtk+/include/pango-1.0 -IE:/Gtk+/include/glib-2.0 -IE:/Gtk+/lib/glib-2.0/include -IE:/Gtk+/include/libpng12  -LE:/Gtk+/lib -lgtk-win32-2.0 -lgdk-win32-2.0 -latk-1.0 -lgio-2.0 -lgdk_pixbuf-2.0 -lpangowin32-1.0 -lgdi32 -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -lglib-2.0 -lintl
+</p>
+
+<p>
+-mms-bitfields -IE:/gtk2.24.10/include/gtk-2.0 -IE:/gtk2.24.10/lib/gtk-2.0/include -IE:/gtk2.24.10/include/atk-1.0 -IE:/gtk2.24.10/include/cairo -IE:/gtk2.24.10/include/gdk-pixbuf-2.0 -IE:/gtk2.24.10/include/pango-1.0 -IE:/gtk2.24.10/include/glib-2.0 -IE:/gtk2.24.10/lib/glib-2.0/include -IE:/gtk2.24.10/include -IE:/gtk2.24.10/include/freetype2 -IE:/gtk2.24.10/include/libpng14  -LE:/gtk2.24.10/lib-lgtk-win32-2.0 -lgdk-win32-2.0 -latk-1.0 -lgio-2.0 -lpangowin32-1.0 -lgdi32 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 - lgthread-2.0 -lglib-2.0 -lintl
+</p>
+
+</body>
+</html>
+

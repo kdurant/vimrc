@@ -1,0 +1,24 @@
+
+git fetch
+git merge origin/master
+
+从远处获取最新的版本到本地的tmp分支上
+之后再进行比较合并
+git fetch origin master:tmp
+git diff tmp
+git merge tmp
+git branch -d tmp
+
+
+相当于从远程获取最新版本并merge到本地
+git pull
+
+= 删除远程分支 =
+git push origin --delete <branchName>
+
+= 删除远程tag =
+git push origin --delete tag <tagname>
+
+= 版本发布 =
+git push origin v2.1
+

@@ -1,0 +1,21 @@
+建立分支
+git branch name
+
+确认当前处于什么分支
+git branch -v
+
+新建分支并切换
+git checkout -b name
+
+切换到分支
+git checkout name
+
+合并分支
+%%git checkout master
+git merge branch_name
+
+删除已合并的分支
+git branch -d branch_name
+
+对已经建立好的分支添加注释(调用系统默认编辑器)
+git branch --edit-description [<branchname>]

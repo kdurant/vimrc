@@ -1,0 +1,118 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Binary search</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<pre class="brush:c++">
+#include &lt;stdio.h&gt;
+#define	SIZE    15
+
+int binarSearch(const int b[], int searchKey, int low, int high) ;
+void printHeader(void) ;
+void printfRow(const int[], int low, int mid, int high ) ;
+
+int main(int argc, char *argv[])
+{
+    int a[SIZE] ;
+    int i ;
+    int key ;
+    int result ;
+
+    for(i = 0; i &lt; SIZE; i++)
+    {
+        a[i] = 2 * i ;
+    }
+
+    puts("Enter a number between 0 and 28: \n") ;
+    scanf("%d",&amp;key) ;
+    printHeader() ;
+
+    result = binarSearch(a, key, 0, SIZE - 1) ;
+
+    if(result != -1)
+    {
+        printf("\n%d found in array element %d\n", key, result) ;
+    }
+    else
+    {
+        printf("\n%d not found\n", key) ;
+    }
+
+    return 0 ;
+}
+
+int binarSearch(const int b[], int searchKey, int low, int high)
+{
+    int middle ;
+    while(low &lt;= high)
+    {
+        middle = (low + high) / 2 ;
+        printfRow(b,low,middle,high) ;
+
+        if(searchKey == b[middle])
+        {
+            return middle ;
+        }
+        else if(searchKey &lt; b[middle])
+        {
+            return middle ;
+        }
+        else
+        {
+            low = middle = 1 ;
+        }
+    }
+    return -1 ;
+}
+
+void printHeader(void)
+{
+    int i ;
+    puts("\nSubscripts:\n") ;
+    for(i = 0; i &lt; SIZE; i++)
+    {
+        printf("%3d", i) ;
+    }
+
+    puts("\n") ;
+    for(i = 1; i &lt; 4 * SIZE; i++)
+    {
+        printf("-") ;
+    }
+}
+
+void printfRow(const int b[], int low, int high, int middle)
+{
+    int i ;
+    for(i = 0; i &lt; SIZE; i++)
+    {
+        if(i &lt; low || i &gt; high)
+        {
+            puts("    ") ;
+        }
+        else if(i == middle)
+        {
+            printf("%3d", b[i]) ;
+        }
+        else
+        {
+            printf("%3d", b[i]) ;
+        }
+    }
+    puts("\n") ;
+}
+</pre>
+
+</body>
+</html>
+

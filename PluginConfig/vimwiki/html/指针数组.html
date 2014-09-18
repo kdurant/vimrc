@@ -1,0 +1,29 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>指针数组</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<p>
+array of pointer, 通常用来构造一个字符串的数组，也简称字符串数组。数组的每一个
+元素都指向一个字符串，但是在C语言中，一个字符串实质上就是指向其第一个字符的指针
+。所以，字符串数据的每个数据项实际上就是一个指向字符串第一个字符的指针
+</p>
+<blockquote>
+eg.
+const char *suit[4] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+声明中的char*表示数组suit中的每个元素都是"指向字符的指针"类型
+</blockquote>
+
+</body>
+</html>
+

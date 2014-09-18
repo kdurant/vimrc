@@ -1,0 +1,6 @@
+在已有git repo中添加子模块
+git submodule add git@github.com:kdurant/verilog-testbench.git vimfiles/bundle/testbench
+
+更新子模块
+在git repo顶层目录中
+git submodule update

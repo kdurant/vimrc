@@ -1,0 +1,102 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Queue</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">概念</h1>
+<p>
+先进先出,和FIFO相似
+</p>
+
+<h1 id="toc_2">定义数据类型</h1>
+<pre class="brush:c++">
+typedef struct node
+{
+    Item item ;
+    struct node *next ;
+} Node ;
+
+typedef struct queue
+{
+    Node * front ;
+    Node * rear ;
+    int items ;
+} Queue ;
+</pre>
+
+<h1 id="toc_3">声明</h1>
+<pre class="brush:c++">
+Queue line ;
+//
+</pre>
+
+<h1 id="toc_4">初始化</h1>
+<p>
+队列至少有个头节点成员,所以需要初始化
+-&gt;运算符,通过地址访问结构体成员
+虽然front和rear是指向Node *的指针的指针变量,但和普通的成员一样访问
+</p>
+<pre class="brush:c++">
+void InitializeQueue(Queue *pq)
+{
+    pq-&gt;front = pq-&gt;rear = NULL ;
+    pq-&gt;items = 0 ;
+}
+</pre>
+
+<h1 id="toc_5">增加成员</h1>
+<p>
+流程: 
+</p>
+<blockquote>
+1.判断队列是已满
+2.申请内存空间
+3.给节点赋值,并给节点的指针赋值
+</blockquote>
+<pre class="brush:c++">
+bool EnQueue(Item item, Queue *pq)
+{
+    Node* pnew ;
+    if(QueueIsFull(pq))
+    {
+        return false ;
+    }
+
+    pnew = (Node *)malloc(sizeof(Node)) ;
+
+    if(pnew == NULL)
+    {
+        fprintf(stderr, "Unable to allocate memory!\n") ;
+        exit(1) ;
+    }
+    pnew-&gt;item = item ;
+    pnew-&gt;next = NULL ;
+    
+    if(QueueIsEmpty(pq))
+    {
+        pq-&gt;front = pnew ;
+    }
+    else
+    {
+        pq-&gt;rear-&gt;next = pnew ;
+    }
+    pq-&gt;rear = pnew ;
+    pq-&gt;items++ ;
+    return true ;
+}
+
+</pre>
+
+</body>
+</html>
+

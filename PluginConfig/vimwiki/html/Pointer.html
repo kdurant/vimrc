@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Pointer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">定义和初始化</h1>
+<p>
+int *countPtr ;
+声明了一个int* 类型的的指针变量countPtr(即指向整型的指针), 读作:"countPtr是一个
+指针, 指向int"或者"countPtr指向一个int型的对象"
+<a href="countPtr是一个地址,.html">countPtr是一个地址,</a> *countPtr是这个地址对应的值
+</p>
+
+<p>
+countPtr =&amp;y ; 将变量y的地址赋给指针变量countPtr。于是, 变量countPtr被称为"指向
+"了y
+</p>
+
+<p>
+int *countPtr = 1 ;
+这种初始化是不完全正确的, countPtr是一个地址, 不能直接将一个数值赋值给一个指针
+变量, 需要强制类型转换, 但这样得来的内存地址很有可能被系统使用,导致出错
+</p>
+
+<p>
+指针本身占用4个字节空间, 所有类型有一样
+</p>
+<h1 id="toc_2">在函数中调用</h1>
+<p>
+void cubeByRefence(int *nPtr) ;  接受的实参是一个整型变量的地址
+</p>
+
+<p>
+int main(void)
+{
+</p>
+<blockquote>
+cubeByRefence( &amp;num ) ;
+</blockquote>
+<p>
+}
+</p>
+
+<p>
+<a href="Pointer Array.html">Pointer Array</a> 指针数组
+</p>
+
+<p>
+<a href="Array Pointers.html">Array Pointers</a>  数组指针
+</p>
+
+<p>
+<a href="Function pointer.html">Function pointer</a>
+</p>
+
+<p>
+<a href="Pointer Function.html">Pointer Function</a>
+</p>
+
+<h1 id="toc_3">指针运算</h1>
+<p>
+指针指向的地址可以和具体数值相加
+</p>
+
+
+<pre class="brush:c++">
+void max_min(int a[], int n, int *max, int *min)
+{
+    int *ptr ;
+    *max = *min = *a ;
+    for(ptr = a + 1; ptr &lt; a + n; ptr++)
+    {
+        if(*ptr &gt; *max)
+        {
+            *max = *ptr ;
+        }
+        else if(*ptr &lt; *min)
+        {
+            *min = *ptr ;
+        }
+    }
+}
+</pre>
+
+</body>
+</html>

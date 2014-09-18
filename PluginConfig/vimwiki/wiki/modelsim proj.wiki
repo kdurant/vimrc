@@ -1,0 +1,12 @@
+
+# modelsim simulation tmp file
+*.wlf
+*.do
+*.cr
+*.mti
+*.cr
+*.mti
+*.mpf
+/doc/
+/src/work/
+/synthesize/

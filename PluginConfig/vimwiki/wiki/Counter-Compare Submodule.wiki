@@ -1,0 +1,23 @@
+= 模块功能概述 =
+此模块把时基计数器的值当做模块的输入。时基计数器的值不断的同[[CMPA]]和[[CMPB]]
+比较，当时基计数器的值等于他们其中的一个，此模块将会产生一个适当的事件
+
+= 作用 =
+1.通过[[CMPA]]和[[CMPB]]产生适当的时间
+    CTR = [[CMPA]]
+    CTR = [[CMPB]]
+2.如果[[Action-Qualifier Submodule|AQ]]适当配置的话,可以控制PWM的占空比
+3.屏蔽新的比较值,在有效的PWM周期内组织毛刺和抖动
+
+= 相关寄存器 =
+[[CMPCTL]]      Counter-Compare Control Register.
+
+[[CMPAHR]]      HRPWM Counter-Compare A Extension Register 
+
+[[CMPA]]        Counter-Compare A Register
+
+[[CMPB]]        Counter-Compare B Register
+
+[[CMPAHRM]]     HRPWM counter-compare A Extension Mirror Register
+
+[[CMPAM]]       Counter-compare A mirror Register

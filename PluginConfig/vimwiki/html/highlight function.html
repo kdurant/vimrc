@@ -1,0 +1,47 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>highlight function</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<p>
+syn match cFunction /\&lt;\w\+\%(\s*(\)\@=/
+hi default link cFunction cType
+</p>
+
+
+<p>
+高亮C宏定义
+function! HighlightDefinedNames()
+</p>
+<blockquote>
+" Clear any existing defined names
+syn clear DefinedName
+" Run through the whole file
+for l in getline('1','$')
+" Look for #define
+if l =~ '^\s*#\s*define\s\+'
+" Find the name part of the #define
+let name = substitute(l, '^\s*#\s*define\s\+\(\k\+\).*$', '\1', '')
+" Highlight it as DefinedName
+exe 'syn keyword DefinedName ' . name
+endif
+endfor
+</blockquote>
+<p>
+endfunction
+</p>
+
+</body>
+</html>
+

@@ -1,0 +1,21 @@
+# [[Task Overview]]
+# 任务原型
+{{{class="brush: verilog"
+task HarwareReset ;
+    input   [3:0]   HoldLowTime ;
+    begin
+        RSTn = 1'b1;
+        wait (Clk !== 1'bx);
+        @ (negedge Clk);
+        RSTn <= 1'b0;
+        repeat(HoldLowTime)
+            @ (negedge Clk);
+        RSTn <= 1'b1;
+    end
+endtask
+  }}}
+  
+# 任务调用
+{{{class="brush: verilog"
+initial HarwareReset(4) ;
+  }}}

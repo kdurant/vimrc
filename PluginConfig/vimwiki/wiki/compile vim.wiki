@@ -1,0 +1,25 @@
+= 设置编译环境 =
+使用MingW
+= 编译参数 =
+mingw32-make.exe -f Make_ming.mak FEATURES=huge OLE=yes GIME=yes PYTHON=C:\Python27 PYTHON_VER=27 DYNAMIC_PYTHON=yes USERNAME=kdurant USERDOMAIN=gmail.com GUI=yes IME=yes MBYTE=yes LUA=C:\Lua\5.1 DYNAMIC_LUA=yes LUA_VER=51 CSCOPE=yes DFEAT_PROPORTIONAL_FONTS=yes
+
+make -f Make_ming.mak clean
+make -f Make_ming.mak ^
+    FEATURES=huge ^
+    GUI=yes ^
+    OLE=yes ^
+    IME=yes ^
+    GIME=yes ^
+    MBYTE=yes ^
+    LUA="C:/Program\ Files/Lua/5.1" ^
+    DYNAMIC_LUA=yes ^
+    LUA_VER=51 ^
+    PYTHON="E:/PYF/SDK/Python2.7" ^
+    DYNAMIC_PYTHON=yes ^
+    PYTHON_VER=27 ^
+    CSCOPE=yes ^
+    ARCH=i686
+    
+
+
+DFEAT_PROPORTIONAL_FONTS

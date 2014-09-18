@@ -1,0 +1,8 @@
+substitute({expr}, {pat}, {sub}, {flags})
+将expr字符串中匹配pat的字符，替换为sub
+
+	:let line = getline(".")
+	:let repl = substitute(line, '\a', "*", "g")
+	:call setline(".", repl)
+
+讲当前行的英文字母替换为*号

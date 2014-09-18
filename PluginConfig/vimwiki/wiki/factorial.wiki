@@ -1,0 +1,34 @@
+{{{class="brush:c++"
+#include <stdio.h> 
+
+unsigned int factorial(int i) ;
+
+int main(int argc, char *argv[])
+{
+    int number ;
+
+    setbuf(stdout,NULL);	//display infomation when use eclipse debug
+    scanf("%d",&number) ;
+    
+    //factorial(number) ;
+    printf("factorial = %d\n", factorial(number)) ;
+
+    return 0 ;
+}
+
+unsigned int factorial(int i)
+{
+    int ans ;
+    if(i > 0)
+    {
+        printf("i = %d\n", i ) ;
+        ans = i * factorial(i-1) ;
+    }
+    else
+    {
+        ans = 1 ;
+        //printf("string\n") ;
+    }
+    return ans ;
+}
+}}}

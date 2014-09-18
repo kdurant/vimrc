@@ -1,0 +1,340 @@
+#可综合语句
+#module
+snippet mo
+abbr    module();endmodule
+options head
+	module ${1:module}	
+	(
+        Clk,
+        RSTn,
+		${2:port}
+	);
+	endmodule
+
+snippet mod
+abbr    module()#() ()
+options head
+	module ${1:module} # 
+	(
+		${2:parameter}
+	)
+	(
+        Clk,
+        RSTn,
+		${3:port}
+	);
+	endmodule
+
+#always
+snippet	al 
+abbr    always @(posedge CLK or negedge RSTn)
+options head
+	always @(posedge ${1:CLK} or negedge ${2:RSTn})
+	begin
+		${3:code}
+	end
+# If Condition
+snippet ifb
+abbr    if() begin  end
+options head
+	if (${1:condition})
+	begin
+		${2:code}
+	end
+    ${3}
+snippet if
+abbr    if() code
+options head
+	if(${1:condition}) 
+		${2:code}
+snippet ifrb
+abbr    if (~RSTn)  begin   end
+options head
+	if (~RSTn)
+	begin
+		${1:code}
+	end
+snippet ifr
+abbr    if (~RSTn)  code
+options head
+	if(~RSTn) 
+		${1:code}
+snippet el
+abbr    else 
+	else
+		${1:code}
+snippet elb
+abbr    else begin  end
+	else
+	begin
+		${1:code}
+	end
+snippet	eib
+abbr    else if() begin end
+	else if(${1:condition})
+	begin
+		${2:code}
+	end
+snippet	ei
+abbr    else if() code
+	else if(${1:condition}) 
+		${2:code}
+#input
+snippet in
+abbr    input   inport ;
+	input				        ${1:inport} ;
+snippet inb
+abbr    input [7:0]  inport ;
+    input   [${1:MSB}:0]               ${2:inport} ;
+#output
+snippet ou
+abbr    output  outport ;
+	output				        ${1:outport} ;
+snippet oub
+abbr    output  outport ;
+	output	[${1:MSB}:0]	            ${2:outport} ;
+#reg
+snippet reg
+abbr    reg veriable ;
+	reg                         ${1:outport} ;
+snippet regb
+abbr    reg [MSB:0]   veriable ;
+	reg     [${1:MSB}:0]               ${2:outport} ;
+#wire
+snippet wi
+abbr    wire veriable ;
+	wire                        ${1:outport} ;
+snippet wib
+abbr    wire [MSB:0]   veriable ;
+	wire    [${1:MSB}:0]               ${2:outport} ;
+#case语句
+snippet ca
+abbr    case() endcase
+	case (${1:condition})
+	${2:first} :
+	begin
+		${3:code}
+	end
+	${4:code}
+	default :
+	begin
+		${5:code}
+	end
+	endcase
+#assign复制语句
+snippet	as
+abbr    assign  wire    =   reg ;
+	assign		    ${1:LHS} = ${2:RHS} ;
+#parameter
+snippet	pa
+abbr    parameter   LHS = RHS ;
+	parameter	    ${1:LHS} = ${2:RHS} ;
+#<=
+snippet	;
+	${1:LHS} <=#\`DELAY ${2:0} ;
+#条件运算符
+snippet	?
+abbr	Conditional operator
+	${1:LHS} = ${2:condition} ? ${3:expr1} : ${4:expr2} ;
+# : 端口方括号
+snippet :
+	[${1:MSB}:${2:0}]${3}
+# ri 判断上升沿或者下降沿
+snippet ri
+abbr    RiseEdge
+	assign      ${1:RiseEdge} = (~${2:RegDelay1}) & ${3:RegDelay0} ;    //if has rise edge, set LHS=1, only one clock
+snippet fa
+abbr    FallEdge
+	assign      ${1:FallEdge} = ${2:RegDelay1} & (~${3:RegDelay0}) ;    //if has rise edge, set LHS=1, only one clock
+snippet     edge
+abbr        declaration and always
+options     head
+    reg                         ${1:Reg}Delay0 , $1Delay1 ;
+    wire                        $1Rise ;
+    wire                        $1Fall ;
+
+    assign          $1Rise = (~$1Delay1) & $1Delay0 ;
+    assign          $1Fall = ~$1Delay1 & (~$1Delay0) ;
+    always @ (posedge Clk or negedge RSTn) 
+    begin
+        if(~RSTn) 
+            {$1Delay0,$1Delay1}    <=#\`DELAY 2'b00 ;
+        else
+            {$1Delay1,$1Delay0}    <=#\`DELAY {$1Delay0,$1} ;
+    end
+snippet <<
+	${1:RegOut} <=#\`DELAY {$1[${2:6}:${3:0}],${4:RightIn}} ;             //左移,低位移入新数据
+snippet >>
+	${1:RegOut} <=#\`DELAY {${3:LeftIn},$1[${2:7}:${4:1}]} ;              //右移,高位进入数据
+# begin
+snippet be
+    begin
+        ${1:code}
+    end
+#不可综合, 仿真语句
+# initial
+snippet ini
+abbr    initial begin   end
+	initial
+	begin
+	    ${1:/*code*/}
+	end
+#for循环
+snippet for
+abbr    for(i = 0 ; i <= num ; i = i + 1)
+	for(${1:i} = 0 ; $1 <= ${2:num} ; $1 = $1 + 1 )
+	begin
+	    ${2:/*code*/}
+	end
+#repeat
+snippet repeat
+abbr    repeat(num) begin end
+	repeat(${1:Number})
+	begin
+	    ${2:/*code*/}
+	end
+#forever
+snippet forever
+	forever
+	    #CLKPRIEOD	Clk = ~Clk ;			//只能用在initial块中
+#任务原型
+snippet	task
+	task ${1:/*task_name*/} ;	//声明的输入端口，调用任务时，需传递参数 		
+		${2:/*port declaration*/}		
+		begin
+		    ${3:/*code*/}
+		end
+	endtask
+snippet hr
+abbr    HarwareReset
+    task HarwareReset ;
+    input   [3:0]   HoldLowTime ;
+    begin
+        RSTn = 1'b1;
+        wait (Clk !== 1'bx);
+        @ (negedge Clk);
+        RSTn <= 1'b0;
+        repeat(HoldLowTime)
+            @ (negedge Clk);
+        RSTn <= 1'b1;
+    end
+    endtask
+#函数原型
+snippet fu
+abbr    function begin  end
+    function ${1:/*option_return_value*/} ${2:/*function_name*/}
+        ${3:/*port declaration*/}
+        begin
+            ${3:/*code*/}
+        end
+    endfunction
+#编译预处理
+snippet     `in
+abbr        `include
+options     head
+    `include    "${1}"
+snippet	`if
+abbr    `ifdef   `endif
+    \`ifdef	Simulation
+        ${2:code}
+    \`endif
+snippet	`ife
+abbr    `ifdef  `else   `endif
+    \`ifdef	Simulation
+        ${1:code}
+    \`else
+        ${2:code}
+    \`endif
+snippet	`t	
+abbr    timescale
+	\`timescale	1ns/1ps
+    \`define    DELAY   1
+snippet	`d  
+abbr    define
+	\`define		DELAY	1
+snippet     `p
+abbr        CLKPERIOD
+options     head
+    parameter   CLKPERIOD = 10 ;
+snippet	#
+	<=#\`DELAY 
+#系统任务或函数
+#readmemh
+snippet	$re
+abbr    $readmemh()
+	reg [7:0]		    DataMem[0:127] ;				//128个8bit寄存器
+	$readmemh("${1:data.txt}",${2:DataMem});
+	//$readmemh("FileName", MemoryName, StartAddr, EndAddr)
+#random
+snippet	$ra
+abbr    veriable = $random % 2
+    ${1:veriable} =	({$random} % ${2:2}) ;
+#display
+snippet	$di
+abbr    $display()
+	$display("${1:veriable} = 0${2:x}%${3:h}",$1) ;
+#fdisplay, 数据写入文件
+snippet $fdi
+abbr	write data to file
+	$fdisplay(${1:handle},"${2:veriable} = 0${3:x}%${4:h}",$2) ;
+#strobe
+snippet	$st
+abbr    $strobe()
+	$strobe("${1:veriable} = 0${2:x}%${3:h}",$1) ;
+#monitor
+snippet	$mo
+abbr    $monitor()
+	$monitor($time,"${1:veriable} = 0${2:x}%${3:h}",$1) ;
+#handle
+snippet	ha
+abbr    generate file handle
+	integer	${1:handle} ;
+	initial
+	begin
+	    $1 = $fopen("${2:file.out}") ;
+	end
+#test
+snippet	st
+	//-------------------------------------------------------------------------
+	//first
+	//-------------------------------------------------------------------------
+	always @ (posedge ${1:Clk} or negedge ${2:RSTn})			// build the state flops
+	begin
+		if(~RSTn) 
+			CurrentState		<=#\`DELAY ${3:sIdleState} ;
+		else 
+			CurrentState		<=#\`DELAY ${4:NextState} ;
+	end
+
+	//-------------------------------------------------------------------------
+	//second.state transfer
+	//-------------------------------------------------------------------------
+	always @ ( * )		//state machine, block assign
+	begin
+		NextState	 = sIdleState ;
+		case(CurrentState)
+			${5:NextState		= StateXX}
+			default: 
+			begin
+			end
+		endcase
+	end
+
+	//-------------------------------------------------------------------------
+	//three.output
+	//-------------------------------------------------------------------------
+	always @ (posedge $1 or negedge $2 )			//output
+	begin
+		if(~RSTn)
+		begin
+		end
+		else 
+		begin
+			case(NextState)
+				${6:code}
+				default: 
+				begin
+				end
+			endcase
+		end
+	end

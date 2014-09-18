@@ -1,0 +1,45 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>gauss</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+
+<pre class="brush:c++">
+//-------------------------------------------------------------------------
+//function		:   gauss
+//description	:   generate normally distributed random numbers
+//input			:   mean: Mean of the normal distribution ; 
+//                  sigma: Standard deviation of normal distribution
+//                  seed: Random number seed
+//return		:    
+//others		:    
+//------------------------------------------------------------------------- 
+double gauss(float mean, float sigma, long int *seed)
+{
+    int i ;
+    double x, y ;
+
+    for( i = 0; i &lt; 12; i++ ) 
+    {
+        x += uniform(0.0, 1.0, seed) ;
+    }
+    x = x - 6.0 ;
+    y = mean + x * sigma ;
+    
+    return y ;
+}
+</pre>
+
+</body>
+</html>
+

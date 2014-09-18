@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Shift register</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<pre clase = "brush : verilog">
+//-------------------------------------------------------------------------
+//通用移位寄存器
+//-------------------------------------------------------------------------
+reg [2:0]   reg_out ;
+reg_out  &lt;= {reg_out[1:0],right_in}             //左移
+reg_out  &lt;= {reg_out[2:1],left_in}              //右移
+</pre>
+
+</body>
+</html>

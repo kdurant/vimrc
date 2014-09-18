@@ -1,0 +1,13 @@
+名称:Counter-Compare Control Register
+位宽:16
+作用:
+说明: 
+    1:0     LOADAMODE   [[CMPA]]数值加载模式
+    3:2     LOADBMODE
+    4       SHDWAMODE   [[CMPA]]运行模式
+    5       resevered
+    6       SHDWBMODE   [[CMPB]]运行模式
+    7       resevered
+    8       SHDWAFULL   [[CMPA]] [[Shadow Register]]满状态标志
+    9       SHDWBFULL   [[CMPB]] [[Shadow Register]]满状态标志
+    15:10   resevered

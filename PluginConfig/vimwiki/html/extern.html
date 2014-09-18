@@ -1,0 +1,31 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>extern</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">extern 定义变量:</h1>
+<blockquote>
+外部变量是指在函数或者文件外部定义的全局变量。外部变量必须定义在所有的函
+数之外，且只能定义一次
+</blockquote>
+<h1 id="toc_2">extern 定义函数</h1>
+<blockquote>
+定义函数时，在函数返回值类型前面加上extern关键字，表示此函数是外部函数，
+可供其他文件调用，如extern int func(int x, int y)，C语言规定，此时extern
+可以省略，隐形为外部函数
+调用此函数时，需要用extern对函数做出声明
+</blockquote>
+
+</body>
+</html>
+

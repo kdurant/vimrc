@@ -1,0 +1,41 @@
+= 概念 =
+一个指向函数的指针(pointer to a function)包含的是一个函数在内存中的地址。指
+向函数的指针既可以作为函数实参传递给函数，也可以作为函数返回值从函数返回，
+还可以将其存放到数组中和赋值给其他函数指针
+
+= 声明形式 =
+{{{class="brush:c++"
+void (*function) (/*parameter*/) ;
+  }}}
+和[[Pointer Function|指针函数声明形式]]的差别
+
+= 声明示例 =
+{{{class="brush:c++"
+int (*p_fun) (/*parameter*/) ;
+  }}}
+定义一个指向函数的指针变量p_fun,并且p_fun具有返回值,且返回值的类型为int类型
+
+= 使用示例 =
+
+{{{class="brush:c++"
+#include <stdio.h>
+
+void output(void) ;
+
+int main(int argc, char *argv[])
+{
+    void (*p_output) () ;
+
+    p_output = output ;     //将函数的地址赋给指针
+    p_output = &output ;    // 结果 
+
+    (*p_output)();
+
+    return 0 ;
+}
+
+void output(void)
+{
+    puts("LongMai is ok!\n") ;
+}
+}}}

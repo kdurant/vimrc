@@ -1,0 +1,48 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>tag</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<p>
+显示里程碑
+git tag -n
+</p>
+
+<p>
+创建一个含附注类型的里程碑
+git tag -a v1.x -m "comment"
+</p>
+
+<p>
+后期加注里程碑
+git tag -a v1.x SHA1
+</p>
+
+<p>
+删除里程碑
+git tag -d name
+</p>
+
+<p>
+本地所有里程碑全部推送到远程版本库
+git push origin refs/tags/*
+</p>
+
+<h1 id="toc_1">删除远程tag</h1>
+<p>
+git push origin --delete tag &lt;tagname&gt;
+</p>
+
+</body>
+</html>
+

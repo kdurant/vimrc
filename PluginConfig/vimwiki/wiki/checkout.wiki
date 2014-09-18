@@ -1,0 +1,20 @@
+= git-checkout = 
+    checkout a branch or paths to the working tree
+
+checkout 的主要功能就是迁出一个分支的特定版本. 默认是迁出分支的HEAD版本
+主要是从state(index)到working directory, 和[[add]]作用相反
+
+= 取出master版本的head =
+git checkout master
+
+= 在当前分支上, 取出tag_name的版本 =
+git checkout tag_name
+
+= 取消对文件的修改 =
+用暂存区的filename文件来覆盖工作区的的filename文件, 用来丢弃本地修改
+git checkout -- filename
+git checkout master filename
+
+= 获得之前版本的内容 =
+git checkout SHA1
+

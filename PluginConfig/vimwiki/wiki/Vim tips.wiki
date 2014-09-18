@@ -1,0 +1,175 @@
+* 删除dos换行符 :%s/\r//g
+* 统计字符数：:%s/./&/gn
+* 统计单词数：:%s/\i\+/&/gn
+* 统计行数：:%s/^//n
+* 统计指定单词：:%s/the/&/gn 任何地方出现的 "the"
+* gi			在当前缓冲区最近一次插入模式停止的位置继续插入文本。
+* 编辑在缓存中的两个文件快速切换命令
+	比如在同一个窗口中先后打开了 file1.txt 和 file2.txt ，这时候使用 Ctrl+^ 可以在同一窗口中来回切换这两个文件。
+* :help holy-grail
+* 不同模式下的案件映射
+{{{
+Command	Normal	Visual	Operator	Insert	Command-Line
+:map		y		y		y
+:nmap		y
+:vmap				y
+:omap						y
+:map!								splitrighty		y
+:imap								y
+:cmap											
+  }}}
+* 特殊按键表示 :h keycodes
+* :g/word/d			删除包含word的行
+{{{
+环境变量 LANG（使用的语言）；
+环境变量 LC_CTYPE（使用的内部编码）；
+Vim 选项 encoding（Vim 的内部编码）；
+Vim 选项 termencoding（Vim 在与屏幕/键盘交互时使用的编码）；
+Vim 选项 fileencoding（Vim 当前编辑的文件在存储时的编码）；
+Vim 选项 fileencodings（Vim 打开文件时的尝试使用的编码）；
+Vim 选项 ambiwidth（对“不明宽度”字符的处理方式；Vim 6.1.455 后引入）。
+  }}}
+* 在windows下,DOS下也可以象上面那样打开；而若是“双击”打开方式，则可以修改注册表HKEY_CLASSES_ROOT\Applications\gvim.exe\shell\edit\command将其键值修改为
+"E:\cloud_backup\vim\vim73\gvim.exe" -p --remote-tab-silent "%1"
+
+* 多buff的查找和替换
+:bufdo %s/aaa/bbb/ge | update			
+
+* tabm
+		把当前标签页移到第 N 个标签页之后。用 0 使当前标签页成为首个标
+		签页。如果没有 N，当前标签页成为最后一个。
+
+* 使用matchit.vim匹配verilog里的begin-end等
+	* 安装matchit.vim（系统可能自带）
+	* 在http://www.opensource.apple.com/source/vim/vim-6/vim/runtime/ftplugin/verilog.vim下载verilog.vim文件
+	* 将此文件加入到E:\cloud_backup\vim\vimfiles\ftplugin里
+	* 
+{{{
+	source E:\cloud_backup\vim\vimfiles\plugin\matchit.vim
+	if exists('loaded_matchit')
+	let b:match_ignorecase=0
+	let b:match_words=
+	  \ '\<begin\>:\<end\>,' .
+	  \ '\<if\>:\<else\>,' .
+	  \ '\<module\>:\<endmodule\>,' .
+	  \ '\<class\>:\<endclass\>,' .
+	  \ '\<program\>:\<endprogram\>,' .
+	  \ '\<clocking\>:\<endclocking\>,' .
+	  \ '\<property\>:\<endproperty\>,' .
+	  \ '\<sequence\>:\<endsequence\>,' .
+	  \ '\<package\>:\<endpackage\>,' .
+	  \ '\<covergroup\>:\<endgroup\>,' .
+	  \ '\<primitive\>:\<endprimitive\>,' .
+	  \ '\<specify\>:\<endspecify\>,' .
+	  \ '\<generate\>:\<endgenerate\>,' .
+	  \ '\<interface\>:\<endinterface\>,' .
+	  \ '\<function\>:\<endfunction\>,' .
+	  \ '\<task\>:\<endtask\>,' .
+	  \ '\<case\>\|\<casex\>\|\<casez\>:\<endcase\>,' .
+	  \ '\<fork\>:\<join\>\|\<join_any\>\|\<join_none\>,' .
+	  \ '`ifdef\>:`else\>:`endif\>,'
+	endif
+  }}}
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"C语言编译，调试
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+{{{
+"定义CompileRun函数，用来调用进行编译和运行 
+"func CompileRun()
+"exec "w"
+"if &filetype == 'c'
+"exec "!gcc % -g -o %<"
+"exec "!%<"
+"endif
+"endfunc 
+"结束定义CompileRun 
+
+"定义Debug函数，用来调试程序
+"func Debug()
+"exec "w"
+"if &filetype == 'c'
+"exec "!gcc % -g -o %<"
+"exec "!gdb %<"
+"endif
+"endfunc
+"结束定义Debug 
+
+"定义Run函数
+"func Run()
+"if &filetype == 'c'
+"exec "!%<.exe"
+"endif
+"endfunc
+
+"map <F5> :call CompileRun()<CR>
+"map <F6> :call Run()<CR>
+"map <C-F5> :call Debug()<CR>
+  }}}
+
+
+* 使用Align 对齐时，需先使用
+* AlignCtrl g  xxx		选中需要对齐的行
+* AlignCtrl W				保持每行初始化的空白
+* AlignCtrl lp0P0			设置对齐关键词左右两边的空白
+
+
+"set guicursor=n:ver15                  "正常模式下光标为竖线
+"set cursorcolumn=80                     "高亮当前列
+
+" 可视模式下选中一段文字并全文搜索这段文字
+"vnoremap * y/<C-R>=escape(@", '\\/.*$^~[]')<cr><cr>
+"vnoremap # y?<C-R>=escape(@", '\\/.*$^~[]')<cr><cr>
+"nmap   ,sn     :simalt ~n<cr>
+
+
+
+1.为函数名添加tags
+%s/gtk_\l\+_\l\+\S*\s()/&\t*&*/g
+%s/\s()\*/\*/g
+2.删除函数原型中的空格
+%s/\s\{2,}/ /g
+3.参数前后添加$
+%s/\S*\s:/$&$/g
+
+4: 添加description~
+/);
+@d
+
+5:将description下的首行,进行断行
+@c
+
+6. 添加Synopsis
+/\*gtk.*\*
+@s
+
+silent %s/gtk_\l\+_\l\+\S*\s()/&\t*&*/g | :silent %s/\s()\*/\*/g | :silent %s/\s\{2,}/ /g | :silent %s/\S*\s:/$&$/g 
+
+7.为大写的宏定义添加tags
+\([A-Z]\+_\)\+[A-Z]\{2,}
+%s/\([A-Z]\+_\)\+[A-Z]\{2,}/|&|/g
+
+%s/\([A-Z]\+_\)\+[A-Z]\{2,}/|&|/g | : %s/\zs\([a-z]\+_\)\+[a-z]\{2,}\ze()/|&|/g
+8.为说明里的函数名添加tags
+%s/\zs\([a-z]\+_\)\+[a-z]\{2,}\ze()/|&|/g
+
+* 长行截短
+set formatoptions+=m | execute "set textwidth=" . (&columns - &numberwidth) | normal gqG
+
+
+将连续的空行替换为一个空行
+%s/^\n\+/\r/g
+
+%s/^\(-\+\)$\n*/\1\r/gc
+
+%s/\(^-\+\)\_s*/\1\r/g
+
+搜索任意中文
+[^\x00-\xff]
+
+syn region StarsEnclosed matchgroup=underlined start=+\*+ end=+\*+ concealends
+
+\%(\%(\[\d\+:\d\+\]\)\@<=[^[\]]\+\|[^[\]]\+\%(\[\d\+:\d\+\]\)\@=\)

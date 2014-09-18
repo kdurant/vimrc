@@ -1,0 +1,17 @@
+[[uniform]]
+
+[[gauss]]
+
+[[exponent]]
+
+[[laplace]]
+
+[[dft]]
+
+[[fft]]
+
+[[fft4]]
+
+[[response]]
+
+

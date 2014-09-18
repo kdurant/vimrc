@@ -1,0 +1,104 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>point</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">定义和初始化</h1>
+<p>
+int *countPtr ;
+声明了一个int* 类型的的指针变量countPtr(即指向整型的指针)，读作:"countPtr是一个
+指针，指向int"或者"countPtr指向一个int型的对象"
+countPtr是一个地址，*countPtr是这个地址对应的值
+</p>
+
+<p>
+countPtr =&amp;y ; 将变量y的地址赋给指针变量countPtr。于是，变量countPtr被称为"指向
+"了y
+</p>
+
+<h1 id="toc_2">在函数中调用</h1>
+<p>
+void cubeByRefence(int *nPtr) ;  接受的实参是一个整型变量的地址
+</p>
+
+<p>
+int main(void)
+{
+</p>
+<blockquote>
+cubeByRefence( &amp;num ) ;
+</blockquote>
+<p>
+}
+</p>
+
+<h1 id="toc_3">指针数组</h1>
+<p>
+array of pointer, 通常用来构造一个字符串的数组，也简称字符串数组。数组的每一个
+元素都指向一个字符串，但是在C语言中，一个字符串实质上就是指向其第一个字符的指针
+。所以，字符串数据的每个数据项实际上就是一个指向字符串第一个字符的指针
+</p>
+<blockquote>
+eg.
+const char *suit[4] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+声明中的char*表示数组suit中的每个元素都是"指向字符的指针"类型
+</blockquote>
+
+<h1 id="toc_4">函数指针</h1>
+<blockquote>
+一个指向函数的指针(pointer to a function)包含的是一个函数在内存中的地址。指
+向函数的指针既可以作为函数实参传递给函数，也可以作为函数返回值从函数返回，
+还可以将其存放到数组中和赋值给其他函数指针
+</blockquote>
+
+<h1 id="toc_5">指针运算</h1>
+<p>
+指针指向的地址可以和具体数值相加
+</p>
+
+<h1 id="toc_6">数组和指针</h1>
+<p>
+char array[5] ;
+array, &amp;array[0], &amp;array都指向数组的首地址
+</p>
+
+<p>
+向函数中传递数组
+modifyArray(array, 5)
+modifyArray(char array[], 5)
+对于一个接受数组作为实参的函数，在定义函数的列表时，必须指明将要接受的实参是一
+个数组，他表示函数modifyArray期望用形参b[]来接受一个数组
+</p>
+
+<pre class="brush: c">
+void max_min(int a[], int n, int *max, int *min)
+{
+    int *p ;
+    *max = *min = *a ;
+    for(p = a + 1; p &lt; a + n; p++)
+    {
+        if(*p &gt; *max)
+        {
+            *max = *p ;
+        }
+        else if(*p &lt; *min)
+        {
+            *min = *p ;
+        }
+    }
+}
+</pre>
+
+</body>
+</html>
+

@@ -1,0 +1,34 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Shadow Register</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<p>
+在PWM模块里面经常用到影子寄存器，一般有周期寄存器，占空比寄存器，相位寄存器等会有影子寄存器。
+</p>
+
+<p>
+具体的作用是让用户可以选择立即更新这些寄存器，还是在某个特定的时间点再去更新这个寄存器。
+</p>
+
+<p>
+据占空比的例子：
+</p>
+<blockquote>
+如果选择立即更新模式，当你在任何时刻写占空比寄存器，都会立即生效。
+如果选择shadow模式，如果一个PWM周期间写占空比寄存器，写到真正的占空比寄存器中立即生效，而是保存在影子寄存器中。在下个周期开始的时候再从影子寄存器中装载到占空比寄存器。
+</blockquote>
+
+</body>
+</html>
+

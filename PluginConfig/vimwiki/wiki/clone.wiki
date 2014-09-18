@@ -1,0 +1,2 @@
+克隆本地的历史分支 
+git clone -b branch_name path

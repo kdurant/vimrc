@@ -1,0 +1,47 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>reset</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">git-reset</h1>
+<blockquote>
+Reset current HEAD to the specified state 
+</blockquote>
+
+<p>
+撤销所有暂存区文件, 仅用HEAD指向的目录树重置stage, working directory不受影响
+git reset
+git reset HEAD 
+</p>
+
+<p>
+彻底回退到某个版本, working directory, stage, repo内容相同
+git reset --hard version_name
+git reset --hard HEAD^
+</p>
+
+<p>
+只更改引用的指向, 不改变working directory, stage
+git reset --soft version_name
+git commit -m "xxx"     这样可以用来修改注释
+</p>
+
+<p>
+从stage中移除指定文件, 但还是在 working directory
+git reset -- filename
+git reset HEAD filename
+</p>
+
+</body>
+</html>
+

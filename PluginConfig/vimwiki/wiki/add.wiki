@@ -1,0 +1,20 @@
+git-add : add file contents to the index(stage)
+git add 命令主要用于将working directory的文件添加到stage中去
+主要是从working directory到state(index)的转移, 和[[checkout]]作用相反
+
+= 基本用法 =
+git add path
+
+= 将所有tracked文件中被修改过或者已删除的文件添加到stage中 =
+git add -u  path
+
+= 将所有文件,包括tracked和untracked添加到stage中 =
+git add -A
+
+= Create a new repository on the command line =
+touch README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:kdurant/oc8051.git
+git push -u origin master

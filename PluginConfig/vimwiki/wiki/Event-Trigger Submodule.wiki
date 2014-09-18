@@ -1,0 +1,24 @@
+= 模块功能概述 =
+此模块通过 [[Time-Base Submodule]], [[Counter-Compare Submodule]], 
+[[Digital Compare Submodule]] 管理产生的事件
+
+= 功能 =
+1.接收由[[TBCTL|TB]], [[Counter-Compare Submodule|CC]]和[[Digital Compare Submodule|DC]]产生的输入
+2.使用时基方向信息来更新每个事件的资格
+3.使用与分频逻辑去发出中断请求,在下面的事件启动ADC转换
+    每个事件
+    每两个事件
+    每三个事件
+4.通过事件计数器和标志位提供可视化的事件生成过程
+5.运行软件强制中断和启动ADC转换
+
+= 相关寄存器 =
+[[ETSEL]]   Selection Register
+
+[[ETPS]]    Prescale Register
+
+[[ETFLG]]   Flag Register
+
+[[ETCLR]]   Clear Register
+
+[[ETFRC]]   Force Register

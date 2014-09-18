@@ -1,0 +1,52 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>zippo.c</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<p>
+include &lt;stdio.h&gt;
+</p>
+
+<p>
+int main(int argc, char *argv[])
+{
+</p>
+<blockquote>
+int zippo[4][2] = { 
+{2,4},
+{6,8},
+{1,3},
+{5,7}
+};
+</blockquote>
+<blockquote>
+printf("zippo = %p,\t\tzippo + 1 = %p\n", zippo, zippo + 1) ;
+printf("zippo[0] = %p,\t\tzippo[0] + 1 = %p\n", zippo[0], zippo[0] + 1) ;
+printf(" *zippo = %p,\t\t*zippo + 1 = %p\n", *zippo, *zippo + 1) ;
+printf("zippo[0][0] = %d\n", zippo[0][0]) ;
+printf("*zippo[0] = %d\n", *zippo[0]) ;
+printf("**zippo = %d\n", **zippo) ;
+printf("zippo[2][1] = %d\n", zippo[2][1]) ;
+printf(" <strong>(</strong>(zippo+2)+1) = %d\n ", <strong>(</strong>(zippo + 2)+1)) ;
+</blockquote>
+<blockquote>
+printf("*(zippo +2) = %d\n", **(zippo + 2)) ;
+return 0 ;
+</blockquote>
+<p>
+}
+</p>
+
+</body>
+</html>
+

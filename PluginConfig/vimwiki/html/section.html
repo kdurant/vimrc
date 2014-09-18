@@ -1,0 +1,265 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>section</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">section</h1>
+<p>
+编译器生成的可重定位的代码和数据块称为段。
+The smallest unit of an object file is a <del>section</del>. A section is a block of 
+code or data that occupies contiguous space in the memory map with other 
+sections. Each section of an object file is separate and distinct. 
+<del>Object files usually contain three default sections</del>
+一般情况下，一个可执行二进制程序(更确切的说，在Linux操作系统下为一个进程单元，
+在UC/OSII中被称为任务)在存储(没有调入到内存运行)时拥有3个部分，分别是代码段
+(text)、数据段(data)和BSS段。 这3个部分一起组成了该可执行程序的文件
+</p>
+<h2 id="toc_1.1">.text section  代码段</h2>
+<blockquote>
+contains executable code
+存放CPU执行的机器的指令。通常代码段是可共享的，这使得需要频繁被执行的程序只
+需要在内存忠拥有一份拷贝即可。代码段通常是只读的，这样可以防止其他程序意外
+的修改其指令。另外，代码段还规划了局部数据所申请的内存空间信息
+</blockquote>
+<h2 id="toc_1.2">.data section 数据段</h2>
+<blockquote>
+usually contains initialized data
+或称全局初始化数据段/静态数据段(initialized data segment/data segment)。该
+段包含了程序中明确被初始化的全局变量、静态变量（包含全局静态变量和局部静态
+变量）和常量数据
+</blockquote>
+<h2 id="toc_1.3">.bbs section 未初始化数据段</h2>
+<blockquote>
+usually reserves space for uninitialized variables
+亦称BSS(block started by symbol)。该段存入的是全局未初始化变量、静态未初始化
+变量
+</blockquote>
+    
+<p>
+程序运行时，需增加另外两个域：堆域和栈域
+</p>
+
+<h2 id="toc_1.4">stack 栈段</h2>
+<blockquote>
+存放函数的参数值、局部变量的值，以及在进行任务切换时存放当前任务的上下文内容
+</blockquote>
+<h2 id="toc_1.5">heap 堆段</h2>
+<blockquote>
+用于动态内存分配，即使用malloc/free系列函数来管理的内存空间
+</blockquote>
+
+<h1 id="toc_2">There are two basic types of sections</h1>
+<h2 id="toc_2.1">Initialized sections</h2>
+<p>
+初始化段必须包括上电时有效的数据。例如代码和常量
+Initialized sections must contain valid values at device power-up. For example, 
+code and constants are found in initialized sections. 
+作为一个独立的系统，所有的初始化段必须链接到非易失性存储器中
+all initialized sections must be linked to non-volatile memory
+</p>
+
+<p>
+Any user created initialized section should be linked to flash (e.g., those 
+sections created using the CODE_SECTION compiler pragma)
+</p>
+
+<p>
+编译器创建的初始化段
+<table>
+<tr>
+<th>
+Name
+</th>
+<th>
+Contents
+</th>
+<th>
+Restrictions
+</th>
+</tr>
+<tr>
+<td>
+.cinit
+</td>
+<td>
+Tables for explicitly initialized global and static variables
+</td>
+<td>
+Program
+</td>
+</tr>
+<tr>
+<td>
+.const
+</td>
+<td>
+Global and static const variable that are explicitly
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;
+</td>
+<td>
+initialized and contain string literals
+</td>
+<td>
+Low 64K
+</td>
+</tr>
+<tr>
+<td>
+.econst
+</td>
+<td>
+Far constant variables(const type modifier)
+</td>
+<td>
+Anywhere in data
+</td>
+</tr>
+<tr>
+<td>
+.pinit
+</td>
+<td>
+Table of constructors to be called at startup
+</td>
+<td>
+Program
+</td>
+</tr>
+<tr>
+<td>
+.switch
+</td>
+<td>
+Jump tables for large switch statements
+</td>
+<td>
+Program with -mt option
+</td>
+</tr>
+<tr>
+<td>
+&nbsp;
+</td>
+<td>
+&nbsp;
+</td>
+<td>
+Data without -mt option
+</td>
+</tr>
+<tr>
+<td>
+.text
+</td>
+<td>
+Executable code and constants
+</td>
+<td>
+Program
+</td>
+</tr>
+</table>
+</p>
+
+<h2 id="toc_2.2">Uninitialized sections</h2>
+<p>
+未初始化不包括上电时需要有效的数据
+An uninitialized section does not contain valid values at device power-up. For 
+example, variables are found in uninitialized sections. Code will write values 
+to the variable locations during code execution.  Therefore, uninitialized 
+sections must be linked to volatile memory (e.g., RAM).
+<table>
+<tr>
+<th>
+Name
+</th>
+<th>
+Contents
+</th>
+<th>
+Restrictions
+</th>
+</tr>
+<tr>
+<td>
+.bss
+</td>
+<td>
+Global and static variables
+</td>
+<td>
+Low 64K
+</td>
+</tr>
+<tr>
+<td>
+.ebss
+</td>
+<td>
+Far global/static variables
+</td>
+<td>
+Anywhere in data
+</td>
+</tr>
+<tr>
+<td>
+.stack
+</td>
+<td>
+Stack
+</td>
+<td>
+Low 64K
+</td>
+</tr>
+<tr>
+<td>
+.sysmem
+</td>
+<td>
+Memory for malloc functions(heap)
+</td>
+<td>
+Low 64K
+</td>
+</tr>
+<tr>
+<td>
+.esysmem
+</td>
+<td>
+Memory for far_malloc functions
+</td>
+<td>
+Anywhere in data
+</td>
+</tr>
+</table>
+</p>
+
+<p>
+whereas any user created uninitialized sections should be linked to RAM (e.g., 
+those sections created using the DATA_SECTION compiler pragma).
+</p>
+
+</body>
+</html>
+

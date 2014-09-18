@@ -1,0 +1,16 @@
+{{{class="brush:c++"
+//-------------------------------------------------------------------------
+//function		:   exponent
+//description	:   generate exponentially distributed random numbers
+//input			:   beta: mean of exponentially distributed
+//return		:    
+//others		:    
+//-------------------------------------------------------------------------
+double exponent(float beta, long int *seed)
+{
+    double u, x ;
+    u = uniform(0.0, 1.0, seed) ;
+    x = -beta * log(u) ;
+    return x ;
+}
+}}}

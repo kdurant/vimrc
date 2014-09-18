@@ -1,0 +1,54 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>compile vim</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">设置编译环境</h1>
+<p>
+使用MingW
+</p>
+<h1 id="toc_2">编译参数</h1>
+<p>
+mingw32-make.exe -f Make_ming.mak FEATURES=huge OLE=yes GIME=yes PYTHON=C:\Python27 PYTHON_VER=27 DYNAMIC_PYTHON=yes USERNAME=kdurant USERDOMAIN=gmail.com GUI=yes IME=yes MBYTE=yes LUA=C:\Lua\5.1 DYNAMIC_LUA=yes LUA_VER=51 CSCOPE=yes DFEAT_PROPORTIONAL_FONTS=yes
+</p>
+
+<p>
+make -f Make_ming.mak clean
+make -f Make_ming.mak ^
+</p>
+<blockquote>
+FEATURES=huge ^
+GUI=yes ^
+OLE=yes ^
+IME=yes ^
+GIME=yes ^
+MBYTE=yes ^
+LUA="C:/Program\ Files/Lua/5.1" ^
+DYNAMIC_LUA=yes ^
+LUA_VER=51 ^
+PYTHON="E:/PYF/SDK/Python2.7" ^
+DYNAMIC_PYTHON=yes ^
+PYTHON_VER=27 ^
+CSCOPE=yes ^
+ARCH=i686
+</blockquote>
+    
+
+
+<p>
+DFEAT_PROPORTIONAL_FONTS
+</p>
+
+</body>
+</html>
+

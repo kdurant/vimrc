@@ -1,0 +1,14 @@
+名称: Peripheral Clock Control 0 Register
+位宽: 16
+作用: 使能不能的外设时钟
+说明:  
+    0       HRPWM clock enable
+    1       reserved
+    2       ePWM Module Time Base Clock Sync
+    3       ACD clock enable
+    4       I2C clock enable
+    7-6     reserved
+    8       SPI-A clock enable
+    9       reserved
+    10      SCI-A clock enable
+    15:11   reserved

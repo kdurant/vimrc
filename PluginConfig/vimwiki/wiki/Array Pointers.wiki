@@ -1,0 +1,51 @@
+char array[5] ;
+array, &array[0], &array都指向数组的首地址
+但使用&array,gcc编译器会有warning:assignment from incompatible pointer type [enabled by default]
+对于二维数组,不仅&array有waring,&array[0]也会有warning
+
+= 向函数中传递数组 =
+== 一维数组 ==
+=== 数组声明 ===
+=== 函数声明 ===
+    void ModifyArray(int NewArray[], int length)
+=== 函数调用 ===
+    [[Modify 1-D Array|ModifyArray]](array, 5) ;
+    [[Modify 1-D Array|ModifyArray]](&array[0], 5) ;
+    [[Modify 1-D Array|ModifyArray]](&array[0], 5) ;    //don't suggest
+对于一个接受数组作为实参的函数，在定义函数的列表时，必须指明将要接受的实参是一
+个数组，他表示函数ModifyArray期望用形参b[]来接受一个数组
+
+== 二维数组 ==
+=== 数组声明 ===
+int zippo[4][2] ;
+    zippo是数组首元素的地址,所以zippo的值和&zippo[0]相同.另外,zippo[0]本身包含
+    两个整数的数组,因此zippo[0]的值同其首元素的地址&zippo[0][0]相同.简单的说,
+    zippo[0]是一个整数大小对象的的地址,而zippo是两个整数大小对象的地址.因为整数
+    和两个整数组成的数组开始于同一个地址,因此zippo和zippo[0]具有相同的数值
+    
+    对一个指针加1，会对原来的数值加一个对应类型大小的数值,在这方面,zippo和
+    zippo[0]是不一样的,zippo所指向对象的大小是两个int,而zippo[0]所指向对象的大
+    小是一个int.因此,zippo+1和zippo[0]+1的结果不同
+    
+    对一个指针取值(使用运算符*或者带有索引的[]运算符)得到的是该指针指向对象的
+    数值.因为zippo[0]是其首元素zippo[0][0]的地址,所以*(zippo[0])代表存储在
+    zippo[0][0]中的数值.同样,*zippo代表其首元素zippo[0]的值,但zippo[0]本身就是
+    一个int数的地址,即&zippo[0][0],因此*zippo是&zippo[0][0].对这两个表达式同时
+    应用取值运算将得到**zippo等价于 *&zippo[0][0]
+    
+    example: [[zippo.c]]
+    
+| Expression   | Type         | Value    |
+|--------------|--------------|----------|
+| &array       | int(*)[3][4] | 0x28fee8 |
+| &array[0]    | int(*)[4]    | 0x28fee8 |
+| &array[0][0] | int *        | 0x28fee8 |
+
+=== 指向多维数组的指针 ===
+    int (*ptr) [2] ;      //ptr 指向一个包含2个int值的数组
+=== 函数声明 ===
+void ModifyArray(int ArrayNew[3][4], int row, int colmun) 
+void ModifyArray(int ArrayNew[][4], int row, int colmun) 
+=== 函数调用 ===
+ModifyArray(array, 3, 4) ;
+

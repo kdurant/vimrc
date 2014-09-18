@@ -1,0 +1,23 @@
+{{{
+//=============================================================================
+// FileName   :  Name rule.wiki
+// Author     :  kdurant
+// Email      :  wangjun850725@gmail.com
+// Description:  
+// Version    :  1.0
+/ LastChange :  2013-05-25 22:44:22
+// ChangeLog  :  2013-05-24     initial
+//=============================================================================
+  }}}
+= 命名规则 =
+原则上采用驼峰命名，每个单词的的首字母大写，WangJun
+对于一些特定的缩写，如VGA，采用驼峰命令的时候比较难看，VGAInit，则使用下划线，VGA_Init
+== 端口 ==
+除clk，rst以外端口统一以p开头，pFifoWclk， pFifoWen， pFifoRSTn， pFifoData
+== 寄存器 ==
+内部声明的寄存器统一以r开头，rDelayCount， rDelayFlag 
+== 线网 ==
+内部声明线网统一以r开头，wFifoRclk， wFifoRen 
+== 状态机 ==
+状态机状态统一以s开头，sIdleState， sFifoReset
+== 其他 ==

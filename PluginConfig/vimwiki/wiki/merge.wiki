@@ -1,0 +1,5 @@
+= 非快进式合并 =
+git merge --no-ff branch_name
+
+= 合并分支时带有注释 =
+git merge -m "comment" branch

@@ -1,0 +1,37 @@
+# Object files
+*.o
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# ccs proj
+#/DSP2802x_common/gel/
+#/DSP2802x_common/lib/
+#/DSP2802x_common/cmd/
+
+#/DSP2802x_headers/gel/
+#/DSP2802x_headers/cmd/
+
+/DSP2802x_examples/hrpwm/Debug/
+/DSP2802x_examples/hrpwm/Example_2802xHRPWM.CS_/
+
+*.files
+*.log
+#*.lkf
+#*.gel
+#*.paf2
+#*.pjt
+#*.psp
+#*.sbl

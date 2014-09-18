@@ -1,0 +1,5 @@
+1.下载pyclewn1-1.10.py2.tar.gz   http://sourceforge.net/projects/pyclewn/files/pyclewn-1.10/
+2.下载pywin32-218.win32-py2.7.exe   http://sourceforge.net/projects/pywin32/files/pywin32/
+    并安装
+3.编辑EDITOR环境变量  指向gvim路径
+

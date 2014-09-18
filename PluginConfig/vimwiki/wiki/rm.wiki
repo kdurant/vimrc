@@ -1,0 +1,9 @@
+
+从stage中移除指定文件, 但还是在 working directory
+git rm --cached filename
+
+从repo中删除文件, state, working directory 也会一并删除, 但只能在commit后使用
+git rm filename
+
+删除文件夹myFolder，并把它从git的仓库管理系统中移除。
+git rm -r Folder

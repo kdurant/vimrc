@@ -1,0 +1,41 @@
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<script type="text/javascript" src="scripts/shBrushverilog.js"></script>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>laplace</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<pre class="brush:c++">
+//-------------------------------------------------------------------------
+//function		:   laplace
+//description	:   generate laplace distributed random numbers
+//input			:   beta: parameter of laplace distributed
+//return		:    
+//others		:    
+//-------------------------------------------------------------------------
+double laplace(float beta, long int *seed)
+{
+    double u1, u2, x ;
+    u1 = uniform(0., 1., seed) ;
+    u2 = uniform(0., 1., seed) ;
+
+    if(u1 &lt;= 0.5)
+        x = -beta * log(1. -u2) ;
+    else
+        x = beta * log(u2) ;
+
+    return x ;
+}
+</pre>
+
+</body>
+</html>
+

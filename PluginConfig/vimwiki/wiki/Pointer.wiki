@@ -1,0 +1,52 @@
+= 定义和初始化 =
+int *countPtr ;
+声明了一个int* 类型的的指针变量countPtr(即指向整型的指针), 读作:"countPtr是一个
+指针, 指向int"或者"countPtr指向一个int型的对象"
+[[countPtr是一个地址,]] *countPtr是这个地址对应的值
+
+countPtr =&y ; 将变量y的地址赋给指针变量countPtr。于是, 变量countPtr被称为"指向
+"了y
+
+int *countPtr = 1 ;
+这种初始化是不完全正确的, countPtr是一个地址, 不能直接将一个数值赋值给一个指针
+变量, 需要强制类型转换, 但这样得来的内存地址很有可能被系统使用,导致出错
+
+指针本身占用4个字节空间, 所有类型有一样
+= 在函数中调用 =
+void cubeByRefence(int *nPtr) ;  接受的实参是一个整型变量的地址
+
+int main(void)
+{
+    cubeByRefence( &num ) ;
+}
+
+[[Pointer Array]] 指针数组
+
+[[Array Pointers]]  数组指针
+
+[[Function pointer]]
+
+[[Pointer Function]]
+
+= 指针运算 =
+指针指向的地址可以和具体数值相加
+
+
+{{{class="brush:c++"
+void max_min(int a[], int n, int *max, int *min)
+{
+    int *ptr ;
+    *max = *min = *a ;
+    for(ptr = a + 1; ptr < a + n; ptr++)
+    {
+        if(*ptr > *max)
+        {
+            *max = *ptr ;
+        }
+        else if(*ptr < *min)
+        {
+            *min = *ptr ;
+        }
+    }
+}
+  }}}
