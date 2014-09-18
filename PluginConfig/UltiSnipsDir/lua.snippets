@@ -1,9 +1,52 @@
 snippet pr
-print(${1:code})
+print(${1:statements})
 endsnippet
 
 snippet if
-if ${1:condition} than
-	${2:-- code}
+if ${1:condition} then
+	${2:--statements}
+end
+endsnippet
+
+snippet el
+elseif ${1:condition} then
+	${2:--statements}
+endsnippet
+
+
+snippet wh
+while ${1:condition} do
+	${2:--statements}
+end
+endsnippet
+
+snippet re
+repeat
+	${1:--statements}
+until ${2:condition}
+endsnippet
+
+snippet for	"number for"
+for ${1:variable} = ${2:start}, ${3:end}, ${4:step} do
+	${5:--statements}
+end
+endsnippet
+
+snippet for	"generic for"
+for ${1:key} in ${2:table} do
+	${5:--statements}
+end
+endsnippet
+
+snippet do
+do
+	${1:--block}
+end
+endsnippet
+
+snippet fun
+function ${1:name}(${2:parameter})
+	${3:--statements}
+	return 
 end
 endsnippet
