@@ -563,17 +563,17 @@ function! CompileFile()
     if &filetype == 'verilog'
         if(isdirectory("work"))
             echohl comment | echo "Aleady has work!"
-        "else
-            "echohl comment | echo "Generate work!"
-            "silent exe "!vlib work"
+            set makeprg=vlog\ -work\ work\ %
+            set errorformat=**\ Error:\ %f(%l):\ %m
+            exe "make"
+            exe "cw"
+        else
+            echohl ErrorMsg | echo "No work library!"
         endif
-        set makeprg=vlog\ -work\ work\ %
-        set errorformat=**\ Error:\ %f(%l):\ %m
-        exe "make"
-        exe "cw"
-    elseif &filetype == 'c'
-        set makeprg=gcc\ -std=c99\ -o\ %<.exe\ %
-        "set makeprg=gcc\ -o\ %<.exe\ %
+    elseif &filetype == 'c' || &filetype == 'cpp'
+        if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -o\ %<.exe\ %
+        else                | set makeprg=g++\ -o\ %<.exe\ %
+        endif
         silent exe "make"
         if getqflist() == []    "compile correct and no warning
             let WarnFlag = 0
@@ -588,29 +588,12 @@ function! CompileFile()
                 endfor
             endfor
         endif
-        "if WarnFlag == 1
-            "let select = input('Search current word with current file type, y or n ? ')
-        "endif
-        if WarnFlag == 1 | exe "cw" | exe "!%<.exe" | exe "cw"
-        else | exe "cw"
-        endif
-    elseif &filetype == 'cpp'
-        set makeprg=g++\ -o\ %<.exe\ %
-        silent exe "make"
-        if getqflist() == []    "compile correct and no warning
-            let WarnFlag = 0
-            silent exe "ccl" | exe "!%<.exe"
-        else
-            for needle in getqflist()
-                for value in values(needle)
-                    if value =~ 'warning' | let WarnFlag = 1
-                    elseif value =~ 'error' | let WarnFlag = 0
-                    else | let WarnFlag = 0
-                    endif
-                endfor
-            endfor
-        endif
-        if WarnFlag == 1 | exe "!%<.exe" | exe "cw"
+        if WarnFlag == 1
+            let select = input('There are warnings! [r]un or [s]olve? ')
+            if select ==  'r' | exe "!%<.exe" | exe "cw" 
+            elseif select == 's' | exe "cw"
+            else | echohl ErrorMsg | echo "input error!"
+            endif
         else | exe "cw"
         endif
     elseif &filetype == 'python'
@@ -622,7 +605,7 @@ function! CompileFile()
         else | exe "!lua %"
         endif
     else
-        echohl ErrorMsg | echo "This filetype can't be compiled by modelsim!"
+        echohl ErrorMsg | echo "This filetype can't be compiled !"
     endif
 endfunction
 
