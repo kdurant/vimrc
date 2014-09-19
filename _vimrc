@@ -1,6 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""1st. vimrc config""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+filetype plugin indent on
 if has('win32') || has('win64')
     let g:is_win = 1 | let g:is_unix = 0
 elseif has('unix')
@@ -20,7 +22,6 @@ Plug 'kdurant/vim_colors'
 Plug 'kdurant/CRefVim'
 Plug 'kdurant/nerdcommenter'
 Plug 'kdurant/verilog-testbench'
-"Plug 'kdurant/vim-fugitive'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'kshenoy/vim-signature'
@@ -41,8 +42,6 @@ Plug 'vim-scripts/verilog.vim'
 Plug 'vim-scripts/star-search'
 Plug 'vim-scripts/cmdline-completion'
 call plug#end()
-set nocompatible
-filetype plugin indent on
 if g:is_win == 1
     nmap	,so		:source ~/_vimrc<CR>
     nmap	,se		:tabnew<cr>:e ~/_vimrc<CR>
@@ -597,8 +596,7 @@ function! CompileFile()
         endif
         silent exe "make"
         if getqflist() == []    "compile correct and no warning
-            let WarnFlag = 0
-            silent exe "ccl" | exe "!%<.exe"
+            let WarnFlag = 0 | silent exe "ccl" | exe "!%<.exe"
         else
             for needle in getqflist()
                 for value in values(needle)
@@ -628,6 +626,7 @@ function! CompileFile()
     else
         echohl ErrorMsg | echo "This filetype can't be compiled !"
     endif
+    echohl None
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -737,7 +736,8 @@ function! LookUpProjectRoot()
     elseif findfile(g:project_root_marker, '.;') != ''
         let l:project_root_dir = substitute(findfile(g:project_root_marker, '.;'), g:project_root_marker, '', '')
     else 
-        let l:project_root_dir = getcwd() 
+        echohl ErrorMsg | echo "There is no project"
+        "let l:project_root_dir = getcwd() 
     endif
     silent exe 'cd ' . l:project_root_dir
     return l:project_root_dir

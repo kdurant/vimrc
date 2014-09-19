@@ -163,7 +163,7 @@ parameter	    ${1:LHS} = ${2:RHS} ;
 endsnippet
 
 #<=
-#${1:LHS} <=#\`DELAY ${2:RHS} ;
+#${1:LHS} <=# ${2:RHS} ;
 snippet	;
 ${1:LHS} <= ${2:RHS} ;
 endsnippet
@@ -188,27 +188,27 @@ assign      ${1:FallEdge} = ${2:RegDelay1} & (~${3:RegDelay0}) ;    //if has fal
 endsnippet
 
 snippet	edge
-reg                         ${1:Reg}Delay0 , $1Delay1 ;
-wire                        $1Rise ;
-wire                        $1Fall ;
+reg                     ${1:Reg}Delay0 , $1Delay1 ;
+wire                    $1Rise ;
+wire                    $1Fall ;
 
 assign          $1Rise = (~$1Delay1) & $1Delay0 ;
 assign          $1Fall = $1Delay1 & (~$1Delay0) ;
 always @ (posedge clk or negedge rst) 
 begin
     if(~rst) 
-        {$1Delay0,$1Delay1}    <=#\`DELAY 2'b00 ;
+        {$1Delay0,$1Delay1}    <=# 2'b00 ;
     else
-        {$1Delay1,$1Delay0}    <=#\`DELAY {$1Delay0,$1} ;
+        {$1Delay1,$1Delay0}    <=# {$1Delay0,$1} ;
 end
 endsnippet
 
 snippet <<
-${1:RegOut} <=#\`DELAY {$1[${2:6}:${3:0}],${4:RightIn}} ;             //left shift, new data is appeare LSB
+${1:RegOut} <=# {$1[${2:6}:${3:0}],${4:RightIn}} ;             //left shift, new data is appeare LSB
 endsnippet
 
 snippet >>
-${1:RegOut} <=#\`DELAY {${3:LeftIn},$1[${2:7}:${4:1}]} ;              //right shift,new data is appeare MSB
+${1:RegOut} <=# {${3:LeftIn},$1[${2:7}:${4:1}]} ;              //right shift,new data is appeare MSB
 endsnippet
 
 # begin
@@ -357,9 +357,9 @@ snippet	st
 always @ (posedge ${1:clk} or negedge ${2:rst})			// build the state flops
 begin
 	if(~rst) 
-		CurrentState		<=#\`DELAY ${3:sIdleState} ;
+		CurrentState		<=# ${3:sIdleState} ;
 	else 
-		CurrentState		<=#\`DELAY ${4:NextState} ;
+		CurrentState		<=# ${4:NextState} ;
 end
 
 //-------------------------------------------------------------------------
