@@ -16,7 +16,7 @@ endif
 Plug 'bling/vim-airline'
 Plug 'edsono/vim-matchit'
 Plug 'luochen1990/rainbow'
-Plug 'JazzCore/ctrlp-cmatcher'
+"Plug 'JazzCore/ctrlp-cmatcher'
 Plug 'kdurant/bookmark'
 Plug 'kdurant/vim_colors'
 Plug 'kdurant/CRefVim'
@@ -471,9 +471,12 @@ nmap <M-d>r     :CtrlPMRU<cr>
 let g:ctrlp_mruf_include = '\.c$\|\.h$\|\.m$\|\.tcl$\|\.v$'
 let g:ctrlp_root_markers = ['README.md']
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"ctrlp-match setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "hi  CtrlPMatch  guifg=#F92672
-hi  link    CtrlPMatch      Define
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+"hi  link    CtrlPMatch      Define
+"let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "diff setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
