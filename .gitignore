@@ -1,4 +1,5 @@
 /.jtag/
+/.cache/
 /.neocomplete/
 /mplayer/
 /vimfiles/
