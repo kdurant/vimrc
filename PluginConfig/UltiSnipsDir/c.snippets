@@ -151,6 +151,13 @@ snippet td
 typedef ${1:int} ${2:/*MyCustomType*/} ;
 endsnippet
 
+snippet tdf
+/*
+ * as function parameter:  funcion(pfun test)
+ */
+typedef ${1:int} (*${2:pfun})(${3:parameter});
+endsnippet
+
 snippet tds
 typedef struct __${1:/*struct*/}
 {
