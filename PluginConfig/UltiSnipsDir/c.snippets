@@ -153,7 +153,10 @@ endsnippet
 
 snippet tdf
 /*
- * as function parameter:  funcion(pfun test)
+ * typedef void (*list_op)(void*);      function point declaration
+ * void print_student(void* data)       function declaration
+ * void traverse(list* llist, list_op do_func)  called function declaration
+ * traverse(llist, print_student);      usage
  */
 typedef ${1:int} (*${2:pfun})(${3:parameter});
 endsnippet
@@ -341,69 +344,6 @@ ${1:/*rand_num*/} = rand() % ${2:/*maxnum*/} ;
 endsnippet
 snippet setbuf
 setbuf(${1:stdout},${2:NULL});	//display infomation when use eclipse debug
-endsnippet
-
-snippet #ing
-#include <gtk/gtk.h>
-endsnippet
-
-snippet gtk_init
-gtk_init(&argc, &argv) ;
-endsnippet
-
-snippet gtk_window_new
-gtk_window_new(${1:GTK_WINDOW_TOPLEVEL}) ;
-endsnippet
-
-snippet gtk_window_set_title
-gtk_window_set_title(${1:GTK_WINDOW(window)}, "${2:/*string*/}") ;
-endsnippet
-
-snippet g_signal_connect
-g_signal_connect(G_OBJECT(${1:window}), "${2:signal name}", G_CALLBACK(${3:gtk_main_quit}), ${4:NULL}) ;
-endsnippet
-
-snippet  g_signal_connect_swapped
-g_signal_connect_swapped(G_OBJECT(${1:button}), "${2:clicked}", G_CALLBACK(${3:gtk_widget_destroy}), (gpointer)window ) ;
-endsnippet
-
-snippet gtk_label_new
-gtk_label_new(${1:/*string*/}) ;
-endsnippet
-
-snippet gtk_container_add
-gtk_container_add (GTK_CONTAINER (window), ${1:button});
-endsnippet
-
-snippet destroy
-static void destroy(GtkWidget* window, gpointer data)
-{
-	gtk_main_quit() ;
-}
-endsnippet
-
-snippet destroy_event
-static gboolean delete_event(GtkWidget* window, GdkEvent* event, gpointer data)
-{
-	return FALSE ;
-}
-endsnippet
-
-snippet builder
-GtkBuilder *builder ;
-builder = gtk_builder_new() ;
-gtk_builder_add_from_file(builder, "${1:D:/tmp/gtk/test}.glade", NULL);				//read glade file
-window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
-g_object_unref(G_OBJECT(builder));
-endsnippet
-
-
-
-snippet ss "struct"
-struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`}
-{
-${0:/* data */}
-};
 endsnippet
 
 snippet he
