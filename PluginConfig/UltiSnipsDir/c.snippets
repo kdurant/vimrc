@@ -199,8 +199,8 @@ snippet gets
 gets(${2:/*string*/}) ;
 endsnippet
 
-snippet printf
-printf("${1:string}\n") ;
+snippet pr
+printf("${1:string}\n",${2:veriable}) ;
 endsnippet
 
 snippet scanf
@@ -392,3 +392,5 @@ endsnippet
 snippet memset
 memset(${1:buffer}, ${2:0}, sizeof(${3:int})*${4:length});
 endsnippet
+
+
