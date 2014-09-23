@@ -573,21 +573,6 @@ fun! Replace()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"add 'include' fold that current project to 'path' option
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! AddPath()
-    set autochdir
-    exe "cd ../../"
-    let file_path = getcwd()
-    "let include_dir = finddir("include", "file_path" . "/**", "-1")
-    let include_dir = finddir("include", "**", "-1")
-    for n11 in include_dir
-        exe 'set path+=' . file_path . '\' . n11
-    endfor
-endfunction
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "compile c, cpp, and verilog file
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CompileFile()
