@@ -31,3 +31,8 @@
 	ui = true
 ;[receive]
 ;denyCurrentBranch = ignore
+[i18n]
+	;commitencoding = gbk
+    commitencoding = utf-8
+    logoutputencoding = gbk
+	;logoutputencoding = utf-8

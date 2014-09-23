@@ -777,6 +777,7 @@ function! Wangjun(git_cmd)
     if has('win32') || has('win64')
         call Find_project_root()
         echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
+        "echo iconv(system('git ' . a:git_cmd), "utf-8", &enc)
     endif
 endfunction
 
