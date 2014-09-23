@@ -9,8 +9,16 @@ elseif has('unix')
     let g:is_unix = 1 | let g:is_win = 0
 endif
 if g:is_win  == 1
+    "if empty(glob('~/vimfiles/autoload/plug.vim'))
+        "!curl -fLo ~/vimfiles/autoload/plug.vim
+                    "\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    "endif
     call plug#begin('~/vimfiles/bundle')
 elseif g:is_unix == 1
+    "if empty(glob('~/.vim/autoload/plug.vim'))
+        "!curl -fLo ~/.vim/autoload/plug.vim
+                    "\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    "endif
     call plug#begin('~/.vim/bundle')
 endif
 Plug 'bling/vim-airline'
