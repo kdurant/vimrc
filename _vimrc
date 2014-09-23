@@ -352,7 +352,7 @@ elseif g:is_unix == 1
     let g:ycm_min_num_of_chars_for_completion = 2     " 两个字开始补全
     let g:ycm_seed_identifiers_with_syntax = 1
     let g:ycm_key_invoke_completion = '<C-Space>'
-    let g:ycm_semantic_triggers =  {'c' : ['->', '.'], 'objc' : ['->', '.'], 'ocaml' : ['.', '#'],
+    let g:ycm_semantic_triggers =  {'c' : ['->', '.'], 'objc' : ['->', '.'], 'ocaml' : ['.', '#']}
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -547,11 +547,11 @@ function! Search_Word()
     echohl Number 
     let select = input('Search current word, [y]es or [n]o ? ')
     if select == 'y'
-        call LookUpProjectRoot()
+        call Find_project_root()
         silent exe 'grep ' . expand("<cword>") . ' *' 
         exe 'cw'
     elseif select == 'n'
-        call LookUpProjectRoot()
+        call Find_project_root()
         let word = input('Search string in project root directory : ')
         if word != ''
             silent exe 'grep ' . word . ' ' . ' *'
@@ -718,48 +718,47 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "look up project root directory
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"if !exists('g:project_root_marker')
-    "let g:project_root_marker = ['.git', '.hg', 'README.md']
-"endif
-"function! LookUpProjectRoot()
-    "let s:project_root_dir = ''
-    "if finddir('.git', '.;') != ''
-        "let s:project_root_dir = substitute(finddir('.git', '.;'), '\.git', '', '')
-    "elseif finddir('.hg', '.;') != ''
-        "let s:project_root_dir = substitute(finddir('.hg', '.;'), '\.hg', '', '')
-    "elseif findfile('g:project_root_marker', '.;') != ''
-        "let s:project_root_dir = substitute(findfile('g:project_root_marker'), 'README\.txt', '', '')
-    "else 
-        "let s:project_root_dir = getcwd() 
-    "endif
-    "silent exe 'cd ' . s:project_root_dir
-    "return s:project_root_dir
-"endfunction
 if !exists('g:project_root_marker')
-    let g:project_root_marker = 'README.md'
+  let g:project_root_marker = [".git", ".hg", ".svn", ".bzr", "_darcs", "CVS"]
 endif
-function! LookUpProjectRoot()
-    let l:project_root_dir = ''
-    if finddir('.git', '.;') != ''
-        let l:project_root_dir = substitute(finddir('.git', '.;'), '\.git', '', '')
-    elseif finddir('.hg', '.;') != ''
-        let l:project_root_dir = substitute(finddir('.hg', '.;'), '\.hg', '', '')
-    elseif findfile(g:project_root_marker, '.;') != ''
-        let l:project_root_dir = substitute(findfile(g:project_root_marker, '.;'), g:project_root_marker, '', '')
-    else 
-        echohl ErrorMsg | echo "There is no project"
-        "let l:project_root_dir = getcwd() 
-    endif
-    silent exe 'cd ' . l:project_root_dir
-    return l:project_root_dir
-endfunction
 
+function! Find_project_root()
+    let project_root = fnamemodify(".", ":p:h")
+
+    if !empty(g:project_root_marker)
+        let root_found = 0
+        let candidate = fnamemodify(project_root, ":p:h")
+        let last_candidate = ""
+
+        while candidate != last_candidate
+            for tags_dir in g:project_root_marker
+                let tags_dir_path = candidate . "/" . tags_dir
+                if filereadable(tags_dir_path) || isdirectory(tags_dir_path)
+                    let root_found = 1
+                    break
+                endif
+            endfor
+
+            if root_found
+                let project_root = candidate
+                break
+            endif
+
+            let last_candidate = candidate
+            let candidate = fnamemodify(candidate, ":p:h:h")
+        endwhile
+
+        return root_found ? project_root : fnamemodify(".", ":p:h")
+    endif
+
+    return project_root
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "generate cscope files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Do_CsTag()
-    call LookUpProjectRoot()
+    call Find_project_root()
     if &filetype == 'c' || &filetype == 'cpp'
         if(executable('cscope') && has("cscope") )
             if(has('unix'))
@@ -768,7 +767,7 @@ function! Do_CsTag()
                 "call system('dir /s/b *.c,*.cpp,*.h > cscope.files')
                 silent! exe '!dir /s/b *.c,*.cpp,*.h > cscope.files'
             endif
-            call LookUpProjectRoot()
+            call Find_project_root()
             silent! exe 'cscope kill -1'
             call system('del cscope.out') | call system('cscope -Rb')
             if filereadable("cscope.out")
@@ -794,7 +793,7 @@ nmap <M-;>  :Dit<space>
 command! -nargs=1 Dit call Wangjun(<f-args>)
 function! Wangjun(git_cmd)
     if has('win32') || has('win64')
-        call LookUpProjectRoot()
+        call Find_project_root()
         echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
     endif
 endfunction
@@ -806,35 +805,15 @@ nmap <M-s>  :Sys<space>
 command! -nargs=1 Sys call System(<f-args>)
 function! System(cmd)
     if g:is_win == 1
-        call LookUpProjectRoot()
+        call Find_project_root()
         echo iconv(system(a:cmd), "cp936", &enc)
     else
         echo "Don't complete this action!"
     endif
 endfunction
 
-"   nmap    <m-f>   :Search<cr>
-"   command! -nargs=0 Search call SearchChar()
-"   function! SearchChar()
-"       "if search(nr2char(getchar()), '', line(".")) == 0
-"           "exe "normal ^"
-"       "endif
-"       let first_search = 0 
-"       let position = getpos()
-"       let search_char = nr2char(getchar())
-"       if search(search_char, '', line(".")) == 0
-"           let first_search = 1 
-"       endif
-"       if first_search == 1
-"           exe "normal ^"
-"           if search(search_char, '', line(".")) == 0
-"               call setpos(position)
-"           endif
-"       endif
-"   endfunction
-
 function! GenerateCtags()
-    call LookUpProjectRoot()
+    exe "cd " . Find_project_root()
     if &filetype == 'c' || &filetype == 'cpp'
         call system('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
     elseif &filetype == "verilog"
@@ -842,16 +821,10 @@ function! GenerateCtags()
     else
         echohl  ErrorMsg | echo "Generate tags fail!"
     endif
-    "if filereadable('tags')
-        "exe 'set tags+=' . LookUpProjectRoot() .'/tags'
-    "endif
+        exe 'set tags+=' . Find_project_root() .'/tags'
 endfunction
 
-function! Test()
-    echo LookUpProjectRoot()
-    pwd
-    if filereadable('tags')
-        exe 'set tags+=' . LookUpProjectRoot() .'/tags'
-    endif
-endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
