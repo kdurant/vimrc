@@ -652,7 +652,7 @@ function! DeleteTmpWork()
             exe "silent !rd /s /q work"
         endif
     else
-        echohl ErrorMsg | echo "Can't delete directory!"
+        echohl ErrorMsg | echo "Can't delete directory!" | echohl None
     endif
 endfunction
 
@@ -690,21 +690,18 @@ function! Rename(name, bang)
                 silent exe l:lastbufnr . 'bwipe!'
             else
                 echohl ErrorMsg
-                echomsg 'Could not wipe out the old buffer for some reason.'
-                echohl None
+                echomsg 'Could not wipe out the old buffer for some reason.' | echohl None
                 let l:status = 0
             endif
 
             if delete(l:oldfile) != 0
                 echohl ErrorMsg
-                echomsg 'Could not delete the old file: ' . l:oldfile
-                echohl None
+                echomsg 'Could not delete the old file: ' . l:oldfile | echohl None
                 let l:status = 0
             endif
         else
             echohl ErrorMsg
-            echomsg 'Rename failed for some reason.'
-            echohl None
+            echomsg 'Rename failed for some reason.' | echohl None
             let l:status = 0
         endif
     else
@@ -819,7 +816,7 @@ function! GenerateCtags()
     elseif &filetype == "verilog"
         call system ('ctags --language-force=verilog -R .')
     else
-        echohl  ErrorMsg | echo "Generate tags fail!"
+        echohl  ErrorMsg | echo "Generate tags fail!" | echohl None
     endif
         exe 'set tags+=' . Find_project_root() .'/tags'
 endfunction
