@@ -49,6 +49,7 @@ Plug 'vim-scripts/verilog_systemverilog.vim'
 Plug 'vim-scripts/verilog.vim'
 Plug 'vim-scripts/star-search'
 Plug 'vim-scripts/cmdline-completion'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 call plug#end()
 if g:is_win == 1
     nmap	,so		:source ~/_vimrc<CR>
@@ -775,7 +776,7 @@ nmap <M-;>  :Dit<space>
 command! -nargs=1 Dit call Wangjun(<f-args>)
 function! Wangjun(git_cmd)
     if has('win32') || has('win64')
-        call Find_project_root()
+        exe "cd " . Find_project_root()
         echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
         "echo iconv(system('git ' . a:git_cmd), "utf-8", &enc)
     endif
