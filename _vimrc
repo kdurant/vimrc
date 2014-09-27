@@ -21,6 +21,7 @@ elseif g:is_unix == 1
     "endif
     call plug#begin('~/.vim/bundle')
 endif
+Plug 'asins/vimcdoc'
 Plug 'bling/vim-airline'
 Plug 'edsono/vim-matchit'
 Plug 'luochen1990/rainbow'
@@ -49,7 +50,6 @@ Plug 'vim-scripts/verilog_systemverilog.vim'
 Plug 'vim-scripts/verilog.vim'
 Plug 'vim-scripts/star-search'
 Plug 'vim-scripts/cmdline-completion'
-Plug 'vim-scripts/DoxygenToolkit.vim'
 call plug#end()
 if g:is_win == 1
     nmap	,so		:source ~/_vimrc<CR>
@@ -265,7 +265,7 @@ nmap    <M-q>   :Calc<space>
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 
 if g:is_win == 1
-    function! Astyle()
+    function! Astyle(
         "silent !astyle --add-brackets %
         silent !astyle --style=ansi %       
         silent !astyle --pad-oper %         "insert spaces padding around operators
