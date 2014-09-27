@@ -265,10 +265,11 @@ nmap    <M-q>   :Calc<space>
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 
 if g:is_win == 1
-    function! Astyle(
+    function! Astyle()
         "silent !astyle --add-brackets %
-        silent !astyle --style=ansi %       
-        silent !astyle --pad-oper %         "insert spaces padding around operators
+        silent !astyle  --style=ansi %       
+        silent !astyle -p %         "insert spaces padding around operators
+        "silent !astyle --pad-oper %         "insert spaces padding around operators
         "silent !astyle --pad-paren-in %     "insert spaces padding around parenthesis on ther inside only
     endfunction
 endif
