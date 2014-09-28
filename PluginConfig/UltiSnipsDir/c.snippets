@@ -1,33 +1,33 @@
 snippet co "function comment"
 /**************************************************************************
  * Function     : ${1}
- * Description  : 
- * Input        : 
- * Return       : 
- * Others       : 
+ * Description  :
+ * Input        :
+ * Return       :
+ * Others       :
  *************************************************************************/
 endsnippet
 
 snippet dox "function comment"
 /**
   * @brief  ${1}
-  * @param  
-  * @note   
-  * @retval 
+  * @param
+  * @note
+  * @retval
   */
 endsnippet
 
-snippet title 
+snippet title
 /**
   ******************************************************************************
   * @file    `!v expand('%')`
   * @author  kdurant
   * @version V1.0.0
-  * @date    
-  * @brief   
-  * @par Copyright        
+  * @date
+  * @brief
+  * @par Copyright
   ******************************************************************************
-  */ 
+  */
 endsnippet
 snippet /*
 /*
@@ -373,7 +373,7 @@ endsnippet
 
 snippet	MALLOC
 MALLOC(p,s) \
-if( !(p) = malloc(s) ) 
+if( !(p) = malloc(s) )
 {
 	fprintf(stderr, "Insufficienty memory") ; \
 	exit(EXIT_FAILURE) ; \
@@ -382,7 +382,7 @@ endsnippet
 
 snippet	CALLOC
 CALLOC(p, n, s) \
-if( !(p) = calloc(n, s) ) 
+if( !(p) = calloc(n, s) )
 {
 	fprintf(stderr, "Insufficienty memory") ; \
 	exit(EXIT_FAILURE) ; \

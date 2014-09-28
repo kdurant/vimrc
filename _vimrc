@@ -26,6 +26,7 @@ Plug 'bling/vim-airline'
 Plug 'edsono/vim-matchit'
 Plug 'luochen1990/rainbow'
 "Plug 'JazzCore/ctrlp-cmatcher'
+Plug 'kdurant/AuthorInfo'
 Plug 'kdurant/bookmark'
 Plug 'kdurant/vim_colors'
 Plug 'kdurant/CRefVim'
@@ -267,7 +268,7 @@ autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 if g:is_win == 1
     function! Astyle()
         "silent !astyle --add-brackets %
-        silent !astyle  --style=ansi %       
+        silent !astyle  --style=ansi %
         silent !astyle -p %         "insert spaces padding around operators
         "silent !astyle --pad-oper %         "insert spaces padding around operators
         "silent !astyle --pad-paren-in %     "insert spaces padding around parenthesis on ther inside only
@@ -287,11 +288,11 @@ nmap    <M-v>s  :Gstatus<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "airline settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme='solarized'
+let g:airline_theme='kolor'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = 'No Branch'
 "let g:airline_powerline_fonts=1
-let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "tab settings
@@ -434,7 +435,7 @@ let wiki.auto_export      = 1                              " 保存wiki源文件
 " 对新建的wiki进行注册
 let g:vimwiki_list = [wiki]
 
-"let g:vimwiki_list = [{'path': '~/PluginConfig/vimwiki', 
+"let g:vimwiki_list = [{'path': '~/PluginConfig/vimwiki',
                        "\ 'syntax': 'markdown', 'ext': '.md'}]
 nmap <F5> :Vimwiki2HTMLBrowse<cr>
 
@@ -520,7 +521,7 @@ imap    <M-b>   begin<cr>end<esc>O
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Search_Word()
     set autochdir
-    echohl Number 
+    echohl Number
     let select = input('Search current word with current file type, y or n ? ')
     if select == 'y'
         silent exe 'grep ' . expand("<cword>") . ' ' . getcwd() . '/*' . expand("%:e")
@@ -546,11 +547,11 @@ endfunction
 
 function! Search_Word()
     set autochdir
-    echohl Number 
+    echohl Number
     let select = input('Search current word, [y]es or [n]o ? ')
     if select == 'y'
         call Find_project_root()
-        silent exe 'grep ' . expand("<cword>") . ' *' 
+        silent exe 'grep ' . expand("<cword>") . ' *'
         exe 'cw'
     elseif select == 'n'
         call Find_project_root()
@@ -564,7 +565,7 @@ function! Search_Word()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"replace current cursor word 
+"replace current cursor word
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 fun! Replace()
     let word = input("Replace " . expand('<cword>') . " with: ")
@@ -607,7 +608,7 @@ function! CompileFile()
         endif
         if WarnFlag == 1
             let select = input('There are warnings! [r]un or [s]olve? ')
-            if select ==  'r' | exe "!%<.exe" | exe "cw" 
+            if select ==  'r' | exe "!%<.exe" | exe "cw"
             elseif select == 's' | exe "cw"
             else | echohl ErrorMsg | echo "input error!"
             endif

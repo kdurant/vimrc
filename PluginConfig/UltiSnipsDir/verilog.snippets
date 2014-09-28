@@ -1,4 +1,4 @@
-snippet /*
+nnippet /*
 /*
  * ${1}
  */
@@ -7,13 +7,13 @@ endsnippet
 snippet co
 /*-------------------------------------------------------------------------
 //description	:   ${1}
-//condition		:	
-//others		:    
+//condition		:
+//others		:
 -------------------------------------------------------------------------*/
 endsnippet
 #module`!v strftime("%Y-%m-%d")`
-#module ${1:/*module*/}	
-snippet mo 
+#module ${1:/*module*/}
+snippet mo
 module `!v expand('%:r')`
 (
 	clk,
@@ -26,7 +26,7 @@ input                   rst ;
 endmodule
 endsnippet
 
-#module ${1:/*module*/} # 
+#module ${1:/*module*/} #
 snippet mod  "wait"
 module `!v expand('%:r')` #
 (
@@ -44,8 +44,8 @@ endmodule
 endsnippet
 
 #always
-snippet	al 
-always @ (posedge ${1:clk} or negedge ${2:rst}) 
+snippet	al
+always @ (posedge ${1:clk} or negedge ${2:rst})
 begin
 	${3:/*code*/}
 end
@@ -53,27 +53,27 @@ endsnippet
 
 #always
 # If Condition
-snippet ifb 
-if(${1:/*condition*/}) 
+snippet ifb
+if(${1:/*condition*/})
 begin
 	${2:/*code*/}
 end
 endsnippet
 
 snippet if "condition"
-if(${1:/*condition*/}) 
+if(${1:/*condition*/})
 	${2:/*code*/}
 endsnippet
 
 snippet ifrb
-if(~rst) 
+if(~rst)
 begin
 	${1:/*code*/}
 end
 endsnippet
 
 snippet ifr "no bracket"
-if(~rst) 
+if(~rst)
 	${1:/*code*/}
 endsnippet
 
@@ -83,21 +83,21 @@ else
 endsnippet
 
 snippet elb
-else 
+else
 begin
 	${1:/*code*/}
 end
 endsnippet
 
 snippet	eib
-else if(${1:/*condition*/}) 
+else if(${1:/*condition*/})
 begin
 	${2:/*code*/}
 end
 endsnippet
 
 snippet	ei
-else if(${1:/*condition*/}) 
+else if(${1:/*condition*/})
 	${2:/*code*/}
 endsnippet
 
@@ -140,12 +140,12 @@ endsnippet
 #case
 snippet ca
 case (${1:/*condition*/})
-${2:/*first*/}: 
+${2:/*first*/}:
 begin
 	${3:/*code*/}
 end
 ${4:/*code*/}
-default: 
+default:
 begin
 	${5:/*code*/}
 end
@@ -194,9 +194,9 @@ wire                    $1Fall ;
 
 assign          $1Rise = (~$1Delay1) & $1Delay0 ;
 assign          $1Fall = $1Delay1 & (~$1Delay0) ;
-always @ (posedge clk or negedge rst) 
+always @ (posedge clk or negedge rst)
 begin
-    if(~rst) 
+    if(~rst)
         {$1Delay0,$1Delay1}    <=# 2'b00 ;
     else
         {$1Delay1,$1Delay0}    <=# {$1Delay0,$1} ;
@@ -251,7 +251,7 @@ endsnippet
 #task prototype
 snippet	task
 task ${1:/*task_name*/} ;
-	${2:/*port declaration*/}		
+	${2:/*port declaration*/}
 	begin
 	    ${3:/*code*/}
 	end
@@ -298,12 +298,12 @@ snippet	`ife
 \`endif
 endsnippet
 ##
-snippet	`t	
+snippet	`t
 \`timescale	1 ns/1 ps
 
 endsnippet
 
-snippet	`d  
+snippet	`d
 \`define		DELAY	1
 
 endsnippet
@@ -356,9 +356,9 @@ snippet	st
 //-------------------------------------------------------------------------
 always @ (posedge ${1:clk} or negedge ${2:rst})			// build the state flops
 begin
-	if(~rst) 
+	if(~rst)
 		CurrentState		<=# ${3:sIdleState} ;
-	else 
+	else
 		CurrentState		<=# ${4:NextState} ;
 end
 
@@ -373,7 +373,7 @@ begin
 		begin
 
 		end
-		default: 
+		default:
 		begin
 		end
 	endcase
@@ -387,11 +387,11 @@ begin
 	if(~rst)
 	begin
 	end
-	else 
+	else
 	begin
 		case(NextState)
 			${6:/*code*/}
-			default: 
+			default:
 			begin
 			end
 		endcase
