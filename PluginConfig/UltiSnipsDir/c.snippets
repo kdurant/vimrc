@@ -166,7 +166,7 @@ typedef struct __${1:/*struct*/}
 {
 	${2:/*data*/};
 	void (*construct)(struct __$1 *this);
-}$1TypeDef ;
+}$1Def ;
 endsnippet
 
 snippet tde
@@ -257,7 +257,7 @@ snippet fwrite
 endsnippet
 
 snippet malloc
-${1:/*point*/} = (${2:int} *)malloc(sizeof($2)) ;
+${1:/*point*/} = (${2:int} *)malloc(${3:length}*sizeof($2)) ;
 endsnippet
 
 snippet strcpy
@@ -390,7 +390,7 @@ if( !(p) = calloc(n, s) )
 endsnippet
 
 snippet memset
-memset(${1:buffer}, ${2:0}, sizeof(${3:int})*${4:length});
+memset(${1:buffer}, ${2:0x00}, sizeof(${3:name})/sizeof(${4:int}));
 endsnippet
 
 
