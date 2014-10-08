@@ -23,6 +23,7 @@ elseif g:is_unix == 1
 endif
 Plug 'asins/vimcdoc'
 Plug 'bling/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit'
 Plug 'luochen1990/rainbow'
 "Plug 'JazzCore/ctrlp-cmatcher'
@@ -33,7 +34,6 @@ Plug 'kdurant/CRefVim'
 Plug 'kdurant/nerdcommenter'
 Plug 'kdurant/verilog-testbench'
 Plug 'tpope/vim-fugitive'
-Plug 'kien/ctrlp.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'mbriggs/mark.vim'
 Plug 'Shougo/vimproc.vim' "make -f make_mingw32.mak
