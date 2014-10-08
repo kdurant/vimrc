@@ -2,7 +2,7 @@
 /.cache/
 /.neocomplete/
 /mplayer/
-/vimfiles/
+/vimfiles/bundle/
 /PluginConfig/neocomplete/
 /PluginConfig/ctrlp/
 /PluginConfig/BookMark/
