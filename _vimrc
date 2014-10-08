@@ -221,7 +221,7 @@ nmap		<M-r>	:bro e<CR>
 "delete dos end-of-file and write
 nmap		,rm		:%s/\r//g<CR>:w<CR>gg
 "remove space of line end
-nmap		,rn		:%s/[ \t\r]\+$//g<cr>gg
+nmap		,rn		:%s/\s\+$//g<cr>gg
 
 nmap        ,rc     :%s/\i\+/&/gn|noh
 

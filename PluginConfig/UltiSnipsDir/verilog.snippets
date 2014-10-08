@@ -103,7 +103,7 @@ endsnippet
 
 #input
 snippet in
-input				    ${1:inport} ;
+input					${1:inport} ;
 endsnippet
 
 snippet inb
@@ -112,11 +112,11 @@ endsnippet
 
 #output
 snippet ou
-output				    ${1:outport} ;
+output					${1:outport} ;
 endsnippet
 
 snippet oub
-output	[${1:MSB}:0]	        ${2:outport} ;
+output	[${1:MSB}:0]			${2:outport} ;
 endsnippet
 
 #reg
@@ -154,12 +154,12 @@ endsnippet
 
 #assign
 snippet	as
-assign		    ${1:LHS} = ${2:RHS} ;
+assign			${1:LHS} = ${2:RHS} ;
 endsnippet
 
 #parameter
 snippet	pa
-parameter	    ${1:LHS} = ${2:RHS} ;
+parameter		${1:LHS} = ${2:RHS} ;
 endsnippet
 
 #<=
@@ -253,7 +253,7 @@ snippet	task
 task ${1:/*task_name*/} ;
 	${2:/*port declaration*/}
 	begin
-	    ${3:/*code*/}
+		${3:/*code*/}
 	end
 endtask
 endsnippet
