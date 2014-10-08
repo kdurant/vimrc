@@ -591,7 +591,7 @@ function! CompileFile()
             echohl ErrorMsg | echo "No work library!"
         endif
     elseif &filetype == 'c' || &filetype == 'cpp'
-        if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -o\ %<.exe\ %
+        if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -Wall \Wconversion\ -o\ %<.exe\ %
         else                | set makeprg=g++\ -o\ %<.exe\ %
         endif
         silent exe "make"
