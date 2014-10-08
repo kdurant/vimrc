@@ -455,8 +455,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 if g:is_win == 1
-    let g:UltiSnipsSnippetsDir="E:/Dropbox/home/PluginConfig/UltiSnipsDir/"
-    let g:UltiSnipsSnippetDirectories=["E:/Dropbox/home/PluginConfig/UltiSnipsDir/"]
+    let g:UltiSnipsSnippetsDir="E:/home/PluginConfig/UltiSnipsDir/"
+    let g:UltiSnipsSnippetDirectories=["E:/home/PluginConfig/UltiSnipsDir/"]
 elseif g:is_unix == 1
     let g:UltiSnipsSnippetsDir="~/PluginConfig/UltiSnipsDir/"
     let g:UltiSnipsSnippetDirectories=["~/PluginConfig/UltiSnipsDir/"]
