@@ -36,6 +36,7 @@ Plug 'kdurant/verilog-testbench'
 Plug 'tpope/vim-fugitive'
 Plug 'kshenoy/vim-signature'
 Plug 'mbriggs/mark.vim'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'Shougo/vimproc.vim' "make -f make_mingw32.mak
 if g:is_win == 1
     Plug 'Shougo/neocomplete.vim'
@@ -292,7 +293,7 @@ let g:airline_theme='kolor'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = 'No Branch'
 "let g:airline_powerline_fonts=1
-let g:airline#extensions#whitespace#enabled = 1
+"let g:airline#extensions#whitespace#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "tab settings
