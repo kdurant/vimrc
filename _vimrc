@@ -3,12 +3,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype plugin indent on
-if has('win32') || has('win64')
-    let g:is_win = 1 | let g:is_unix = 0
-elseif has('unix')
-    let g:is_unix = 1 | let g:is_win = 0
-endif
-if g:is_win  == 1
+let g:is_win = has('win32') || has('win64')
+let g:is_unix = has('unix')
+if g:is_win == 1
     "if empty(glob('~/vimfiles/autoload/plug.vim'))
         "!curl -fLo ~/vimfiles/autoload/plug.vim
                     "\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -32,7 +29,6 @@ Plug 'kdurant/vim_colors'
 Plug 'kdurant/CRefVim'
 Plug 'kdurant/nerdcommenter'
 Plug 'kdurant/verilog-testbench'
-Plug 'tpope/vim-fugitive'
 Plug 'kshenoy/vim-signature'
 Plug 'mbriggs/mark.vim'
 Plug 'ntpeters/vim-better-whitespace'
@@ -43,6 +39,7 @@ elseif g:is_unix == 1
     Plug 'Valloric/YouCompleteMe'
 endif
 Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-scripts/colorsel.vim'
@@ -214,12 +211,12 @@ noremap! <M-k> <Up>
 noremap! <M-h> <left>
 noremap! <M-l> <Right>
 
-nmap	<C-s>	:w!<CR>
-imap	<C-s>	<Esc>:w!<CR>
+nmap	<C-s>	:w!<cr>
+imap	<C-s>	<Esc>:w!<cr>
 
-nmap		<M-r>	:bro e<CR>
+nmap		<M-r>	:bro e<cr>
 "delete dos end-of-file and write
-nmap		,rm		:%s/\r//g<CR>:w<CR>gg
+nmap		,rm		:%s/\r//g<cr>:w<cr>gg
 "remove space of line end
 nmap		,rn		:%s/\s\+$//g<cr>gg
 
@@ -241,7 +238,7 @@ nmap <silent> <F12> :if &guioptions =~# 'T' <Bar>
     \else <Bar>
         \set guioptions+=T <Bar>
         \set guioptions+=m <Bar>
-    \endif<CR>
+    \endif<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others settings
@@ -389,18 +386,18 @@ nmap	<M-u>	\#
 nmap		<M-m>   \mu
 vmap		<M-m>   \mu
 "clear all mark points
-nmap		<M-n>	:MarkClear<CR>
+nmap		<M-n>	:MarkClear<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Ctags and cscope settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap    <M-F12>     :!ctags -R --c++-types=+p --fields=+iaS --extra=+q .<cr>
-nmap    <C-F12>     :call GenerateCtags()<CR>
+nmap    <C-F12>     :call GenerateCtags()<cr>
 "兼容ctags,此设置会导致查找符号的时候不出现选择界面
 "set cscopequickfix=s-,c-,d-,i-,t-,e-
 set csto=0
 set cscopetag
-nmap <F9> :call Do_CsTag()<CR>
+nmap <F9> :call Do_CsTag()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "authorinfo settings

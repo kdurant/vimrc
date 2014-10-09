@@ -5,7 +5,7 @@
     br = branch
     co = checkout
     cm = commit -m
-    ca = commit -a 
+    ca = commit -a
     lo = log --graph --pretty=oneline
     da = commit -m "daily backup"
     gr = grep -ni
