@@ -256,9 +256,11 @@ vmap    <M-o>       <esc>o
 cmap <C-v>  <C-r>+
 
 "user define calculate command, need install python
-command! -nargs=+ Calc :py print <args>
-py from math import *
-nmap    <M-q>   :Calc<space>
+if has('python')
+    command! -nargs=+ Calc :py print <args>
+    py from math import *
+    nmap    <M-q>   :Calc<space>
+endif
 
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 
@@ -495,7 +497,7 @@ nmap    <silent>    ,<      :AlignCtrl lp4P1<cr>:AlignCtrl g <=#`DELAY <cr>:Alig
 "align '/' that in modelsim tcl scripts
 nmap    <silent>    ,/      :AlignCtrl lp4P0<cr>:AlignCtrl g /<cr>:AlignCtrl W<cr>:%Align\s\zs\/\ze<cr>
 "align '//' that in source code
-nmap    <silent>    ,#      :AlignCtrl lp4P0<cr>:AlignCtrl g .\+\zs\/\/\ze\(\s*\w\+\)\@=<cr>:AlignCtrl W<cr>:%Align\/\/<cr>
+nmap    <silent>    ,#      :AlignCtrl lp4P0<cr>:AlignCtrl g \S\+.\+\zs\/\/\ze\(\s*\w\+\)\@=<cr>:AlignCtrl W<cr>:%Align\/\/<cr>
 "align '(' or ')' that in instance
 nmap    <silent>    ,(      :AlignCtrl lp4P4<cr>:AlignCtrl g \.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align(<cr>
 nmap    <silent>    ,)      :AlignCtrl lp4P0<cr>:AlignCtrl g \.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align)<cr>
