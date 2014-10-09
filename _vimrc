@@ -177,7 +177,7 @@ nmap <M-d>w         :setlocal wrapscan!<cr>
 nmap <M-d>h         :noh<cr>
 
 "set grepprg=egrep\ -nwHR
-set grepprg=grep\ -nwH
+set grepprg=grep\ -nwHr
 nmap <F6>   :call Search_Word()<cr>
 nmap ,re    :call Replace()<cr>
 
@@ -212,7 +212,7 @@ noremap! <M-h> <left>
 noremap! <M-l> <Right>
 
 nmap	<C-s>	:w!<cr>
-imap	<C-s>	<Esc>:w!<cr>
+imap	<C-s>	<esc>:w!<cr>
 
 nmap		<M-r>	:bro e<cr>
 "delete dos end-of-file and write
@@ -290,7 +290,6 @@ nmap    <M-v>s  :Gstatus<cr>
 let g:airline_theme='kolor'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = 'No Branch'
-"let g:airline_powerline_fonts=1
 "let g:airline#extensions#whitespace#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -382,8 +381,8 @@ let g:mwAutoLoadMarks = 1			"autoload mark points settings
 let g:mwDefaultHighlightingPalette = 'extended'			"use more colors
 let g:mwAutoSaveMarks = 1			"auto save mark points
 "search mark point
-nmap	<M-i>	\*
-nmap	<M-u>	\#
+nmap	    <M-i>	\*
+nmap	    <M-u>	\#
 "set mark points
 nmap		<M-m>   \mu
 vmap		<M-m>   \mu
@@ -518,14 +517,15 @@ function! Search_Word()
     echohl Number
     let select = input('Search current word with current file type, y or n ? ')
     if select == 'y'
-        silent exe 'grep ' . expand("<cword>") . ' ' . getcwd() . '/*' . expand("%:e")
+        "silent exe 'grep ' . expand("<cword>") . ' ' . getcwd() . '/*' . expand("%:e")
+        silent exe 'grep ' . expand("<cword>") . ' ' . Find_project_root() . '/*' . expand("%:e")
         if len(getqflist()) >= 1 && len(getqflist()) <= 10
             exe 'cw' . len(getqflist())
         elseif len(getqflist()) >= 11
             exe 'cw'
         endif
     elseif select == 'n'
-        let word = input('Search string in path ' . getcwd() .":")
+        let word = input('Search string in path ' . Find_project_root() .":")
         if word != ''
             let file_type = input('Search string file suffix :')
             silent exe 'grep ' . word . ' ' . getcwd() . '/*' . file_type
@@ -535,25 +535,6 @@ function! Search_Word()
         elseif len(getqflist()) >= 11
             exe 'cw'
         endif
-    endif
-    echo '' | echohl none
-endfunction
-
-function! Search_Word()
-    set autochdir
-    echohl Number
-    let select = input('Search current word, [y]es or [n]o ? ')
-    if select == 'y'
-        call Find_project_root()
-        silent exe 'grep ' . expand("<cword>") . ' *'
-        exe 'cw'
-    elseif select == 'n'
-        call Find_project_root()
-        let word = input('Search string in project root directory : ')
-        if word != ''
-            silent exe 'grep ' . word . ' ' . ' *'
-        endif
-        exe 'cw'
     endif
     echo '' | echohl none
 endfunction
@@ -805,6 +786,3 @@ function! GenerateCtags()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-
