@@ -250,8 +250,7 @@ cmap    <c-l>       <S-Right>
 nmap    j           gj
 nmap    k           gk
 nmap    <M-d>n      :setlocal modifiable!<cr>
-imap    <M-o>       <esc>o
-vmap    <M-o>       <esc>o
+map     <M-o>       <esc>o
 
 cmap <C-v>  <C-r>+
 
@@ -359,8 +358,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "NERD Comment settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap	<F3>	\ci
-vmap    <F3>	\ci
+map	    <F3>	\ci
 nmap    ,ca		\cA
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -384,8 +382,7 @@ let g:mwAutoSaveMarks = 1			"auto save mark points
 nmap	    <M-i>	\*
 nmap	    <M-u>	\#
 "set mark points
-nmap		<M-m>   \mu
-vmap		<M-m>   \mu
+map		    <M-m>   \mu
 "clear all mark points
 nmap		<M-n>	:MarkClear<cr>
 
