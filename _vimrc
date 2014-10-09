@@ -26,7 +26,6 @@ Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit'
 Plug 'luochen1990/rainbow'
-"Plug 'JazzCore/ctrlp-cmatcher'
 Plug 'kdurant/AuthorInfo'
 Plug 'kdurant/bookmark'
 Plug 'kdurant/vim_colors'
@@ -483,14 +482,8 @@ let g:ctrlp_custom_ignore = {
 nmap <M-d>r     :CtrlPMRU<cr>
 let g:ctrlp_mruf_include = '\.c$\|\.h$\|\.m$\|\.tcl$\|\.v$'
 let g:ctrlp_root_markers = ['README.md']
+hi  link    CtrlPMatch      Define
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"ctrlp-match setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"hi  CtrlPMatch  guifg=#F92672
-"hi  link    CtrlPMatch      Define
-"let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "diff setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set diffopt=filler,context:4,vertical,foldcolumn:4
