@@ -495,7 +495,7 @@ nmap    <silent>    ,<      :AlignCtrl lp4P1<cr>:AlignCtrl g <=#`DELAY <cr>:Alig
 "align '/' that in modelsim tcl scripts
 nmap    <silent>    ,/      :AlignCtrl lp4P0<cr>:AlignCtrl g /<cr>:AlignCtrl W<cr>:%Align\s\zs\/\ze<cr>
 "align '//' that in source code
-nmap    <silent>    ,#      :AlignCtrl lp4P0<cr>:AlignCtrl g \S\+.\+\zs\/\/\ze\(\s*\w\+\)\@=<cr>:AlignCtrl W<cr>:%Align\/\/<cr>
+nmap    <silent>    ,#      :AlignCtrl lp4P0<cr>:AlignCtrl g \S\+.\+\zs\/\/\ze\(\s*\S\+\)\@=<cr>:AlignCtrl W<cr>:%Align\/\/<cr>
 "align '(' or ')' that in instance
 nmap    <silent>    ,(      :AlignCtrl lp4P4<cr>:AlignCtrl g \.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align(<cr>
 nmap    <silent>    ,)      :AlignCtrl lp4P0<cr>:AlignCtrl g \.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align)<cr>
@@ -748,15 +748,16 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <M-;>  :!git<space>
-"nmap <M-;>  :Dit<space>
-"command! -nargs=1 Dit call GitCmd(<f-args>)
-"function! GitCmd(git_cmd)
-    "if has('win32') || has('win64')
-        "exe "cd " . Find_project_root()
-        "echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
-    "endif
-"endfunction
+nmap <C-;>  :!git<space>
+nmap <M-;>  :Dit<space>
+"if use this function, airline don't refresh branch
+command! -nargs=1 Dit call GitCmd(<f-args>)  
+function! GitCmd(git_cmd)
+    if has('win32') || has('win64')
+        exe "cd " . Find_project_root()
+        echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
+    endif
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "use system command and not prompt new window
