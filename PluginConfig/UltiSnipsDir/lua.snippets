@@ -1,51 +1,50 @@
-snippet pr
+snippet pr	"print( ... )"
 print(${1:statements})
 endsnippet
 
-snippet if
+snippet if	"if ... then"
 if ${1:condition} then
 	${2:--statements}
 end
 endsnippet
 
-snippet el
+snippet el	"elseif ... then"
 elseif ${1:condition} then
 	${2:--statements}
 endsnippet
 
-
-snippet wh
+snippet wh	"whlie ... do"
 while ${1:condition} do
 	${2:--statements}
 end
 endsnippet
 
-snippet re
+snippet re	"repeat ... until"
 repeat
 	${1:--statements}
 until ${2:condition}
 endsnippet
 
-snippet for	"number for"
+snippet for	"numeric for loop"
 for ${1:variable} = ${2:start}, ${3:end}, ${4:step} do
 	${5:--statements}
 end
 endsnippet
 
-snippet for	"generic for"
-for ${1:key} in ${2:table} do
-	${5:--statements}
+snippet fori "ipair for foop" b
+for ${1:idx},${2:val} in ipairs(${3:table_name}) do
+	${4:--statements}
 end
 endsnippet
 
-snippet do
+snippet do	"do ... end"
 do
 	${1:--block}
 end
 endsnippet
 
-snippet fun
-function ${1:name}(${2:parameter})
+snippet fun	"New function"
+function ${1:name}(${2:args})
 	${3:--statements}
 	return
 end
