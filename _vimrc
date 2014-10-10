@@ -32,6 +32,7 @@ Plug 'kdurant/verilog-testbench'
 Plug 'kshenoy/vim-signature'
 Plug 'mbriggs/mark.vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'sergey-vlasov/ctrlp-hibuff'
 Plug 'Shougo/vimproc.vim' "make -f make_mingw32.mak
 if g:is_win == 1
     Plug 'Shougo/neocomplete.vim'
@@ -461,7 +462,8 @@ endif
 "ctrlp setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<M-d>f'
-nmap <M-d>b     :CtrlPBuffer<cr>
+"nmap <M-d>b     :CtrlPBuffer<cr>
+nmap <M-d>b     :CtrlPHiBuff<CR>
 nmap <M-d>d     :CtrlPBookmarkDir<cr>
 let g:ctrlp_by_filename = 1
 let g:ctrlp_clear_cache_on_exit = 0
