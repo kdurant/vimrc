@@ -49,46 +49,46 @@ int main(int argc, char *argv[])
 endsnippet
 
 
-snippet #inc    " <> "
+snippet #inc    "include<...> "
 #include <${1:stdio}.h>
 endsnippet
 
-snippet #in " '' "
+snippet #in "include'...'"
 #include "${1:stdio}.h"
 endsnippet
 
-snippet #de
+snippet #de	"#define ..."
 #define ${1:TEST}
 endsnippet
 
-snippet #ifd
-#define     TEST
-#ifdef ${1:TEST}
+snippet #ifd	"#ifdef ... #endif"
+#ifdef ${1:DEBUG}
     ${2:}
 #endif
 endsnippet
 
-snippet #if
-#if ${1:1}
-    ${2}
+snippet #if "#ifndef ... #define ... #endif"
+#ifndef `!v toupper(expand('%:r'))`_H
+#define `!v toupper(expand('%:r'))`_H
+
 #endif
 endsnippet
 
-snippet if
+snippet if	"if {...}"
 if(${1:/*condition*/})
 {
     ${2:/*code*/}
 }
 endsnippet
 
-snippet el
+snippet el	"else {...}"
 else
 {
     ${1:/*code*/}
 }
 endsnippet
 
-snippet ei
+snippet ei "else if {...}"
 else if(${1:/*condition*/})
 {
     ${2:/*code*/}
@@ -99,7 +99,7 @@ snippet ?
 ${1:/*LHS*/} = ${2:/*condition*/} ? ${3:/*expr1*/} : ${4:/*expr2*/} ;
 endsnippet
 
-snippet do
+snippet do	"do ... while loop"
 do
 {
     ${2:/*code*/}
@@ -107,14 +107,14 @@ do
 while (${1:/*condition*/}) ;
 endsnippet
 
-snippet wh
+snippet wh	"while loop"
 while(${1:/*condition*/})
 {
 	${2:/*code*/}
 }
 endsnippet
 
-snippet for
+snippet for	"for loop(for)"
 for( ${1:i} = 0; $1 ${2:<} ${3:count}; $1${4:++} )
 {
 	${5:/*code*/}
@@ -122,36 +122,36 @@ for( ${1:i} = 0; $1 ${2:<} ${3:count}; $1${4:++} )
 endsnippet
 
 
-snippet fun
+snippet fun	"function define"
 ${1:void} ${2:/*function_name*/}(${3:/*parameter*/})
 {
 	${4:/*code*/}
 }
 endsnippet
 
-snippet fund
+snippet fund	"function declaration"
 ${1:void} ${2:/*function_name*/}(${3}) ;
 endsnippet
 
-snippet st
+snippet st	"struct"
 struct ${1:/*struct*/}
 {
 	${2:/*data*/}
 } ;
 endsnippet
 
-snippet un
+snippet un	"union"
 union ${1:/*union*/}
 {
 	${2:/*data*/}
 } ;
 endsnippet
 
-snippet td
+snippet td	"typedef"
 typedef ${1:int} ${2:/*MyCustomType*/} ;
 endsnippet
 
-snippet tdf
+snippet tdf	"typedef function point"
 /*
  * typedef void (*list_op)(void*);      function point declaration
  * void print_student(void* data)       function declaration
@@ -161,7 +161,7 @@ snippet tdf
 typedef ${1:int} (*${2:pfun})(${3:parameter});
 endsnippet
 
-snippet tds
+snippet tds	"typedef struct"
 typedef struct __${1:/*struct*/}
 {
 	${2:/*data*/};
@@ -169,7 +169,7 @@ typedef struct __${1:/*struct*/}
 }$1Def ;
 endsnippet
 
-snippet tde
+snippet tde	"typedef enum"
 /*
  * Usage: if(eVariable == data1)
  */
@@ -181,7 +181,7 @@ typedef enum __${1:name}
 endsnippet
 
 
-snippet sw
+snippet sw	"switch ... case"
 switch (${1:/*condition*/})
 {
 	case ${2:/*select*/} :
@@ -191,15 +191,15 @@ switch (${1:/*condition*/})
 }
 endsnippet
 
-snippet puts
+snippet puts	"puts(const char *s)"
 puts("${1:/*string*/}") ;
 endsnippet
 
-snippet gets
+snippet gets	"gets(char *s)"
 gets(${2:/*string*/}) ;
 endsnippet
 
-snippet pr
+snippet pr "printf(const char *format, ...)"
 printf("${1:string}\n",${2:veriable}) ;
 endsnippet
 
@@ -232,7 +232,7 @@ ${1:/*string*/} = fgets(${2:/*FilePoint*/}) ;
 endsnippet
 
 snippet fprintf
-fprintf(${1:/*FilePoint*/}, "${2:/*format*/}", "${3:}") ;
+fprintf(${1:/*FilePoint*/}, "${2:/*format*/}", "${3:variable}") ;
 endsnippet
 
 snippet fscanf
@@ -389,8 +389,6 @@ if( !(p) = calloc(n, s) )
 }
 endsnippet
 
-snippet memset
+snippet memset	"memset(void *block, int c, size_t size)"
 memset(${1:buffer}, ${2:0x00}, sizeof($1)/sizeof(${3:int}));
 endsnippet
-
-
