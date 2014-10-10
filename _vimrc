@@ -284,6 +284,17 @@ nmap    <M-v>a  :!gitk --all<cr>
 nmap    <M-v>s  :Gstatus<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"session settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set viminfo+=!  " Save and restore global variables.
+set sessionoptions=sesdir,help,tabpages,winsize,winpos,folds,resize
+let $VIMSESSION = '~/PluginConfig/session.vim'
+autocmd VimLeave * mksession! $VIMSESSION
+autocmd VimLeave * let save_cursor = getpos(".")
+autocmd VimEnter  call setpos('.', save_cursor)
+nmap	<F7>	:so $VIMSESSION<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "airline settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme='kolor'
@@ -360,17 +371,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map	    <F3>	\ci
 nmap    ,ca		\cA
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"session settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set viminfo+=!  " Save and restore global variables.
-set sessionoptions=sesdir,help,tabpages,winsize,winpos,folds,resize
-let $VIMSESSION = '~/PluginConfig/session.vim'
-autocmd VimLeave * mksession! $VIMSESSION
-autocmd VimLeave * let save_cursor = getpos(".")
-autocmd VimEnter  call setpos('.', save_cursor)
-nmap	<F7>	:so $VIMSESSION<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "mark settings
@@ -746,15 +746,15 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <M-;>  :Dit<space>
-command! -nargs=1 Dit call Wangjun(<f-args>)
-function! Wangjun(git_cmd)
-    if has('win32') || has('win64')
-        exe "cd " . Find_project_root()
-        echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
-        "echo iconv(system('git ' . a:git_cmd), "utf-8", &enc)
-    endif
-endfunction
+nmap <M-;>  :!git<space>
+"nmap <M-;>  :Dit<space>
+"command! -nargs=1 Dit call GitCmd(<f-args>)
+"function! GitCmd(git_cmd)
+    "if has('win32') || has('win64')
+        "exe "cd " . Find_project_root()
+        "echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
+    "endif
+"endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "use system command and not prompt new window
