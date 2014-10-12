@@ -1,0 +1,394 @@
+snippet co "function comment"
+/**************************************************************************
+ * Function     : ${1}
+ * Description  :
+ * Input        :
+ * Return       :
+ * Others       :
+ *************************************************************************/
+endsnippet
+
+snippet dox "function comment"
+/**
+  * @brief  ${1}
+  * @param
+  * @note
+  * @retval
+  */
+endsnippet
+
+snippet title
+/**
+  ******************************************************************************
+  * @file    `!v expand('%')`
+  * @author  kdurant
+  * @version V1.0.0
+  * @date
+  * @brief
+  * @par Copyright
+  ******************************************************************************
+  */
+endsnippet
+snippet /*
+/*
+ * ${1}
+ */
+endsnippet
+
+snippet de
+${1:int} ${2:/*veriable*/} ;
+endsnippet
+
+snippet main
+int main(int argc, char *argv[])
+{
+    ${1:/*code*/}
+
+    return 0 ;
+}
+endsnippet
+
+
+snippet #inc    "include<...> "
+#include <${1:stdio}.h>
+endsnippet
+
+snippet #in "include'...'"
+#include "${1:stdio}.h"
+endsnippet
+
+snippet #de	"#define ..."
+#define ${1:TEST}
+endsnippet
+
+snippet #ifd	"#ifdef ... #endif"
+#ifdef ${1:DEBUG}
+    ${2:}
+#endif
+endsnippet
+
+snippet #if "#ifndef ... #define ... #endif"
+#ifndef `!v toupper(expand('%:r'))`_H
+#define `!v toupper(expand('%:r'))`_H
+
+#endif
+endsnippet
+
+snippet if	"if {...}"
+if(${1:/*condition*/})
+{
+    ${2:/*code*/}
+}
+endsnippet
+
+snippet el	"else {...}"
+else
+{
+    ${1:/*code*/}
+}
+endsnippet
+
+snippet ei "else if {...}"
+else if(${1:/*condition*/})
+{
+    ${2:/*code*/}
+}
+endsnippet
+
+snippet ?
+${1:/*LHS*/} = ${2:/*condition*/} ? ${3:/*expr1*/} : ${4:/*expr2*/} ;
+endsnippet
+
+snippet do	"do ... while loop"
+do
+{
+    ${2:/*code*/}
+}
+while (${1:/*condition*/}) ;
+endsnippet
+
+snippet wh	"while loop"
+while(${1:/*condition*/})
+{
+	${2:/*code*/}
+}
+endsnippet
+
+snippet for	"for loop(for)"
+for( ${1:i} = 0; $1 ${2:<} ${3:count}; $1${4:++} )
+{
+	${5:/*code*/}
+}
+endsnippet
+
+
+snippet fun	"function define"
+${1:void} ${2:/*function_name*/}(${3:/*parameter*/})
+{
+	${4:/*code*/}
+}
+endsnippet
+
+snippet fund	"function declaration"
+${1:void} ${2:/*function_name*/}(${3}) ;
+endsnippet
+
+snippet st	"struct"
+struct ${1:/*struct*/}
+{
+	${2:/*data*/}
+} ;
+endsnippet
+
+snippet un	"union"
+union ${1:/*union*/}
+{
+	${2:/*data*/}
+} ;
+endsnippet
+
+snippet td	"typedef"
+typedef ${1:int} ${2:/*MyCustomType*/} ;
+endsnippet
+
+snippet tdf	"typedef function point"
+/*
+ * typedef void (*list_op)(void*);      function point declaration
+ * void print_student(void* data)       function declaration
+ * void traverse(list* llist, list_op do_func)  called function declaration
+ * traverse(llist, print_student);      usage
+ */
+typedef ${1:int} (*${2:pfun})(${3:parameter});
+endsnippet
+
+snippet tds	"typedef struct"
+typedef struct __${1:/*struct*/}
+{
+	${2:/*data*/};
+	void (*construct)(struct __$1 *this);
+}$1Def ;
+endsnippet
+
+snippet tde	"typedef enum"
+/*
+ * Usage: if(eVariable == data1)
+ */
+typedef enum __${1:name}
+{
+	${2:/*data1*/},
+	${3:/*data2*/}
+}$1TypeDef;
+endsnippet
+
+
+snippet sw	"switch ... case"
+switch (${1:/*condition*/})
+{
+	case ${2:/*select*/} :
+		break ;
+	default:
+		break ;
+}
+endsnippet
+
+snippet puts	"puts(const char *s)"
+puts("${1:/*string*/}") ;
+endsnippet
+
+snippet gets	"gets(char *s)"
+gets(${2:/*string*/}) ;
+endsnippet
+
+snippet pr "printf(const char *format, ...)"
+printf("${1:string}\n",${2:veriable}) ;
+endsnippet
+
+snippet scanf
+scanf("%${1:d}",&${2:/*num*/}) ;
+endsnippet
+
+snippet fopen
+${1:/*FilePoint*/} *fopen("${2:/*FileName*/}", "${3:/*OpenType*/}") ;
+endsnippet
+
+snippet fclose
+fclose(${1:/*FilePoint*/}) ;
+endsnippet
+
+snippet fputc
+fputc('${1:/*char*/}',${2:/*FilePoint*/} ;
+endsnippet
+
+snippet fgetc
+${1:/*char*/} = fgetc(${2:/*FilePoint*/}) ;
+endsnippet
+
+snippet fputs
+fputs('${1:/*string*/}',${2:/*FilePoint*/} ;
+endsnippet
+
+snippet fgets
+${1:/*string*/} = fgets(${2:/*FilePoint*/}) ;
+endsnippet
+
+snippet fprintf
+fprintf(${1:/*FilePoint*/}, "${2:/*format*/}", "${3:variable}") ;
+endsnippet
+
+snippet fscanf
+endsnippet
+
+snippet feof
+endsnippet
+
+snippet ferror
+endsnippet
+
+snippet rewind
+endsnippet
+
+snippet remove
+endsnippet
+
+snippet fread
+endsnippet
+
+snippet fwrite
+endsnippet
+
+snippet malloc
+${1:/*point*/} = (${2:int} *)malloc(${3:length}*sizeof($2)) ;
+endsnippet
+
+snippet strcpy
+strcpy(${1:/*desin*/}, ${2:/*source*/}) ;
+endsnippet
+
+snippet strcat
+strcat(${1:/*desin*/}, ${2:/*source*/}) ;
+endsnippet
+
+snippet strchr
+strchr(${1:/*string*/}, '${2:/*char*/}') ;
+endsnippet
+
+snippet strcmp
+strcmp(${1:/*string1*/}, ${2:/*string2*/}) ;
+endsnippet
+
+snippet strncmpi
+endsnippet
+
+snippet strcspn
+endsnippet
+
+snippet strdup
+endsnippet
+
+snippet stricmp
+endsnippet
+
+snippet strerror
+endsnippet
+
+snippet strcmpi
+endsnippet
+
+snippet strncmp
+endsnippet
+
+snippet strncpy
+endsnippet
+
+snippet strnicmp
+endsnippet
+
+snippet strnset
+endsnippet
+
+snippet strpbrk
+endsnippet
+
+snippet strrchr
+endsnippet
+
+snippet strrev
+endsnippet
+
+snippet strset
+endsnippet
+
+snippet strspn
+endsnippet
+
+snippet strstr
+endsnippet
+
+snippet strtod
+endsnippet
+
+snippet strtok
+endsnippet
+
+snippet strtol
+endsnippet
+
+snippet strupr
+endsnippet
+
+snippet swab
+endsnippet
+
+snippet	rand
+${1:/*rand_num*/} = rand() % ${2:/*maxnum*/} ;
+endsnippet
+snippet setbuf
+setbuf(${1:stdout},${2:NULL});	//display infomation when use eclipse debug
+endsnippet
+
+snippet he
+printf("hello world!\n") ;
+endsnippet
+
+snippet swap
+void swap(int *x, int *y)
+{
+    int temp = *x ;
+	*x = *y ;
+	*y = t ;
+}
+endsnippet
+
+snippet SWAP
+SWAP(x, y, t)	( (t) = (x), (x) = (y), (y) = (t) )
+endsnippet
+
+snippet GET_ARRAY_LEN
+GET_ARRAY_LEN(array)	(sizeof(array) / sizeof(array[0])
+endsnippet
+
+snippet COMPARE
+COMPARE(x, y)	( ((x) < (y)) ? -1 : ((x) == (y)) ? 0 : 1)
+endsnippet
+
+snippet	MALLOC
+MALLOC(p,s) \
+if( !(p) = malloc(s) )
+{
+	fprintf(stderr, "Insufficienty memory") ; \
+	exit(EXIT_FAILURE) ; \
+}
+endsnippet
+
+snippet	CALLOC
+CALLOC(p, n, s) \
+if( !(p) = calloc(n, s) )
+{
+	fprintf(stderr, "Insufficienty memory") ; \
+	exit(EXIT_FAILURE) ; \
+}
+endsnippet
+
+snippet memset	"memset(void *block, int c, size_t size)"
+memset(${1:buffer}, ${2:0x00}, sizeof($1)/sizeof(${3:int}));
+endsnippet

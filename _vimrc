@@ -451,13 +451,8 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-if g:is_win == 1
-    let g:UltiSnipsSnippetsDir="E:/home/PluginConfig/UltiSnipsDir/"
-    let g:UltiSnipsSnippetDirectories=["E:/home/PluginConfig/UltiSnipsDir/"]
-elseif g:is_unix == 1
-    let g:UltiSnipsSnippetsDir="~/PluginConfig/UltiSnipsDir/"
-    let g:UltiSnipsSnippetDirectories=["~/PluginConfig/UltiSnipsDir/"]
-endif
+let g:UltiSnipsSnippetsDir="~/PluginConfig/UltiSnipsDir/"
+let g:UltiSnipsSnippetDirectories=["UltiSnipsDir"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ctrlp setting
@@ -474,7 +469,7 @@ let g:ctrlp_use_caching = 1
 let g:ctrlp_cache_dir = $HOME.'/PluginConfig/ctrlp'
 let g:ctrlp_custom_ignore = {
             \ 'dir': '\.git$\|\.hg$\|\.svn$\|release$\|work$\|PluginConfig/neocomplete$\|PluginConfig/ctrlp\|synthesize/db\|synthsize/incremental_db',
-            \ 'file': '\v\.(o|pbi|cout|exe|so|dll|lnk|rpt|summary|.db)$',
+            \ 'file': '\v\.(o|pbi|cout|exe|so|dll|lnk|rpt|summary|db)$',
             \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
             \ }
 nmap <M-d>r     :CtrlPMRU<cr>

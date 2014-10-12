@@ -1,0 +1,401 @@
+snippet /*
+/*
+ * ${1}
+ */
+endsnippet
+
+snippet co
+/*-------------------------------------------------------------------------
+//description	:   ${1}
+//condition		:
+//others		:
+-------------------------------------------------------------------------*/
+endsnippet
+#module`!v strftime("%Y-%m-%d")`
+#module ${1:/*module*/}
+snippet mo
+module `!v expand('%:r')`
+(
+	clk,
+	rst,
+	${1:/*port*/}
+);
+input                   clk ;
+input                   rst ;
+
+endmodule
+endsnippet
+
+#module ${1:/*module*/} #
+snippet mod  "wait"
+module `!v expand('%:r')` #
+(
+	${1:/*parameter*/}
+)
+(
+	clk,
+	rst,
+	${2:/*port*/}
+);
+input                   clk ;
+input                   rst ;
+
+endmodule
+endsnippet
+
+#always
+snippet	al
+always @ (posedge ${1:clk} or negedge ${2:rst})
+begin
+	${3:/*code*/}
+end
+endsnippet
+
+#always
+# If Condition
+snippet ifb
+if(${1:/*condition*/})
+begin
+	${2:/*code*/}
+end
+endsnippet
+
+snippet if "condition"
+if(${1:/*condition*/})
+	${2:/*code*/}
+endsnippet
+
+snippet ifrb
+if(~rst)
+begin
+	${1:/*code*/}
+end
+endsnippet
+
+snippet ifr "no bracket"
+if(~rst)
+	${1:/*code*/}
+endsnippet
+
+snippet el
+else
+	${1:code}
+endsnippet
+
+snippet elb
+else
+begin
+	${1:/*code*/}
+end
+endsnippet
+
+snippet	eib
+else if(${1:/*condition*/})
+begin
+	${2:/*code*/}
+end
+endsnippet
+
+snippet	ei
+else if(${1:/*condition*/})
+	${2:/*code*/}
+endsnippet
+
+#input
+snippet in
+input					${1:inport} ;
+endsnippet
+
+snippet inb
+input   [${1:MSB}:0]           ${2:inport} ;
+endsnippet
+
+#output
+snippet ou
+output					${1:outport} ;
+endsnippet
+
+snippet oub
+output	[${1:MSB}:0]			${2:outport} ;
+endsnippet
+
+#reg
+snippet reg
+reg                     ${1:outport} ;
+endsnippet
+
+snippet regb
+reg     [${1:MSB}:0]           ${2:outport} ;
+endsnippet
+
+#wire
+snippet wi
+wire                    ${1:outport} ;
+endsnippet
+
+snippet wib
+wire    [${1:MSB}:0]           ${2:outport} ;
+endsnippet
+
+#case
+snippet ca
+case (${1:/*condition*/})
+${2:/*first*/}:
+begin
+	${3:/*code*/}
+end
+${4:/*code*/}
+default:
+begin
+	${5:/*code*/}
+end
+endcase
+endsnippet
+
+#assign
+snippet	as
+assign			${1:LHS} = ${2:RHS} ;
+endsnippet
+
+#parameter
+snippet	pa
+parameter		${1:LHS} = ${2:RHS} ;
+endsnippet
+
+#<=
+#${1:LHS} <=# ${2:RHS} ;
+snippet	;
+${1:LHS} <= ${2:RHS} ;
+endsnippet
+
+#
+snippet	?
+${1:/*LHS*/} = ${2:/*condition*/} ? ${3:/*expr1*/} : ${4:/*expr2*/} ;
+endsnippet
+
+#
+snippet :	"display" i
+[${1:MSB}:${2:0}]
+endsnippet
+
+# ri 判断上升沿或者下降沿
+snippet ri
+assign      ${1:RiseEdge} = (~${2:RegDelay1}) & ${3:RegDelay0} ;    //if has rise edge, set LHS=1, only one clock
+endsnippet
+
+snippet fa
+assign      ${1:FallEdge} = ${2:RegDelay1} & (~${3:RegDelay0}) ;    //if has fall edge, set LHS=1, only one clock
+endsnippet
+
+snippet	edge
+reg                     ${1:Reg}Delay0 , $1Delay1 ;
+wire                    $1Rise ;
+wire                    $1Fall ;
+
+assign          $1Rise = (~$1Delay1) & $1Delay0 ;
+assign          $1Fall = $1Delay1 & (~$1Delay0) ;
+always @ (posedge clk or negedge rst)
+begin
+    if(~rst)
+        {$1Delay0,$1Delay1}    <=# 2'b00 ;
+    else
+        {$1Delay1,$1Delay0}    <=# {$1Delay0,$1} ;
+end
+endsnippet
+
+snippet <<
+${1:RegOut} <=# {$1[${2:6}:${3:0}],${4:RightIn}} ;             //left shift, new data is appeare LSB
+endsnippet
+
+snippet >>
+${1:RegOut} <=# {${3:LeftIn},$1[${2:7}:${4:1}]} ;              //right shift,new data is appeare MSB
+endsnippet
+
+# begin
+snippet be
+begin
+	${1:/*code*/}
+end
+endsnippet
+
+# initial
+snippet ini
+initial
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+#for
+snippet for
+for(i = 0 ; i <= ${1:num} ; i = i + 1 )
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+#repeat
+snippet repeat
+repeat(${1:Number})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+#forever
+snippet forever
+forever
+    #CLKPRIEOD	clk = ~clk ;			//only use initial block
+endsnippet
+
+#task prototype
+snippet	task
+task ${1:/*task_name*/} ;
+	${2:/*port declaration*/}
+	begin
+		${3:/*code*/}
+	end
+endtask
+endsnippet
+
+snippet hr
+task HarwareReset ;
+input   [3:0]   HoldLowTime ;
+begin
+	rst = 1'b1;
+	wait (clk !== 1'bx);
+	@ (negedge clk);
+	rst <= 1'b0;
+	repeat(HoldLowTime)
+		@ (negedge clk);
+	rst <= 1'b1;
+end
+endtask
+endsnippet
+
+#function prototype
+snippet fun
+function ${1:/*return_type_or_scope*/} ${2:/*function_name*/}
+	${3:/*port declaration*/}
+	begin
+		${3:/*code*/}
+	end
+endfunction
+endsnippet
+
+#preprocess
+snippet	`if  "precompile"
+\`ifdef	Simulation
+    ${1:/*code*/}
+\`endif
+endsnippet
+
+snippet	`ife
+\`ifdef	Simulation
+    ${1:/*code*/}
+\`else
+    ${2:/*code*/}
+\`endif
+endsnippet
+##
+snippet	`t
+\`timescale	1 ns/1 ps
+
+endsnippet
+
+snippet	`d
+\`define		DELAY	1
+
+endsnippet
+
+#system function or task
+#readmemh
+snippet	$re
+reg     [7:0]   DataMem[0:31] ;
+$readmemh("${1:/*data.txt*/}",${2:/*DataMem*/}) ;
+endsnippet
+
+#random
+snippet	$ra
+${1:veriable} = ({$random} % ${2:2}) ;
+endsnippet
+
+#display
+snippet	$di
+$display("${1:veriable} = 0${2:x}%${3:h}",$1) ;
+endsnippet
+
+#strobe
+snippet	$st
+$strobe("${1:veriable} = 0${2:x}%${3:h}",$1) ;
+endsnippet
+
+#strobe
+snippet	$mo
+$monitor($time,"${1:veriable} = 0${2:x}%${3:h}",$1) ;
+endsnippet
+
+#handle
+snippet	ha
+integer	${1:handle} ;
+initial
+begin
+    $1 = $fopen("${2:file.out}") ;
+end
+endsnippet
+
+#fdisplay, write data to file
+snippet $fdi
+$fdisplay(${1:handle},"${2:veriable} = 0${3:x}%${4:h}",$2) ;
+endsnippet
+
+#test
+snippet	st
+//-------------------------------------------------------------------------
+//first
+//-------------------------------------------------------------------------
+always @ (posedge ${1:clk} or negedge ${2:rst})			// build the state flops
+begin
+	if(~rst)
+		CurrentState		<=# ${3:sIdleState} ;
+	else
+		CurrentState		<=# ${4:NextState} ;
+end
+
+//-------------------------------------------------------------------------
+//second.state transfer
+//-------------------------------------------------------------------------
+always @ ( * )		//state machine, block assign
+begin
+	NextState	 = sIdleState ;
+	case(CurrentState)
+		${5:/*NextState		= StateXX*/}
+		begin
+
+		end
+		default:
+		begin
+		end
+	endcase
+end
+
+//-------------------------------------------------------------------------
+//three.output
+//-------------------------------------------------------------------------
+always @ (posedge $1 or negedge $2 )			//output
+begin
+	if(~rst)
+	begin
+	end
+	else
+	begin
+		case(NextState)
+			${6:/*code*/}
+			default:
+			begin
+			end
+		endcase
+	end
+end
+endsnippet
+
