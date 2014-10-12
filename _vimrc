@@ -221,7 +221,7 @@ nmap		<M-r>	:bro e<cr>
 nmap		,rm		:%s/\r//g<cr>:w<cr>gg
 "remove space of line end
 nmap		,rn		:%s/\s\+$//g<cr>gg
-
+nmap		,rg		:%s/^\n\+/\r/g<cr>
 nmap        ,rc     :%s/\i\+/&/gn|noh
 
 nmap		<M-h>	:h<space>
@@ -252,7 +252,7 @@ cmap    <c-l>       <S-Right>
 nmap    j           gj
 nmap    k           gk
 nmap    <M-d>n      :setlocal modifiable!<cr>
-map     <M-o>       <esc>o
+imap     <M-o>       <esc>o
 
 cmap <C-v>  <C-r>+
 
@@ -752,7 +752,7 @@ endfunction
 nmap <C-;>  :!git<space>
 nmap <M-;>  :Dit<space>
 "if use this function, airline don't refresh branch
-command! -nargs=1 Dit call GitCmd(<f-args>)  
+command! -nargs=1 Dit call GitCmd(<f-args>)
 function! GitCmd(git_cmd)
     if has('win32') || has('win64')
         exe "cd " . Find_project_root()
