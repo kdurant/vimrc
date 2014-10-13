@@ -23,12 +23,13 @@ Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit'
 Plug 'luochen1990/rainbow'
-Plug 'kdurant/AuthorInfo'
-Plug 'kdurant/bookmark'
-Plug 'kdurant/vim_colors'
-Plug 'kdurant/CRefVim'
-Plug 'kdurant/nerdcommenter'
-Plug 'kdurant/verilog-testbench'
+Plug 'git@github.com:kdurant/Asciitable.vim.git'
+Plug 'git@github.com:kdurant/AuthorInfo'
+Plug 'git@github.com:kdurant/bookmark'
+Plug 'git@github.com:kdurant/vim_colors'
+Plug 'git@github.com:kdurant/CRefVim'
+Plug 'git@github.com:kdurant/nerdcommenter'
+Plug 'git@github.com:kdurant/verilog-testbench'
 Plug 'kshenoy/vim-signature'
 Plug 'mbriggs/mark.vim'
 Plug 'ntpeters/vim-better-whitespace'
@@ -220,7 +221,7 @@ nmap		<M-r>	:bro e<cr>
 nmap		,rm		:%s/\r//g<cr>:w<cr>gg
 "remove space of line end
 nmap		,rn		:%s/\s\+$//g<cr>gg
-
+nmap		,rg		:%s/^\n\+/\r/g<cr>
 nmap        ,rc     :%s/\i\+/&/gn|noh
 
 nmap		<M-h>	:h<space>
@@ -251,7 +252,7 @@ cmap    <c-l>       <S-Right>
 nmap    j           gj
 nmap    k           gk
 nmap    <M-d>n      :setlocal modifiable!<cr>
-map     <M-o>       <esc>o
+imap     <M-o>       <esc>o
 
 cmap <C-v>  <C-r>+
 
@@ -450,13 +451,8 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-if g:is_win == 1
-    let g:UltiSnipsSnippetsDir="E:/home/PluginConfig/UltiSnipsDir/"
-    let g:UltiSnipsSnippetDirectories=["E:/home/PluginConfig/UltiSnipsDir/"]
-elseif g:is_unix == 1
-    let g:UltiSnipsSnippetsDir="~/PluginConfig/UltiSnipsDir/"
-    let g:UltiSnipsSnippetDirectories=["~/PluginConfig/UltiSnipsDir/"]
-endif
+let g:UltiSnipsSnippetsDir="~/PluginConfig/UltiSnipsDir/"
+let g:UltiSnipsSnippetDirectories=["UltiSnipsDir"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ctrlp setting
@@ -473,7 +469,7 @@ let g:ctrlp_use_caching = 1
 let g:ctrlp_cache_dir = $HOME.'/PluginConfig/ctrlp'
 let g:ctrlp_custom_ignore = {
             \ 'dir': '\.git$\|\.hg$\|\.svn$\|release$\|work$\|PluginConfig/neocomplete$\|PluginConfig/ctrlp\|synthesize/db\|synthsize/incremental_db',
-            \ 'file': '\v\.(o|pbi|cout|exe|so|dll|lnk|rpt|summary|.db)$',
+            \ 'file': '\v\.(o|pbi|cout|exe|so|dll|lnk|rpt|summary|db)$',
             \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
             \ }
 nmap <M-d>r     :CtrlPMRU<cr>
