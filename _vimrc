@@ -751,7 +751,7 @@ endfunction
 nmap <C-;>  :!git<space>
 nmap <M-;>  :Dit<space>
 "if use this function, airline don't refresh branch
-command! -nargs=1 Dit call GitCmd(<f-args>)  
+command! -nargs=1 Dit call GitCmd(<f-args>)
 function! GitCmd(git_cmd)
     if has('win32') || has('win64')
         exe "cd " . Find_project_root()
