@@ -218,9 +218,9 @@ imap	<C-s>	<esc>:w!<cr>
 
 nmap		<M-r>	:bro e<cr>
 "delete dos end-of-file and write
-nmap		,rm		:%s/\r//g<cr>:w<cr>gg
+nmap		,rm		:%s/\r//g<cr>:w<cr>
 "remove space of line end
-nmap		,rn		:%s/\s\+$//g<cr>gg
+nmap		,rn		:%s/\s\+$//g<cr>
 nmap		,rg		:%s/^\n\+/\r/g<cr>
 nmap        ,rc     :%s/\i\+/&/gn|noh
 
@@ -452,7 +452,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:UltiSnipsSnippetsDir="~/PluginConfig/UltiSnipsDir/"
-let g:UltiSnipsSnippetDirectories=["UltiSnipsDir"]
+let g:UltiSnipsSnippetDirectories=["E:/home/PluginConfig/UltiSnipsDir/"]
+"let g:UltiSnipsSnippetDirectories=["UltiSnipsDir"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ctrlp setting
