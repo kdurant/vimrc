@@ -18,3 +18,9 @@ git checkout master filename
 = 获得之前版本的内容 =
 git checkout SHA1
 
+在commit ID上建立新分支
+git checkout -b branch commit_ID
+
+取消工作区的任何文件修改
+git checkout .
+

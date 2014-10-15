@@ -1,0 +1,2 @@
+修改上一次提交的commit
+git commit --amend
