@@ -600,23 +600,6 @@ function! CompileFile()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"删除verilog临时的工作库
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! DeleteTmpWork()
-    if &filetype == "verilog"
-        let mpf=expand("*.mpf")
-        if mpf =~ '\<mpf\>'
-            echohl comment | echo "Work is necessary!"
-        else
-            exe "silent !rd /s /q work"
-        endif
-    else
-        echohl ErrorMsg | echo "Can't delete directory!" | echohl None
-    endif
-endfunction
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Usage:  :Rename[!] {newname}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! -nargs=* -complete=file -bang Rename call Rename(<q-args>, '<bang>')
