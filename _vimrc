@@ -659,30 +659,27 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "look up project root directory
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !exists('g:project_root_marker')
-  let g:project_root_marker = [".git", ".hg", ".svn", ".bzr", "_darcs", "CVS"]
+if !exists('g:root_marker')
+  let g:root_marker = [".git"]
 endif
 
 function! Find_project_root()
     let project_root = fnamemodify(".", ":p:h")
 
-    if !empty(g:project_root_marker)
+    if !empty(g:root_marker)
         let root_found = 0
         let candidate = fnamemodify(project_root, ":p:h")
         let last_candidate = ""
-
         while candidate != last_candidate
-            for tags_dir in g:project_root_marker
+            for tags_dir in g:root_marker
                 let tags_dir_path = candidate . "/" . tags_dir
                 if filereadable(tags_dir_path) || isdirectory(tags_dir_path)
-                    let root_found = 1
-                    break
+                    let root_found = 1 | break
                 endif
             endfor
 
             if root_found
-                let project_root = candidate
-                break
+                let project_root = candidate | break
             endif
 
             let last_candidate = candidate
