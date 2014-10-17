@@ -192,15 +192,15 @@ switch (${1:/*condition*/})
 endsnippet
 
 snippet puts	"puts(const char *s)"
-puts("${1:/*string*/}") ;
+puts("${1:/*str*/}") ;
 endsnippet
 
 snippet gets	"gets(char *s)"
-gets(${2:/*string*/}) ;
+gets(${2:/*str*/}) ;
 endsnippet
 
 snippet pr "printf(const char *format, ...)"
-printf("${1:string}\n",${2:veriable}) ;
+printf("${1:str}\n",${2:veriable}) ;
 endsnippet
 
 snippet scanf
@@ -224,11 +224,11 @@ ${1:/*char*/} = fgetc(${2:/*FilePoint*/}) ;
 endsnippet
 
 snippet fputs
-fputs('${1:/*string*/}',${2:/*FilePoint*/} ;
+fputs('${1:/*str*/}',${2:/*FilePoint*/} ;
 endsnippet
 
 snippet fgets
-${1:/*string*/} = fgets(${2:/*FilePoint*/}) ;
+${1:/*str*/} = fgets(${2:/*FilePoint*/}) ;
 endsnippet
 
 snippet fprintf
@@ -260,85 +260,63 @@ snippet malloc
 ${1:/*point*/} = (${2:int} *)malloc(${3:length}*sizeof($2)) ;
 endsnippet
 
-snippet strcpy
-strcpy(${1:/*desin*/}, ${2:/*source*/}) ;
+snippet strcpy	"copy src to dest"
+strcpy(${1:/*dest*/}, ${2:/*src*/}) ;
 endsnippet
 
-snippet strcat
-strcat(${1:/*desin*/}, ${2:/*source*/}) ;
+snippet strncpy	"copy n char from src to dest"
+strncpy(${1:/*dest*/}, ${2:/*src*/}, ${3:/*n*/}) ;
 endsnippet
 
-snippet strchr
-strchr(${1:/*string*/}, '${2:/*char*/}') ;
+snippet strcat	"append src to dest"
+strcat(${1:/*dest*/}, ${2:/*src*/}) ;
 endsnippet
 
-snippet strcmp
-strcmp(${1:/*string1*/}, ${2:/*string2*/}) ;
+snippet strncat	"append src to dest"
+strncat(${1:/*dest*/}, ${2:/*src*/}, ${3:/*n*/}) ;
 endsnippet
 
-snippet strncmpi
+snippet strcmp	"compare str1 against str2"
+strcmp(${1:/*str1*/}, ${2:/*str2*/}) ;
 endsnippet
 
-snippet strcspn
+snippet strcoll	"similar to strcmp()"
+strcoll(${1:/*str1*/}, ${2:/*str2*/}) ;
 endsnippet
 
-snippet strdup
+snippet strncmp	"no more than n character"
+strncmp(${1:/*str1*/}, ${2:/*str2*/}, ${3:/*n*/}) ;
 endsnippet
 
-snippet stricmp
+snippet strxfrm
 endsnippet
 
-snippet strerror
+snippet strchr	"returns a pointer to the located character"
+strchr(${1:/*str*/}, '${2:/*char*/}') ;
 endsnippet
 
-snippet strcmpi
+snippet strcspn	"return offset of str1 that is a member of str2"
+strcspn(${1:/*str1*/}, ${2:/*str2*/}) ;
 endsnippet
 
-snippet strncmp
+snippet strpbrk	"related to strcspn()"
+strpbrk(${1:/*str1*/}, ${2:/*str2*/}) ;
 endsnippet
 
-snippet strncpy
-endsnippet
-
-snippet strnicmp
-endsnippet
-
-snippet strnset
-endsnippet
-
-snippet strpbrk
-endsnippet
-
-snippet strrchr
-endsnippet
-
-snippet strrev
-endsnippet
-
-snippet strset
+snippet strrchr	"search str from the end of str"
+strrchr(${1:/*str*/}, '${2:/*char*/}') ;
 endsnippet
 
 snippet strspn
-endsnippet
-
-snippet strstr
-endsnippet
-
-snippet strtod
+strspn(${1:/*str1*/}, ${2:/*str2*/}) ;
 endsnippet
 
 snippet strtok
-endsnippet
-
-snippet strtol
-endsnippet
-
-snippet strupr
+strtok(${1:/*str1*/}, ${2:/*str2*/}) ;
 endsnippet
 
 snippet swab
 endsnippet
-
 snippet	rand
 ${1:/*rand_num*/} = rand() % ${2:/*maxnum*/} ;
 endsnippet
@@ -356,36 +334,6 @@ void swap(int *x, int *y)
     int temp = *x ;
 	*x = *y ;
 	*y = t ;
-}
-endsnippet
-
-snippet SWAP
-SWAP(x, y, t)	( (t) = (x), (x) = (y), (y) = (t) )
-endsnippet
-
-snippet GET_ARRAY_LEN
-GET_ARRAY_LEN(array)	(sizeof(array) / sizeof(array[0])
-endsnippet
-
-snippet COMPARE
-COMPARE(x, y)	( ((x) < (y)) ? -1 : ((x) == (y)) ? 0 : 1)
-endsnippet
-
-snippet	MALLOC
-MALLOC(p,s) \
-if( !(p) = malloc(s) )
-{
-	fprintf(stderr, "Insufficienty memory") ; \
-	exit(EXIT_FAILURE) ; \
-}
-endsnippet
-
-snippet	CALLOC
-CALLOC(p, n, s) \
-if( !(p) = calloc(n, s) )
-{
-	fprintf(stderr, "Insufficienty memory") ; \
-	exit(EXIT_FAILURE) ; \
 }
 endsnippet
 
