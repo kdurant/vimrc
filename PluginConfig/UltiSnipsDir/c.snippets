@@ -257,7 +257,12 @@ snippet fwrite
 endsnippet
 
 snippet malloc
-${1:/*point*/} = (${2:int} *)malloc(${3:length}*sizeof($2)) ;
+${1:/*point*/} = (${2:int} *)malloc(${3:len}*sizeof($2)) ;
+if( $1 == NULL)
+{
+	//exit(1);
+}
+free($1);
 endsnippet
 
 snippet strcpy	"copy src to dest"
@@ -328,7 +333,7 @@ snippet he
 printf("hello world!\n") ;
 endsnippet
 
-snippet swap
+snippet swap	"swap two variable"
 void swap(int *x, int *y)
 {
     int temp = *x ;
