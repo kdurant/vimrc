@@ -263,6 +263,8 @@ if has('python')
     nmap    <M-q>   :Calc<space>
 endif
 
+map     K       \cr
+autocmd FileType lua  setlocal iskeyword+=.
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 
 if g:is_win == 1
@@ -274,6 +276,7 @@ if g:is_win == 1
         "silent !astyle --pad-paren-in %     "insert spaces padding around parenthesis on ther inside only
     endfunction
 endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""plugin config*************************************************
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
