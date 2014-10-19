@@ -341,3 +341,9 @@ endsnippet
 snippet memset	"memset(void *block, int c, size_t size)"
 memset(${1:buffer}, ${2:0x00}, sizeof($1)/sizeof(${3:int}));
 endsnippet
+
+snippet pack
+#pragma pack(push,1);
+$1
+#pragma pack(pop);
+endsnippet
