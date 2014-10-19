@@ -22,6 +22,7 @@ Plug 'asins/vimcdoc'
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit'
+Plug 'haya14busa/incsearch.vim'
 Plug 'luochen1990/rainbow'
 Plug 'git@github.com:kdurant/Asciitable.vim.git'
 Plug 'git@github.com:kdurant/AuthorInfo'
@@ -263,8 +264,6 @@ if has('python')
     nmap    <M-q>   :Calc<space>
 endif
 
-map     K       \cr
-autocmd FileType lua  setlocal iskeyword+=.
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 
 if g:is_win == 1
@@ -281,6 +280,11 @@ endif
 """"""""""""""""""plugin config*************************************************
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rainbow_active = 1
+map     K       \cr
+autocmd FileType lua  setlocal iskeyword+=.
+map     /       <Plug>(incsearch-forward)
+map     ?       <Plug>(incsearch-backward)
+map     g/      <Plug>(incsearch-stay)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "git map
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
