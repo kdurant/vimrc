@@ -22,7 +22,6 @@ Plug 'asins/vimcdoc'
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit'
-Plug 'haya14busa/incsearch.vim'
 Plug 'luochen1990/rainbow'
 Plug 'git@github.com:kdurant/Asciitable.vim.git'
 Plug 'git@github.com:kdurant/AuthorInfo'
@@ -282,9 +281,6 @@ endif
 let g:rainbow_active = 1
 map     K       \cr
 autocmd FileType lua  setlocal iskeyword+=.
-map     /       <Plug>(incsearch-forward)
-map     ?       <Plug>(incsearch-backward)
-map     g/      <Plug>(incsearch-stay)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "git map
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
