@@ -577,14 +577,15 @@ function! CompileFile()
         else
             for needle in getqflist()
                 for value in values(needle)
-                    if value =~ 'warning' | let WarnFlag = 1
-                    elseif value =~ 'error' | let WarnFlag = 0
+                    if value =~ 'error' | let WarnFlag = 1 | break
+                    elseif value =~ 'warning' | let WarnFlag = 2
                     else | let WarnFlag = 0
                     endif
                 endfor
             endfor
         endif
-        if WarnFlag == 1
+        if WarnFlag == 2 | exe "cw"
+        elseif WarnFlag == 1
             let select = input('There are warnings! [r]un or [s]olve? ')
             if select ==  'r' | exe "!%<.exe" | exe "cw"
             elseif select == 's' | exe "cw"

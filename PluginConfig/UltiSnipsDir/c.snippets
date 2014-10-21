@@ -176,6 +176,13 @@ typedef enum __${1:name}
 }$1TypeDef;
 endsnippet
 
+snippet tdu	"typedef union"
+typedef union __${1:name}
+{
+	${2:/*data1*/},
+	${3:/*data2*/}
+}$1TypeDef;
+endsnippet
 
 snippet sw	"switch ... case"
 switch (${1:/*condition*/})
