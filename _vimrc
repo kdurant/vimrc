@@ -202,32 +202,32 @@ map!    <M-k>       <Up>
 map!    <M-h>       <left>
 map!    <M-l>       <Right>
 
+map!    <C-v>       <C-r>+
+map!    <c-h>       <S-Left>
+map!    <c-l>       <S-Right>
+
 map     <C-s>       :w!<cr>
 imap    <C-s>       <esc>:w!<cr>
 
-nmap    <M-r>       :bro e<cr>
+map     <M-r>       :bro e<cr>
 "delete dos end-of-file and write
-nmap    ,rm         :%s/\r//g<cr>:w<cr>
+map     ,rm         :%s/\r//g<cr>:w<cr>
 "remove space of line end
-nmap    ,rn         :%s/\s\+$//g<cr>
-nmap    ,rg         :%s/^\n\+/\r/g<cr>
-nmap    ,rc         :%s/\i\+/&/gn|noh
+map     ,rn         :%s/\s\+$//g<cr>
+map     ,rg         :%s/^\n\+/\r/g<cr>
+map     ,rc         :%s/\i\+/&/gn|noh
 
-nmap    <M-h>       :h<space>
-nmap    <M-a>       ggVG
+map     <M-h>       :h<space>
+map     <M-a>       ggVG
 
-nmap    <M-d>v      :call CompileFile()<cr>
+map     <M-d>v      :call CompileFile()<cr>
 
 nmap    <C-P>       :cp<cr>
 nmap    <C-N>       :cn<cr>
-cmap    <c-h>       <S-Left>
-cmap    <c-l>       <S-Right>
 nmap    j           gj
 nmap    k           gk
 nmap    <M-d>n      :setlocal modifiable!<cr>
 imap    <M-o>       <esc>o
-
-cmap <C-v>  <C-r>+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "menu bar and tool bar settings
