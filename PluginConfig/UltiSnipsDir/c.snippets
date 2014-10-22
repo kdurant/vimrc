@@ -57,16 +57,22 @@ snippet #de	"#define ..."
 #define ${1:TEST}
 endsnippet
 
+snippet #if	"#if ... #endif"
+#if ${1:DEBUG}
+    ${2:}
+#endif
+endsnippet
+
 snippet #ifd	"#ifdef ... #endif"
 #ifdef ${1:DEBUG}
     ${2:}
 #endif
 endsnippet
 
-snippet #if "#ifndef ... #define ... #endif"
+snippet #ifn "#ifndef ... #define ... #endif"
 #ifndef `!v toupper(expand('%:r'))`_H
 #define `!v toupper(expand('%:r'))`_H
-
+$1
 #endif
 endsnippet
 
