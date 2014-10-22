@@ -149,41 +149,30 @@ set nofoldenable
 set foldnestmax=2
 set foldcolumn=4
 set fillchars=fold:\ ,diff:/
-nmap    ,ma     :set fdm=manual<cr>
-nmap    ,in     :set fdm=indent<cr>
-nmap    ,sy     :set fdm=syntax<cr>
-nmap    <M-e>       ^zf%
+nmap    ,ma         :set fdm=manual<cr>
+nmap    ,in         :set fdm=indent<cr>
+nmap    ,sy         :set fdm=syntax<cr>
+nmap    <M-e>           ^zf%
 
-nmap <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
-"close all folds under the cursor recursively
-nmap    zc      zC
-"close all folds in the window
-nmap    zm      zM
-"open the all folds under the cursor recursively
-nmap    zo      zO
-"open all folds in the window
-nmap    zr      zR
-"Eliminate al folds in the window
-nmap    ze      zE
-nmap    <M-j>   zj
-nmap    <M-k>   zk
+nmap    <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
+nmap    <M-j>       zj
+nmap    <M-k>       zk
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "search settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set grepprg=egrep\ -nwHR
+set grepprg=grep\ -nwHr
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
-nmap <M-d>w         :setlocal wrapscan!<cr>
-nmap <M-d>h         :noh<cr>
+nmap    <M-d>w      :setlocal wrapscan!<cr>
+nmap    <M-d>h      :noh<cr>
 
-"set grepprg=egrep\ -nwHR
-set grepprg=grep\ -nwHr
-nmap <F6>   :call Search_Word()<cr>
-nmap ,re    :call Replace()<cr>
+nmap    <F6>        :call Search_Word()<cr>
+nmap    ,re         :call Replace()<cr>
 
-set path+=../../
 if g:is_win == 1
     set path+=E:/MinGW/include/
 endif
@@ -191,13 +180,13 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "window jump settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap    <C-k>   <C-W>k
-nmap    <C-l>   <C-W>l
-nmap    <C-h>   <C-W>h
-nmap    <C-j>   <C-W>j
-nmap    <M-->   <C-W>-
-nmap    <M-=>   <C-W>+
-nmap    <M-c>   :close<cr>
+nmap    <C-k>       <C-W>k
+nmap    <C-l>       <C-W>l
+nmap    <C-h>       <C-W>h
+nmap    <C-j>       <C-W>j
+nmap    <M-->       <C-W>-
+nmap    <M-=>       <C-W>+
+nmap    <M-c>       :clo<cr>
 if g:is_win == 1
     nmap    ,sx     :simalt ~x<cr>
     nmap    ,sr     :simalt ~r<cr>
@@ -206,28 +195,39 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others key map settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap	<F2>	@@
+nmap	<F2>	    @@
 
-noremap! <M-j> <Down>
-noremap! <M-k> <Up>
-noremap! <M-h> <left>
-noremap! <M-l> <Right>
+imap    <M-j>       <Down>
+imap    <M-k>       <Up>
+imap    <M-h>       <left>
+imap    <M-l>       <Right>
 
-nmap	<C-s>	:w!<cr>
-imap	<C-s>	<esc>:w!<cr>
+map	    <C-s>	    :w!<cr>
+imap	<C-s>	    <esc>:w!<cr>
 
-nmap		<M-r>	:bro e<cr>
+nmap    <M-r>	    :bro e<cr>
 "delete dos end-of-file and write
-nmap		,rm		:%s/\r//g<cr>:w<cr>
+nmap    ,rm		    :%s/\r//g<cr>:w<cr>
 "remove space of line end
-nmap		,rn		:%s/\s\+$//g<cr>
-nmap		,rg		:%s/^\n\+/\r/g<cr>
-nmap        ,rc     :%s/\i\+/&/gn|noh
+nmap    ,rn		    :%s/\s\+$//g<cr>
+nmap    ,rg		    :%s/^\n\+/\r/g<cr>
+nmap    ,rc         :%s/\i\+/&/gn|noh
 
-nmap		<M-h>	:h<space>
-nmap		<M-a>	ggVG
+nmap    <M-h>	    :h<space>
+nmap    <M-a>	    ggVG
 
-nmap    <M-d>v         :call CompileFile()<cr>
+nmap    <M-d>v      :call CompileFile()<cr>
+
+nmap    <C-P>       :cp<cr>
+nmap    <C-N>       :cn<cr>
+cmap    <c-h>       <S-Left>
+cmap    <c-l>       <S-Right>
+nmap    j           gj
+nmap    k           gk
+nmap    <M-d>n      :setlocal modifiable!<cr>
+imap    <M-o>       <esc>o
+
+cmap <C-v>  <C-r>+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "menu bar and tool bar settings
@@ -245,17 +245,6 @@ nmap <silent> <F12> :if &guioptions =~# 'T' <Bar>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap    <C-P>       :cp<cr>
-nmap    <C-N>       :cn<cr>
-cmap    <c-h>       <S-Left>
-cmap    <c-l>       <S-Right>
-nmap    j           gj
-nmap    k           gk
-nmap    <M-d>n      :setlocal modifiable!<cr>
-imap     <M-o>       <esc>o
-
-cmap <C-v>  <C-r>+
-
 "user define calculate command, need install python
 if has('python')
     command! -nargs=+ Calc :py print <args>
@@ -281,12 +270,24 @@ endif
 let g:rainbow_active = 1
 map     K       \cr
 autocmd FileType lua  setlocal iskeyword+=.
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"git map
+"git settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap    <M-g>   :Git!<space>
 nmap    <M-v>a  :!gitk --all<cr>
-nmap    <M-v>s  :Gstatus<cr>
+
+nmap <C-;>  :!git<space>
+nmap <M-;>  :Dit<space>
+"if use this function, airline don't refresh branch
+command! -nargs=1 Dit call GitCmd(<f-args>)
+function! GitCmd(git_cmd)
+    if has('win32') || has('win64')
+        exe "cd " . Find_project_root()
+        echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
+    endif
+endfunction
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "session settings
@@ -304,23 +305,23 @@ nmap	<F7>	:so $VIMSESSION<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme='kolor'
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#branch#empty_message = 'No Branch'
+let g:airline#extensions#branch#empty_message = 'No Repo'
 "let g:airline#extensions#whitespace#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "tab settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap    <M-o>   :tabnew<cr>:setlocal buftype=nowrite<cr>
-nmap    <M-t>	:tabm
-nmap    <M-1>   1gt
-nmap    <M-2>   2gt
-nmap    <M-3>   3gt
-nmap    <M-4>   4gt
-nmap    <M-5>   5gt
-nmap    <M-6>   6gt
-nmap    <M-7>   7gt
-nmap    <M-8>   8gt
-nmap    <M-9>   9gt
+map    <M-o>    :tabnew<cr>:setlocal buftype=nowrite<cr>
+map    <M-t>    :tabm
+map    <M-1>    1gt
+map    <M-2>    2gt
+map    <M-3>    3gt
+map    <M-4>    4gt
+map    <M-5>    5gt
+map    <M-6>    6gt
+map    <M-7>    7gt
+map    <M-8>    8gt
+map    <M-9>    9gt
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "neocomplete settings
@@ -725,20 +726,6 @@ function! Do_CsTag()
         endif
     else
         echo "Can't generate cscope.out file!"
-    endif
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <C-;>  :!git<space>
-nmap <M-;>  :Dit<space>
-"if use this function, airline don't refresh branch
-command! -nargs=1 Dit call GitCmd(<f-args>)
-function! GitCmd(git_cmd)
-    if has('win32') || has('win64')
-        exe "cd " . Find_project_root()
-        echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
     endif
 endfunction
 
