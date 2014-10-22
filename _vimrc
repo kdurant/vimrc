@@ -518,8 +518,8 @@ let g:vcool_ins_hsl_map = '<M-F2>'
 function! Search_Word()
     set autochdir
     echohl Number
-    let select = input('Search current word with current file type, y or n ? ')
-    if select == 'y'
+    let l:select = input('Search current word with current file type, y or n ? ')
+    if l:select == 'y'
         "silent exe 'grep ' . expand("<cword>") . ' ' . getcwd() . '/*' . expand("%:e")
         silent exe 'grep ' . expand("<cword>") . ' ' . Find_project_root() . '/*' . expand("%:e")
         if len(getqflist()) >= 1 && len(getqflist()) <= 10
@@ -527,7 +527,7 @@ function! Search_Word()
         elseif len(getqflist()) >= 11
             exe 'cw'
         endif
-    elseif select == 'n'
+    elseif l:select == 'n'
         let word = input('Search string in path ' . Find_project_root() .":")
         if word != ''
             let file_type = input('Search string file suffix :')
@@ -559,11 +559,9 @@ endfunction
 function! CompileFile()
     if &filetype == 'verilog'
         if(isdirectory("work"))
-            echohl comment | echo "Aleady has work!"
             set makeprg=vlog\ -work\ work\ %
             set errorformat=**\ Error:\ %f(%l):\ %m
-            exe "make"
-            exe "cw"
+            exe "make" | exe "cw"
         else
             echohl ErrorMsg | echo "No work library!"
         endif
@@ -573,22 +571,22 @@ function! CompileFile()
         endif
         silent exe "make"
         if getqflist() == []    "compile correct and no warning
-            let WarnFlag = 0 | silent exe "ccl" | exe "!%<.exe"
+            let l:flag = 0 | silent exe "ccl" | exe "!%<.exe"
         else
-            for needle in getqflist()
-                for value in values(needle)
-                    if value =~ 'error' | let WarnFlag = 1 | break
-                    elseif value =~ 'warning' | let WarnFlag = 2
-                    else | let WarnFlag = 0
+            for l:inx in getqflist()
+                for l:val in values(l:inx)
+                    if l:val =~ 'error' | let l:flag = 1 | break
+                    elseif l:val =~ 'warning' | let l:flag = 2
+                    else | let l:flag = 0
                     endif
                 endfor
             endfor
         endif
-        if WarnFlag == 2 | exe "cw"
-        elseif WarnFlag == 1
-            let select = input('There are warnings! [r]un or [s]olve? ')
-            if select ==  'r' | exe "!%<.exe" | exe "cw"
-            elseif select == 's' | exe "cw"
+        if l:flag == 1 | exe "cw"
+        elseif l:flag == 2
+            let l:select = input('There are warnings! [r]un or [s]olve? ')
+            if l:select ==  'r' | exe "!%<.exe" | exe "cw"
+            elseif l:select == 's' | exe "cw"
             else | echohl ErrorMsg | echo "input error!"
             endif
         else | exe "cw"
