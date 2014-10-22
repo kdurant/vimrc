@@ -52,11 +52,11 @@ Plug 'vim-scripts/verilog_systemverilog.vim', {'frozen': 1}
 Plug 'vim-scripts/verilog.vim', {'frozen': 1}
 call plug#end()
 if g:is_win == 1
-    nmap	,so		:source ~/_vimrc<CR>
-    nmap	,se		:tabnew<cr>:e ~/_vimrc<CR>
+    nmap    ,so     :source ~/_vimrc<CR>
+    nmap    ,se     :tabnew<cr>:e ~/_vimrc<CR>
 elseif g:is_unix == 1
-    nmap	,so		:source ~/.vimrc<CR>
-    nmap	,se		:tabnew<cr>:e ~/.vimrc<CR>
+    nmap    ,so     :source ~/.vimrc<CR>
+    nmap    ,se     :tabnew<cr>:e ~/.vimrc<CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -195,26 +195,26 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others key map settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap	<F2>	    @@
+nmap    <F2>        @@
 
-imap    <M-j>       <Down>
-imap    <M-k>       <Up>
-imap    <M-h>       <left>
-imap    <M-l>       <Right>
+map!    <M-j>       <Down>
+map!    <M-k>       <Up>
+map!    <M-h>       <left>
+map!    <M-l>       <Right>
 
-map	    <C-s>	    :w!<cr>
-imap	<C-s>	    <esc>:w!<cr>
+map     <C-s>       :w!<cr>
+imap    <C-s>       <esc>:w!<cr>
 
-nmap    <M-r>	    :bro e<cr>
+nmap    <M-r>       :bro e<cr>
 "delete dos end-of-file and write
-nmap    ,rm		    :%s/\r//g<cr>:w<cr>
+nmap    ,rm         :%s/\r//g<cr>:w<cr>
 "remove space of line end
-nmap    ,rn		    :%s/\s\+$//g<cr>
-nmap    ,rg		    :%s/^\n\+/\r/g<cr>
+nmap    ,rn         :%s/\s\+$//g<cr>
+nmap    ,rg         :%s/^\n\+/\r/g<cr>
 nmap    ,rc         :%s/\i\+/&/gn|noh
 
-nmap    <M-h>	    :h<space>
-nmap    <M-a>	    ggVG
+nmap    <M-h>       :h<space>
+nmap    <M-a>       ggVG
 
 nmap    <M-d>v      :call CompileFile()<cr>
 
@@ -298,7 +298,7 @@ let $VIMSESSION = '~/PluginConfig/session.vim'
 autocmd VimLeave * mksession! $VIMSESSION
 autocmd VimLeave * let save_cursor = getpos(".")
 autocmd VimEnter  call setpos('.', save_cursor)
-nmap	<F7>	:so $VIMSESSION<cr>
+nmap    <F7>    :so $VIMSESSION<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "airline settings
@@ -375,22 +375,22 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "NERD Comment settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map	    <F3>	\ci
-nmap    ,ca		\cA
+map     <F3>    \ci
+nmap    ,ca     \cA
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "mark settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:mwAutoLoadMarks = 1			"autoload mark points settings
-let g:mwDefaultHighlightingPalette = 'extended'			"use more colors
-let g:mwAutoSaveMarks = 1			"auto save mark points
+let g:mwAutoLoadMarks = 1           "autoload mark points settings
+let g:mwDefaultHighlightingPalette = 'extended'         "use more colors
+let g:mwAutoSaveMarks = 1           "auto save mark points
 "search mark point
-nmap	    <M-i>	\*
-nmap	    <M-u>	\#
+nmap        <M-i>   \*
+nmap        <M-u>   \#
 "set mark points
-map		    <M-m>   \mu
+map         <M-m>   \mu
 "clear all mark points
-nmap		<M-n>	:MarkClear<cr>
+nmap        <M-n>   :MarkClear<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Ctags and cscope settings
@@ -414,8 +414,8 @@ nmap    <F4>    :AuthorInfoDetect<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "signature settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap	-	]`
-nmap	0	[`
+nmap    -   ]`
+nmap    0   [`
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vimwiki settings
