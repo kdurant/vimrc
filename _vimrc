@@ -52,11 +52,11 @@ Plug 'vim-scripts/verilog_systemverilog.vim', {'frozen': 1}
 Plug 'vim-scripts/verilog.vim', {'frozen': 1}
 call plug#end()
 if g:is_win
-    map     ,so     :source ~/_vimrc<CR>
-    map     ,se     :tabnew<cr>:e ~/_vimrc<CR>
+    map     ,so     :source ~/_vimrc<cr>
+    map     ,se     :tabnew<cr>:e ~/_vimrc<cr>
 elseif g:is_unix
-    map     ,so     :source ~/.vimrc<CR>
-    map     ,se     :tabnew<cr>:e ~/.vimrc<CR>
+    map     ,so     :source ~/.vimrc<cr>
+    map     ,se     :tabnew<cr>:e ~/.vimrc<cr>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -188,7 +188,7 @@ nmap    <M-->       <C-W>-
 nmap    <M-=>       <C-W>+
 nmap    <M-c>       :clo<cr>
 if g:is_win
-    if empty(glob('E:/Vim/vim74/vimtweak.dll'))
+    if !executable("vimtweak.dll")
         map     ,sx     :simalt ~x<cr>
         map     ,sr     :simalt ~r<cr>
     else
@@ -462,8 +462,9 @@ let g:UltiSnipsSnippetDirectories=["E:/home/PluginConfig/UltiSnipsDir/"]
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<M-d>f'
 "nmap <M-d>b     :CtrlPBuffer<cr>
-nmap <M-d>b     :CtrlPHiBuff<CR>
-nmap <M-d>d     :CtrlPBookmarkDir<cr>
+map <M-d>b      :CtrlPHiBuff<cr>
+map <M-d>d      :CtrlPBookmarkDir<cr>
+map <M-d>r      :CtrlPMRU<cr>
 let g:ctrlp_by_filename = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_working_path_mode = 'ra'
@@ -475,7 +476,6 @@ let g:ctrlp_custom_ignore = {
             \ 'file': '\v\.(o|pbi|cout|exe|so|dll|lnk|rpt|summary|db)$',
             \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
             \ }
-nmap <M-d>r     :CtrlPMRU<cr>
 let g:ctrlp_mruf_include = '\.c$\|\.h$\|\.m$\|\.tcl$\|\.v$'
 let g:ctrlp_root_markers = ['README.md']
 hi  link    CtrlPMatch      Define
@@ -507,6 +507,7 @@ imap    <M-b>   begin<cr>end<esc>O
 let g:vcoolor_map = '<M-d>c'
 let g:vcool_ins_rgb_map = '<M-F1>'
 let g:vcool_ins_hsl_map = '<M-F2>'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""self function*************************************************
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -522,27 +523,9 @@ function! Search_Word()
         echohl Function
         if input('Search current word with current filetype, y or n ? ') == 'y'
             exe "cd " . Find_project_root()
-            silent exe 'grep ' . expand("<cword>") . ' ' . '**/*'
-            let g:quick_list = getqflist()
-            for needle in g:quick_list
-                " 遍历列表，找到里面的每个字典
-                "g:quick_dic = g:quick_list[needle]
-                " haskey() 找到不符合要求的
-                "for key in keys(g:quick_list[needle])
-                    "echo key . ': ' . mydict[key]
-                "endfor
-
-                "for v in values(g:quick_list[needle])
-                   "if g:quick_list[needle] !~# expand("<cword>")
-                       "remove(g:quick_list, needle)
-                   "endif
-                "endfor
-                "if g:quick_list[needle] !~# '\.[ch]'
-                    "remove(g:quick_list, needle)
-                "endif
-            endfor
-            "setqflist(g:quick_list)
+            exe 'grep ' . expand("<cword>") . ' ' . '**/*'
             exe 'cw'
+            " 遍历列表，找到里面的每个字典 " haskey() 找到不符合要求的
         endif
         echo '' | echohl none
     else
@@ -554,11 +537,10 @@ endfunction
 "replace current cursor word
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 fun! Replace()
-    let word = input("Replace " . expand('<cword>') . " with: ")
-    if word != ''
-        exe '%s/\<' . expand('<cword>') . '\>/' . word . '/ge' . '| update'
+    let l:word = input("Replace " . expand('<cword>') . " with: ")
+    if l:word != ''
+        exe '%s/\<' . expand('<cword>') . '\>/' . l:word . '/ge | update'
     endif
-    unlet! word
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
