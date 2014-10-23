@@ -514,31 +514,40 @@ let g:vcool_ins_hsl_map = '<M-F2>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "search word that is at current work path
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:quick_list = []
+let g:quick_dic ={}
 function! Search_Word()
-    set autochdir
-    echohl Number
-    let l:select = input('Search current word with current file type, y or n ? ')
-    if l:select == 'y'
-        "silent exe 'grep ' . expand("<cword>") . ' ' . getcwd() . '/*' . expand("%:e")
-        silent exe 'grep ' . expand("<cword>") . ' ' . Find_project_root() . '/*' . expand("%:e")
-        if len(getqflist()) >= 1 && len(getqflist()) <= 10
-            exe 'cw' . len(getqflist())
-        elseif len(getqflist()) >= 11
+    if !empty((glob($VIMRUNTIME. "\\grep.exe")))
+        set autochdir
+        echohl Function
+        if input('Search current word with current filetype, y or n ? ') == 'y'
+            exe "cd " . Find_project_root()
+            silent exe 'grep ' . expand("<cword>") . ' ' . '**/*'
+            let g:quick_list = getqflist()
+            for needle in g:quick_list
+                " 遍历列表，找到里面的每个字典
+                "g:quick_dic = g:quick_list[needle]
+                " haskey() 找到不符合要求的
+                "for key in keys(g:quick_list[needle])
+                    "echo key . ': ' . mydict[key]
+                "endfor
+
+                "for v in values(g:quick_list[needle])
+                   "if g:quick_list[needle] !~# expand("<cword>")
+                       "remove(g:quick_list, needle)
+                   "endif
+                "endfor
+                "if g:quick_list[needle] !~# '\.[ch]'
+                    "remove(g:quick_list, needle)
+                "endif
+            endfor
+            "setqflist(g:quick_list)
             exe 'cw'
         endif
-    elseif l:select == 'n'
-        let word = input('Search string in path ' . Find_project_root() .":")
-        if word != ''
-            let file_type = input('Search string file suffix :')
-            silent exe 'grep ' . word . ' ' . getcwd() . '/*' . file_type
-        endif
-        if len(getqflist()) >= 1 && len(getqflist()) <= 10
-            exe 'cw' . len(getqflist())
-        elseif len(getqflist()) >= 11
-            exe 'cw'
-        endif
+        echo '' | echohl none
+    else
+        echohl ErrorMsg | echo "No grep.exe. Please put it into $VIMRUNTIME" | echohl none
     endif
-    echo '' | echohl none
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
