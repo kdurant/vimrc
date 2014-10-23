@@ -5,13 +5,13 @@ set nocompatible
 filetype plugin indent on
 let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
-if g:is_win == 1
+if g:is_win
     "if empty(glob('~/vimfiles/autoload/plug.vim'))
         "!curl -fLo ~/vimfiles/autoload/plug.vim
                     "\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     "endif
     call plug#begin('~/vimfiles/bundle')
-elseif g:is_unix == 1
+elseif g:is_unix
     "if empty(glob('~/.vim/autoload/plug.vim'))
         "!curl -fLo ~/.vim/autoload/plug.vim
                     "\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -35,9 +35,9 @@ Plug 'mbriggs/mark.vim', {'frozen': 1}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sergey-vlasov/ctrlp-hibuff'
 Plug 'Shougo/vimproc.vim' "make -f make_mingw32.mak
-if g:is_win == 1
+if g:is_win
     Plug 'Shougo/neocomplete.vim'
-elseif g:is_unix == 1
+elseif g:is_unix
     Plug 'Valloric/YouCompleteMe'
 endif
 Plug 'SirVer/ultisnips'
@@ -51,10 +51,10 @@ Plug 'vim-scripts/star-search', {'frozen': 1}
 Plug 'vim-scripts/verilog_systemverilog.vim', {'frozen': 1}
 Plug 'vim-scripts/verilog.vim', {'frozen': 1}
 call plug#end()
-if g:is_win == 1
+if g:is_win
     map     ,so     :source ~/_vimrc<CR>
     map     ,se     :tabnew<cr>:e ~/_vimrc<CR>
-elseif g:is_unix == 1
+elseif g:is_unix
     map     ,so     :source ~/.vimrc<CR>
     map     ,se     :tabnew<cr>:e ~/.vimrc<CR>
 endif
@@ -77,7 +77,7 @@ set helplang=cn
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set ambiwidth=double
 "set guifont=YaHei_Mono:h13
-if g:is_win == 1
+if g:is_win
     set guifont=Consolas:h13
     set guifontwide=YaHei\ Consolas\ Hybrid:h13
 endif
@@ -106,10 +106,10 @@ set clipboard+=unnamed
 set linebreak
 set nobackup
 set noswapfile
-if g:is_win == 1
+if g:is_win
     set fileformat=dos
     set fileformats=dos
-elseif g:is_unix == 1
+elseif g:is_unix
     set fileformat=unix
     set fileformats=unix
 endif
@@ -173,7 +173,7 @@ nmap    <M-d>h      :noh<cr>
 nmap    <F6>        :call Search_Word()<cr>
 nmap    ,re         :call Replace()<cr>
 
-if g:is_win == 1
+if g:is_win
     set path+=E:/MinGW/include/
 endif
 
@@ -187,7 +187,7 @@ nmap    <C-j>       <C-W>j
 nmap    <M-->       <C-W>-
 nmap    <M-=>       <C-W>+
 nmap    <M-c>       :clo<cr>
-if g:is_win == 1
+if g:is_win
     if empty(glob('E:/Vim/vim74/vimtweak.dll'))
         map     ,sx     :simalt ~x<cr>
         map     ,sr     :simalt ~r<cr>
@@ -259,7 +259,7 @@ endif
 
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 
-if g:is_win == 1
+if g:is_win
     function! Astyle()
         "silent !astyle --add-brackets %
         silent !astyle  --style=ansi %
@@ -331,7 +331,7 @@ map    <M-9>    9gt
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "neocomplete settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if g:is_win == 1
+if g:is_win
     let g:neocomplete#enable_insert_char_pre = 1
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
@@ -357,7 +357,7 @@ if g:is_win == 1
     inoremap <expr><M-e>  neocomplete#cancel_popup()
 
     set completefunc=neocomplete#complete#auto_complete
-elseif g:is_unix == 1
+elseif g:is_unix
     "set completeopt=longest,menu                 " 关掉补全时的预览窗口
     let g:ycm_confirm_extra_conf = 0              " 不用每次提示加载.ycm_extra_conf.py文件
     let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
@@ -484,7 +484,7 @@ hi  link    CtrlPMatch      Define
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set diffopt=filler,context:4,vertical,foldcolumn:4
 "set diffexpr=MyDiff()
-autocmd BufWritePost * if &diff == 1 | diffupdate | endif
+autocmd BufWritePost * if &diff | diffupdate | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "align settings
@@ -581,7 +581,7 @@ function! CompileFile()
                 endfor
             endfor
         endif
-        if l:flag == 1 | exe "cw"
+        if l:flag | exe "cw"
         elseif l:flag == 2
             let l:select = input('There are warnings! [r]un or [s]olve? ')
             if l:select ==  'r' | exe "!%<.exe" | exe "cw"
@@ -595,8 +595,8 @@ function! CompileFile()
     elseif &filetype == 'vhdl'
         echohl comment | echo "Current don't support VHDL file!"
     elseif &filetype == 'lua'
-        if g:is_win  == 1| exe "!luajit %"
-        elseif g:is_unix == 1 | exe "!lua %"
+        if g:is_win | exe "!luajit %"
+        elseif g:is_unix | exe "!lua %"
         endif
     else
         echohl ErrorMsg | echo "This filetype can't be compiled !"
@@ -733,7 +733,7 @@ endfunction
 nmap <M-s>  :Sys<space>
 command! -nargs=1 Sys call System(<f-args>)
 function! System(cmd)
-    if g:is_win == 1
+    if g:is_win
         call Find_project_root()
         echo iconv(system(a:cmd), "cp936", &enc)
     else
