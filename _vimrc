@@ -52,11 +52,11 @@ Plug 'vim-scripts/verilog_systemverilog.vim', {'frozen': 1}
 Plug 'vim-scripts/verilog.vim', {'frozen': 1}
 call plug#end()
 if g:is_win == 1
-    nmap    ,so     :source ~/_vimrc<CR>
-    nmap    ,se     :tabnew<cr>:e ~/_vimrc<CR>
+    map     ,so     :source ~/_vimrc<CR>
+    map     ,se     :tabnew<cr>:e ~/_vimrc<CR>
 elseif g:is_unix == 1
-    nmap    ,so     :source ~/.vimrc<CR>
-    nmap    ,se     :tabnew<cr>:e ~/.vimrc<CR>
+    map     ,so     :source ~/.vimrc<CR>
+    map     ,se     :tabnew<cr>:e ~/.vimrc<CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -188,8 +188,13 @@ nmap    <M-->       <C-W>-
 nmap    <M-=>       <C-W>+
 nmap    <M-c>       :clo<cr>
 if g:is_win == 1
-    nmap    ,sx     :simalt ~x<cr>
-    nmap    ,sr     :simalt ~r<cr>
+    if empty(glob('E:/Vim/vim74/vimtweak.dll'))
+        map     ,sx     :simalt ~x<cr>
+        map     ,sr     :simalt ~r<cr>
+    else
+        map     ,sx     :call Maximize()<cr>
+        map     ,st     :call Topmost()<cr>
+    endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -755,4 +760,25 @@ function! GenerateCtags()
         exe 'set tags+=' . Find_project_root() .'/tags'
 endfunction
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"vimtweak settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! -nargs=1 Lucency call LUcency(<f-args>)
+function! LUcency(value)
+    echo a:value
+    call libcallnr("vimtweak.dll", "SetAlpha", a:value)
+endfunction
+
+let g:maximize = 1
+function! Maximize()
+    call libcallnr("vimtweak.dll", "EnableMaximize", g:maximize)
+    if g:maximize == 0 | exe "winpos 570 0" | endif
+    let g:maximize = !g:maximize
+endfunction
+
+let g:topmost = 1
+function! Topmost()
+    call libcallnr("vimtweak.dll", "EnableTopMost", g:topmost)
+    let g:topmost = !g:topmost
+endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
