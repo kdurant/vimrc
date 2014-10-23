@@ -22,7 +22,6 @@ Plug 'asins/vimcdoc', {'frozen': 1}
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit', {'frozen': 1}
-Plug 'luochen1990/rainbow', {'frozen': 1}
 Plug 'git@github.com:kdurant/Asciitable.vim', {'frozen': 1}
 Plug 'git@github.com:kdurant/AuthorInfo', {'frozen': 1}
 Plug 'git@github.com:kdurant/bookmark'
@@ -152,7 +151,7 @@ set fillchars=fold:\ ,diff:/
 nmap    ,ma         :set fdm=manual<cr>
 nmap    ,in         :set fdm=indent<cr>
 nmap    ,sy         :set fdm=syntax<cr>
-nmap    <M-e>           ^zf%
+nmap    <M-e>       ^zf%
 
 nmap    <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
 nmap    <M-j>       zj
@@ -272,7 +271,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""plugin config*************************************************
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:rainbow_active = 1
 map     K       \cr
 autocmd FileType lua  setlocal iskeyword+=.
 
