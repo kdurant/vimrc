@@ -353,13 +353,6 @@ if g:is_win == 1
 
     let g:neocomplete#data_directory='$HOME\PluginConfig\neocomplete'
 
-    let g:neocomplete#sources#dictionary#dictionaries = {
-                \ 'default' : '',
-                \ 'c' : $HOME.'/PluginConfig/neocomplete/c.dict',
-                \ 'txt' : $HOME.'/PluginConfig/neocomplete/verilog.dict',
-                \ 'verilog' : $HOME.'/PluginConfig/neocomplete/verilog.dict',
-                \ }
-
     nmap     <M-b>   :NeoCompleteBufferMakeCache<cr>
     inoremap <expr><M-e>  neocomplete#cancel_popup()
 
