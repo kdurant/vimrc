@@ -286,7 +286,7 @@ nmap <M-;>  :Dit<space>
 command! -nargs=1 Dit call GitCmd(<f-args>)
 function! GitCmd(git_cmd)
     if has('win32') || has('win64')
-        exe "cd " . Find_project_root()
+        exe "cd " . Search_root()
         echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
     endif
 endfunction
@@ -520,7 +520,7 @@ function! Search_Word()
         set autochdir
         echohl Function
         if input('Search current word with current filetype, y or n ? ') == 'y'
-            exe "cd " . Find_project_root()
+            exe "cd " . Search_root()
             exe 'grep ' . expand("<cword>") . ' ' . '**/*'
             exe 'cw'
             " 遍历列表，找到里面的每个字典 " haskey() 找到不符合要求的
@@ -655,7 +655,7 @@ if !exists('g:root_marker')
   let g:root_marker = [".git"]
 endif
 
-function! Find_project_root()
+function! Search_root()
     let project_root = fnamemodify(".", ":p:h")
 
     if !empty(g:root_marker)
@@ -688,7 +688,7 @@ endfunction
 "generate cscope files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Do_CsTag()
-    call Find_project_root()
+    call Search_root()
     if &filetype == 'c' || &filetype == 'cpp'
         if(executable('cscope') && has("cscope") )
             if(has('unix'))
@@ -697,7 +697,7 @@ function! Do_CsTag()
                 "call system('dir /s/b *.c,*.cpp,*.h > cscope.files')
                 silent! exe '!dir /s/b *.c,*.cpp,*.h > cscope.files'
             endif
-            call Find_project_root()
+            call Search_root()
             silent! exe 'cscope kill -1'
             call system('del cscope.out') | call system('cscope -Rb')
             if filereadable("cscope.out")
@@ -723,7 +723,7 @@ nmap <M-s>  :Sys<space>
 command! -nargs=1 Sys call System(<f-args>)
 function! System(cmd)
     if g:is_win
-        call Find_project_root()
+        call Search_root()
         echo iconv(system(a:cmd), "cp936", &enc)
     else
         echo "Don't complete this action!"
@@ -731,7 +731,7 @@ function! System(cmd)
 endfunction
 
 function! GenerateCtags()
-    exe "cd " . Find_project_root()
+    exe "cd " . Search_root()
     if &filetype == 'c' || &filetype == 'cpp'
         call system('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
     elseif &filetype == "verilog"
@@ -739,7 +739,7 @@ function! GenerateCtags()
     else
         echohl  ErrorMsg | echo "Generate tags fail!" | echohl None
     endif
-        exe 'set tags+=' . Find_project_root() .'/tags'
+        exe 'set tags+=' . Search_root() .'/tags'
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
