@@ -443,7 +443,6 @@ hi link VimwikiHeader4 Conditional
 hi link VimwikiHeader5 Statement
 hi link VimwikiHeader6 Keyword
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "UltiSnips settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -656,32 +655,32 @@ if !exists('g:root_marker')
 endif
 
 function! Search_root()
-    let project_root = fnamemodify(".", ":p:h")
+    let l:root = fnamemodify(".", ":p:h")
 
     if !empty(g:root_marker)
         let root_found = 0
-        let candidate = fnamemodify(project_root, ":p:h")
-        let last_candidate = ""
-        while candidate != last_candidate
+        let l:cur_dir = fnamemodify(l:root, ":p:h")
+        let l:prev_dir = ""
+        while l:cur_dir != l:prev_dir
             for tags_dir in g:root_marker
-                let tags_dir_path = candidate . "/" . tags_dir
-                if filereadable(tags_dir_path) || isdirectory(tags_dir_path)
+                let l:tag_path = l:cur_dir . "/" . tags_dir
+                if filereadable(l:tag_path) || isdirectory(l:tag_path)
                     let root_found = 1 | break
                 endif
             endfor
 
             if root_found
-                let project_root = candidate | break
+                let l:root = l:cur_dir | break
             endif
 
-            let last_candidate = candidate
-            let candidate = fnamemodify(candidate, ":p:h:h")
+            let l:prev_dir = l:cur_dir
+            let l:cur_dir = fnamemodify(l:cur_dir, ":p:h:h")
         endwhile
 
-        return root_found ? project_root : fnamemodify(".", ":p:h")
+        return root_found ? l:root : fnamemodify(".", ":p:h")
     endif
 
-    return project_root
+    return l:root
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
