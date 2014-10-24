@@ -569,7 +569,7 @@ function! CompileFile()
                 endfor
             endfor
         endif
-        if l:flag | exe "cw"
+        if l:flag == 1| exe "cw"
         elseif l:flag == 2
             let l:select = input('There are warnings! [r]un or [s]olve? ')
             if l:select ==  'r' | exe "!%<.exe" | exe "cw"
@@ -582,10 +582,8 @@ function! CompileFile()
         exe "!%<.py"
     elseif &filetype == 'vhdl'
         echohl comment | echo "Current don't support VHDL file!"
-    elseif &filetype == 'lua'
-        if g:is_win | exe "!luajit %"
-        elseif g:is_unix | exe "!lua %"
-        endif
+    elseif &filetype == 'lua' && executable("lua")
+        exe "!lua %"
     else
         echohl ErrorMsg | echo "This filetype can't be compiled !"
     endif
