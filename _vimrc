@@ -556,20 +556,20 @@ function! CompileFile()
         endif
         silent exe "make"
         if getqflist() == []    "compile correct and no warning
-            let g:wang_flag = 0 | silent exe "ccl" | exe "!%<.exe"
+            let l:flag = 0 | silent exe "ccl" | exe "!%<.exe"
         else
             for l:inx in getqflist()
                 for l:val in values(l:inx)
-                    if l:val =~ 'error' | let g:wang_flag = 1 | break
-                    elseif l:val =~ 'warning' | let g:wang_flag = 2
-                    else | let g:wang_flag = 0
+                    if l:val =~ 'error' | let l:flag = 1 | break
+                    elseif l:val =~ 'warning' | let l:flag = 2
+                    else | let l:flag = 0
                     endif
                 endfor
                 if l:val =~ 'error' | break | endif
             endfor
         endif
-        if g:wang_flag == 1| exe "cw"
-        elseif g:wang_flag == 2
+        if l:flag == 1| exe "cw"
+        elseif l:flag == 2
             let l:select = input('There are warnings! [r]un or [s]olve? ')
             if l:select ==  'r' | exe "!%<.exe" | exe "cw"
             elseif l:select == 's' | exe "cw"
