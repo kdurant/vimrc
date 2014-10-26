@@ -565,6 +565,7 @@ function! CompileFile()
                     else | let l:flag = 0
                     endif
                 endfor
+                break
             endfor
         endif
         if l:flag == 1| exe "cw"
