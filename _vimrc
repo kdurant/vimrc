@@ -52,10 +52,10 @@ Plug 'vim-scripts/verilog.vim', {'frozen': 1}
 call plug#end()
 if g:is_win
     map     ,so     :source ~/_vimrc<cr>
-    map     ,se     :tabnew<cr>:e ~/_vimrc<cr>
+    map     ,se     :tabnew ~/_vimrc<cr>
 elseif g:is_unix
     map     ,so     :source ~/.vimrc<cr>
-    map     ,se     :tabnew<cr>:e ~/.vimrc<cr>
+    map     ,se     :tabnew ~/.vimrc<cr>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -236,24 +236,22 @@ imap    <M-o>       <esc>o
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "menu bar and tool bar settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set guioptions-=m
-set guioptions-=T
-nmap <silent> <F12> :if &guioptions =~# 'T' <Bar>
-        \set guioptions-=T <Bar>
-        \set guioptions-=m <bar>
-    \else <Bar>
-        \set guioptions+=T <Bar>
-        \set guioptions+=m <Bar>
-    \endif<cr>
+set go-=m
+set go-=T
+map <silent> <F12> :call MenuBar()<cr>
+function! MenuBar()
+    if &go =~# 'T' | set go-=T | set go-=m
+    else | set go+=T | set go+=m
+    endif
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"user define calculate command, need install python
 if has('python')
     command! -nargs=+ Calc :py print <args>
     py from math import *
-    nmap    <M-q>   :Calc<space>
+    map     <M-q>   :Calc<space>
 endif
 
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
