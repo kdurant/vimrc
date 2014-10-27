@@ -400,10 +400,7 @@ nmap <F9> :call Do_CsTag()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "authorinfo settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimrc_author='kdurant'
-let g:vimrc_email='kdurant0725@gmail.com'
-let g:vimrc_homepage=' '
-nmap    <F4>    :AuthorInfoDetect<cr>
+map     <F4>    :AuthorInfoDetect<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "signature settings
