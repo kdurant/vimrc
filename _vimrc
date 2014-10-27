@@ -719,7 +719,9 @@ endfunction
 let g:maximize = 1
 function! Maximize()
     call libcallnr("vimtweak.dll", "EnableMaximize", g:maximize)
-    if g:maximize == 0 | exe "winpos 570 0" | endif
+    if g:maximize == 0
+        set lines=38 columns=85
+        exe "winpos 570 0" | endif
     let g:maximize = !g:maximize
 endfunction
 
