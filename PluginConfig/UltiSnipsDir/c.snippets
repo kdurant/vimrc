@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 {
     ${1:/*code*/}
 
-    return 0 ;
+    return 0;
 }
 endsnippet
 
@@ -72,7 +72,9 @@ endsnippet
 snippet #ifn "#ifndef ... #define ... #endif"
 #ifndef `!v toupper(expand('%:r'))`_H
 #define `!v toupper(expand('%:r'))`_H
+
 $1
+
 #endif
 endsnippet
 
@@ -98,7 +100,7 @@ else if(${1:/*cond*/})
 endsnippet
 
 snippet ?
-${1:/*LHS*/} = ${2:/*cond*/} ? ${3:/*expr1*/} : ${4:/*expr2*/} ;
+${1:/*LHS*/} = ${2:/*cond*/} ? ${3:/*expr1*/} : ${4:/*expr2*/};
 endsnippet
 
 snippet do	"do ... while loop"
@@ -106,7 +108,7 @@ do
 {
     ${2:/*code*/}
 }
-while (${1:/*cond*/}) ;
+while (${1:/*cond*/});
 endsnippet
 
 snippet wh	"while loop"
@@ -132,25 +134,25 @@ ${1:void} ${2:/*function_name*/}(${3:/*parameter*/})
 endsnippet
 
 snippet fund	"function declaration"
-${1:void} ${2:/*function_name*/}(${3}) ;
+${1:void} ${2:/*function_name*/}(${3});
 endsnippet
 
 snippet st	"struct"
 struct ${1:/*struct*/}
 {
 	${2:/*data*/}
-} ;
+};
 endsnippet
 
 snippet un	"union"
 union ${1:/*union*/}
 {
 	${2:/*data*/}
-} ;
+};
 endsnippet
 
 snippet td	"typedef"
-typedef ${1:int} ${2:/*MyCustomType*/} ;
+typedef ${1:int} ${2:/*MyCustomType*/};
 endsnippet
 
 snippet tdf	"typedef function point"
@@ -168,7 +170,7 @@ typedef struct __${1:/*struct*/}
 {
 	${2:/*data*/};
 	void (*construct)(struct __$1 *this);
-}$1Def ;
+}$1Def;
 endsnippet
 
 snippet tde	"typedef enum"
@@ -196,54 +198,54 @@ snippet sw	"switch ... case"
 switch (${1:/*cond*/})
 {
 	case ${2:/*select*/} :
-		break ;
+		break;
 	default:
-		break ;
+		break;
 }
 endsnippet
 
 snippet puts	"puts(const char *s)"
-puts("${1:/*str*/}") ;
+puts(${1:/*str*/});
 endsnippet
 
 snippet gets	"gets(char *s)"
-gets(${2:/*str*/}) ;
+gets(${2:/*str*/});
 endsnippet
 
 snippet pr "printf(const char *format, ...)"
-printf("${1:str}\n", ${2:variable}) ;
+printf("${1:str}\n", ${2:variable});
 endsnippet
 
 snippet scanf
-scanf("%${1:d}",&${2:/*num*/}) ;
+scanf("%${1:d}",&${2:/*num*/});
 endsnippet
 
 snippet fopen
-${1:/*FilePoint*/} *fopen("${2:/*FileName*/}", "${3:/*OpenType*/}") ;
+${1:/*FilePoint*/} *fopen("${2:/*FileName*/}", "${3:/*OpenType*/}");
 endsnippet
 
 snippet fclose
-fclose(${1:/*FilePoint*/}) ;
+fclose(${1:/*FilePoint*/});
 endsnippet
 
 snippet fputc
-fputc('${1:/*char*/}',${2:/*FilePoint*/} ;
+fputc('${1:/*char*/}',${2:/*FilePoint*/};
 endsnippet
 
 snippet fgetc
-${1:/*char*/} = fgetc(${2:/*FilePoint*/}) ;
+${1:/*char*/} = fgetc(${2:/*FilePoint*/});
 endsnippet
 
 snippet fputs
-fputs('${1:/*str*/}',${2:/*FilePoint*/} ;
+fputs('${1:/*str*/}',${2:/*FilePoint*/};
 endsnippet
 
 snippet fgets
-${1:/*str*/} = fgets(${2:/*FilePoint*/}) ;
+${1:/*str*/} = fgets(${2:/*FilePoint*/});
 endsnippet
 
 snippet fprintf
-fprintf(${1:/*FilePoint*/}, "${2:/*format*/}", "${3:variable}") ;
+fprintf(${1:/*FilePoint*/}, "${2:/*format*/}", "${3:variable}");
 endsnippet
 
 snippet fscanf
@@ -268,7 +270,7 @@ snippet fwrite
 endsnippet
 
 snippet malloc
-${1:/*point*/} = (${2:int} *)malloc(${3:len}*sizeof($2)) ;
+${1:/*point*/} = (${2:int} *)malloc(${3:len}*sizeof($2));
 if( $1 == NULL)
 {
 	//exit(1);
@@ -277,79 +279,83 @@ free($1);
 endsnippet
 
 snippet strcpy	"copy src to dest"
-strcpy(${1:/*dest*/}, ${2:/*src*/}) ;
+strcpy(${1:/*dest*/}, ${2:/*src*/});
 endsnippet
 
 snippet strncpy	"copy n char from src to dest"
-strncpy(${1:/*dest*/}, ${2:/*src*/}, ${3:/*n*/}) ;
+strncpy(${1:/*dest*/}, ${2:/*src*/}, ${3:/*n*/});
 endsnippet
 
 snippet strcat	"append src to dest"
-strcat(${1:/*dest*/}, ${2:/*src*/}) ;
+strcat(${1:/*dest*/}, ${2:/*src*/});
 endsnippet
 
 snippet strncat	"append src to dest"
-strncat(${1:/*dest*/}, ${2:/*src*/}, ${3:/*n*/}) ;
+strncat(${1:/*dest*/}, ${2:/*src*/}, ${3:/*n*/});
 endsnippet
 
 snippet strcmp	"compare str1 against str2"
-strcmp(${1:/*str1*/}, ${2:/*str2*/}) ;
+strcmp(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
 snippet strcoll	"similar to strcmp()"
-strcoll(${1:/*str1*/}, ${2:/*str2*/}) ;
+strcoll(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
 snippet strncmp	"no more than n character"
-strncmp(${1:/*str1*/}, ${2:/*str2*/}, ${3:/*n*/}) ;
+strncmp(${1:/*str1*/}, ${2:/*str2*/}, ${3:/*n*/});
+endsnippet
+
+snippet strtol	"convert str to number"
+strtol(${1:/*str1*/}, (char **)NULL, ${2:10});
 endsnippet
 
 snippet strxfrm
 endsnippet
 
 snippet strchr	"returns a pointer to the located character"
-strchr(${1:/*str*/}, '${2:/*char*/}') ;
+strchr(${1:/*str*/}, '${2:/*char*/}');
 endsnippet
 
 snippet strcspn	"return offset of str1 that is a member of str2"
-strcspn(${1:/*str1*/}, ${2:/*str2*/}) ;
+strcspn(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
 snippet strpbrk	"related to strcspn()"
-strpbrk(${1:/*str1*/}, ${2:/*str2*/}) ;
+strpbrk(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
 snippet strrchr	"search str from the end of str"
-strrchr(${1:/*str*/}, '${2:/*char*/}') ;
+strrchr(${1:/*str*/}, '${2:/*char*/}');
 endsnippet
 
 snippet strspn
-strspn(${1:/*str1*/}, ${2:/*str2*/}) ;
+strspn(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
 snippet strtok
-strtok(${1:/*str1*/}, ${2:/*str2*/}) ;
+strtok(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
 snippet swab
 endsnippet
 snippet	rand
-${1:/*rand_num*/} = rand() % ${2:/*maxnum*/} ;
+${1:/*rand_num*/} = rand() % ${2:/*maxnum*/};
 endsnippet
 snippet setbuf
 setbuf(${1:stdout},${2:NULL});	//display infomation when use eclipse debug
 endsnippet
 
 snippet he
-printf("hello world!\n") ;
+printf("hello world!\n");
 endsnippet
 
 snippet swap	"swap two variable"
 void swap(int *x, int *y)
 {
-    int temp = *x ;
-	*x = *y ;
-	*y = t ;
+    int temp = *x;
+	*x = *y;
+	*y = t;
 }
 endsnippet
 
