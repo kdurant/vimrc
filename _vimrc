@@ -22,13 +22,13 @@ Plug 'asins/vimcdoc', {'frozen': 1}
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit', {'frozen': 1}
-Plug 'git@github.com:kdurant/Asciitable.vim', {'frozen': 1}
-Plug 'git@github.com:kdurant/AuthorInfo', {'frozen': 1}
-Plug 'git@github.com:kdurant/bookmark'
-Plug 'git@github.com:kdurant/CRefVim'
-Plug 'git@github.com:kdurant/nerdcommenter', {'frozen': 1}
-Plug 'git@github.com:kdurant/verilog-testbench', {'frozen': 1}
-Plug 'git@github.com:kdurant/vim_colors', {'frozen': 1}
+Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
+Plug 'kdurant/AuthorInfo', {'frozen': 1}
+Plug 'kdurant/bookmark'
+Plug 'kdurant/CRefVim'
+Plug 'kdurant/nerdcommenter', {'frozen': 1}
+Plug 'kdurant/verilog-testbench', {'frozen': 1}
+Plug 'kdurant/vim_colors', {'frozen': 1}
 Plug 'kshenoy/vim-signature'
 Plug 'mbriggs/mark.vim', {'frozen': 1}
 Plug 'ntpeters/vim-better-whitespace'
