@@ -1,2 +1,0 @@
-建立归档文件
-git archive -o name.zip SHA1

@@ -1,7 +1,0 @@
-名称：Time-Base Status Register
-位宽：16
-作用：
-说明： 
-   0,   CTRDIR      计数方向状态位，要先设置[[TBCTL]][CTRMODE] 
-   1,   SYNCI       输入同步锁存状态位
-   2，  CTRMAX

@@ -1,5 +1,0 @@
-名称：Time-Base Phase Register
-位宽：16
-作用：
-说明： 
-    15:0,   [[TBCTL]][PHSEN] = 1时，使用

@@ -1,2 +1,0 @@
-将branch rebase到当前分支
-git rebase branch | commit ID

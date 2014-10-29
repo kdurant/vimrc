@@ -1,1 +1,0 @@
-[[PCLKCR]]      Peripheral Clock Control Register 0

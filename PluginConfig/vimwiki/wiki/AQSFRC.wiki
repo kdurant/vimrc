@@ -1,5 +1,0 @@
-名称:Action-Qualifier Software Force Register
-位宽:16
-作用:
-说明: 
-

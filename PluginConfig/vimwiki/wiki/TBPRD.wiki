@@ -1,6 +1,0 @@
-名称：Time-Base Period Register
-位宽：16
-作用：设置时基计数器的周期, 和[[TBCTL]][PRDLD]相关
-说明： 
-    15:0
-

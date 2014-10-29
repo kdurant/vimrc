@@ -1,3 +1,0 @@
-#pragma DATA_SECTION(函数名或全局变量名，"用户自定义在数据空间的段名"）
-DATA_SECTION 针对数据空间， CODE_SECTION针对程序空间
-

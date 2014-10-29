@@ -43,7 +43,6 @@ Plug 'SirVer/ultisnips'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'tpope/vim-fugitive', {'frozen': 1}
 Plug 'tpope/vim-surround', {'frozen': 1}
-Plug 'vimwiki/vimwiki', {'frozen': 1}
 Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'vim-scripts/cmdline-completion', {'frozen': 1}
 Plug 'vim-scripts/star-search', {'frozen': 1}
@@ -407,36 +406,6 @@ map     <F4>    :AuthorInfoDetect<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap    -   ]`
 nmap    0   [`
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"vimwiki settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_camel_case = 1
-let g:vimwiki_w32_dir_enc = 'utf-8'
-let g:vimwiki_use_mouse = 1
-let g:vimwiki_hl_cb_checked = 1
-" 新建一个wiki并对其进行配置
-let wiki                  = {}
-let wiki.path             = '~/PluginConfig/vimwiki/wiki/'
-let wiki.path_html        = '~/PluginConfig/vimwiki/html/'
-let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'verilog': 'verilog'}
-let wiki.template_path    = '~/PluginConfig/vimwiki/templates/'
-let wiki.template_default = 'site'                         " 指定默认模板，后面我会提供一份给你做参考
-let wiki.template_ext     = '.html'                        " 指定模板文件的后缀
-let wiki.auto_export      = 1                              " 保存wiki源文件时自动编译成HTML
-" 对新建的wiki进行注册
-let g:vimwiki_list = [wiki]
-
-"let g:vimwiki_list = [{'path': '~/PluginConfig/vimwiki',
-                       "\ 'syntax': 'markdown', 'ext': '.md'}]
-nmap <F5> :Vimwiki2HTMLBrowse<cr>
-
-hi link VimwikiHeader1 Macro
-hi link VimwikiHeader2 Number
-hi link VimwikiHeader3 PreProc
-hi link VimwikiHeader4 Conditional
-hi link VimwikiHeader5 Statement
-hi link VimwikiHeader6 Keyword
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "UltiSnips settings

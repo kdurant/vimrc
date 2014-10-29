@@ -1,8 +1,0 @@
-git-clean - Remove untracked files from the working tree 
-
-= 显示将要被删除的文件或目录 =
-git clean -nd
-
-= 真正删除多余的文件或目录 =
-git clean -fd
-

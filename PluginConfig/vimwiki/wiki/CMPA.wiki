@@ -1,6 +1,0 @@
-名称:Counter-Compare A Register
-位宽:16
-作用:和[[TBCTR]]的值比较,产生适当的事件.与[[AQCTLA]]和[[CMPCTL|CMPCTL SHDWAMODE]]
-    和相关
-说明: 
-
