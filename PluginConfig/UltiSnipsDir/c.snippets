@@ -213,7 +213,7 @@ gets(${2:/*str*/});
 endsnippet
 
 snippet pr "printf(const char *format, ...)"
-printf("${1:str}\n", ${2:variable});
+printf("%${1:d}\n", ${2:variable});
 endsnippet
 
 snippet scanf
@@ -371,6 +371,14 @@ endsnippet
 
 snippet memset	"memset(void *block, int c, size_t size)"
 memset(${1:buffer}, ${2:0x00}, sizeof($1)/sizeof(${3:int}));
+endsnippet
+
+snippet memcpy	"copy src to dest"
+memcpy(${1:/*dest*/}, ${2:/*src*/}, ${3:size});
+endsnippet
+
+snippet memmove	"copy src to dest"
+memmove(${1:/*dest*/}, ${2:/*src*/}, ${3:size});
 endsnippet
 
 snippet pack
