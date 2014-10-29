@@ -14,3 +14,4 @@ PluginConfig/session.vim
 _viminfo
 .netrwhist
 *.old
+.git-credentials
