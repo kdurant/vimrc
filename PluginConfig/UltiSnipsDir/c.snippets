@@ -228,12 +228,16 @@ snippet fclose
 fclose(${1:fp});
 endsnippet
 
-snippet fputc
-fputc('${1:/*char*/}',${2:fp};
+snippet fseek	"change file position"
+fseek(${1:fp}, ${2:offset}, ${3:SEEK_SET});
 endsnippet
 
-snippet fgetc
-${1:/*char*/} = fgetc(${2:fp});
+snippet fputc
+fputc(${1:char},${2:fp});
+endsnippet
+
+snippet fgetc "read char and convert to int"
+${1:num} = fgetc(${2:fp});
 endsnippet
 
 snippet fputs
@@ -257,10 +261,16 @@ endsnippet
 snippet ferror
 endsnippet
 
-snippet rewind
+snippet rewind	"set stream at file beginning"
+rewind(${1:fp});
 endsnippet
 
-snippet remove
+snippet remove "remove file"
+remove("${1:path}");
+endsnippet
+
+snippet rename "rename file"
+rename(${1:old}, ${2:new});
 endsnippet
 
 snippet fread
@@ -269,7 +279,7 @@ endsnippet
 snippet fwrite
 endsnippet
 
-snippet malloc
+snippet malloc	"allocated space"
 ${1:/*point*/} = (${2:int} *)malloc(${3:len}*sizeof($2));
 if( $1 == NULL)
 {
@@ -314,7 +324,7 @@ snippet strxfrm
 endsnippet
 
 snippet strchr	"returns a pointer to the located character"
-strchr(${1:/*str*/}, '${2:/*char*/}');
+strchr(${1:/*str*/}, '${2:char}');
 endsnippet
 
 snippet strcspn	"return offset of str1 that is a member of str2"
@@ -326,7 +336,7 @@ strpbrk(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
 snippet strrchr	"search str from the end of str"
-strrchr(${1:/*str*/}, '${2:/*char*/}');
+strrchr(${1:/*str*/}, '${2:char}');
 endsnippet
 
 snippet strspn
@@ -347,7 +357,7 @@ setbuf(${1:stdout},${2:NULL});	//display infomation when use eclipse debug
 endsnippet
 
 snippet he
-printf("{1:hello world!}\n");
+printf("${1:hello world!}\n");
 endsnippet
 
 snippet swap	"swap two variable"
