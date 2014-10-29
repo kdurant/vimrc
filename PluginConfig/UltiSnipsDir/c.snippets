@@ -225,27 +225,27 @@ fopen("${1:fp}", "${2:"r+"}");
 endsnippet
 
 snippet fclose
-fclose(${1:/*FilePoint*/});
+fclose(${1:fp});
 endsnippet
 
 snippet fputc
-fputc('${1:/*char*/}',${2:/*FilePoint*/};
+fputc('${1:/*char*/}',${2:fp};
 endsnippet
 
 snippet fgetc
-${1:/*char*/} = fgetc(${2:/*FilePoint*/});
+${1:/*char*/} = fgetc(${2:fp});
 endsnippet
 
 snippet fputs
-fputs('${1:/*str*/}',${2:/*FilePoint*/};
+fputs('${1:/*str*/}',${2:fp};
 endsnippet
 
 snippet fgets
-${1:/*str*/} = fgets(${2:/*FilePoint*/});
+${1:/*str*/} = fgets(${2:fp});
 endsnippet
 
 snippet fprintf
-fprintf(${1:/*FilePoint*/}, "${2:/*format*/}", "${3:variable}");
+fprintf(${1:fp}, "${2:/*format*/}", "${3:variable}");
 endsnippet
 
 snippet fscanf
