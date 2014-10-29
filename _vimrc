@@ -710,10 +710,13 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vimtweak settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! -nargs=1 Lucency call LUcency(<f-args>)
-function! LUcency(value)
-    echo a:value
-    call libcallnr("vimtweak.dll", "SetAlpha", a:value)
+command! -nargs=0 Lucency call LUcency()
+let g:tweak_value = 235
+function! LUcency()
+    call libcallnr("vimtweak.dll", "SetAlpha", g:tweak_value)
+    if(g:tweak_value == 235) | let g:tweak_value = 255
+    else | let g:tweak_value = 235
+    endif
 endfunction
 
 let g:maximize = 1
