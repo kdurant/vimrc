@@ -17,7 +17,7 @@ Plug 'edsono/vim-matchit', {'frozen': 1}
 Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
 Plug 'kdurant/AuthorInfo', {'frozen': 1}
 Plug 'kdurant/bookmark'
-Plug 'kdurant/CRefVim'
+Plug 'kdurant/LanguageRefVim'
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'kdurant/verilog-testbench', {'frozen': 1}
 Plug 'kdurant/vim_colors', {'frozen': 1}
