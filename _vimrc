@@ -6,16 +6,8 @@ filetype plugin indent on
 let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
 if g:is_win
-    "if empty(glob('~/vimfiles/autoload/plug.vim'))
-        "!curl -fLo ~/vimfiles/autoload/plug.vim
-                    "\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    "endif
     call plug#begin('~/vimfiles/bundle')
 elseif g:is_unix
-    "if empty(glob('~/.vim/autoload/plug.vim'))
-        "!curl -fLo ~/.vim/autoload/plug.vim
-                    "\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    "endif
     call plug#begin('~/.vim/bundle')
 endif
 Plug 'asins/vimcdoc', {'frozen': 1}
@@ -171,7 +163,7 @@ nmap    <M-d>h      :noh<cr>
 nmap    <F6>        :call Search_Word()<cr>
 nmap    ,re         :call Replace()<cr>
 
-if g:is_win
+if executable('mingw32-gcc')
     set path+=E:/MinGW/include/
 endif
 
@@ -186,19 +178,19 @@ nmap    <M-->       <C-W>-
 nmap    <M-=>       <C-W>+
 nmap    <M-c>       :clo<cr>
 if g:is_win
-    if !executable("vimtweak.dll")
-        map     ,sx     :simalt ~x<cr>
-        map     ,sr     :simalt ~r<cr>
-    else
+    if executable("vimtweak.dll")
         map     ,sx     :call Maximize()<cr>
         map     ,st     :call Topmost()<cr>
+    else
+        map     ,sx     :simalt ~x<cr>
+        map     ,sr     :simalt ~r<cr>
     endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others key map settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap    <F2>        @@
+map     <F2>        @@
 
 map!    <M-j>       <Down>
 map!    <M-k>       <Up>
@@ -237,7 +229,7 @@ imap    <M-o>       <esc>o
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set go-=m
 set go-=T
-map <silent> <F12> :call MenuBar()<cr>
+map <silent> <M-F12> :call MenuBar()<cr>
 function! MenuBar()
     if &go =~# 'T' | set go-=T | set go-=m
     else | set go+=T | set go+=m
@@ -369,7 +361,7 @@ endif
 "NERD Comment settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map     <F3>    \ci
-nmap    ,ca     \cA
+map     ,ca     \cA
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "mark settings
@@ -383,18 +375,19 @@ nmap        <M-u>   \#
 "set mark points
 map         <M-m>   \mu
 "clear all mark points
-nmap        <M-n>   :MarkClear<cr>
+map         <M-n>   :MarkClear<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Ctags and cscope settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap    <M-F12>     :!ctags -R --c++-types=+p --fields=+iaS --extra=+q .<cr>
-nmap    <C-F12>     :call GenerateCtags()<cr>
+"map         <M-F12>     :!ctags -R --c++-types=+p --fields=+iaS --extra=+q .<cr>
+map <silent> <F12>     :call GenerateCtags()<cr>
+map <silent> <F11>     :if &filetype == 'c' <bar> exe "!%<.exe" <bar> endif <bar><cr>
 "兼容ctags,此设置会导致查找符号的时候不出现选择界面
 "set cscopequickfix=s-,c-,d-,i-,t-,e-
 set csto=0
 set cscopetag
-nmap <F9> :call Do_CsTag()<cr>
+map         <F9> :call Do_CsTag()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "authorinfo settings
