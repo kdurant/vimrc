@@ -16,11 +16,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit', {'frozen': 1}
 Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
 Plug 'kdurant/AuthorInfo', {'frozen': 1}
-Plug 'kdurant/bookmark'
 Plug 'kdurant/LanguageRefVim'
+Plug 'kdurant/misc_mine'
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'kdurant/verilog-testbench', {'frozen': 1}
-Plug 'kdurant/vim_colors', {'frozen': 1}
 Plug 'kshenoy/vim-signature'
 Plug 'mbriggs/mark.vim', {'frozen': 1}
 Plug 'ntpeters/vim-better-whitespace'
@@ -36,10 +35,7 @@ Plug 'KabbAmine/vCoolor.vim'
 Plug 'tpope/vim-fugitive', {'frozen': 1}
 Plug 'tpope/vim-surround', {'frozen': 1}
 Plug 'vim-scripts/Align', {'frozen': 1}
-Plug 'vim-scripts/cmdline-completion', {'frozen': 1}
-Plug 'vim-scripts/star-search', {'frozen': 1}
 Plug 'vim-scripts/verilog_systemverilog.vim', {'frozen': 1}
-Plug 'vim-scripts/verilog.vim', {'frozen': 1}
 call plug#end()
 if g:is_win
     map     ,so     :source ~/_vimrc<cr>
