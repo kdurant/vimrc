@@ -283,7 +283,7 @@ snippet malloc	"allocated space"
 ${1:/*point*/} = (${2:int} *)malloc(${3:len}*sizeof($2));
 if( $1 == NULL)
 {
-	//exit(1);
+	${4:}
 }
 free($1);
 endsnippet
