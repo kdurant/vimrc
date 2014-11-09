@@ -22,10 +22,16 @@ what is this?
 </article>
 endsnippet
 
-snippet b
+snippet b	"bold"
 <b>${1:This is bold}</b>
 endsnippet
 
+snippet big
+<big>
+	$1
+</big>
+
+endsnippet
 snippet body
 <body>
 	$1
@@ -40,15 +46,20 @@ snippet button
 <button type="button">${1:Click Me!}</button>
 endsnippet
 
+snippet br
+<br>
+endsnippet
+
 snippet html
 <!DOCTYPE HTML>
 <html>
 	<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title>This is title</title>
 	</head>
 
 	<body>
-	<p>This is text.</p>
+	$1
 	</body>
 </html>
 endsnippet
@@ -59,14 +70,35 @@ snippet head
 </head>
 endsnippet
 
+snippet img
+<img src="${1:url"} width="${2:20}" height="${3:20}" alt="${4:wang}">
+endsnippet
+
 snippet object
 endsnippet
 
-snippet p
+snippet ol
+<ol>
+	<li>${1:Coffee}</li>
+</ol>
+endsnippet
+
+snippet p	"paragraph"
 <p>${1:This is text.}</p>
+endsnippet
+
+snippet strong
+<strong>
+	$1
+</strong>
 endsnippet
 
 snippet title
 <title>This is text.</title>
 endsnippet
 
+snippet ul
+<ul>
+	<li>${1:Coffee}</li>
+</ul>
+endsnippet
