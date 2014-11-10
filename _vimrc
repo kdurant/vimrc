@@ -239,11 +239,13 @@ if has('python')
     command! -nargs=+ Calc :py print <args>
     py from math import *
     map     <M-q>   :Calc<space>
+else
+    map     <M-q>   :!start calc<cr>
 endif
 
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 
-if g:is_win
+if executable('astyle')
     function! Astyle()
         "silent !astyle --add-brackets %
         silent !astyle  --style=ansi %
