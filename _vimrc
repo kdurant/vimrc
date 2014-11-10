@@ -243,7 +243,9 @@ else
     map     <M-q>   :!start calc<cr>
 endif
 
+map     K       \cr
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
+autocmd FileType lua  setlocal iskeyword+=.
 
 if executable('astyle')
     function! Astyle()
@@ -258,8 +260,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""plugin config*************************************************
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map     K       \cr
-autocmd FileType lua  setlocal iskeyword+=.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "git settings
