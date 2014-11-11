@@ -213,11 +213,11 @@ map     <M-a>       ggVG
 
 map     <M-d>v      :call CompileFile()<cr>
 
-nmap    <C-P>       :cp<cr>
-nmap    <C-N>       :cn<cr>
-nmap    j           gj
-nmap    k           gk
-nmap    <M-d>n      :setlocal modifiable!<cr>
+map     <C-P>       :cp<cr>
+map     <C-N>       :cn<cr>
+map     j           gj
+map     k           gk
+map     <M-d>n      :setlocal modifiable!<cr>
 imap    <M-o>       <esc>o
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -243,6 +243,7 @@ else
     map     <M-q>   :!start calc<cr>
 endif
 
+map     Y       y$
 map     K       \cr
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 autocmd FileType lua  setlocal iskeyword+=.
