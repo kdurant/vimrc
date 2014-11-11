@@ -73,7 +73,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme james
 set guitablabel=%N\ %t
-set shortmess=atI
+set shortmess=atT
 set lines=38 columns=90
 winpos 570 0
 set number
