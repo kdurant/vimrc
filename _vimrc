@@ -264,8 +264,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "git settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap    <M-g>   :Git!<space>
-nmap    <M-v>a  :!gitk --all<cr>
+map     <M-g>   :Git!<space>
+map     <M-v>a  :!start /b gitk --all<cr>
 
 nmap <C-;>  :!git<space>
 nmap <M-;>  :Dit<space>
@@ -378,7 +378,6 @@ map         <M-n>   :MarkClear<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Ctags and cscope settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"map         <M-F12>     :!ctags -R --c++-types=+p --fields=+iaS --extra=+q .<cr>
 map <silent> <F12>     :call GenerateCtags()<cr>
 map <silent> <F11>     :if &filetype == 'c' <bar> exe "!%<.exe" <bar> endif <bar><cr>
 "兼容ctags,此设置会导致查找符号的时候不出现选择界面
