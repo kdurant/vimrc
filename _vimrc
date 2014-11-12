@@ -265,8 +265,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "git settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap    <M-g>   :Git!<space>
-nmap    <M-v>a  :!gitk --all<cr>
+map     <M-g>   :Git!<space>
+map     <M-v>a  :!start /b gitk --all<cr>
 
 nmap <C-;>  :!git<space>
 nmap <M-;>  :Dit<space>
@@ -317,7 +317,7 @@ map    <M-9>    9gt
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "neocomplete settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if g:is_win
+if !empty(glob($HOME. "/vimfiles/bundle/neocomplete.vim"))
     let g:neocomplete#enable_insert_char_pre = 1
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
@@ -379,7 +379,6 @@ map         <M-n>   :MarkClear<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Ctags and cscope settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"map         <M-F12>     :!ctags -R --c++-types=+p --fields=+iaS --extra=+q .<cr>
 map <silent> <F12>     :call GenerateCtags()<cr>
 map <silent> <F11>     :if &filetype == 'c' <bar> exe "!%<.exe" <bar> endif <bar><cr>
 "兼容ctags,此设置会导致查找符号的时候不出现选择界面
@@ -614,7 +613,7 @@ endfunction
 "generate cscope files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Do_CsTag()
-    call Search_root()
+    exe "cd " . Search_root()
     if &filetype == 'c' || &filetype == 'cpp'
         if(executable('cscope') && has("cscope") )
             if(has('unix'))
@@ -623,7 +622,7 @@ function! Do_CsTag()
                 "call system('dir /s/b *.c,*.cpp,*.h > cscope.files')
                 silent! exe '!dir /s/b *.c,*.cpp,*.h > cscope.files'
             endif
-            call Search_root()
+            exe "cd " . Search_root()
             silent! exe 'cscope kill -1'
             call system('del cscope.out') | call system('cscope -Rb')
             if filereadable("cscope.out")
