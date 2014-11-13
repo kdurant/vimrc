@@ -704,3 +704,17 @@ endfunction
       au BufWritePost *.bin if &bin | %!xxd
       au BufWritePost *.bin set nomod | endif
     augroup END
+
+function! Search_Path()
+    exe "cd " . Search_root()
+
+    let l:num = 5
+    while l:num > 0
+    if finddir("inc", "**")
+        let l:path = fnamemodify(finddir("inc", "**"), ":p")
+    endif
+    endw
+    if finddir("inc", "**")
+        let l:path = fnamemodify(finddir("inc", "**"), ":p")
+    endif
+endfunction
