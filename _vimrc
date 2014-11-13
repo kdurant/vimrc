@@ -43,6 +43,8 @@ elseif g:is_unix
     map     ,so     :source ~/.vimrc<cr>
     map     ,se     :tabnew ~/.vimrc<cr>
 endif
+source ~/PluginConfig/plugin_config.vim
+source ~/PluginConfig/self_fun.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "file coding settings
@@ -219,17 +221,14 @@ map     k           gk
 map     <M-d>n      :setlocal modifiable!<cr>
 imap    <M-o>       <esc>o
 
+map     <M-d>e      :call ChangeHead()<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "menu bar and tool bar settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set go-=m
 set go-=T
 map <silent> <M-F12> :call MenuBar()<cr>
-function! MenuBar()
-    if &go =~# 'T' | set go-=T | set go-=m
-    else | set go+=T | set go+=m
-    endif
-endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others settings
@@ -247,28 +246,14 @@ map     K       \cr
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 autocmd FileType lua  setlocal iskeyword+=.
 
-if executable('astyle')
-    function! Astyle()
-        "silent !astyle --add-brackets %
-        silent !astyle  --style=ansi %
-        silent !astyle -p %         "insert spaces padding around operators
-        "silent !astyle --pad-oper %         "insert spaces padding around operators
-        "silent !astyle --pad-paren-in %     "insert spaces padding around parenthesis on ther inside only
-    endfunction
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""plugin config*************************************************
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "git settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map     <M-g>   :Git!<space>
 map     <M-v>a  :!start /b gitk --all<cr>
 
-nmap <C-;>  :!git<space>
-nmap <M-;>  :Dit<space>
+nmap    <C-;>   :!git<space>
+nmap    <M-;>   :Dit<space>
 "if use this function, airline don't refresh branch
 command! -nargs=1 Dit call GitCmd(<f-args>)
 function! GitCmd(git_cmd)
@@ -291,14 +276,6 @@ autocmd VimEnter  call setpos('.', save_cursor)
 nmap    <F7>    :so $VIMSESSION<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"airline settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme='kolor'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#branch#empty_message = 'No Repo'
-"let g:airline#extensions#whitespace#enabled = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "tab settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map    <M-o>    :tabnew<cr>:setlocal buftype=nowrite<cr>
@@ -313,415 +290,13 @@ map    <M-7>    7gt
 map    <M-8>    8gt
 map    <M-9>    9gt
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"neocomplete settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !empty(glob($HOME. "/vimfiles/bundle/neocomplete.vim"))
-    let g:neocomplete#enable_insert_char_pre = 1
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_smart_case = 1
-    " Set minimum syntax keyword length.
-    let g:neocomplete#auto_completion_start_length = 1
-    let g:neocomplete#enable_auto_select = 1
-    let g:neocomplete#enable_refresh_always = 1
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
-    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-    let g:neocomplete#enable_ignore_case = 0
-    "complete all buffers
-    let g:neocomplete#same_filetypes = {}
-    let g:neocomplete#same_filetypes._ = '_'
-
-    let g:neocomplete#data_directory='$HOME\PluginConfig\neocomplete'
-
-    nmap     <M-b>   :NeoCompleteBufferMakeCache<cr>
-    inoremap <expr><M-e>  neocomplete#cancel_popup()
-
-    set completefunc=neocomplete#complete#auto_complete
-elseif g:is_unix
-    "set completeopt=longest,menu                 " 关掉补全时的预览窗口
-    let g:ycm_confirm_extra_conf = 0              " 不用每次提示加载.ycm_extra_conf.py文件
-    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-    let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
-    let g:ycm_filetype_whitelist = {'c' : 1, 'cpp' : 1, 'java' : 1, 'python' : 1}
-    let g:ycm_complete_in_comments = 1                " 评论中也应用补全
-    let g:ycm_min_num_of_chars_for_completion = 2     " 两个字开始补全
-    let g:ycm_seed_identifiers_with_syntax = 1
-    let g:ycm_key_invoke_completion = '<C-Space>'
-    let g:ycm_semantic_triggers =  {'c' : ['->', '.'], 'objc' : ['->', '.'], 'ocaml' : ['.', '#']}
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"NERD Comment settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map     <F3>    \ci
-map     ,ca     \cA
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"mark settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:mwAutoLoadMarks = 1           "autoload mark points settings
-let g:mwDefaultHighlightingPalette = 'extended'         "use more colors
-let g:mwAutoSaveMarks = 1           "auto save mark points
-"search mark point
-nmap        <M-i>   \*
-nmap        <M-u>   \#
-"set mark points
-map         <M-m>   \mu
-"clear all mark points
-map         <M-n>   :MarkClear<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Ctags and cscope settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <F12>     :call GenerateCtags()<cr>
-map <silent> <F11>     :if &filetype == 'c' <bar> exe "!%<.exe" <bar> endif <bar><cr>
-"兼容ctags,此设置会导致查找符号的时候不出现选择界面
-"set cscopequickfix=s-,c-,d-,i-,t-,e-
-set csto=0
-set cscopetag
-map         <F9> :call Do_CsTag()<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"authorinfo settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map     <F4>    :AuthorInfoDetect<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"signature settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap    -   ]`
-nmap    0   [`
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"UltiSnips settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-let g:UltiSnipsSnippetsDir="~/PluginConfig/UltiSnipsDir/"
-let g:UltiSnipsSnippetDirectories=["E:/home/PluginConfig/UltiSnipsDir/"]
-"let g:UltiSnipsSnippetDirectories=["UltiSnipsDir"]
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"ctrlp setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_map = '<M-d>f'
-map <M-d>b      :CtrlPBuffer<cr>
-map <M-d>d      :CtrlPBookmarkDir<cr>
-map <M-d>r      :CtrlPMRU<cr>
-let g:ctrlp_by_filename = 1
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_match_window = 'bot,order:ttb,min:10,max:10'
-let g:ctrlp_use_caching = 1
-let g:ctrlp_cache_dir = $HOME.'/PluginConfig/ctrlp'
-let g:ctrlp_custom_ignore = {
-            \ 'dir': '\.git$\|\.hg$\|\.svn$\|release$\|work$\|PluginConfig/neocomplete$\|PluginConfig/ctrlp\|synthesize/db\|synthsize/incremental_db',
-            \ 'file': '\v\.(o|pbi|cout|exe|so|dll|lnk|rpt|summary|db)$',
-            \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-            \ }
-let g:ctrlp_mruf_include = '\.c$\|\.h$\|\.m$\|\.tcl$\|\.v$'
-let g:ctrlp_root_markers = ['README.md']
-hi  link    CtrlPMatch      Define
-hi  link    CtrlPBufferPath PreProc
-
-"diff setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set diffopt=filler,context:4,vertical,foldcolumn:4
-"set diffexpr=MyDiff()
-autocmd BufWritePost * if &diff | diffupdate | endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"align settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"align '<=#`DELAY
-nmap    <silent>    ,<      :AlignCtrl lp4P1<cr>:AlignCtrl g <=#`DELAY <cr>:AlignCtrl W<cr>:%Align <=#`DELAY <cr>
-"align '/' that in modelsim tcl scripts
-nmap    <silent>    ,/      :AlignCtrl lp4P0<cr>:AlignCtrl g /<cr>:AlignCtrl W<cr>:%Align\s\zs\/\ze<cr>
-"align '//' that in source code
-nmap    <silent>    ,#      :AlignCtrl lp4P0<cr>:AlignCtrl g \S\+.\+\zs\/\/\ze\(\s*\S\+\)\@=<cr>:AlignCtrl W<cr>:%Align\/\/<cr>
-"align '(' or ')' that in instance
-nmap    <silent>    ,(      :AlignCtrl lp4P4<cr>:AlignCtrl g \.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align(<cr>
-nmap    <silent>    ,)      :AlignCtrl lp4P0<cr>:AlignCtrl g \.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align)<cr>
-"align '=' that in parameter, assign statement
-nmap    <silent>    ,=      :AlignCtrl lp4P1<cr>:AlignCtrl g [^<\|^>]\s\zs=\ze\s.*;<cr>:AlignCtrl W<cr>:%Align[^<\|^>]\s\zs=\ze\s.*;<cr>
-
-imap    <M-b>   begin<cr>end<esc>O
-
-
-let g:vcoolor_map = '<M-d>c'
-let g:vcool_ins_rgb_map = '<M-F1>'
-let g:vcool_ins_hsl_map = '<M-F2>'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""self function*************************************************
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"search word that is at current work path
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:quick_list = []
-let g:quick_dic ={}
-function! Search_Word()
-    if !empty((glob($VIMRUNTIME. "\\grep.exe")))
-        set autochdir
-        echohl Function
-        if input('Search current word with current filetype, y or n ? ') == 'y'
-            exe "cd " . Search_root()
-            exe 'grep ' . expand("<cword>") . ' ' . '**/*'
-            exe 'cw'
-            " 遍历列表，找到里面的每个字典 " haskey() 找到不符合要求的
-        endif
-        echo '' | echohl none
-    else
-        echohl ErrorMsg | echo "No grep.exe. Please put it into $VIMRUNTIME" | echohl none
-    endif
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"replace current cursor word
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-fun! Replace()
-    let l:word = input("Replace " . expand('<cword>') . " with: ")
-    if l:word != ''
-        exe '%s/\<' . expand('<cword>') . '\>/' . l:word . '/ge | update'
-    endif
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"compile c, cpp, and verilog file
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CompileFile()
-    if &filetype == 'verilog'
-        if(isdirectory("work"))
-            set makeprg=vlog\ -work\ work\ %
-            set errorformat=**\ Error:\ %f(%l):\ %m
-            exe "make" | exe "cw"
-        else
-            echohl ErrorMsg | echo "No work library!"
-        endif
-    elseif &filetype == 'c' || &filetype == 'cpp'
-        if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -Wall\ -Wconversion\ -o\ %<.exe\ %
-        else                | set makeprg=g++\ -o\ %<.exe\ %
-        endif
-        silent exe "make"
-        if getqflist() == []    "compile correct and no warning
-            let l:flag = 0 | silent exe "ccl" | exe "!%<.exe"
-        else
-            for l:inx in getqflist()
-                for l:val in values(l:inx)
-                    if l:val =~ 'error' | let l:flag = 1 | break
-                    elseif l:val =~ 'warning' | let l:flag = 2
-                    else | let l:flag = 0
-                    endif
-                endfor
-                if l:val =~ 'error' | break | endif
-            endfor
-        endif
-        if l:flag == 1| exe "cw"
-        elseif l:flag == 2
-            let l:select = input('There are warnings! [r]un or [s]olve? ')
-            if l:select ==  'r' | exe "!%<.exe" | exe "cw"
-            elseif l:select == 's' | exe "cw"
-            else | echohl ErrorMsg | echo "input error!"
-            endif
-        else | exe "cw"
-        endif
-    elseif &filetype == 'python'
-        exe "!%<.py"
-    elseif &filetype == 'vhdl'
-        echohl comment | echo "Current don't support VHDL file!"
-    elseif &filetype == 'lua' && executable("lua")
-        exe "!lua %"
-    else
-        echohl ErrorMsg | echo "This filetype can't be compiled !"
-    endif
-    echohl None
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Usage:  :Rename[!] {newname}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! -nargs=* -complete=customlist,SiblingFiles -bang Rename :call Rename("<args>", "<bang>")
-cabbrev rename <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "Rename" : "rename"<CR>
-function! SiblingFiles(A, L, P)
-    return map(split(globpath(expand("%:h") . "/", a:A . "*"), "\n"), 'fnamemodify(v:val, ":t")')
-endfunction
-function! Rename(name, bang)
-    let l:curfile = expand("%:p")
-    let l:curpath = expand("%:h") . "/"
-    let v:errmsg = ""
-    silent! exe "saveas" . a:bang . " " . fnameescape(l:curpath . a:name)
-    if v:errmsg =~# '^$\|^E329'
-        let l:oldfile = l:curfile
-        let l:curfile = expand("%:p")
-        if l:curfile !=# l:oldfile && filewritable(l:curfile)
-            silent exe "bwipe! " . fnameescape(l:oldfile)
-            if delete(l:oldfile)
-                echoerr "Could not delete " . l:oldfile
-            endif
-        endif
-    else
-        echoerr v:errmsg
-    endif
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"look up project root directory
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !exists('g:root_marker')
-  let g:root_marker = [".git"]
-endif
-
-function! Search_root()
-    let l:root = fnamemodify(".", ":p:h")
-
-    if !empty(g:root_marker)
-        let root_found = 0
-        let l:cur_dir = fnamemodify(l:root, ":p:h")
-        let l:prev_dir = ""
-        while l:cur_dir != l:prev_dir
-            for tags_dir in g:root_marker
-                let l:tag_path = l:cur_dir . "/" . tags_dir
-                if filereadable(l:tag_path) || isdirectory(l:tag_path)
-                    let root_found = 1 | break
-                endif
-            endfor
-
-            if root_found
-                let l:root = l:cur_dir | break
-            endif
-
-            let l:prev_dir = l:cur_dir
-            let l:cur_dir = fnamemodify(l:cur_dir, ":p:h:h")
-        endwhile
-
-        return root_found ? l:root : fnamemodify(".", ":p:h")
-    endif
-
-    return l:root
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"generate cscope files
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! Do_CsTag()
-    exe "cd " . Search_root()
-    if &filetype == 'c' || &filetype == 'cpp'
-        if(executable('cscope') && has("cscope") )
-            if(has('unix'))
-                silent! exe "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
-            else
-                "call system('dir /s/b *.c,*.cpp,*.h > cscope.files')
-                silent! exe '!dir /s/b *.c,*.cpp,*.h > cscope.files'
-            endif
-            exe "cd " . Search_root()
-            silent! exe 'cscope kill -1'
-            call system('del cscope.out') | call system('cscope -Rb')
-            if filereadable("cscope.out")
-                exe 'cs add cscope.out'
-            endif
-        endif
-    elseif &filetype == 'verilog'
-        silent! exe '!dir /s/b *.v > cscope.files'
-        silent! exe "cscope kill -1"
-        call delete('cscope.out') | call system('cscope -Rb')
-        if filereadable("cscope.out")
-            exe 'cs add cscope.out'
-        endif
-    else
-        echo "Can't generate cscope.out file!"
-    endif
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"use system command and not prompt new window
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <M-s>  :Sys<space>
-command! -nargs=1 Sys call System(<f-args>)
-function! System(cmd)
-    if g:is_win
-        call Search_root()
-        echo iconv(system(a:cmd), "cp936", &enc)
-    else
-        echo "Don't complete this action!"
-    endif
-endfunction
-
-function! GenerateCtags()
-    exe "cd " . Search_root()
-    if &filetype == 'c' || &filetype == 'cpp'
-        call system('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
-    elseif &filetype == "verilog"
-        call system ('ctags --language-force=verilog -R .')
-    else
-        echohl  ErrorMsg | echo "Generate tags fail!" | echohl None
-    endif
-        exe 'set tags+=' . Search_root() .'/tags'
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"vimtweak settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! -nargs=0 Lucency call LUcency()
-let g:tweak_value = 235
-function! LUcency()
-    call libcallnr("vimtweak.dll", "SetAlpha", g:tweak_value)
-    if(g:tweak_value == 235) | let g:tweak_value = 255
-    else | let g:tweak_value = 235
-    endif
-endfunction
-
-let g:maximize = 1
-function! Maximize()
-    call libcallnr("vimtweak.dll", "EnableMaximize", g:maximize)
-    if g:maximize == 0
-        set lines=38 columns=85
-        exe "winpos 570 0" | endif
-    let g:maximize = !g:maximize
-endfunction
-
-let g:topmost = 1
-function! Topmost()
-    call libcallnr("vimtweak.dll", "EnableTopMost", g:topmost)
-    let g:topmost = !g:topmost
-endfunction
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" find c project include dir and add it to $PATH
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! Search_Inc()
-    exe "cd " . Search_root()
-
-    if !empty(finddir("include", "**", -1))
-        for l:idx in finddir("include", "**", -1)
-            exe "set path+=" . fnamemodify(l:idx, ":p")
-        endfor
-    endif
-
-    if !empty(finddir("inc", "**", -1))
-        for l:idx in finddir("inc", "**", -1)
-            exe "set path+=" . fnamemodify(l:idx, ":p")
-        endfor
-    endif
-endfunction
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-    augroup Binary
-      au!
-      au BufReadPre  *.bin let &bin=1
-      au BufReadPost *.bin if &bin | %!xxd
-      au BufReadPost *.bin set ft=xxd | endif
-      au BufWritePre *.bin if &bin | %!xxd -r
-      au BufWritePre *.bin endif
-      au BufWritePost *.bin if &bin | %!xxd
-      au BufWritePost *.bin set nomod | endif
-    augroup END
-
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
