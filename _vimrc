@@ -692,6 +692,26 @@ function! Topmost()
     call libcallnr("vimtweak.dll", "EnableTopMost", g:topmost)
     let g:topmost = !g:topmost
 endfunction
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" find c project include dir and add it to $PATH
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! Search_Inc()
+    exe "cd " . Search_root()
+
+    if !empty(finddir("include", "**", -1))
+        for l:idx in finddir("include", "**", -1)
+            exe "set path+=" . fnamemodify(l:idx, ":p")
+        endfor
+    endif
+
+    if !empty(finddir("inc", "**", -1))
+        for l:idx in finddir("inc", "**", -1)
+            exe "set path+=" . fnamemodify(l:idx, ":p")
+        endfor
+    endif
+endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     augroup Binary
@@ -705,16 +725,3 @@ endfunction
       au BufWritePost *.bin set nomod | endif
     augroup END
 
-function! Search_Path()
-    exe "cd " . Search_root()
-
-    let l:num = 5
-    while l:num > 0
-    if finddir("inc", "**")
-        let l:path = fnamemodify(finddir("inc", "**"), ":p")
-    endif
-    endw
-    if finddir("inc", "**")
-        let l:path = fnamemodify(finddir("inc", "**"), ":p")
-    endif
-endfunction
