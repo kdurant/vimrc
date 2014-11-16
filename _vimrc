@@ -1,6 +1,3 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""1st. vimrc config""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype plugin indent on
 let g:is_win = has('win32') || has('win64')
@@ -136,14 +133,14 @@ set nofoldenable
 set foldnestmax=2
 set foldcolumn=4
 set fillchars=fold:\ ,diff:/
-nmap    ,ma         :set fdm=manual<cr>
-nmap    ,in         :set fdm=indent<cr>
-nmap    ,sy         :set fdm=syntax<cr>
-nmap    <M-e>       ^zf%
+map     ,ma         :set fdm=manual<cr>
+map     ,in         :set fdm=indent<cr>
+map     ,sy         :set fdm=syntax<cr>
+map     <M-e>       ^zf%
 
-nmap    <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
-nmap    <M-j>       zj
-nmap    <M-k>       zk
+map     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
+map     <M-j>       zj
+map     <M-k>       zk
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "search settings
@@ -154,11 +151,11 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
-nmap    <M-d>w      :setlocal wrapscan!<cr>
-nmap    <M-d>h      :noh<cr>
+map     <M-d>w      :setlocal wrapscan!<cr>
+map     <M-d>h      :noh<cr>
 
-nmap    <F6>        :call Search_Word()<cr>
-nmap    ,re         :call Replace()<cr>
+map     <F6>        :call Search_Word()<cr>
+map     ,re         :call Replace()<cr>
 
 if executable('mingw32-gcc')
     set path+=E:/MinGW/include/
@@ -167,13 +164,13 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "window jump settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap    <C-k>       <C-W>k
-nmap    <C-l>       <C-W>l
-nmap    <C-h>       <C-W>h
-nmap    <C-j>       <C-W>j
-nmap    <M-->       <C-W>-
-nmap    <M-=>       <C-W>+
-nmap    <M-c>       :clo<cr>
+map     <C-k>       <C-W>k
+map     <C-l>       <C-W>l
+map     <C-h>       <C-W>h
+map     <C-j>       <C-W>j
+map     <M-->       <C-W>-
+map     <M-=>       <C-W>+
+map     <M-c>       :clo<cr>
 if g:is_win
     if executable("vimtweak.dll")
         map     ,sx     :call Maximize()<cr>
@@ -202,9 +199,7 @@ map     <C-s>       :w!<cr>
 imap    <C-s>       <esc>:w!<cr>
 
 map     <M-r>       :bro e<cr>
-"delete dos end-of-file and write
 map     ,rm         :%s/\r//g<cr>:w<cr>
-"remove space of line end
 map     ,rn         :%s/\s\+$//g<cr>
 map     ,rg         :%s/^\n\+/\r/g<cr>
 map     ,rc         :%s/\i\+/&/gn|noh
@@ -249,11 +244,10 @@ autocmd FileType lua  setlocal iskeyword+=.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "git settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map     <M-g>   :Git!<space>
-map     <M-v>a  :!start /b gitk --all<cr>
+map     <M-g>       :Git!<space>
+map     <M-v>a      :!start /b gitk --all<cr>
 
-nmap    <C-;>   :!git<space>
-nmap    <M-;>   :Dit<space>
+map     <M-;>       :Dit<space>
 "if use this function, airline don't refresh branch
 command! -nargs=1 Dit call GitCmd(<f-args>)
 function! GitCmd(git_cmd)
@@ -270,25 +264,25 @@ endfunction
 set viminfo+=!  " Save and restore global variables.
 set sessionoptions=sesdir,help,tabpages,winsize,winpos,folds,resize
 let $VIMSESSION = '~/PluginConfig/session.vim'
-autocmd VimLeave * mksession! $VIMSESSION
-autocmd VimLeave * let save_cursor = getpos(".")
-autocmd VimEnter  call setpos('.', save_cursor)
-nmap    <F7>    :so $VIMSESSION<cr>
+autocmd VimLeave *  mksession! $VIMSESSION
+autocmd VimLeave *  let save_cursor = getpos(".")
+autocmd VimEnter    call setpos('.', save_cursor)
+map     <F7>        :so $VIMSESSION<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "tab settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map    <M-o>    :tabnew<cr>:setlocal buftype=nowrite<cr>
-map    <M-t>    :tabm
-map    <M-1>    1gt
-map    <M-2>    2gt
-map    <M-3>    3gt
-map    <M-4>    4gt
-map    <M-5>    5gt
-map    <M-6>    6gt
-map    <M-7>    7gt
-map    <M-8>    8gt
-map    <M-9>    9gt
+map    <M-o>        :tabnew<cr>:setlocal buftype=nowrite<cr>
+map    <M-t>        :tabm
+map    <M-1>        1gt
+map    <M-2>        2gt
+map    <M-3>        3gt
+map    <M-4>        4gt
+map    <M-5>        5gt
+map    <M-6>        6gt
+map    <M-7>        7gt
+map    <M-8>        8gt
+map    <M-9>        9gt
 
 augroup Binary
   au!

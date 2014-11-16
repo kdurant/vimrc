@@ -386,3 +386,20 @@ snippet pack
 $1
 #pragma pack(pop);
 endsnippet
+
+snippet uart
+typedef	sturct __UartFrame
+{
+	uint8_t head_high;
+	uint8_t head_low;
+	uint8_t addr;
+	uint8_t command;
+	uint8_t len;
+
+	uint8_t rx_buf[UART_BUF_LEN];
+	uint8_t tx_buf[UART_BUF_LEN];
+
+	uint8_t checksum;
+	uint8_t tail;
+}UartFrameDef;
+endsnippet
