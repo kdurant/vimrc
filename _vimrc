@@ -12,7 +12,7 @@ elseif g:is_unix
 endif
 Plug 'asins/vimcdoc', {'frozen': 1}
 Plug 'bling/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim', {'frozen': 1}
 Plug 'edsono/vim-matchit', {'frozen': 1}
 Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
 Plug 'kdurant/AuthorInfo', {'frozen': 1}
