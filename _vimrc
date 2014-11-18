@@ -40,8 +40,6 @@ elseif g:is_unix
     map     ,so     :source ~/.vimrc<cr>
     map     ,se     :tabnew ~/.vimrc<cr>
 endif
-source ~/PluginConfig/plugin_config.vim
-source ~/PluginConfig/self_fun.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "file coding settings
@@ -294,3 +292,6 @@ augroup Binary
   au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
 augroup END
+
+source ~/PluginConfig/plugin_config.vim
+source ~/PluginConfig/self_fun.vim
