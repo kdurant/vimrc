@@ -13,13 +13,13 @@ Plug 'ctrlpvim/ctrlp.vim', {'frozen': 1}
 Plug 'edsono/vim-matchit', {'frozen': 1}
 Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
 Plug 'kdurant/AuthorInfo', {'frozen': 1}
-Plug 'kdurant/LanguageRefVim'
-Plug 'kdurant/misc_mine'
+Plug 'git@github.com:kdurant/LanguageRefVim'
+Plug 'git@github.com:kdurant/misc_mine'
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'kdurant/verilog-testbench', {'frozen': 1}
 Plug 'kshenoy/vim-signature'
 Plug 'mbriggs/mark.vim', {'frozen': 1}
-Plug 'ntpeters/vim-better-whitespace'
+"Plug 'ntpeters/vim-better-whitespace'
 Plug 'Shougo/vimproc.vim' "make -f make_mingw32.mak
 if g:is_win
     Plug 'Shougo/neocomplete.vim'
