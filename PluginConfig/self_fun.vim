@@ -201,7 +201,7 @@ function! GenerateCtags()
     else
         echohl  ErrorMsg | echo "Generate tags fail!" | echohl None
     endif
-        exe 'set tags+=' . Search_root() .'/tags'
+    exe 'set tags+=' . substitute(Search_root(), " ", '\\ ', "g") .'/tags'
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
