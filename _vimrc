@@ -33,13 +33,9 @@ Plug 'tpope/vim-surround', {'frozen': 1}
 Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'vim-scripts/verilog_systemverilog.vim', {'frozen': 1}
 call plug#end()
-if g:is_win
-    map     ,so     :source ~/_vimrc<cr>
-    map     ,se     :tabnew ~/_vimrc<cr>
-elseif g:is_unix
-    map     ,so     :source ~/.vimrc<cr>
-    map     ,se     :tabnew ~/.vimrc<cr>
-endif
+
+map     ,so     :source $MYVIMRC<cr>
+map     ,se     :tabnew $MYVIMRC<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "file coding settings

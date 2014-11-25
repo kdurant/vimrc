@@ -296,6 +296,15 @@ if( $1 == NULL)
 free($1);
 endsnippet
 
+snippet calloc	"allocated space"
+${1:/*point*/} = (${2:int} *)calloc(${3:num}, ${4:len}*sizeof($2));
+if( $1 == NULL)
+{
+	${5:}
+}
+free($1);
+endsnippet
+
 snippet strcpy	"copy src to dest"
 strcpy(${1:/*dest*/}, ${2:/*src*/});
 endsnippet
