@@ -124,7 +124,7 @@ set suffixesadd=.v
 "fold settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nofoldenable
-set foldnestmax=2
+set foldnestmax=1
 set foldcolumn=4
 set fillchars=fold:\ ,diff:/
 map     ,ma         :set fdm=manual<cr>
