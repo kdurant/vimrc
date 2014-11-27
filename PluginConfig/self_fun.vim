@@ -252,17 +252,23 @@ function! Search_Inc()
 endfunction
 
 
+let g:src_pos = []
+let g:head_pos =[]
 function! ChangeHead()
     exe "cd " . Search_root()
     if &filetype == 'c'
         if !empty(findfile(expand("%:t:r") . '.h', "**"))
+            let g:src_pos = getpos('.')
             exe "edit " . fnamemodify(findfile(expand("%:t:r") . '.h', "**"), ":p")
+            call setpos('.', g:head_pos)
         else
             echohl ErrorMsg | echo "Not find head file!" | echohl NONE
         endif
     else
         if !empty(findfile(expand("%:t:r") . '.c', "**"))
+            let g:head_pos = getpos('.')
             exe "edit " . fnamemodify(findfile(expand("%:t:r") . '.c', "**"), ":p")
+            call setpos('.', g:src_pos)
         else
             echohl ErrorMsg | echo "Not find source file!" | echohl NONE
         endif

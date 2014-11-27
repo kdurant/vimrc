@@ -18,6 +18,7 @@ Plug 'git@github.com:kdurant/misc_mine'
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'kdurant/verilog-testbench', {'frozen': 1}
 Plug 'kshenoy/vim-signature'
+Plug 'KabbAmine/vCoolor.vim'
 Plug 'mbriggs/mark.vim', {'frozen': 1}
 "Plug 'ntpeters/vim-better-whitespace'
 Plug 'Shougo/vimproc.vim' "make -f make_mingw32.mak
@@ -27,7 +28,6 @@ elseif g:is_unix
     Plug 'Valloric/YouCompleteMe'
 endif
 Plug 'SirVer/ultisnips'
-Plug 'KabbAmine/vCoolor.vim'
 Plug 'tpope/vim-fugitive', {'frozen': 1}
 Plug 'tpope/vim-surround', {'frozen': 1}
 Plug 'vim-scripts/Align', {'frozen': 1}
