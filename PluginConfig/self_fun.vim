@@ -195,7 +195,8 @@ endfunction
 function! GenerateCtags()
     exe "cd " . Search_root()
     if &filetype == 'c' || &filetype == 'cpp'
-        call system('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
+        "call system('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
+        silent exe "!start /b ctags -R --c++-types=+p --fields=+iaS --extra=+q ."
     elseif &filetype == "verilog"
         call system ('ctags --language-force=verilog -R .')
     else
