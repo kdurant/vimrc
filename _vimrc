@@ -256,7 +256,8 @@ endfunction
 "session settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set viminfo+=!  " Save and restore global variables.
-set sessionoptions=sesdir,help,tabpages,winsize,winpos,folds,resize
+"set sessionoptions=sesdir,help,tabpages,winsize,winpos,folds,resize
+set sessionoptions=sesdir,help,tabpages,winsize,winpos,resize
 let $VIMSESSION = '~/PluginConfig/session.vim'
 autocmd VimLeave *  mksession! $VIMSESSION
 autocmd VimLeave *  let save_cursor = getpos(".")
