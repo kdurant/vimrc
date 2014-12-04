@@ -247,7 +247,7 @@ command! -nargs=1 Dit call GitCmd(<f-args>)
 function! GitCmd(git_cmd)
     if has('win32') || has('win64')
         exe "cd " . Search_root()
-        echo iconv(system('git ' . a:git_cmd), "cp936", &enc)
+        echo iconv(system('git ' . a:git_cmd), "utf-8", &enc)
     endif
 endfunction
 
