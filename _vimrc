@@ -133,7 +133,7 @@ map     ,in         :set fdm=indent<cr>
 map     ,sy         :set fdm=syntax<cr>
 map     <M-e>       ^zf%
 
-map     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
+nmap     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
 map     <M-j>       zj
 map     <M-k>       zk
 
