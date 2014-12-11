@@ -19,7 +19,6 @@ Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'kdurant/verilog-testbench', {'frozen': 1}
 Plug 'kshenoy/vim-signature'
 Plug 'KabbAmine/vCoolor.vim'
-Plug 'plasticboy/vim-markdown'
 Plug 'mbriggs/mark.vim', {'frozen': 1}
 "Plug 'ntpeters/vim-better-whitespace'
 Plug 'Shougo/vimproc.vim' "make -f make_mingw32.mak
@@ -234,6 +233,7 @@ endif
 map     Y       y$
 map     K       \cr
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType lua  setlocal iskeyword+=.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
