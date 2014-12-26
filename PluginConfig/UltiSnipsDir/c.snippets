@@ -170,7 +170,7 @@ typedef struct __${1:/*struct*/}
 {
 	${2:/*data*/};
 	void (*construct)(struct __$1 *this);
-}$1Def;
+}$1_t;
 endsnippet
 
 snippet ist
@@ -191,7 +191,7 @@ typedef enum __${1:name}
 {
 	${2:/*data1*/} = ,
 	${3:/*data2*/} = ,
-}$1Def;
+}$1_t;
 endsnippet
 
 snippet tdu	"typedef union"
@@ -199,7 +199,7 @@ typedef union __${1:name}
 {
 	${2:/*data1*/},
 	${3:/*data2*/}
-}$1Def;
+}$1_t;
 endsnippet
 
 snippet sw	"switch ... case"
@@ -418,7 +418,7 @@ typedef	sturct __UartFrame
 
 	uint8_t checksum;
 	uint8_t tail;
-}UartFrameDef;
+}UartFrame_t;
 endsnippet
 
 snippet error
