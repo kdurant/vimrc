@@ -420,3 +420,9 @@ typedef	sturct __UartFrame
 	uint8_t tail;
 }UartFrameDef;
 endsnippet
+
+snippet error
+#ifndef ${1:XXXX}
+	#error ${2:"Hello world!"}
+#endif
+endsnippet
