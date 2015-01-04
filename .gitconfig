@@ -10,7 +10,7 @@
     da = commit -m "daily backup"
     gr = grep -ni
 [user]
-	email = kdurant0725@163.com
+	email = wangjun850725@163.com
 	name = kdurant
 
 [core]
