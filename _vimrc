@@ -32,6 +32,7 @@ Plug 'tpope/vim-fugitive', {'frozen': 1}
 Plug 'tpope/vim-surround', {'frozen': 1}
 Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'vim-scripts/verilog_systemverilog.vim', {'frozen': 1}
+Plug 'Lokaltog/vim-easymotion'
 call plug#end()
 
 map     ,so     :source $MYVIMRC<cr>

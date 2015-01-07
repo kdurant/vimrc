@@ -72,9 +72,13 @@ endsnippet
 snippet #ifn "#ifndef ... #define ... #endif"
 #ifndef `!v toupper(expand('%:r'))`_H
 #define `!v toupper(expand('%:r'))`_H
-
+/* Includes ------------------------------------------------------------------*/
 $1
-
+/* Exported constants --------------------------------------------------------*/
+/* Exported types ------------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported Global variables -------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
 #endif
 endsnippet
 
@@ -421,8 +425,24 @@ typedef	sturct __UartFrame
 }UartFrame_t;
 endsnippet
 
+snippet sprintf
+sprintf(${1:str}, "%${2:s}", ${3:variable});
+endsnippet
+
 snippet error
 #ifndef ${1:XXXX}
 	#error ${2:"Hello world!"}
 #endif
+endsnippet
+
+snippet	decla
+/* Includes ------------------------------------------------------------------*/
+$1
+/* Private define ------------------------------------------------------------*/
+/* Private typedef -----------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Global variables ----------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+/* Private function prototypes -----------------------------------------------*/
+/* Private functions ---------------------------------------------------------*/
 endsnippet
