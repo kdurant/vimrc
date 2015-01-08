@@ -154,3 +154,9 @@ let g:vcoolor_map = '<M-d>c'
 let g:vcool_ins_rgb_map = '<M-F1>'
 let g:vcool_ins_hsl_map = '<M-F2>'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"easymotion settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap    f       <Plug>(easymotion-s)
+nmap    ;       <Plug>(easymotion-next)
+nmap    ,       <Plug>(easymotion-prev)
