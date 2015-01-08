@@ -1,6 +1,7 @@
 .jtag/
 .cache/
 .neocomplete/
+.subversion/
 mplayer/
 vimfiles/bundle/
 PluginConfig/neocomplete/
