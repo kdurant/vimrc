@@ -4,21 +4,23 @@
 
 - 这篇文章假设你已经会vim的基本操作，map等等
 
-- 你可以参考,但不能照搬, 因为可能一些案件的map完全不适合你
+- 你可以参考,但不能照搬, 因为可能一些插件、按键的map完全不适合你
 
 -------
 
-# 插件下载地址
+# 去哪里下载插件
 [![github](http://t10.baidu.com/it/u=3001304778,4021565056&fm=96)](https://github.com)是你的不二选择，[![vim](http://img3.douban.com/icon/g11003-1.jpg)](http://www.vim.org/index.php)也会将没有放到[github][2]上的插件推送上去
 
 这里你可以很方便的和插件作者交流、修改你认为合理的地方
+
+例外[github](https://github.com)上面各种代码都有，程序员的宝库啊！
 
 # 必须安装的第一个vim插件
 在史前时代，vim插件都是散落在各个文件夹中，install，uninstall，update会让人崩溃。因为这个，我放弃过学习vim。
 
 ## [pathogen][4]
 第一个vim插件管理器是 [pathogen][4]，你只需要将单个vim插件复制到[pathogen][4]指定的目录就好。
-这无疑让对vim插件的管理变得现代化了。从此你可以很方便地测试你感兴趣的插件是不是你想要的。
+这无疑让对vim插件的管理变得现代化了。从此你可以很方便地测试你感兴趣的插件
 
 [pathogen][4]最大的优点就是安装和使用都非常简单。
 我第一个用的就是他，虽然这时已经有了
@@ -44,11 +46,12 @@
 
 ## [vim-plug][7]
 `vim-plug`是一个非常小巧的插件管理器，只需要将此插件放到autoload/目录下，即完成安装。
-
-如果你配置好了`ruby`，它也支持并行安装
+- 包括[vundle][5]的所有功能
+- 轻量级
+- 如果你配置好了`ruby`，它也支持并行安装
 ![picture](https://raw.githubusercontent.com/junegunn/i/master/vim-plug/installer.gif)
 
-# 其他常用插件
+# 必须安装的插件
 
 ## [airline][9]
 一个漂亮的状态栏插件， 让你的vim美观很多
@@ -71,16 +74,26 @@
 
 ![](https://camo.githubusercontent.com/296aecf30e1607233814196db6bd3f5f47e70c73/68747470733a2f2f7261772e6769746875622e636f6d2f5369725665722f756c7469736e6970732f6d61737465722f646f632f64656d6f2e676966)
 
-## [nerdcommenter][12]
-注释插件，支持各种语言，各种方式
+## [neocomplete][14] or [YouCompleteMe][15]
+`YouCompleteMe`很强大，但windows下不好配置，`neocomplete`是windows下最好用的补全插件了
+期待**neovim**会对补全有更好的支持
 
+## [nerdcommenter][12]
+注释插件，支持各种语言，各种方式，程序员必备
+
+
+# 推荐安装的插件
 ## [vim-signature][13]
 可视化的书签
 
 ![](https://github.com/kshenoy/vim-signature/raw/images/screens/vim-signature_marks_markers.png?raw=true)
 
-## [neocomplete][14] or [YouCompleteMe][15]
-`YouCompleteMe`很强大，但windows下不好配置，`neocomplete`是windows下最好用的补全插件了
+## [vim-fugitive](https://github.com/tpope/vim-fugitive)
+**git**命令在vim里的无缝集成
+
+## [vim-easymotion](https://github.com/Lokaltog/vim-easymotion)
+如果你习惯使用它，它非常牛逼
+![](https://camo.githubusercontent.com/d5f800b9602faaeccc2738c302776a8a11797a0e/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f333739373036322f323033393335392f61386539333864362d383939662d313165332d383738392d3630303235656138333635362e676966)
 
 ## [vim-surround]()
 
