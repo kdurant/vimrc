@@ -29,6 +29,9 @@ if !empty(glob($HOME. "/vimfiles/bundle/neocomplete.vim"))
     let g:neocomplete#same_filetypes = {}
     let g:neocomplete#same_filetypes._ = '_'
 
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
     let g:neocomplete#data_directory='$HOME\PluginConfig\neocomplete'
 
     nmap     <M-b>   :NeoCompleteBufferMakeCache<cr>
