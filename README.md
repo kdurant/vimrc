@@ -49,6 +49,7 @@
 - 包括[vundle][5]的所有功能
 - 轻量级
 - 如果你配置好了`ruby`，它也支持并行安装
+
 ![picture](https://raw.githubusercontent.com/junegunn/i/master/vim-plug/installer.gif)
 
 # 必须安装的插件
