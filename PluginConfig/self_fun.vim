@@ -211,25 +211,40 @@ endfunction
 command! -nargs=0 Lucency call LUcency()
 let g:tweak_value = 235
 function! LUcency()
-    call libcallnr("vimtweak.dll", "SetAlpha", g:tweak_value)
-    if(g:tweak_value == 235) | let g:tweak_value = 255
-    else | let g:tweak_value = 235
+    if executable("vimtweak.dll")
+        call libcallnr("vimtweak.dll", "SetAlpha", g:tweak_value)
+        if(g:tweak_value == 235) | let g:tweak_value = 255
+        else | let g:tweak_value = 235
+        endif
     endif
 endfunction
 
 let g:maximize = 1
 function! Maximize()
-    call libcallnr("vimtweak.dll", "EnableMaximize", g:maximize)
-    if g:maximize == 0
-        set lines=38 columns=85
-        exe "winpos 570 0" | endif
-    let g:maximize = !g:maximize
+    if executable("vimtweak.dll")
+        call libcallnr("vimtweak.dll", "EnableMaximize", g:maximize)
+        if g:maximize == 0
+            set lines=38 columns=85
+            exe "winpos 570 0"
+        endif
+        let g:maximize = !g:maximize
+    else
+        if g:maximize == 1
+            exec "simalt ~x"
+        else
+            set lines=38 columns=85
+            exe "winpos 570 0"
+        endif
+        let g:maximize = !g:maximize
+    endif
 endfunction
 
 let g:topmost = 1
 function! Topmost()
-    call libcallnr("vimtweak.dll", "EnableTopMost", g:topmost)
-    let g:topmost = !g:topmost
+    if executable("vimtweak.dll")
+        call libcallnr("vimtweak.dll", "EnableTopMost", g:topmost)
+        let g:topmost = !g:topmost
+    endif
 endfunction
 
 

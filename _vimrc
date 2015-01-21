@@ -167,13 +167,8 @@ map     <M-->       <C-W>-
 map     <M-=>       <C-W>+
 map     <M-c>       :clo<cr>
 if g:is_win
-    if executable("vimtweak.dll")
-        map     ,sx     :call Maximize()<cr>
-        map     ,st     :call Topmost()<cr>
-    else
-        map     ,sx     :simalt ~x<cr>
-        map     ,sr     :simalt ~r<cr>
-    endif
+    map     ,sx     :call Maximize()<cr>
+    map     ,st     :call Topmost()<cr>
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
