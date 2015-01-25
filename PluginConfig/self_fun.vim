@@ -307,3 +307,9 @@ function! MenuBar()
     else | set go+=T | set go+=m
     endif
 endfunction
+
+
+command! -nargs=1 AgSelf call AgWrap(<f-args>)
+function! AgWrap(key_word)
+    exe "Ag " . a:key_word . " " .Search_root()
+endfunction
