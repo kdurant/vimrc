@@ -150,7 +150,7 @@ set hlsearch
 map     <M-d>w      :setlocal wrapscan!<cr>
 map     <M-d>h      :noh<cr>
 
-map     <F6>        :call Search_Word()<cr>
+map     <F6>        :call AgWrap()<cr>
 map     ,re         :call Replace()<cr>
 
 if executable('mingw32-gcc')

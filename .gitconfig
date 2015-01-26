@@ -17,6 +17,7 @@
 	editor = gvim
 	autocrlf = true
 	quotepath = false
+	ignoreCygwinFSTricks = true
 [diff]
     tool = gvimdiff
 [difftool]

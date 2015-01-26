@@ -32,6 +32,7 @@ snippet big
 </big>
 
 endsnippet
+
 snippet body
 <body>
 	$1
@@ -48,6 +49,17 @@ endsnippet
 
 snippet br
 <br>
+endsnippet
+
+snippet fun
+function ${1:name}($2)
+{
+    $3
+}
+endsnippet
+
+snippet h1	"a" i
+<h1>$1</h1>
 endsnippet
 
 snippet html
@@ -83,8 +95,14 @@ snippet ol
 </ol>
 endsnippet
 
-snippet p	"paragraph"
+snippet p	"paragraph"	 i
 <p>${1:This is text.}</p>
+endsnippet
+
+snippet script
+<script>
+	$1
+</script>
 endsnippet
 
 snippet strong
