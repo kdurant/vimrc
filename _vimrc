@@ -141,8 +141,7 @@ map     <M-k>       zk
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "search settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set grepprg=egrep\ -nwHR
-set grepprg=grep\ -nwHr
+set grepprg=ag\ --nogroup\ --nocolor
 set ignorecase
 set smartcase
 set incsearch
