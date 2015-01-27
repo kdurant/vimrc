@@ -163,3 +163,9 @@ let g:vcool_ins_hsl_map = '<M-F2>'
 nmap    f       <Plug>(easymotion-s)
 nmap    ;       <Plug>(easymotion-next)
 nmap    ,       <Plug>(easymotion-prev)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"ag settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ag_mapping_message = 0
+au FileType qf set ft=c
