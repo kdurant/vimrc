@@ -84,6 +84,10 @@
 
 
 # 推荐安装的插件
+## [Ag.vim][18]
+源代码搜索利器，[the_silver_searcher][19]的前端，可以自动忽略`.gitignore`里面的文件类型
+速度方面：ag > ack > grep
+
 ## [vim-signature][13]
 可视化的书签
 
@@ -101,7 +105,7 @@
 ## [vimcdoc][16]
 中文帮助文档，省的windows下还要去下载exe安装文件
 
-[1]: https://github.com/kdurant/vimrc
+[1]: https://coding.net/u/kdurant/p/vimrc/git
 [2]: https://github.com
 [3]: http://www.vim.org
 [4]: https://github.com/tpope/vim-pathogen
@@ -118,3 +122,5 @@
 [15]: https://github.com/Valloric/YouCompleteMe
 [16]: https://github.com/asins/vimcdoc
 [17]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
+[18]: https://github.com/rking/ag.vim
+[19]: https://github.com/ggreer/the_silver_searcher
