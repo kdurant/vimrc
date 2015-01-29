@@ -75,7 +75,8 @@ function! CompileFile()
     elseif &filetype == 'vhdl'
         echohl comment | echo "Current don't support VHDL file!"
     elseif &filetype == 'lua' && executable("lua")
-        exe "!lua %"
+        echo iconv(system("lua " . expand('%')), "cp936", &enc)
+        "exe "!lua %"
     else
         echohl ErrorMsg | echo "This filetype can't be compiled !"
     endif
