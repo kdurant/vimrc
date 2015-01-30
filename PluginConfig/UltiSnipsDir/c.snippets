@@ -8,6 +8,25 @@ snippet co "function comment"
  *************************************************************************/
 endsnippet
 
+snippet head "file head"
+/**
+ * @file `!v expand('%')`
+ * @brief$1
+ * @author kdurant
+ * @version v1.0
+ * @date `!v strftime("%Y-%m-%d")`
+ */
+endsnippet
+
+snippet //
+/*!< $1 */
+endsnippet
+snippet br
+/**
+  * @brief $1
+  */
+endsnippet
+
 snippet dox "function comment"
 /**
   * @brief  ${1}
@@ -30,7 +49,7 @@ snippet title
   */
 endsnippet
 snippet /*
-/*
+/**
  * ${1}
  */
 endsnippet
@@ -409,7 +428,8 @@ $1
 endsnippet
 
 snippet uart
-typedef	sturct __UartFrame
+#define	UART_BUF_LEN		32
+typedef	struct __UartFrame
 {
 	uint8_t head_high;
 	uint8_t head_low;

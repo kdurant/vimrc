@@ -13,6 +13,7 @@ Plug 'ctrlpvim/ctrlp.vim', {'frozen': 1}
 Plug 'edsono/vim-matchit', {'frozen': 1}
 Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
 Plug 'kdurant/AuthorInfo', {'frozen': 1}
+Plug 'git@github.com:kdurant/DoxygenToolkit.vim'
 Plug 'git@github.com:kdurant/LanguageRefVim'
 Plug 'git@github.com:kdurant/misc_mine'
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
