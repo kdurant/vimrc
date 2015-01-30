@@ -409,7 +409,8 @@ $1
 endsnippet
 
 snippet uart
-typedef	sturct __UartFrame
+#define	UART_BUF_LEN		32
+typedef	struct __UartFrame
 {
 	uint8_t head_high;
 	uint8_t head_low;
