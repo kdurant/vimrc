@@ -294,10 +294,10 @@ endfunction
 if executable('astyle')
     function! Astyle()
         "silent !astyle --add-brackets %
-        silent !astyle  --style=ansi %
-        silent !astyle -p %         "insert spaces padding around operators
-        "silent !astyle --pad-oper %         "insert spaces padding around operators
-        "silent !astyle --pad-paren-in %     "insert spaces padding around parenthesis on ther inside only
+        silent !astyle  --style=ansi --suffix=none -p %
+        " --pad-oper %         "insert spaces padding around operators
+        " --pad-paren-in %     "insert spaces padding around parenthesis on ther inside only
+        " --suffix=none  不保存原始文件
     endfunction
 endif
 
