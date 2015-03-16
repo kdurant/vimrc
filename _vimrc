@@ -289,3 +289,12 @@ augroup END
 
 source ~/PluginConfig/plugin_config.vim
 source ~/PluginConfig/self_fun.vim
+
+function QfMakeConv()
+   let qflist = getqflist()
+   for i in qflist
+      let i.text = iconv(i.text, "cp936", "utf-8")
+   endfor
+   call setqflist(qflist)
+endfunction
+au QuickfixCmdPost make call QfMakeConv()

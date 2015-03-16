@@ -1,0 +1,78 @@
+snippet main
+public class Main {
+    public static void main(String[] args)
+    {
+        System.out.println("${1:hello}");
+    }
+}
+endsnippet
+
+snippet class
+class ${1:name}
+{
+    $2
+}
+endsnippet
+
+snippet fun
+${1:static} ${2:void} ${3:name}(${4:void})
+{
+    $5
+}
+endsnippet
+
+snippet ?
+${1:/*LHS*/} = ${2:/*cond*/} ? ${3:/*expr1*/} : ${4:/*expr2*/};
+
+snippet if	"if {...}"
+if(${1:/*cond*/})
+{
+    ${2:/*code*/}
+}
+endsnippet
+
+snippet el	"else {...}"
+else
+{
+    ${1:/*code*/}
+}
+endsnippet
+
+snippet ei "else if {...}"
+else if(${1:/*cond*/})
+{
+    ${2:/*code*/}
+}
+endsnippet
+
+snippet do	"do ... while loop"
+do
+{
+    ${2:/*code*/}
+}
+while (${1:/*cond*/});
+endsnippet
+
+snippet wh	"while loop"
+while(${1:/*cond*/})
+{
+	${2:/*code*/}
+}
+endsnippet
+
+snippet for	"for loop(for)"
+for(char ${1:i} = 0; $1 ${2:<} ${3:count}; $1${4:++} )
+{
+	${5:/*code*/}
+}
+endsnippet
+
+snippet sw	"switch ... case"
+switch (${1:/*cond*/})
+{
+	case ${2:/*select*/} :
+		break;
+	default:
+		break;
+}
+endsnippet

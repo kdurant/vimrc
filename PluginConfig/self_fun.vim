@@ -43,13 +43,19 @@ function! CompileFile()
         else
             echohl ErrorMsg | echo "No work library!"
         endif
-    elseif &filetype == 'c' || &filetype == 'cpp'
+    elseif &filetype == 'c' || &filetype == 'cpp' || &filetype == 'java'
         if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -Wall\ -Wextra\ -Wconversion\ -o\ %<.exe\ %
+        elseif &filetype == 'java' | set makeprg=javac\ %
         else                | set makeprg=g++\ -o\ %<.exe\ %
         endif
         silent exe "make"
         if getqflist() == []    "compile correct and no warning
-            let l:flag = 0 | silent exe "ccl" | exe "!%<.exe"
+            let l:flag = 0 | silent exe "ccl" | 
+            if &filetype == 'java'
+                echo iconv(system("java " . expand('%:r')), "utf-8", &enc)
+            else
+                exe "!%<.exe"
+            endif
         else
             for l:inx in getqflist()
                 for l:val in values(l:inx)
@@ -64,7 +70,13 @@ function! CompileFile()
         if l:flag == 1| exe "cw"
         elseif l:flag == 2
             let l:select = input('There are warnings! [r]un or [s]olve? ')
-            if l:select ==  'r' | exe "!%<.exe" | exe "cw"
+            if l:select ==  'r' 
+                if &filetype == 'java'
+                    echo iconv(system("java " . expand('%:r')), "utf-8", &enc)
+                else
+                    exe "!%<.exe" 
+                    exe "cw"
+                endif
             elseif l:select == 's' | exe "cw"
             else | echohl ErrorMsg | echo "input error!"
             endif
