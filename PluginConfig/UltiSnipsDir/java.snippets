@@ -11,6 +11,9 @@ snippet class
 class ${1:name}
 {
     $2
+	public $1()
+	{
+	}
 }
 endsnippet
 
@@ -74,5 +77,16 @@ switch (${1:/*cond*/})
 		break;
 	default:
 		break;
+}
+endsnippet
+
+snippet try
+try
+{
+    /*context*/
+}
+catch()
+{
+    /*context*/
 }
 endsnippet

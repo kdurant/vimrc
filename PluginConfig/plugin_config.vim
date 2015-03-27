@@ -122,7 +122,7 @@ let g:ctrlp_custom_ignore = {
             \ 'file': '\v\.(o|pbi|cout|exe|so|dll|lnk|rpt|summary|db)$',
             \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
             \ }
-let g:ctrlp_mruf_include = '\.c$\|\.h$\|\.m$\|\.tcl$\|\.v$'
+let g:ctrlp_mruf_include = '\.c$\|\.h$\|\.m$\|\.tcl$\|\.v$\|\.java$'
 let g:ctrlp_root_markers = ['README.md']
 hi  link    CtrlPMatch      Define
 hi  link    CtrlPBufferPath PreProc
