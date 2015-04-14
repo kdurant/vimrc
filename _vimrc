@@ -287,10 +287,7 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
-source ~/PluginConfig/plugin_config.vim
-source ~/PluginConfig/self_fun.vim
-
-function QfMakeConv()
+function! QfMakeConv()
    let qflist = getqflist()
    for i in qflist
       let i.text = iconv(i.text, "cp936", "utf-8")
@@ -298,3 +295,6 @@ function QfMakeConv()
    call setqflist(qflist)
 endfunction
 au QuickfixCmdPost make call QfMakeConv()
+
+source ~/PluginConfig/plugin_config.vim
+source ~/PluginConfig/self_fun.vim
