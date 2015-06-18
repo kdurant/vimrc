@@ -2,6 +2,7 @@
 .cache/
 .neocomplete/
 .subversion/
+.VirtualBox/
 mplayer/
 vimfiles/bundle/
 PluginConfig/neocomplete/
