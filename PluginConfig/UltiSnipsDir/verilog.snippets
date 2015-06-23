@@ -20,8 +20,8 @@ module `!v expand('%:r')`
 	rst,
 	${1:/*port*/}
 );
-input                   clk ;
-input                   rst ;
+input                   clk;
+input                   rst;
 
 endmodule
 endsnippet
@@ -37,8 +37,8 @@ module `!v expand('%:r')` #
 	rst,
 	${2:/*port*/}
 );
-input                   clk ;
-input                   rst ;
+input                   clk;
+input                   rst;
 
 endmodule
 endsnippet
@@ -103,38 +103,38 @@ endsnippet
 
 #input
 snippet in
-input					${1:inport} ;
+input					${1:inport};
 endsnippet
 
 snippet inb
-input   [${1:MSB}:0]           ${2:inport} ;
+input   [${1:MSB}:0]           ${2:inport};
 endsnippet
 
 #output
 snippet ou
-output					${1:outport} ;
+output					${1:outport};
 endsnippet
 
 snippet oub
-output	[${1:MSB}:0]			${2:outport} ;
+output	[${1:MSB}:0]			${2:outport};
 endsnippet
 
 #reg
 snippet reg
-reg                     ${1:outport} ;
+reg                     ${1:outport};
 endsnippet
 
 snippet regb
-reg     [${1:MSB}:0]           ${2:outport} ;
+reg     [${1:MSB}:0]           ${2:outport};
 endsnippet
 
 #wire
 snippet wi
-wire                    ${1:outport} ;
+wire                    ${1:outport};
 endsnippet
 
 snippet wib
-wire    [${1:MSB}:0]           ${2:outport} ;
+wire    [${1:MSB}:0]           ${2:outport};
 endsnippet
 
 #case
@@ -154,23 +154,23 @@ endsnippet
 
 #assign
 snippet	as
-assign			${1:LHS} = ${2:RHS} ;
+assign			${1:LHS} = ${2:RHS};
 endsnippet
 
 #parameter
 snippet	pa
-parameter		${1:LHS} = ${2:RHS} ;
+parameter		${1:LHS} = ${2:RHS};
 endsnippet
 
 #<=
-#${1:LHS} <=# ${2:RHS} ;
+#${1:LHS} <=# ${2:RHS};
 snippet	;
-${1:LHS} <= ${2:RHS} ;
+${1:LHS} <= ${2:RHS};
 endsnippet
 
 #
 snippet	?
-${1:/*LHS*/} = ${2:/*condition*/} ? ${3:/*expr1*/} : ${4:/*expr2*/} ;
+${1:/*LHS*/} = ${2:/*condition*/} ? ${3:/*expr1*/} : ${4:/*expr2*/};
 endsnippet
 
 #
@@ -180,35 +180,35 @@ endsnippet
 
 # ri 判断上升沿或者下降沿
 snippet ri
-assign      ${1:RiseEdge} = (~${2:RegDelay1}) & ${3:RegDelay0} ;    //if has rise edge, set LHS=1, only one clock
+assign      ${1:RiseEdge} = (~${2:RegDelay1}) & ${3:RegDelay0};    //if has rise edge, set LHS=1, only one clock
 endsnippet
 
 snippet fa
-assign      ${1:FallEdge} = ${2:RegDelay1} & (~${3:RegDelay0}) ;    //if has fall edge, set LHS=1, only one clock
+assign      ${1:FallEdge} = ${2:RegDelay1} & (~${3:RegDelay0});    //if has fall edge, set LHS=1, only one clock
 endsnippet
 
 snippet	edge
-reg                     ${1:Reg}Delay0 , $1Delay1 ;
-wire                    $1Rise ;
-wire                    $1Fall ;
+reg                     ${1:Reg}Delay0 , $1Delay1;
+wire                    $1Rise;
+wire                    $1Fall;
 
-assign          $1Rise = (~$1Delay1) & $1Delay0 ;
-assign          $1Fall = $1Delay1 & (~$1Delay0) ;
+assign          $1Rise = (~$1Delay1) & $1Delay0;
+assign          $1Fall = $1Delay1 & (~$1Delay0);
 always @ (posedge clk or negedge rst)
 begin
     if(~rst)
-        {$1Delay0,$1Delay1}    <=# 2'b00 ;
+        {$1Delay0,$1Delay1}    <=# 2'b00;
     else
-        {$1Delay1,$1Delay0}    <=# {$1Delay0,$1} ;
+        {$1Delay1,$1Delay0}    <=# {$1Delay0,$1};
 end
 endsnippet
 
 snippet <<
-${1:RegOut} <=# {$1[${2:6}:${3:0}],${4:RightIn}} ;             //left shift, new data is appeare LSB
+${1:RegOut} <=# {$1[${2:6}:${3:0}],${4:RightIn}};             //left shift, new data is appeare LSB
 endsnippet
 
 snippet >>
-${1:RegOut} <=# {${3:LeftIn},$1[${2:7}:${4:1}]} ;              //right shift,new data is appeare MSB
+${1:RegOut} <=# {${3:LeftIn},$1[${2:7}:${4:1}]};              //right shift,new data is appeare MSB
 endsnippet
 
 # begin
@@ -228,7 +228,7 @@ endsnippet
 
 #for
 snippet for
-for(i = 0 ; i <= ${1:num} ; i = i + 1 )
+for(i = 0; i <= ${1:num}; i = i + 1 )
 begin
     ${2:/*code*/}
 end
@@ -245,12 +245,12 @@ endsnippet
 #forever
 snippet forever
 forever
-    #CLKPRIEOD	clk = ~clk ;			//only use initial block
+    #CLKPRIEOD	clk = ~clk;			//only use initial block
 endsnippet
 
 #task prototype
 snippet	task
-task ${1:/*task_name*/} ;
+task ${1:/*task_name*/};
 	${2:/*port declaration*/}
 	begin
 		${3:/*code*/}
@@ -259,8 +259,8 @@ endtask
 endsnippet
 
 snippet hr
-task HarwareReset ;
-input   [3:0]   HoldLowTime ;
+task HarwareReset;
+input   [3:0]   HoldLowTime;
 begin
 	rst = 1'b1;
 	wait (clk !== 1'bx);
@@ -311,42 +311,42 @@ endsnippet
 #system function or task
 #readmemh
 snippet	$re
-reg     [7:0]   DataMem[0:31] ;
-$readmemh("${1:/*data.txt*/}",${2:/*DataMem*/}) ;
+reg     [7:0]   DataMem[0:31];
+$readmemh("${1:/*data.txt*/}",${2:/*DataMem*/});
 endsnippet
 
 #random
 snippet	$ra
-${1:veriable} = ({$random} % ${2:2}) ;
+${1:veriable} = ({$random} % ${2:2});
 endsnippet
 
 #display
 snippet	$di
-$display("${1:veriable} = 0${2:x}%${3:h}",$1) ;
+$display("${1:veriable} = 0${2:x}%${3:h}",$1);
 endsnippet
 
 #strobe
 snippet	$st
-$strobe("${1:veriable} = 0${2:x}%${3:h}",$1) ;
+$strobe("${1:veriable} = 0${2:x}%${3:h}",$1);
 endsnippet
 
 #strobe
 snippet	$mo
-$monitor($time,"${1:veriable} = 0${2:x}%${3:h}",$1) ;
+$monitor($time,"${1:veriable} = 0${2:x}%${3:h}",$1);
 endsnippet
 
 #handle
 snippet	ha
-integer	${1:handle} ;
+integer	${1:handle};
 initial
 begin
-    $1 = $fopen("${2:file.out}") ;
+    $1 = $fopen("${2:file.out}");
 end
 endsnippet
 
 #fdisplay, write data to file
 snippet $fdi
-$fdisplay(${1:handle},"${2:veriable} = 0${3:x}%${4:h}",$2) ;
+$fdisplay(${1:handle},"${2:veriable} = 0${3:x}%${4:h}",$2);
 endsnippet
 
 #test
@@ -357,9 +357,9 @@ snippet	st
 always @ (posedge ${1:clk} or negedge ${2:rst})			// build the state flops
 begin
 	if(~rst)
-		CurrentState		<=# ${3:sIdleState} ;
+		current_state		<=# ${3:sIdleState};
 	else
-		CurrentState		<=# ${4:NextState} ;
+		current_state		<=# ${4:next_state};
 end
 
 //-------------------------------------------------------------------------
@@ -367,15 +367,15 @@ end
 //-------------------------------------------------------------------------
 always @ ( * )		//state machine, block assign
 begin
-	NextState	 = sIdleState ;
-	case(CurrentState)
-		${5:/*NextState		= StateXX*/}
-		begin
+	next_state	 = sIdleState;
+	case(current_state)
+	${5:/*next_state		= StateXX*/}
+	begin
 
-		end
-		default:
-		begin
-		end
+	end
+	default:
+	begin
+	end
 	endcase
 end
 
@@ -389,7 +389,7 @@ begin
 	end
 	else
 	begin
-		case(NextState)
+		case(next_state)
 			${6:/*code*/}
 			default:
 			begin
