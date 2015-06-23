@@ -328,12 +328,12 @@ function! AgWrap()
     let key_word = input('Search current word, [y] or [n] or [other]? ')
 
     if key_word == 'y'
-        exe 'Ag! ' . expand("<cword>") . ' ' . Search_root()
+        exe 'Agw! ' . expand("<cword>") . ' ' . Search_root()
     elseif key_word == 'n'
         return
     elseif key_word == ''
         return
     else
-        exe "Ag! " . key_word . " " .Search_root()
+        exe "Agw! " . key_word . " " .Search_root()
     endif
 endfunction
