@@ -197,9 +197,9 @@ assign          $1Fall = $1Delay1 & (~$1Delay0);
 always @ (posedge clk or negedge rst)
 begin
     if(~rst)
-        {$1Delay0,$1Delay1}    <=# 2'b00;
+        {$1Delay0,$1Delay1}    <= 2'b00;
     else
-        {$1Delay1,$1Delay0}    <=# {$1Delay0,$1};
+        {$1Delay1,$1Delay0}    <= {$1Delay0,$1};
 end
 endsnippet
 
