@@ -6,4 +6,7 @@ snippet vsim
 vsim -t ns -novopt work.${1:testbench}
 endsnippet
 
+snippet group
+virtual signal -install ${1:/tb/dut/driver} { (context $1 )&{2:signa}local_row_addr ,local_bank_addr ,local_col_addr }} xxxx
 
+endsnippet
