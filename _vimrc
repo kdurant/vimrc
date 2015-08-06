@@ -60,7 +60,7 @@ set ambiwidth=double
 "set guifont=YaHei_Mono:h13
 if g:is_win
     set guifont=Consolas:h13
-    set guifontwide=YaHei\ Consolas\ Hybrid:h13
+    "set guifontwide=YaHei\ Consolas\ Hybrid:h13
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
