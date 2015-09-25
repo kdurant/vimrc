@@ -27,7 +27,7 @@ endfunction
 fun! Replace()
     let l:word = input("Replace " . expand('<cword>') . " with: ")
     if l:word != ''
-        exe '%s/\<' . expand('<cword>') . '\>/' . l:word . '/ge | update'
+        exe '%s/\C\<' . expand('<cword>') . '\>/' . l:word . '/ge | update'
     endif
 endfunction
 
