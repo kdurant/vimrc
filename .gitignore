@@ -17,3 +17,4 @@ _viminfo
 .netrwhist
 *.old
 .git-credentials
+known_hosts
