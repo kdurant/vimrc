@@ -238,6 +238,7 @@ autocmd FileType lua  setlocal iskeyword+=.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map     <M-g>       :Git!<space>
 map     <M-v>a      :!start /b gitk --all<cr>
+map     <M-v>s      :Dit st<cr>
 
 map     <M-;>       :Dit<space>
 "if use this function, airline don't refresh branch
