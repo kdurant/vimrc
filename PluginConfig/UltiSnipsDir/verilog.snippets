@@ -406,3 +406,12 @@ endsnippet
 snippet keep
 /* synthesis keep */
 endsnippet
+
+snippet file
+integer ${1:name};
+initial
+begin
+    $1 = $fopen("${2:file}.txt");
+    $fmonitor($1, "%h %t", ${3:variable}, $time);
+end
+endsnippet
