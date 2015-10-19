@@ -170,7 +170,7 @@ nmap    ,       <Plug>(easymotion-prev)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ag settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ag_prg="git grep -n"
+"let g:ag_prg="git grep -n"
 let g:ag_highlight=1
 let g:ag_mapping_message = 0
 au FileType qf set ft=c
