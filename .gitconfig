@@ -1,25 +1,25 @@
 [alias]
-    ad = add -u .
-    st = status
-    me = merge --no-ff
-    br = branch
-    co = checkout
-    cm = commit -m
-    ca = commit -a
-    lo = log --graph --pretty=oneline
-    da = commit -m "daily backup"
-    gr = grep -ni
+	ad = add -u .
+	st = status
+	me = merge --no-ff
+	br = branch
+	co = checkout
+	cm = commit -m
+	ca = commit -a
+	lo = log --graph --pretty=oneline
+	da = commit -mdaily backup
+	gr = grep -ni
 [user]
 	email = wangjun850725@163.com
 	name = kdurant
-
 [core]
 	editor = gvim
-	autocrlf = true
+	autocrlf = True
 	quotepath = false
 	ignoreCygwinFSTricks = true
 [diff]
-    tool = gvimdiff
+	tool = gvimdiff
+	guitool = kdiff3
 [difftool]
 	prompt = false
 [push]
@@ -30,12 +30,10 @@
 	fontdiff = -family Consolas -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 [color]
 	ui = true
-;[receive]
-;denyCurrentBranch = ignore
 [i18n]
-	;commitencoding = gbk
-    commitencoding = utf-8
-    ;logoutputencoding = gbk
-    logoutputencoding = utf-8
+	commitencoding = utf-8
+	logoutputencoding = utf-8
 [credential]
 	helper = store
+[merge]
+	tool = kdiff3
