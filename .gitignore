@@ -3,6 +3,7 @@
 .neocomplete/
 .subversion/
 .VirtualBox/
+.altera.quartus/
 mplayer/
 vimfiles/bundle/
 PluginConfig/neocomplete/
@@ -18,3 +19,5 @@ _viminfo
 *.old
 .git-credentials
 known_hosts
+*.txt
+tags
