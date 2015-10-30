@@ -117,14 +117,15 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'bot,order:ttb,min:10,max:10'
 let g:ctrlp_use_caching = 1
 let g:ctrlp_cache_dir = $HOME.'/PluginConfig/ctrlp'
-"if executable('git')
-    "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-"endif
-let g:ctrlp_custom_ignore = {
-            \ 'dir': '\.git$\|\.hg$\|\.svn$\|release$\|work$\|PluginConfig/neocomplete$\|PluginConfig/ctrlp\|output_files\|incremental_db\|db',
-            \ 'file': '\v\.(o|pbi|cout|exe|so|dll|ppf|lnk|qip|rpt|csv|wlf|)$',
-            \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-            \ }
+if executable('git')
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+    "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
+endif
+"let g:ctrlp_custom_ignore = {
+            "\ 'dir': '\.git$\|\.hg$\|\.svn$\|release$\|work$\|PluginConfig/neocomplete$\|PluginConfig/ctrlp\|output_files\|incremental_db\|db',
+            "\ 'file': '\v\.(o|pbi|cout|exe|so|dll|ppf|lnk|qip|rpt|csv|wlf|)$',
+            "\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+            "\ }
 let g:ctrlp_mruf_include = '\.c$\|.h$\|\.m$\|\.tcl$\|\.v$\|\.java$'
 let g:ctrlp_root_markers = ['README.md']
 hi  link    CtrlPMatch      Define
