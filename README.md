@@ -9,7 +9,7 @@
 -------
 
 # 去哪里下载插件
-[![github](http://t10.baidu.com/it/u=3001304778,4021565056&fm=96)](https://github.com)是你的不二选择，[![vim](http://img3.douban.com/icon/g11003-1.jpg)](http://www.vim.org/index.php)也会将没有放到[github][2]上的插件推送上去
+[![github](http://baike.baidu.com/picture/3366456/3366456/0/6159252dd42a2834b1c7cf5b59b5c9ea15cebf79.html?fr=lemma&ct=single#aid=0&pic=6159252dd42a2834b1c7cf5b59b5c9ea15cebf79)](https://github.com)是你的不二选择，[![vim](http://img3.douban.com/icon/g11003-1.jpg)](http://www.vim.org/index.php)也会将没有放到[github][2]上的插件推送上去
 
 这里你可以很方便的和插件作者交流、修改你认为合理的地方
 
