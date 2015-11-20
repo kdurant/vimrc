@@ -39,6 +39,7 @@ call plug#end()
 
 map     ,so     :source $MYVIMRC<cr>
 map     ,se     :tabnew $MYVIMRC<cr>
+map     ,sg     :exe "cd " . Search_root()<cr>:tabnew .gitignore<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "file coding settings
