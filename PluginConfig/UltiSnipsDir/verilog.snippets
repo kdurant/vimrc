@@ -178,15 +178,6 @@ snippet :	"display" i
 [${1:MSB}:${2:0}]
 endsnippet
 
-# ri 判断上升沿或者下降沿
-snippet ri
-assign      ${1:RiseEdge} = (~${2:RegDelay1}) & ${3:RegDelay0};    //if has rise edge, set LHS=1, only one clock
-endsnippet
-
-snippet fa
-assign      ${1:FallEdge} = ${2:RegDelay1} & (~${3:RegDelay0});    //if has fall edge, set LHS=1, only one clock
-endsnippet
-
 snippet	edge
 reg                     ${1:Reg}Delay0 , $1Delay1;
 wire                    $1Rise;
