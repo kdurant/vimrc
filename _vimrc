@@ -34,6 +34,7 @@ Plug 'tpope/vim-surround', {'frozen': 1}
 Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'Lokaltog/vim-easymotion'
 Plug 'rking/ag.vim'
+Plug 'iamcco/markdown-preview.vim'
 call plug#end()
 
 map     ,so     :source $MYVIMRC<cr>
