@@ -326,17 +326,21 @@ function! MenuBar()
     endif
 endfunction
 
-
+if !exists('g:ag_file_types')
+  let g:ag_file_types = " --verilog --cc --asm "
+endif
 function! AgWrap()
     let key_word = input('Search current word, [y] or [n] or [other]? ')
 
     if key_word == 'y'
-        exe 'Agw! ' . expand("<cword>") . ' ' . Search_root()
+        exe "cd " . Search_root()
+        exe "Ag! -w " . g:ag_file_types . expand("<cword>")
     elseif key_word == 'n'
-        return
+        echohl Function | echo "Abolish search!" | echohl none | return
     elseif key_word == ''
-        return
+        echohl Function | echo "No input!" | echohl none | return
     else
-        exe "Agw! " . key_word . " " .Search_root()
+        exe "cd " . Search_root()
+        exe "Ag! -w " . g:ag_file_types . key_word
     endif
 endfunction
