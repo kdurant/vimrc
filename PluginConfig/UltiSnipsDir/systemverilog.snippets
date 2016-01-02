@@ -1,1 +1,21 @@
 extends verilog
+
+snippet array "fixed width"
+${1:int} name[0:${2:row}];
+endsnippet
+
+snippet array_mul "fixed width"
+${1:int} name[0:${2:row}][0:${3:col}];
+endsnippet
+
+snippet queue
+
+${1:int} ${2:name}[$] ${3:= {3,4}};
+
+endsnippet
+
+snippet interface
+interface ${1:name}(${2:interface_signal});
+${3:intenal_signal};
+endinterface
+endsnippet

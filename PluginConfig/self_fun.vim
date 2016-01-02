@@ -82,6 +82,9 @@ function! CompileFile()
             endif
         else | exe "cw"
         endif
+    elseif &filetype == 'cs'
+        set makeprg = csc\ \nologo\ %
+        silent exe "make"
     elseif &filetype == 'python'
         exe "!%<.py"
     elseif &filetype == 'vhdl'
