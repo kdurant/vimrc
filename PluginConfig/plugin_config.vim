@@ -126,7 +126,7 @@ endif
             "\ 'file': '\v\.(o|pbi|cout|exe|so|dll|ppf|lnk|qip|rpt|csv|wlf|)$',
             "\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
             "\ }
-let g:ctrlp_mruf_include = '\.c$\|.h$\|\.m$\|\.tcl$\|\.v$\|\.java$'
+let g:ctrlp_mruf_include = '\.c$\|.h$\|\.m$\|\.tcl$\|\.v$\|\.java$\|\.lua$\|'
 let g:ctrlp_root_markers = ['README.md']
 hi  link    CtrlPMatch      Define
 hi  link    CtrlPBufferPath PreProc
