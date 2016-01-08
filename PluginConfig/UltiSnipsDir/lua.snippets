@@ -1,3 +1,11 @@
+snippet st "string"
+${1:name} = "${2:string}"
+endsnippet
+
+snippet table "[key] -> value"
+${1:name} = {}
+endsnippet
+
 snippet pr	"print( ... )"
 print(${1:statements})
 endsnippet
@@ -5,6 +13,7 @@ endsnippet
 snippet if	"if ... then"
 if ${1:condition} then
 	${2:--statements}
+else
 end
 endsnippet
 
@@ -13,13 +22,13 @@ elseif ${1:condition} then
 	${2:--statements}
 endsnippet
 
-snippet wh	"whlie ... do"
+snippet whlie	"whlie ... do"
 while ${1:condition} do
 	${2:--statements}
 end
 endsnippet
 
-snippet re	"repeat ... until"
+snippet repeat	"repeat ... until"
 repeat
 	${1:--statements}
 until ${2:condition}
