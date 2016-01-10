@@ -3,7 +3,7 @@ ${1:name} = "${2:string}"
 endsnippet
 
 snippet table "[key] -> value"
-${1:name} = {}
+${1:name} = {${2}}
 endsnippet
 
 snippet pr	"print( ... )"
@@ -58,7 +58,7 @@ do
 end
 endsnippet
 
-snippet fun	"New function"
+snippet fun	"normal function"
 --foo = function(x) return 2*x end
 function ${1:name}(${2:args})
 	${3:--statements}
@@ -66,9 +66,18 @@ function ${1:name}(${2:args})
 end
 endsnippet
 
-snippet func	"Anonymous functions"
+snippet funa	"anonymous function"
 ${1:name} = function ()
 	${2:--statements}
 	return
 end
+endsnippet
+
+snippet funv "variable function" !b
+function ${1:name}(...)
+	--local variable
+    for idx,val in ipairs{...} do
+	--
+	end
+	--return variable
 endsnippet
