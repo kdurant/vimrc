@@ -9,3 +9,13 @@ endsnippet
 snippet group
 virtual signal -install ${1:/tb/dut/driver} { (context $1 )&{2:signa}local_row_addr ,local_bank_addr ,local_col_addr }} xxxx
 endsnippet
+
+snippet state "parameter state"
+virtual type {
+    {0 sIdleState}
+ 
+} FSM;
+
+virtual function {( FSM )                /path/state} state_new
+add wave -hex -color Magenta -label   state    /path/state_new
+endsnippet
