@@ -8,7 +8,7 @@ elseif g:is_unix
     call plug#begin('~/.vim/bundle')
 endif
 Plug 'asins/vimcdoc', {'frozen': 1}
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit', {'frozen': 1}
 Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
