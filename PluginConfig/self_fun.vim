@@ -330,17 +330,21 @@ if !exists('g:ag_file_types')
   let g:ag_file_types = " --verilog --cc --asm "
 endif
 function! AgWrap()
-    let key_word = input('Search current word, [y] or [n] or [other]? ')
-
-    if key_word == 'y'
-        exe "cd " . Search_root()
-        exe "Ag! -w " . g:ag_file_types . expand("<cword>")
-    elseif key_word == 'n'
-        echohl Function | echo "Abolish search!" | echohl none | return
-    elseif key_word == ''
-        echohl Function | echo "No input!" | echohl none | return
+    if &filetype != 'verilog' && &filetype != 'c' && &filetype != 'asm' && &filetype != 'cpp'
+        echohl ErrorMsg | echo "Filetype don't match" | echohl none | return
     else
-        exe "cd " . Search_root()
-        exe "Ag! -w " . g:ag_file_types . key_word
+        let key_word = input('Search current word, [y] or [n] or [other]? ')
+
+        if key_word == 'y'
+            exe "cd " . Search_root()
+            exe "Ag! -w " . g:ag_file_types . expand("<cword>")
+        elseif key_word == 'n'
+            echohl Function | echo "Abolish search!" | echohl none | return
+        elseif key_word == ''
+            echohl Function | echo "No input!" | echohl none | return
+        else
+            exe "cd " . Search_root()
+            exe "Ag! -w " . g:ag_file_types . key_word
+        endif
     endif
 endfunction
