@@ -19,3 +19,15 @@ virtual type {
 virtual function {( FSM )                /path/state} state_new
 add wave -hex -color Magenta -label   state    /path/state_new
 endsnippet
+
+snippet pin
+set_location_assignment PIN_$1 -to sdram_data[14]
+endsnippet
+
+snippet fastin
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to sdram_data[0]
+endsnippet
+
+snippet vlog
+vlog 
+endsnippet

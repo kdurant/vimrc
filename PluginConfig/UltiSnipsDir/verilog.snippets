@@ -345,8 +345,15 @@ snippet $fdi
 $fdisplay(${1:handle},"${2:veriable} = 0${3:x}%${4:h}",$2);
 endsnippet
 
+snippet inout
+tri [7:0] ${1:nand_data} = 100'bz;
+assign (weak1, weak0) $1 = 0;
+endsnippet
+
 #test
 snippet	st
+reg     [3:0]           current_state, next_state;
+reg     [4:0]           state_cnt, state_cnt_n;
 //-------------------------------------------------------------------------
 //first
 //-------------------------------------------------------------------------
@@ -363,7 +370,7 @@ end
 //-------------------------------------------------------------------------
 always @ ( * )		//state machine, block assign
 begin
-	next_state	 = sIdleState;
+	next_state	 = sIdle_State;
 	case(current_state)
 	${5:/*next_state		= StateXX*/}
 	begin
@@ -392,6 +399,25 @@ begin
 			end
 		endcase
 	end
+end
+
+/*
+ * 状态跳转计数器
+ */
+always @ (posedge clk or negedge rst)
+begin
+    if(~rst)
+        state_cnt <= 0;
+    else
+        state_cnt <= state_cnt_n;
+end
+
+always @ ( * )
+begin
+    if (current_state != next_state)
+        state_cnt_n = 0;
+    else
+        state_cnt_n = state_cnt + 1'b1;
 end
 endsnippet
 
