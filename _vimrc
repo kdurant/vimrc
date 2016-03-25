@@ -9,6 +9,7 @@ elseif g:is_unix
 endif
 Plug 'asins/vimcdoc', {'frozen': 1}
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit', {'frozen': 1}
 Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
