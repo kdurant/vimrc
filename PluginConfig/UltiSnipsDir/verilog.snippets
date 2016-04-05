@@ -179,19 +179,20 @@ snippet :	"display" i
 endsnippet
 
 snippet	edge
-reg                     ${1:Reg}Delay0 , $1Delay1;
-wire                    $1Rise;
-wire                    $1Fall;
+reg    [1:0]            ${1:Reg}_r;
+wire                    $1_rise;
+wire                    $1_fall;
 
-assign          $1Rise = (~$1Delay1) & $1Delay0;
-assign          $1Fall = $1Delay1 & (~$1Delay0);
+assign          $1_rise = $1_r[1:0] == 2'b01;
+assign          $1_fall = $1_r[1:0] == 2'b10;
 always @ (posedge clk or negedge rst)
 begin
     if(~rst)
-        {$1Delay0,$1Delay1}    <= 2'b00;
+        $1_r    <= 2'b00;
     else
-        {$1Delay1,$1Delay0}    <= {$1Delay0,$1};
+        $1_r    <= {$1_r[0],$1};
 end
+
 endsnippet
 
 snippet <<
@@ -353,14 +354,14 @@ endsnippet
 #test
 snippet	st
 reg     [3:0]           current_state, next_state;
-reg     [4:0]           state_cnt, state_cnt_n;
+reg     [4:0]           state_cnt;
 //-------------------------------------------------------------------------
-//first
+//next_state滞后于current_state一个周期
 //-------------------------------------------------------------------------
 always @ (posedge ${1:clk} or negedge ${2:rst})			// build the state flops
 begin
 	if(~rst)
-		current_state		<= ${3:sIdleState};
+		current_state		<= ${3:sIdle_State};
 	else
 		current_state		<= ${4:next_state};
 end
@@ -372,13 +373,16 @@ always @ ( * )		//state machine, block assign
 begin
 	next_state	 = sIdle_State;
 	case(current_state)
-	${5:/*next_state		= StateXX*/}
-	begin
-
-	end
-	default:
-	begin
-	end
+        sIdle_State:
+		begin
+			if(/*xx*/)
+				next_state <= /*xx_state*/;
+			else
+				next_state <= current_state;
+		end
+		default:
+		begin
+		end
 	endcase
 end
 
@@ -393,7 +397,9 @@ begin
 	else
 	begin
 		case(next_state)
-			${6:/*code*/}
+			sIdle_State:
+			begin
+			end
 			default:
 			begin
 			end
@@ -408,16 +414,10 @@ always @ (posedge clk or negedge rst)
 begin
     if(~rst)
         state_cnt <= 0;
+    else if (next_state != current_state)
+        state_cnt <= 0;
     else
-        state_cnt <= state_cnt_n;
-end
-
-always @ ( * )
-begin
-    if (current_state != next_state)
-        state_cnt_n = 0;
-    else
-        state_cnt_n = state_cnt + 1'b1;
+        state_cnt <= state_cnt + 1'b1;
 end
 endsnippet
 
@@ -436,4 +436,20 @@ begin
     $1 = $fopen("${2:file}.txt");
     $fmonitor($1, "%h %t", ${3:variable}, $time);
 end
+
+reg                     ${1:Reg}Delay0 , $1Delay1;
+wire                    $1Rise;
+wire                    $1Fall;
+
+assign          $1Rise = (~$1Delay1) & $1Delay0;
+assign          $1Fall = $1Delay1 & (~$1Delay0);
+always @ (posedge clk or negedge rst)
+begin
+    if(~rst)
+        {$1Delay0,$1Delay1}    <= 2'b00;
+    else
+        {$1Delay1,$1Delay0}    <= {$1Delay0,$1};
+end
+
+
 endsnippet

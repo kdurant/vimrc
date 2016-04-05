@@ -3,7 +3,7 @@ snippet color
 endsnippet
 
 snippet vsim
-vsim -t ns -novopt work.${1:testbench}
+vsim -t ns -L Altera_lib -novopt work.${1:testbench}
 endsnippet
 
 snippet group
@@ -29,5 +29,5 @@ set_instance_assignment -name FAST_INPUT_REGISTER ON -to sdram_data[0]
 endsnippet
 
 snippet vlog
-vlog 
+vlog -work work -incr -vopt ${1:D:/nandflash/testbench/nand_basic_opTb.v}
 endsnippet
