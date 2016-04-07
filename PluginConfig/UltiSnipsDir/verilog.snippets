@@ -14,6 +14,7 @@ endsnippet
 #module`!v strftime("%Y-%m-%d")`
 #module ${1:/*module*/}
 snippet mo
+\`timescale  1 ns/1 ps
 module `!v expand('%:r')`
 (
 	clk,
@@ -355,6 +356,7 @@ endsnippet
 snippet	st
 reg     [3:0]           current_state, next_state;
 reg     [4:0]           state_cnt;
+parameter		sIdle_State = 0;
 //-------------------------------------------------------------------------
 //next_state滞后于current_state一个周期
 //-------------------------------------------------------------------------
@@ -371,17 +373,17 @@ end
 //-------------------------------------------------------------------------
 always @ ( * )		//state machine, block assign
 begin
-	next_state	 = sIdle_State;
 	case(current_state)
         sIdle_State:
 		begin
 			if(/*xx*/)
-				next_state <= /*xx_state*/;
+				next_state = /*xx_state*/;
 			else
-				next_state <= current_state;
+				next_state = current_state;
 		end
 		default:
 		begin
+			next_state	 = sIdle_State;
 		end
 	endcase
 end
