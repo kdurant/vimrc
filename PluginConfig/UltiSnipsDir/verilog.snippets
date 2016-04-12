@@ -104,28 +104,28 @@ endsnippet
 
 #input
 snippet in
-input					    ${1:inport};
+input					    ${1:inport},
 endsnippet
 
 snippet inb
-input		 [${1:MSB}:0]          ${2:inport};
+input		 [${1:MSB}:0]          ${2:inport},
 endsnippet
 
 #output
 snippet our
-output	reg				    ${1:outport};
+output	reg				    ${1:outport},
 endsnippet
 
 snippet ouw
-output	wire			    ${1:outport};
+output	wire			    ${1:outport},
 endsnippet
 
 snippet ourb
-output	reg  [${1:MSB}:0]			${2:outport};
+output	reg  [${1:MSB}:0]			${2:outport},
 endsnippet
 
 snippet ourw
-output	wire [${1:MSB}:0]			${2:outport};
+output	wire [${1:MSB}:0]			${2:outport},
 endsnippet
 
 #reg
@@ -389,10 +389,7 @@ begin
 			else
 				next_state = current_state;
 		end
-		default:
-		begin
-			next_state	 = sIdle_State;
-		end
+		default: next_state	 = sIdle_State;
 	endcase
 end
 
