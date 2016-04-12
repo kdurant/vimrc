@@ -17,8 +17,8 @@ snippet mo
 \`timescale  1 ns/1 ps
 module `!v expand('%:r')`
 (
-	clk,
-	rst,
+    input                       clk,
+    input                       rst,
 	${1:/*port*/}
 );
 input                   clk;
@@ -34,8 +34,8 @@ module `!v expand('%:r')` #
 	${1:/*parameter*/}
 )
 (
-	clk,
-	rst,
+    input                       clk,
+    input                       rst,
 	${2:/*port*/}
 );
 input                   clk;
@@ -104,20 +104,28 @@ endsnippet
 
 #input
 snippet in
-input					${1:inport};
+input					    ${1:inport};
 endsnippet
 
 snippet inb
-input   [${1:MSB}:0]           ${2:inport};
+input		 [${1:MSB}:0]          ${2:inport};
 endsnippet
 
 #output
-snippet ou
-output					${1:outport};
+snippet our
+output	reg				    ${1:outport};
 endsnippet
 
-snippet oub
-output	[${1:MSB}:0]			${2:outport};
+snippet ouw
+output	wire			    ${1:outport};
+endsnippet
+
+snippet ourb
+output	reg  [${1:MSB}:0]			${2:outport};
+endsnippet
+
+snippet ourw
+output	wire [${1:MSB}:0]			${2:outport};
 endsnippet
 
 #reg
