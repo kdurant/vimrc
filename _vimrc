@@ -18,7 +18,7 @@ Plug 'git@github.com:kdurant/DoxygenToolkit.vim'
 Plug 'git@github.com:kdurant/LanguageRefVim'
 Plug 'git@github.com:kdurant/misc_mine'
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
-Plug 'kdurant/verilog-testbench', {'frozen': 1}
+Plug 'git@github.com:kdurant/verilog-testbench'
 Plug 'kshenoy/vim-signature'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'mbriggs/mark.vim', {'frozen': 1}
