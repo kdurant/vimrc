@@ -21,8 +21,6 @@ module `!v expand('%:r')`
     input                       rst,
 	${1:/*port*/}
 );
-input                   clk;
-input                   rst;
 
 endmodule
 endsnippet
@@ -38,8 +36,6 @@ module `!v expand('%:r')` #
     input                       rst,
 	${2:/*port*/}
 );
-input                   clk;
-input                   rst;
 
 endmodule
 endsnippet
@@ -233,7 +229,7 @@ endsnippet
 
 #for
 snippet for
-for(i = 0; i <= ${1:num}; i = i + 1 )
+for(int i = 0; i <= ${1:num}; i = i + 1 )
 begin
     ${2:/*code*/}
 end
@@ -328,7 +324,7 @@ endsnippet
 
 #display
 snippet	$di
-$display("${1:veriable} = 0${2:x}%${3:h}",$1);
+$display("${1:format}", ${2:variable});
 endsnippet
 
 #strobe

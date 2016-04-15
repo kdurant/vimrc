@@ -1,6 +1,5 @@
 extends verilog
 
-<<<<<<< HEAD
 snippet array "fixed width"
 ${1:int} name[0:${2:row}];
 endsnippet
@@ -32,3 +31,53 @@ endsnippet
 snippet allatch "D latch" !b
 
 endsnippet
+
+snippet enum
+enum ${1:/*[optional data type]*/}
+{
+	${2:/*name1 = value1*/,}
+} ${3:var_name};
+endsnippet
+
+snippet tde
+typedef enum
+{
+    /*data*/,
+}${1:/*struct*/}_e;
+endsnippet
+
+snippet tds
+typedef /*packed*/ struct
+{
+    /*data*/;
+}${1:/*struct*/}_s;
+endsnippet
+
+snippet tdu
+typedef union
+{
+    /*data*/;
+}${1:/*struct*/}_u;
+endsnippet
+
+snippet foreach
+    foreach(${1:name}[${2:index}])
+endsnippet
+
+snippet fork
+fork
+	/*code_block1*/
+	/*code_block2*/
+join/*_any or _none*/
+endsnippet
+
+snippet class
+class ${1:name};
+	/*class property*/
+	/*class method*/
+	function new(/*parameter*/);
+		/*属性初值*/
+	endfunction
+endclass:$1
+endsnippet
+
