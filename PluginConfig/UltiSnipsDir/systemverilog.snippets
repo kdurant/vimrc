@@ -15,9 +15,39 @@ ${1:int} ${2:name}[$] ${3:= {3,4}};
 endsnippet
 
 snippet interface
-interface ${1:name}(${2:interface_signal});
-${3:intenal_signal};
-endinterface
+// vmm rule 4-4 -- interfaces shall be packaged into the same files as the
+// transactors that use them
+interface ${1:name_if}
+(
+	// input wire clk,
+	// input wire reset
+);
+	timeunit 1ns;
+	timeprecision 100ps;
+
+	// imports
+	// import pkg::*;
+
+	parameter hold_time = 2;     // timeunit is 1ns
+	parameter setup_time = 2;    // change timing values as per requirement
+
+	// Clocking Blocks
+	// just type clocking and tab to invoke snippet
+
+	// Modports
+	// just type modport and tab to invoke snippet
+
+endinterface: $1
+endsnippet
+
+snippet modport
+modport ${1:name_mp}
+(${2}
+// clocking clocking_cb,
+// input input_name,
+// output output_port,
+// ....
+);
 endsnippet
 
 snippet alff "combination logic" !b
@@ -47,7 +77,7 @@ typedef enum
 endsnippet
 
 snippet tds
-typedef /*packed*/ struct
+typedef struct //packed unsigned
 {
     /*data*/;
 }${1:/*struct*/}_s;
@@ -61,19 +91,27 @@ typedef union
 endsnippet
 
 snippet foreach
-    foreach(${1:name}[${2:index}])
+	foreach(${1:name}[${2:index}])
 endsnippet
 
 snippet fork
-fork
-	/*code_block1*/
-	/*code_block2*/
-join/*_any or _none*/
+initial
+begin
+	fork
+		begin
+		${1:/*code_block1()*/}
+		end
+		begin
+		/*code_block2()*/
+		end
+	join/*_any or _none*/
+end
 endsnippet
 
 snippet class
-class ${1:name};
+class ${1:class_name} extends ${2:base_class};
 	/*class property*/
+	$2
 	/*class method*/
 	function new(/*parameter*/);
 		/*属性初值*/
@@ -85,5 +123,24 @@ snippet clocking
 clocking ${1:name} (posedge clk);
 	//default input #1ns output #1ns
 endclocking
+endsnippet
+
+snippet logic
+logic					${1:inport};
+endsnippet
+
+snippet logicb
+logic	[${1:MSB}:0]           ${2:inport};
+endsnippet
+
+snippet package
+package ${1:name}
+endpackage
+endsnippet
+
+snippet assert
+assert("condition")
+else
+	$error("failed");
 endsnippet
 

@@ -43,6 +43,14 @@ function! CompileFile()
         else
             echohl ErrorMsg | echo "No work library!"
         endif
+    elseif &filetype == 'systemverilog'
+        if(isdirectory("work"))
+            set makeprg=vlog\ -work\ work\ -sv\ %
+            set errorformat=**\ Error:\ %f(%l):\ %m
+            exe "make" | exe "cw"
+        else
+            echohl ErrorMsg | echo "No work library!"
+        endif
     elseif &filetype == 'c' || &filetype == 'cpp' || &filetype == 'java'
         if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -Wall\ -Wextra\ -Wconversion\ -o\ %<.exe\ %
         elseif &filetype == 'java' | set makeprg=javac\ %
