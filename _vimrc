@@ -36,6 +36,7 @@ Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'Lokaltog/vim-easymotion'
 Plug 'rking/ag.vim'
 Plug 'iamcco/markdown-preview.vim'
+Plug 'WeiChungWu/vim-SystemVerilog'
 call plug#end()
 
 map     ,so     :source $MYVIMRC<cr>
