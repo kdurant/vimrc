@@ -15,10 +15,11 @@ endsnippet
 #module ${1:/*module*/}
 snippet mo
 \`timescale  1 ns/1 ps
+
 module `!v expand('%:r')`
 (
-    input                       clk,
-    input                       rst,
+    input   wire                clk,
+    input   wire                rst,
 	${1:/*port*/}
 );
 
@@ -32,8 +33,8 @@ module `!v expand('%:r')` #
 	${1:/*parameter*/}
 )
 (
-    input                       clk,
-    input                       rst,
+    input   wire                clk,
+    input   wire                rst,
 	${2:/*port*/}
 );
 
@@ -159,12 +160,12 @@ endsnippet
 
 #assign
 snippet	as
-assign			${1:LHS} = ${2:RHS};
+assign			        ${1:LHS} = ${2:RHS};
 endsnippet
 
 #parameter
 snippet	pa
-parameter		${1:LHS} = ${2:RHS};
+parameter		        ${1:LHS} = ${2:RHS};
 endsnippet
 
 #<=
@@ -360,14 +361,14 @@ endsnippet
 snippet	st
 reg     [3:0]           current_state, next_state;
 reg     [4:0]           state_cnt;
-parameter		sIdle_State = 0;
+parameter		        sIdle_state = 0;
 //-------------------------------------------------------------------------
 //next_state滞后于current_state一个周期
 //-------------------------------------------------------------------------
 always @ (posedge ${1:clk} or negedge ${2:rst})			// build the state flops
 begin
 	if(~rst)
-		current_state		<= ${3:sIdle_State};
+		current_state		<= ${3:sIdle_state};
 	else
 		current_state		<= ${4:next_state};
 end
@@ -378,21 +379,21 @@ end
 always @ ( * )		//state machine, block assign
 begin
 	case(current_state)
-        sIdle_State:
+        sIdle_state:
 		begin
 			if(/*xx*/)
 				next_state = /*xx_state*/;
 			else
 				next_state = current_state;
 		end
-		default: next_state	 = sIdle_State;
+		default: next_state = sIdle_state;
 	endcase
 end
 
 //-------------------------------------------------------------------------
 //three.output
 //-------------------------------------------------------------------------
-always @ (posedge $1 or negedge $2 )			//output
+always @ (posedge $1 or negedge $2)			//output
 begin
 	if(~rst)
 	begin
@@ -400,7 +401,7 @@ begin
 	else
 	begin
 		case(next_state)
-			sIdle_State:
+			sIdle_state:
 			begin
 			end
 			default:
