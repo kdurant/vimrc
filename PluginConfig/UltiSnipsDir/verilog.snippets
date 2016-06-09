@@ -15,11 +15,12 @@ endsnippet
 #module ${1:/*module*/}
 snippet mo
 \`timescale  1 ns/1 ps
+
 module `!v expand('%:r')`
 (
-    input                       clk,
-    input                       rst,
-	${1:/*port*/}
+    input   wire                clk,
+    input   wire                rst,
+    ${1:/*port*/}
 );
 
 endmodule
@@ -29,12 +30,12 @@ endsnippet
 snippet mod  "wait"
 module `!v expand('%:r')` #
 (
-	${1:/*parameter*/}
+    ${1:/*parameter*/}
 )
 (
-    input                       clk,
-    input                       rst,
-	${2:/*port*/}
+    input   wire                clk,
+    input   wire                rst,
+    ${2:/*port*/}
 );
 
 endmodule
@@ -44,7 +45,7 @@ endsnippet
 snippet	al
 always @ (posedge ${1:clk} or negedge ${2:rst})
 begin
-	${3:/*code*/}
+    ${3:/*code*/}
 end
 endsnippet
 
@@ -53,54 +54,54 @@ endsnippet
 snippet ifb
 if(${1:/*condition*/})
 begin
-	${2:/*code*/}
+    ${2:/*code*/}
 end
 endsnippet
 
 snippet if "condition"
 if(${1:/*condition*/})
-	${2:/*code*/}
+    ${2:/*code*/}
 endsnippet
 
 snippet ifrb
 if(~rst)
 begin
-	${1:/*code*/}
+    ${1:/*code*/}
 end
 endsnippet
 
 snippet ifr "no bracket"
 if(~rst)
-	${1:/*code*/}
+    ${1:/*code*/}
 endsnippet
 
 snippet el
 else
-	${1:code}
+    ${1:code}
 endsnippet
 
 snippet elb
 else
 begin
-	${1:/*code*/}
+    ${1:/*code*/}
 end
 endsnippet
 
 snippet	eib
 else if(${1:/*condition*/})
 begin
-	${2:/*code*/}
+    ${2:/*code*/}
 end
 endsnippet
 
 snippet	ei
 else if(${1:/*condition*/})
-	${2:/*code*/}
+    ${2:/*code*/}
 endsnippet
 
 #input
 snippet in
-input	wire			    ${1:inport},
+input	wire				${1:inport},
 endsnippet
 
 snippet inb
@@ -109,11 +110,11 @@ endsnippet
 
 #output
 snippet our
-output	reg				    ${1:outport},
+output	reg					${1:outport},
 endsnippet
 
 snippet ouw
-output	wire			    ${1:outport},
+output	wire				${1:outport},
 endsnippet
 
 snippet ourb
@@ -147,26 +148,29 @@ snippet ca
 case (${1:/*condition*/})
 ${2:/*first*/}:
 begin
-	${3:/*code*/}
+    ${3:/*code*/}
 end
 ${4:/*code*/}
 default:
 begin
-	${5:/*code*/}
+    ${5:/*code*/}
 end
 endcase
 endsnippet
 
 #assign
 snippet	as
-assign			${1:LHS} = ${2:RHS};
+assign					${1:LHS} = ${2:RHS};
 endsnippet
 
 #parameter
 snippet	pa
-parameter		${1:LHS} = ${2:RHS};
+parameter				${1:LHS} = ${2:RHS};
 endsnippet
 
+snippet	lo
+localparam				${1:LHS} = ${2:RHS};
+endsnippet
 #<=
 #${1:LHS} <=# ${2:RHS};
 snippet	;
@@ -211,7 +215,7 @@ endsnippet
 # begin
 snippet be
 begin
-	${1:/*code*/}
+    ${1:/*code*/}
 end
 endsnippet
 
@@ -252,10 +256,10 @@ endsnippet
 #task prototype
 snippet	task
 task ${1:/*task_name*/};
-	${2:/*port declaration*/}
-	begin
-		${3:/*code*/}
-	end
+    ${2:/*port declaration*/}
+    begin
+        ${3:/*code*/}
+    end
 endtask
 endsnippet
 
@@ -263,13 +267,13 @@ snippet hr
 task HarwareReset;
 input   [3:0]   HoldLowTime;
 begin
-	rst = 1'b1;
-	wait (clk !== 1'bx);
-	@ (negedge clk);
-	rst <= 1'b0;
-	repeat(HoldLowTime)
-		@ (negedge clk);
-	rst <= 1'b1;
+    rst = 1'b1;
+    wait (clk !== 1'bx);
+    @ (negedge clk);
+    rst <= 1'b0;
+    repeat(HoldLowTime)
+        @ (negedge clk);
+    rst <= 1'b1;
 end
 endtask
 endsnippet
@@ -277,10 +281,10 @@ endsnippet
 #function prototype
 snippet fun
 function ${1:/*return_type_or_scope*/} ${2:/*function_name*/}
-	${3:/*port declaration*/}
-	begin
-		${3:/*code*/}
-	end
+    ${3:/*port declaration*/}
+    begin
+        ${3:/*code*/}
+    end
 endfunction
 endsnippet
 
@@ -360,16 +364,16 @@ endsnippet
 snippet	st
 reg     [3:0]           current_state, next_state;
 reg     [4:0]           state_cnt;
-parameter		sIdle_State = 0;
+parameter				sIdle_state = 0;
 //-------------------------------------------------------------------------
 //next_state滞后于current_state一个周期
 //-------------------------------------------------------------------------
 always @ (posedge ${1:clk} or negedge ${2:rst})			// build the state flops
 begin
-	if(~rst)
-		current_state		<= ${3:sIdle_State};
-	else
-		current_state		<= ${4:next_state};
+    if(~rst)
+        current_state		<= ${3:sIdle_state};
+    else
+        current_state		<= ${4:next_state};
 end
 
 //-------------------------------------------------------------------------
@@ -377,37 +381,37 @@ end
 //-------------------------------------------------------------------------
 always @ ( * )		//state machine, block assign
 begin
-	case(current_state)
-        sIdle_State:
-		begin
-			if(/*xx*/)
-				next_state = /*xx_state*/;
-			else
-				next_state = current_state;
-		end
-		default: next_state	 = sIdle_State;
-	endcase
+    case(current_state)
+        sIdle_state:
+        begin
+            if(/*xx*/)
+                next_state = /*xx_state*/;
+            else
+                next_state = current_state;
+        end
+        default: next_state = sIdle_state;
+    endcase
 end
 
 //-------------------------------------------------------------------------
 //three.output
 //-------------------------------------------------------------------------
-always @ (posedge $1 or negedge $2 )			//output
+always @ (posedge $1 or negedge $2)			//output
 begin
-	if(~rst)
-	begin
-	end
-	else
-	begin
-		case(next_state)
-			sIdle_State:
-			begin
-			end
-			default:
-			begin
-			end
-		endcase
-	end
+    if(~rst)
+    begin
+    end
+    else
+    begin
+        case(next_state)
+            sIdle_state:
+            begin
+            end
+            default:
+            begin
+            end
+        endcase
+    end
 end
 
 /*
@@ -422,6 +426,33 @@ begin
     else
         state_cnt <= state_cnt + 1'b1;
 end
+endsnippet
+
+snippet sync
+module sync
+(
+    input   wire                clk,
+    input   wire                rst,
+
+    input   wire                sig_in,
+    output  reg                 sig_out
+);
+
+reg                     sig_reg;
+always @ (posedge clk or negedge rst)
+begin
+    if(~rst)
+    begin
+        sig_out <= 0;
+        sig_reg <= 0;
+    end
+    else
+    begin
+        sig_reg <= sig_in;
+        sig_out <= sig_reg;
+    end
+end
+endmodule
 endsnippet
 
 snippet prune
