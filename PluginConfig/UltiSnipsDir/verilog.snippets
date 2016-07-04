@@ -469,21 +469,6 @@ initial
 begin
     $1 = $fopen("${2:file}.txt");
     $fmonitor($1, "%h %t", ${3:variable}, $time);
+	$fclose($1);
 end
-
-reg                     ${1:Reg}Delay0 , $1Delay1;
-wire                    $1Rise;
-wire                    $1Fall;
-
-assign          $1Rise = (~$1Delay1) & $1Delay0;
-assign          $1Fall = $1Delay1 & (~$1Delay0);
-always @ (posedge clk or negedge rst)
-begin
-    if(~rst)
-        {$1Delay0,$1Delay1}    <= 2'b00;
-    else
-        {$1Delay1,$1Delay0}    <= {$1Delay0,$1};
-end
-
-
 endsnippet

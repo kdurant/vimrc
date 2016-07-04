@@ -17,19 +17,12 @@ endsnippet
 snippet interface
 // vmm rule 4-4 -- interfaces shall be packaged into the same files as the
 // transactors that use them
-interface ${1:name_if}
-(
-	// input wire clk,
-	// input wire reset
-);
-	timeunit 1ns;
-	timeprecision 100ps;
-
+interface ${1:name_if} (input wire clk);
+	parameter hold_time = 0ns;
+	parameter setup_time = 1ns;
 	// imports
 	// import pkg::*;
-
-	parameter hold_time = 2;     // timeunit is 1ns
-	parameter setup_time = 2;    // change timing values as per requirement
+	//logic list
 
 	// Clocking Blocks
 	// just type clocking and tab to invoke snippet
@@ -91,7 +84,7 @@ typedef union
 endsnippet
 
 snippet foreach
-	foreach(${1:name}[${2:index}])
+foreach(${1:name}[${2:index}])
 endsnippet
 
 snippet fork
@@ -114,14 +107,15 @@ class ${1:class_name} extends ${2:base_class};
 	$2
 	/*class method*/
 	function new(/*parameter*/);
-		/*属性初值*/
+		//this.x = x;
 	endfunction
-endclass:$1
+endclass
 endsnippet
 
 snippet clocking
-clocking ${1:name} (posedge clk);
-	//default input #1ns output #1ns
+clocking ${1:cb} @ (posedge clk);
+	//default input #1ns output #1ns;
+	// port list
 endclocking
 endsnippet
 
