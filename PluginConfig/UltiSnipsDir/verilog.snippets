@@ -6,9 +6,9 @@ endsnippet
 
 snippet co
 /*-------------------------------------------------------------------------
-//description	:   ${1}
-//condition		:
-//others		:
+//description   :   ${1}
+//condition     :
+//others        :
 -------------------------------------------------------------------------*/
 endsnippet
 #module`!v strftime("%Y-%m-%d")`
@@ -42,7 +42,7 @@ endmodule
 endsnippet
 
 #always
-snippet	al
+snippet al
 always @ (posedge ${1:clk} or negedge ${2:rst})
 begin
     ${3:/*code*/}
@@ -87,42 +87,42 @@ begin
 end
 endsnippet
 
-snippet	eib
+snippet eib
 else if(${1:/*condition*/})
 begin
     ${2:/*code*/}
 end
 endsnippet
 
-snippet	ei
+snippet ei
 else if(${1:/*condition*/})
     ${2:/*code*/}
 endsnippet
 
 #input
 snippet in
-input	wire				${1:inport},
+input   wire                ${1:inport},
 endsnippet
 
 snippet inb
-input	wire [${1:MSB}:0]          ${2:inport},
+input   wire [${1:MSB}:0]          ${2:inport},
 endsnippet
 
 #output
 snippet our
-output	reg					${1:outport},
+output  reg                 ${1:outport},
 endsnippet
 
 snippet ouw
-output	wire				${1:outport},
+output  wire                ${1:outport},
 endsnippet
 
 snippet ourb
-output	reg  [${1:MSB}:0]			${2:outport},
+output  reg  [${1:MSB}:0]           ${2:outport},
 endsnippet
 
 snippet ourw
-output	wire [${1:MSB}:0]			${2:outport},
+output  wire [${1:MSB}:0]           ${2:outport},
 endsnippet
 
 #reg
@@ -159,35 +159,35 @@ endcase
 endsnippet
 
 #assign
-snippet	as
-assign					${1:LHS} = ${2:RHS};
+snippet as
+assign                  ${1:LHS} = ${2:RHS};
 endsnippet
 
 #parameter
-snippet	pa
-parameter				${1:LHS} = ${2:RHS};
+snippet pa
+parameter               ${1:LHS} = ${2:RHS};
 endsnippet
 
-snippet	lo
-localparam				${1:LHS} = ${2:RHS};
+snippet lo
+localparam              ${1:LHS} = ${2:RHS};
 endsnippet
 #<=
 #${1:LHS} <=# ${2:RHS};
-snippet	;
+snippet ;
 ${1:LHS} <= ${2:RHS};
 endsnippet
 
 #
-snippet	?
+snippet ?
 ${1:/*LHS*/} = ${2:/*condition*/} ? ${3:/*expr1*/} : ${4:/*expr2*/};
 endsnippet
 
 #
-snippet :	"display" i
+snippet :   "display" i
 [${1:MSB}:${2:0}]
 endsnippet
 
-snippet	edge
+snippet edge
 reg    [1:0]            ${1:Reg}_r;
 wire                    $1_rise;
 wire                    $1_fall;
@@ -220,7 +220,7 @@ end
 endsnippet
 
 snippet mem
-reg		[7:0]			mem[0:255];
+reg     [7:0]           mem[0:255];
 endsnippet
 
 # initial
@@ -250,11 +250,11 @@ endsnippet
 #forever
 snippet forever
 forever
-    #CLKPRIEOD	clk = ~clk;			//only use initial block
+    #CLKPRIEOD  clk = ~clk;         //only use initial block
 endsnippet
 
 #task prototype
-snippet	task
+snippet task
 task ${1:/*task_name*/};
     ${2:/*port declaration*/}
     begin
@@ -289,61 +289,61 @@ endfunction
 endsnippet
 
 #preprocess
-snippet	`if  "precompile"
-\`ifdef	Simulation
+snippet `if  "precompile"
+\`ifdef Simulation
     ${1:/*code*/}
 \`endif
 endsnippet
 
-snippet	`ife
-\`ifdef	Simulation
+snippet `ife
+\`ifdef Simulation
     ${1:/*code*/}
 \`else
     ${2:/*code*/}
 \`endif
 endsnippet
 ##
-snippet	`t
-\`timescale	1 ns/1 ps
+snippet `t
+\`timescale 1 ns/1 ps
 
 endsnippet
 
-snippet	`d
-\`define		DELAY	1
+snippet `d
+\`define        DELAY   1
 
 endsnippet
 
 
 #system function or task
 #readmemh
-snippet	$re
+snippet $re
 reg     [7:0]   DataMem[0:31];
 $readmemh("${1:/*data.txt*/}",${2:/*DataMem*/});
 endsnippet
 
 #random
-snippet	$ra
+snippet $ra
 ${1:veriable} = ({$random} % ${2:2});
 endsnippet
 
 #display
-snippet	$di
+snippet $di
 $display("${1:format}", ${2:variable});
 endsnippet
 
 #strobe
-snippet	$st
+snippet $st
 $strobe("${1:veriable} = 0${2:x}%${3:h}",$1);
 endsnippet
 
 #strobe
-snippet	$mo
+snippet $mo
 $monitor($time,"${1:veriable} = 0${2:x}%${3:h}",$1);
 endsnippet
 
 #handle
-snippet	ha
-integer	${1:handle};
+snippet ha
+integer ${1:handle};
 initial
 begin
     $1 = $fopen("${2:file.out}");
@@ -361,25 +361,25 @@ assign (weak1, weak0) $1 = 0;
 endsnippet
 
 #test
-snippet	st
+snippet st
 reg     [3:0]           current_state, next_state;
 reg     [4:0]           state_cnt;
-parameter				sIdle_state = 0;
+parameter               sIdle_state = 0;
 //-------------------------------------------------------------------------
 //next_state滞后于current_state一个周期
 //-------------------------------------------------------------------------
-always @ (posedge ${1:clk} or negedge ${2:rst})			// build the state flops
+always @ (posedge ${1:clk} or negedge ${2:rst})         // build the state flops
 begin
     if(~rst)
-        current_state		<= ${3:sIdle_state};
+        current_state       <= ${3:sIdle_state};
     else
-        current_state		<= ${4:next_state};
+        current_state       <= ${4:next_state};
 end
 
 //-------------------------------------------------------------------------
 //second.state transfer
 //-------------------------------------------------------------------------
-always @ ( * )		//state machine, block assign
+always @ ( * )      //state machine, block assign
 begin
     case(current_state)
         sIdle_state:
@@ -396,7 +396,7 @@ end
 //-------------------------------------------------------------------------
 //three.output
 //-------------------------------------------------------------------------
-always @ (posedge $1 or negedge $2)			//output
+always @ (posedge $1 or negedge $2)     //output
 begin
     if(~rst)
     begin
@@ -469,6 +469,6 @@ initial
 begin
     $1 = $fopen("${2:file}.txt");
     $fmonitor($1, "%h %t", ${3:variable}, $time);
-	$fclose($1);
+    $fclose($1);
 end
 endsnippet

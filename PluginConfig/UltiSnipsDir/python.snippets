@@ -1,33 +1,56 @@
 snippet if
 if ${1:#condition} :
-	${2:#code}
-end
+    ${2:#code}
+endsnippet
 
 snippet ei
 elif ${1:#condition} :
-	${2:#code}
+    ${2:#code}
 endsnippet
 
 snippet el
 else ${1:#condition} :
-	${2:#code}
+    ${2:#code}
 endsnippet
 
 snippet wh
 while ${1:#condition} :
-	${2:#code}
+    ${2:#code}
 endsnippet
 
 snippet for
-for ${1:key} in ${2:dictionary} :
-	${3:#code}
+for ${1:key} in ${2:dict} :
+    ${3:#code}
 endsnippet
 
 snippet def
-def ${1:function}(${2:parameter}) :
-	${3:#code}
-	return ${4:#value}
+def ${1:function}(${2:parameter}):
+    ${3:#code}
+    return ${4:#value}
 endsnippet
+
+snippet class
+class ${1:name} (${2:object}):
+    #def __init__(self):  #构造方法
+    $3
+endsnippet
+
+snippet im
+import ${1:module_name}
+endsnippet
+###################################function#####################################
+
 snippet print
 print ${1:string}
+endsnippet
+
+snippet raw_input
+raw_input("${1:string}: ")
+endsnippet
+
+snippet open
+${1:fobj} = open(${2:file_name}, 'r')
+#for each_line in fobj
+#print each_line
+$1.close();
 endsnippet

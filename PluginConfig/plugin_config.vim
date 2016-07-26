@@ -102,6 +102,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:UltiSnipsSnippetsDir="~/PluginConfig/UltiSnipsDir/"
 let g:UltiSnipsSnippetDirectories=["E:/home/PluginConfig/UltiSnipsDir/"]
+
+autocmd FileType snippets  setlocal expandtab
 "let g:UltiSnipsSnippetDirectories=["UltiSnipsDir"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -236,6 +236,7 @@ map     K       \cr
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType lua  setlocal iskeyword+=.
+"autocmd BufWritePre  * %s/\s\+$//g<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "git settings
