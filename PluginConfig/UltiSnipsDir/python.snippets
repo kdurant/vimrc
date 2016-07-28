@@ -32,16 +32,22 @@ endsnippet
 snippet class
 class ${1:name} (${2:object}):
     #def __init__(self):  #构造方法
+    #self.name = xxx
     $3
 endsnippet
 
 snippet im
 import ${1:module_name}
 endsnippet
+
+snippet main
+if __name__ == '__main__':
+    ${1:main()}
+endsnippet
 ###################################function#####################################
 
-snippet print
-print ${1:string}
+snippet pr
+print (${1:string})
 endsnippet
 
 snippet raw_input
@@ -49,8 +55,8 @@ raw_input("${1:string}: ")
 endsnippet
 
 snippet open
-${1:fobj} = open(${2:file_name}, 'r')
-#for each_line in fobj
+${1:f} = open(${2:file_name}, 'r')
+#for each_line in f
 #print each_line
 $1.close();
 endsnippet

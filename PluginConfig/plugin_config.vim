@@ -38,6 +38,12 @@ if !empty(glob($HOME. "/vimfiles/bundle/neocomplete.vim"))
     inoremap <expr><M-e>  neocomplete#cancel_popup()
 
     set completefunc=neocomplete#complete#auto_complete
+
+    if has('python3')
+        autocmd FileType python setlocal omnifunc=python3complete#Complete
+    else
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    endif
 elseif g:is_unix
     "set completeopt=longest,menu                 " 关掉补全时的预览窗口
     let g:ycm_confirm_extra_conf = 0              " 不用每次提示加载.ycm_extra_conf.py文件

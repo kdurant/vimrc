@@ -12,13 +12,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit', {'frozen': 1}
-Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
-Plug 'kdurant/AuthorInfo', {'frozen': 1}
 Plug 'git@github.com:kdurant/DoxygenToolkit.vim'
 Plug 'git@github.com:kdurant/LanguageRefVim'
 Plug 'git@github.com:kdurant/misc_mine'
-Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'git@github.com:kdurant/verilog-testbench'
+Plug 'hdima/python-syntax'
+Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
+Plug 'kdurant/AuthorInfo', {'frozen': 1}
+Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'kshenoy/vim-signature'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'mbriggs/mark.vim', {'frozen': 1}
@@ -223,9 +224,10 @@ map <silent> <M-F12> :call MenuBar()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('python')
-    command! -nargs=+ Calc :py print <args>
-    py from math import *
+if has('python3')
+    command! -nargs=+ Calc :py3 print (<args>)
+    py3 from math import *
+    "py3 import math
     map     <M-q>   :Calc<space>
 else
     map     <M-q>   :!start calc<cr>
