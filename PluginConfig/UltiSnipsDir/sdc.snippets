@@ -1,0 +1,32 @@
+# 1. creat_clk
+# 2. derive_pll_clocks
+# 3. 
+#
+#
+#
+#
+#
+#
+snippet pll_clocks
+derive_pll_clocks
+endsnippet
+
+snippet clock_uncertainty
+derive_clock_uncertainty
+endsnippet
+
+snippet clock_group
+set_clock_groups -asynchronous \ 
+        -group {
+                }
+endsnippet
+
+snippet input
+set_input_delay -clock [get_clocks ${1:clk}] -max ${2:1.5} [get_ports {${3:port}}]
+set_input_delay -clock [get_clocks $1] -min ${2:0} [get_ports {$3}]
+endsnippet
+
+snippet output
+set_output_delay -clock [get_clocks ${1:clk}] -max ${2:1.5} [get_ports {${3:port}}]
+set_output_delay -clock [get_clocks $1] -min ${2:0} [get_ports {$3]
+endsnippet

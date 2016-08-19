@@ -52,7 +52,7 @@ function! CompileFile()
             echohl ErrorMsg | echo "No work library!"
         endif
     elseif &filetype == 'c' || &filetype == 'cpp' || &filetype == 'java'
-        if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -Wall\ -Wextra\ -Wconversion\ -o\ %<.exe\ %
+        if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -o\ %<.exe\ %
         elseif &filetype == 'java' | set makeprg=javac\ %
         else                | set makeprg=g++\ -o\ %<.exe\ %
         endif
@@ -222,7 +222,8 @@ function! GenerateCtags()
     exe "cd " . Search_root()
     if &filetype == 'c' || &filetype == 'cpp'
         "call system('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
-        silent exe "!start /b ctags -R --c++-types=+p --fields=+iaS --extra=+q ."
+        "silent exe "!start /b ctags -R --c++-types=+p --fields=+iaS --extra=+q ."
+        call job_start('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
     elseif &filetype == "verilog"
         call system ('ctags --language-force=verilog -R .')
     else

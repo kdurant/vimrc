@@ -9,7 +9,7 @@ snippet co "function comment"
 endsnippet
 
 snippet head "file head"
-/**
+/*
  * @file `!v expand('%')`
  * @brief$1
  * @author kdurant
@@ -21,6 +21,7 @@ endsnippet
 snippet //
 /*!< $1 */
 endsnippet
+
 snippet br
 /**
   * @brief $1
@@ -49,7 +50,7 @@ snippet title
   */
 endsnippet
 snippet /*
-/**
+/*
  * ${1}
  */
 endsnippet
@@ -72,17 +73,17 @@ snippet #in "include'...'"
 #include "${1:stdio}.h"
 endsnippet
 
-snippet #de	"#define ..."
+snippet #de "#define ..."
 #define ${1:TEST}
 endsnippet
 
-snippet #if	"#if ... #endif"
+snippet #if "#if ... #endif"
 #if ${1:DEBUG}
     ${2:}
 #endif
 endsnippet
 
-snippet #ifd	"#ifdef ... #endif"
+snippet #ifd    "#ifdef ... #endif"
 #ifdef ${1:DEBUG}
     ${2:}
 #endif
@@ -101,14 +102,14 @@ $1
 #endif
 endsnippet
 
-snippet if	"if {...}"
+snippet if  "if {...}"
 if(${1:/*cond*/})
 {
     ${2:/*code*/}
 }
 endsnippet
 
-snippet el	"else {...}"
+snippet el  "else {...}"
 else
 {
     ${1:/*code*/}
@@ -126,7 +127,7 @@ snippet ?
 ${1:/*LHS*/} = ${2:/*cond*/} ? ${3:/*expr1*/} : ${4:/*expr2*/};
 endsnippet
 
-snippet do	"do ... while loop"
+snippet do  "do ... while loop"
 do
 {
     ${2:/*code*/}
@@ -134,51 +135,51 @@ do
 while (${1:/*cond*/});
 endsnippet
 
-snippet wh	"while loop"
+snippet wh  "while loop"
 while(${1:/*cond*/})
 {
-	${2:/*code*/}
+    ${2:/*code*/}
 }
 endsnippet
 
-snippet for	"for loop(for)"
+snippet for "for loop(for)"
 for( ${1:i} = 0; $1 ${2:<} ${3:count}; $1${4:++} )
 {
-	${5:/*code*/}
+    ${5:/*code*/}
 }
 endsnippet
 
 
-snippet fun	"function define"
+snippet fun "function define"
 ${1:void} ${2:/*function_name*/}(${3:/*parameter*/})
 {
-	${4:/*code*/}
+    ${4:/*code*/}
 }
 endsnippet
 
-snippet fund	"function declaration"
+snippet fund    "function declaration"
 ${1:void} ${2:/*function_name*/}(${3});
 endsnippet
 
-snippet st	"struct"
+snippet st  "struct"
 struct ${1:/*struct*/}
 {
-	${2:/*data*/}
+    ${2:/*data*/}
 };
 endsnippet
 
-snippet un	"union"
+snippet un  "union"
 union ${1:/*union*/}
 {
-	${2:/*data*/}
+    ${2:/*data*/}
 };
 endsnippet
 
-snippet td	"typedef"
+snippet td  "typedef"
 typedef ${1:int} ${2:/*MyCustomType*/};
 endsnippet
 
-snippet tdf	"typedef function point"
+snippet tdf "typedef function point"
 /*
  * typedef void (*list_op)(void*);      function point declaration
  * void print_student(void* data)       function declaration
@@ -188,11 +189,11 @@ snippet tdf	"typedef function point"
 typedef ${1:int} (*${2:pfun})(${3:parameter});
 endsnippet
 
-snippet tds	"typedef struct"
+snippet tds "typedef struct"
 typedef struct __${1:/*struct*/}
 {
-	${2:/*data*/};
-	void (*construct)(struct __$1 *this);
+    ${2:/*data*/};
+    void (*construct)(struct __$1 *this);
 }$1_t;
 endsnippet
 
@@ -204,7 +205,7 @@ struct ${1:type} ${2:name} =
 
 endsnippet
 
-snippet tde	"typedef enum"
+snippet tde "typedef enum"
 /*
  * enum spectrum {red, orange, yellow}
  * enum spectrum color;
@@ -212,34 +213,34 @@ snippet tde	"typedef enum"
  */
 typedef enum __${1:name}
 {
-	${2:/*data1*/} = ,
-	${3:/*data2*/} = ,
+    ${2:/*data1*/} = ,
+    ${3:/*data2*/} = ,
 }$1_t;
 endsnippet
 
-snippet tdu	"typedef union"
+snippet tdu "typedef union"
 typedef union __${1:name}
 {
-	${2:/*data1*/},
-	${3:/*data2*/}
+    ${2:/*data1*/},
+    ${3:/*data2*/}
 }$1_t;
 endsnippet
 
-snippet sw	"switch ... case"
+snippet sw  "switch ... case"
 switch (${1:/*cond*/})
 {
-	case ${2:/*select*/} :
-		break;
-	default:
-		break;
+    case ${2:/*select*/} :
+        break;
+    default:
+        break;
 }
 endsnippet
 
-snippet puts	"puts(const char *s)"
+snippet puts    "puts(const char *s)"
 puts(${1:/*str*/});
 endsnippet
 
-snippet gets	"gets(char *s)"
+snippet gets    "gets(char *s)"
 gets(${2:/*str*/});
 endsnippet
 
@@ -259,7 +260,7 @@ snippet fclose
 fclose(${1:fp});
 endsnippet
 
-snippet fseek	"change file position"
+snippet fseek   "change file position"
 fseek(${1:fp}, ${2:offset}, ${3:SEEK_SET});
 endsnippet
 
@@ -292,7 +293,7 @@ endsnippet
 snippet ferror
 endsnippet
 
-snippet rewind	"set stream at file beginning"
+snippet rewind  "set stream at file beginning"
 rewind(${1:fp});
 endsnippet
 
@@ -310,72 +311,72 @@ endsnippet
 snippet fwrite
 endsnippet
 
-snippet malloc	"allocated space"
+snippet malloc  "allocated space"
 ${1:/*point*/} = (${2:int} *)malloc(${3:len}*sizeof($2));
 if( $1 == NULL)
 {
-	${4:}
+    ${4:}
 }
 free($1);
 endsnippet
 
-snippet calloc	"allocated space"
+snippet calloc  "allocated space"
 ${1:/*point*/} = (${2:int} *)calloc(${3:num}, ${4:len}*sizeof($2));
 if( $1 == NULL)
 {
-	${5:}
+    ${5:}
 }
 free($1);
 endsnippet
 
-snippet strcpy	"copy src to dest"
+snippet strcpy  "copy src to dest"
 strcpy(${1:/*dest*/}, ${2:/*src*/});
 endsnippet
 
-snippet strncpy	"copy n char from src to dest"
+snippet strncpy "copy n char from src to dest"
 strncpy(${1:/*dest*/}, ${2:/*src*/}, ${3:/*n*/});
 endsnippet
 
-snippet strcat	"append src to dest"
+snippet strcat  "append src to dest"
 strcat(${1:/*dest*/}, ${2:/*src*/});
 endsnippet
 
-snippet strncat	"append src to dest"
+snippet strncat "append src to dest"
 strncat(${1:/*dest*/}, ${2:/*src*/}, ${3:/*n*/});
 endsnippet
 
-snippet strcmp	"compare str1 against str2"
+snippet strcmp  "compare str1 against str2"
 strcmp(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
-snippet strcoll	"similar to strcmp()"
+snippet strcoll "similar to strcmp()"
 strcoll(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
-snippet strncmp	"no more than n character"
+snippet strncmp "no more than n character"
 strncmp(${1:/*str1*/}, ${2:/*str2*/}, ${3:/*n*/});
 endsnippet
 
-snippet strtol	"convert str to number"
+snippet strtol  "convert str to number"
 strtol(${1:/*str1*/}, (char **)NULL, ${2:10});
 endsnippet
 
 snippet strxfrm
 endsnippet
 
-snippet strchr	"returns a pointer to the located character"
+snippet strchr  "returns a pointer to the located character"
 strchr(${1:/*str*/}, '${2:char}');
 endsnippet
 
-snippet strcspn	"return offset of str1 that is a member of str2"
+snippet strcspn "return offset of str1 that is a member of str2"
 strcspn(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
-snippet strpbrk	"related to strcspn()"
+snippet strpbrk "related to strcspn()"
 strpbrk(${1:/*str1*/}, ${2:/*str2*/});
 endsnippet
 
-snippet strrchr	"search str from the end of str"
+snippet strrchr "search str from the end of str"
 strrchr(${1:/*str*/}, '${2:char}');
 endsnippet
 
@@ -389,35 +390,35 @@ endsnippet
 
 snippet swab
 endsnippet
-snippet	rand
+snippet rand
 ${1:/*rand_num*/} = rand() % ${2:/*maxnum*/};
 endsnippet
 snippet setbuf
-setbuf(${1:stdout},${2:NULL});	//display infomation when use eclipse debug
+setbuf(${1:stdout},${2:NULL});  //display infomation when use eclipse debug
 endsnippet
 
 snippet he
 printf("${1:hello world!}\n");
 endsnippet
 
-snippet swap	"swap two variable"
+snippet swap    "swap two variable"
 void swap(int *x, int *y)
 {
     int temp = *x;
-	*x = *y;
-	*y = t;
+    *x = *y;
+    *y = t;
 }
 endsnippet
 
-snippet memset	"memset(void *block, int c, size_t size)"
+snippet memset  "memset(void *block, int c, size_t size)"
 memset(${1:buffer}, ${2:0x00}, sizeof(${3:type})/sizeof(${4:int}));
 endsnippet
 
-snippet memcpy	"copy src to dest"
+snippet memcpy  "copy src to dest"
 memcpy(${1:/*dest*/}, ${2:/*src*/}, ${3:size});
 endsnippet
 
-snippet memmove	"copy src to dest"
+snippet memmove "copy src to dest"
 memmove(${1:/*dest*/}, ${2:/*src*/}, ${3:size});
 endsnippet
 
@@ -428,20 +429,20 @@ $1
 endsnippet
 
 snippet uart
-#define	UART_BUF_LEN		32
-typedef	struct __UartFrame
+#define UART_BUF_LEN        32
+typedef struct __UartFrame
 {
-	uint8_t head_high;
-	uint8_t head_low;
-	uint8_t addr;
-	uint8_t command;
-	uint8_t len;
+    uint8_t head_high;
+    uint8_t head_low;
+    uint8_t addr;
+    uint8_t command;
+    uint8_t len;
 
-	uint8_t rx_buf[UART_BUF_LEN];
-	uint8_t tx_buf[UART_BUF_LEN];
+    uint8_t rx_buf[UART_BUF_LEN];
+    uint8_t tx_buf[UART_BUF_LEN];
 
-	uint8_t checksum;
-	uint8_t tail;
+    uint8_t checksum;
+    uint8_t tail;
 }UartFrame_t;
 endsnippet
 
@@ -451,11 +452,11 @@ endsnippet
 
 snippet error
 #ifndef ${1:XXXX}
-	#error ${2:"Hello world!"}
+    #error ${2:"Hello world!"}
 #endif
 endsnippet
 
-snippet	decla
+snippet decla
 /* Includes ------------------------------------------------------------------*/
 $1
 /* Private define ------------------------------------------------------------*/

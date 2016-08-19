@@ -227,7 +227,6 @@ map <silent> <M-F12> :call MenuBar()<cr>
 if has('python3')
     command! -nargs=+ Calc :py3 print (<args>)
     py3 from math import *
-    "py3 import math
     map     <M-q>   :Calc<space>
 else
     map     <M-q>   :!start calc<cr>

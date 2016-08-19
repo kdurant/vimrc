@@ -160,7 +160,7 @@ nmap    <silent>    ,)      :AlignCtrl lp4P0<cr>:AlignCtrl g \.\w\+.*\zs(<cr>:Al
 "align '=' that in parameter, assign statement
 nmap    <silent>    ,=      :AlignCtrl lp4P1<cr>:AlignCtrl g [^<\|^>]\s\zs=\ze\s.*;<cr>:AlignCtrl W<cr>:%Align[^<\|^>]\s\zs=\ze\s.*;<cr>
 
-imap    <M-b>   begin<cr>end<esc>O
+imap    <M-b>   begin<cr>end<esc>k
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vCoolor settings
