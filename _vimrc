@@ -38,6 +38,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'rking/ag.vim'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'WeiChungWu/vim-SystemVerilog'
+
 call plug#end()
 
 map     ,so     :source $MYVIMRC<cr>
@@ -289,8 +290,10 @@ function! QfMakeConv()
    let qflist = getqflist()
    for i in qflist
       let i.text = iconv(i.text, "cp936", "utf-8")
+      let i.text = "hello"
+      "let i.text = substitute(i.text, "u", "", 'g')
    endfor
-   call setqflist(qflist)
+   call setqflist(qflisx)
 endfunction
 au QuickfixCmdPost make call QfMakeConv()
 

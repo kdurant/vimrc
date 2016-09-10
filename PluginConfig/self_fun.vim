@@ -221,8 +221,6 @@ endfunction
 function! GenerateCtags()
     exe "cd " . Search_root()
     if &filetype == 'c' || &filetype == 'cpp'
-        "call system('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
-        "silent exe "!start /b ctags -R --c++-types=+p --fields=+iaS --extra=+q ."
         call job_start('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
     elseif &filetype == "verilog"
         call system ('ctags --language-force=verilog -R .')
@@ -231,6 +229,9 @@ function! GenerateCtags()
     endif
     exe 'set tags+=' . substitute(Search_root(), " ", '\\ ', "g") .'/tags'
 endfunction
+
+autocmd BufWritePost *.c call GenerateCtags()
+autocmd BufWritePost *.h call GenerateCtags()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vimtweak settings
