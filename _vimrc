@@ -38,6 +38,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'rking/ag.vim'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'WeiChungWu/vim-SystemVerilog'
+Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
@@ -57,6 +58,7 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 behave xterm
 set helplang=cn
+set rop=type:directx
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "font settings

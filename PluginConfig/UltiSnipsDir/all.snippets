@@ -150,6 +150,18 @@ snippet #
 #				$1
 endsnippet
 
+snippet git
+*.pdf
+*.doc
+*.docx
+*.rar
+*.txt
+*.html
+*.jpg
+*.chm
+*.log
+endsnippet
+
 snippet quartus
 db
 work
@@ -157,7 +169,6 @@ greybox_tmp
 incremental_db
 output_files
 simulation
-doc
 *.mti
 *.qws
 *.ddb
@@ -170,7 +181,6 @@ doc
 *.html
 *.xml
 *.rpt
-*.txt
 *.stp
 *.echo
 *.done
@@ -205,13 +215,8 @@ settings
 *.tmp
 
 *.map
-*.jpg
-*.pdf
 *.html
-*.txt
 *.rtf
-*.chm
-*.rar
 *.hex
 *.out
 
@@ -227,9 +232,78 @@ snippet vivado
 .Xil
 *.cache
 *.hw
-*.rar
 *.runs
 *.sim
 *.tmp
 sim_scripts
+endsnippet
+
+snippet ise
+# intermediate build files
+*.bgn
+*.bit
+*.bld
+*.cmd_log
+*.drc
+*.ll
+*.lso
+*.msd
+*.msk
+*.ncd
+*.ngc
+*.ngd
+*.ngr
+*.pad
+*.par
+*.pcf
+*.prj
+*.ptwx
+*.rbb
+*.rbd
+*.stx
+*.syr
+*.twr
+*.twx
+*.unroutes
+*.ut
+*.xpi
+*.xst
+*_bitgen.xwbt
+*_envsettings.html
+*_map.map
+*_map.mrp
+*_map.ngm
+*_map.xrpt
+*_ngdbuild.xrpt
+*_pad.csv
+*_pad.txt
+*_par.xrpt
+*_summary.html
+*_summary.xml
+*_usage.xml
+*_xst.xrpt
+
+# iMPACT generated files
+_impactbatch.log
+impact.xsl
+impact_impact.xwbt
+ise_impact.cmd
+webtalk_impact.xml
+
+# Core Generator generated files
+xaw2verilog.log
+
+# project-wide generated files
+*.gise
+par_usage_statistics.html
+usage_statistics_webtalk.html
+webtalk.log
+webtalk_pn.xml
+
+# generated folders
+iseconfig/
+xlnx_auto_0_xdb/
+xst/
+_ngo/
+_xmsgs/
 endsnippet
