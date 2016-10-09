@@ -109,19 +109,19 @@ input   wire [${1:MSB}:0]          ${2:inport},
 endsnippet
 
 #output
-snippet our
+snippet our    "output  reg  xxx"
 output  reg                 ${1:outport},
 endsnippet
 
-snippet ouw
+snippet ouw    "output  wire  xxx"
 output  wire                ${1:outport},
 endsnippet
 
-snippet ourb
+snippet outr    "output  reg  [MSB:0]"
 output  reg  [${1:MSB}:0]           ${2:outport},
 endsnippet
 
-snippet ourw
+snippet outb    "output  wire [MSB:0]"
 output  wire [${1:MSB}:0]           ${2:outport},
 endsnippet
 
@@ -204,11 +204,11 @@ end
 
 endsnippet
 
-snippet <<
+snippet <<  "left shift"
 ${1:RegOut} <=# {$1[${2:6}:${3:0}],${4:RightIn}};             //left shift, new data is appeare LSB
 endsnippet
 
-snippet >>
+snippet >>  "right shift"
 ${1:RegOut} <=# {${3:LeftIn},$1[${2:7}:${4:1}]};              //right shift,new data is appeare MSB
 endsnippet
 

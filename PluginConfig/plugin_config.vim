@@ -120,7 +120,7 @@ map <M-d>b      :CtrlPBuffer<cr>
 map <M-d>d      :CtrlPBookmarkDir<cr>
 map <M-d>r      :CtrlPMRU<cr>
 let g:ctrlp_by_filename = 1
-let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'bot,order:ttb,min:10,max:10'
 let g:ctrlp_use_caching = 1

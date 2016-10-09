@@ -10,5 +10,6 @@ known_hosts
 *.txt
 tags
 _vsvimrc
+my_info
 
 .*
