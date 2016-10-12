@@ -40,6 +40,7 @@ Plug 'iamcco/markdown-preview.vim'
 Plug 'WeiChungWu/vim-SystemVerilog'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'amal-khailtash/vim-xdc-syntax'
+Plug 'vim-scripts/ucf.vim'
 
 call plug#end()
 
@@ -240,6 +241,7 @@ map     Y       y$
 map     K       \cr
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.ucf set filetype=ucf
 autocmd FileType lua  setlocal iskeyword+=.
 "autocmd BufWritePre  * %s/\s\+$//g<cr>
 
