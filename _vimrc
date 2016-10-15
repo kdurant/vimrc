@@ -41,6 +41,7 @@ Plug 'WeiChungWu/vim-SystemVerilog'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'vim-scripts/ucf.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
@@ -234,7 +235,7 @@ if has('python3')
     py3 from math import *
     map     <M-q>   :Calc<space>
 else
-    map     <M-q>   :!start calc<cr>
+    map     <M-q>   :call job_start('calc')<cr>
 endif
 
 map     Y       y$
@@ -249,7 +250,7 @@ autocmd FileType lua  setlocal iskeyword+=.
 "git settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map     <M-g>       :Git!<space>
-map     <M-v>a      :!start /b gitk --all<cr>
+map     <M-v>a      :call job_start('gitk --all')<cr>
 map     <M-v>s      :Dit st<cr>
 
 map     <M-;>       :Dit<space>
@@ -295,10 +296,9 @@ function! QfMakeConv()
    let qflist = getqflist()
    for i in qflist
       let i.text = iconv(i.text, "cp936", "utf-8")
-      let i.text = "hello"
       "let i.text = substitute(i.text, "u", "", 'g')
    endfor
-   call setqflist(qflisx)
+   call setqflist(qflist)
 endfunction
 au QuickfixCmdPost make call QfMakeConv()
 
