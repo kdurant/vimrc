@@ -7,13 +7,11 @@ if g:is_win
 elseif g:is_unix
     call plug#begin('~/.vim/bundle')
 endif
-Plug 'asins/vimcdoc', {'frozen': 1}
+"Plug 'asins/vimcdoc', {'frozen': 1}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit', {'frozen': 1}
-Plug 'git@github.com:kdurant/DoxygenToolkit.vim'
-Plug 'git@github.com:kdurant/LanguageRefVim'
 Plug 'git@github.com:kdurant/misc_mine'
 Plug 'git@github.com:kdurant/verilog-testbench'
 Plug 'hdima/python-syntax'
