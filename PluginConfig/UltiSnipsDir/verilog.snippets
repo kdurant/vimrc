@@ -100,11 +100,11 @@ else if(${1:/*condition*/})
 endsnippet
 
 #input
-snippet in
+snippet in      "input wire  inport"
 input   wire                ${1:inport},
 endsnippet
 
-snippet inb
+snippet inb     "input wire [MSB:0] inport"
 input   wire [${1:MSB}:0]          ${2:inport},
 endsnippet
 
@@ -135,16 +135,16 @@ reg     [${1:MSB}:0]           ${2:outport};
 endsnippet
 
 #wire
-snippet wi
-wire                    ${1:outport};
+snippet wi      "wire   port"
+wire                    ${1:port};
 endsnippet
 
-snippet wib
-wire    [${1:MSB}:0]           ${2:outport};
+snippet wib     "wire   [MSB:0] port"
+wire    [${1:MSB}:0]           ${2:port};
 endsnippet
 
 #case
-snippet ca
+snippet ca      "case ... endcase"
 case (${1:/*condition*/})
 ${2:/*first*/}:
 begin
@@ -219,7 +219,7 @@ begin
 end
 endsnippet
 
-snippet mem
+snippet mem     "reg [7:0] mem[0:255]"
 reg     [7:0]           mem[0:255];
 endsnippet
 
@@ -363,7 +363,7 @@ endsnippet
 #test
 snippet st
 reg     [3:0]           current_state, next_state;
-reg     [4:0]           state_cnt;
+reg     [15:0]          state_cnt;
 localparam              sIdle_state = 0;
 //-------------------------------------------------------------------------
 //next_state滞后于current_state一个周期
@@ -473,23 +473,23 @@ begin
 end
 endsnippet
 
-snippet state
+snippet state   "one hot encode machine state"
 localparam              IDLE = 0;
 localparam              OVER = 1;
 reg     [OVER:0]        cs = 'd1, ns = 'd1;
-reg     [4:0]           state_cnt;
+reg     [15:0]          state_cnt;
 
 // synthesis translate_off
 reg [63:0] CS_STRING;
 always @(*)
 begin
     case(1'b1)
-        cs[IDLE]      : CS_STRING = "IDLE"    ;
-        cs[HEAD]      : CS_STRING = "HEAD"    ;
-        cs[PARA]      : CS_STRING = "PARA"    ;
-        cs[DATA]      : CS_STRING = "DATA"    ;
-        cs[DISC]      : CS_STRING = "DISC"    ;
-        default       : CS_STRING = "XXXX"    ;
+        cs[IDLE]    : CS_STRING = "IDLE";
+        cs[HEAD]    : CS_STRING = "HEAD";
+        cs[PARA]    : CS_STRING = "PARA";
+        cs[DATA]    : CS_STRING = "DATA";
+        cs[DISC]    : CS_STRING = "DISC";
+        default     : CS_STRING = "XXXX";
     endcase
 end
 // synthesis translate_on
