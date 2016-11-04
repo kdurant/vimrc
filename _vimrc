@@ -175,6 +175,8 @@ map     <C-h>       <C-W>h
 map     <C-j>       <C-W>j
 map     <M-->       <C-W>-
 map     <M-=>       <C-W>+
+map     <H>         <C-W><
+map     <L>         <C-W>>
 map     <M-c>       :clo<cr>
 if g:is_win
     map     ,sx     :call Maximize()<cr>
