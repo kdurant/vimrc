@@ -484,16 +484,16 @@ reg     [OVER:0]        cs = 'd1, ns = 'd1;
 reg     [15:0]          state_cnt;
 
 // synthesis translate_off
-reg [63:0] CS_STRING;
+reg [127:0] ST_STRING;
 always @(*)
 begin
     case(1'b1)
-        cs[IDLE]    : CS_STRING = "IDLE";
-        cs[HEAD]    : CS_STRING = "HEAD";
-        cs[PARA]    : CS_STRING = "PARA";
-        cs[DATA]    : CS_STRING = "DATA";
-        cs[DISC]    : CS_STRING = "DISC";
-        default     : CS_STRING = "XXXX";
+        cs[IDLE]: CS_STRING = "IDLE";
+        cs[HEAD]: CS_STRING = "HEAD";
+        cs[PARA]: CS_STRING = "PARA";
+        cs[DATA]: CS_STRING = "DATA";
+        cs[DISC]: CS_STRING = "DISC";
+        default: CS_STRING = "XXXX";
     endcase
 end
 // synthesis translate_on
