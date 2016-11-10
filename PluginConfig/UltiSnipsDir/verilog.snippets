@@ -264,8 +264,8 @@ endtask
 endsnippet
 
 snippet hr
-task HarwareReset;
-input   [3:0]   HoldLowTime;
+task reset;
+input   [7:0]   low_time;
 begin
     rst = 1'b1;
     wait (clk !== 1'bx);
@@ -484,16 +484,14 @@ reg     [OVER:0]        cs = 'd1, ns = 'd1;
 reg     [15:0]          state_cnt;
 
 // synthesis translate_off
-reg [127:0] ST_STRING;
+reg [127:0] cs_STRING;
 always @(*)
 begin
     case(1'b1)
-        cs[IDLE]: CS_STRING = "IDLE";
-        cs[HEAD]: CS_STRING = "HEAD";
-        cs[PARA]: CS_STRING = "PARA";
-        cs[DATA]: CS_STRING = "DATA";
-        cs[DISC]: CS_STRING = "DISC";
-        default: CS_STRING = "XXXX";
+        cs[IDLE]: cs_STRING = "IDLE";
+        cs[HEAD]: cs_STRING = "HEAD";
+        cs[DISC]: cs_STRING = "DISC";
+        default: cs_STRING = "XXXX";
     endcase
 end
 // synthesis translate_on
