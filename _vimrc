@@ -40,6 +40,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'vim-scripts/ucf.vim'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'hdima/python-syntax'
 
 call plug#end()
 
@@ -302,5 +303,6 @@ function! QfMakeConv()
 endfunction
 au QuickfixCmdPost make call QfMakeConv()
 
+let python_highlight_all = 1
 source ~/PluginConfig/plugin_config.vim
 source ~/PluginConfig/self_fun.vim

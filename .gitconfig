@@ -14,7 +14,7 @@
 	name = kdurant
 [core]
 	editor = gvim
-	autocrlf = true
+	autocrlf = false
 	quotepath = false
 	ignoreCygwinFSTricks = true
 	excludesfile = C:\\Users\\wangj\\Documents\\gitignore_global.txt

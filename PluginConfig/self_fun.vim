@@ -97,7 +97,10 @@ function! CompileFile()
         set makeprg = csc\ \nologo\ %
         silent exe "make"
     elseif &filetype == 'python'
-        exe "!%<.py"
+        if executable("python")
+            echo iconv(system("python " . expand('%')), "cp936", &enc)
+        endif
+        "exe "!%<.py"
     elseif &filetype == 'vhdl'
         echohl comment | echo "Current don't support VHDL file!"
     elseif &filetype == 'lua'

@@ -1,25 +1,25 @@
 snippet if
-if ${1:#condition} :
+if ${1:#condition}:
     ${2:#code}
 endsnippet
 
 snippet ei
-elif ${1:#condition} :
+elif ${1:#condition}:
     ${2:#code}
 endsnippet
 
 snippet el
-else ${1:#condition} :
-    ${2:#code}
+else:
+    ${1:#code}
 endsnippet
 
 snippet wh
-while ${1:#condition} :
+while ${1:#condition}:
     ${2:#code}
 endsnippet
 
 snippet for
-for ${1:key} in ${2:dict} :
+for ${1:key} in ${2:dict}:
     ${3:#code}
 endsnippet
 
@@ -29,15 +29,27 @@ def ${1:function}(${2:parameter}):
     return ${4:#value}
 endsnippet
 
+snippet init
+def __init__(self, ${1:parameter}):
+    ${3:self.name = parameter}
+    return ${4:#value}
+endsnippet
+
 snippet class
 class ${1:name} (${2:object}):
     #def __init__(self):  #构造方法
     #self.name = xxx
+    #def setdata(self, value):
+    #    self.data = value
     $3
 endsnippet
 
 snippet im
 import ${1:module_name}
+endsnippet
+
+snippet from
+from ${1:module} import ${2:variable}
 endsnippet
 
 snippet main
@@ -47,16 +59,28 @@ endsnippet
 ###################################function#####################################
 
 snippet pr
-print (${1:string})
+print(${1:string})
 endsnippet
 
-snippet raw_input
-raw_input("${1:string}: ")
+snippet input
+input('${1:string}:')
 endsnippet
 
 snippet open
 ${1:f} = open(${2:file_name}, 'r')
-#for each_line in f
-#print each_line
-$1.close();
+#for each_line in f.readlines():
+    #print (each_line)
+$1.close()
+endsnippet
+
+snippet write
+${1:f} = open(${2:file_name}, 'w')
+$1.write(string)
+$1.close()
+endsnippet
+
+snippet tk
+from tkinter import ${1:Label}
+#widget.pack()
+#widget.mainloop()
 endsnippet
