@@ -35,8 +35,12 @@ endfunction
 "compile c, cpp, and verilog file
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CompileFile()
-    if &filetype == 'verilog'
-        set makeprg=vlog\ -work\ work\ %
+    if &filetype == 'verilog' || &filetype == 'systemverilog'
+        if &filetype == 'verilog'
+            set makeprg=vlog\ -work\ work\ %
+        else
+            set makeprg=vlog\ -work\ work\ -sv\ %
+        endif
         set errorformat=**\ Error:\ %f(%l):\ %m
         if(isdirectory("work"))
             exe "make" | exe "cw"

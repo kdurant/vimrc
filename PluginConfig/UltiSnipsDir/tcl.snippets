@@ -29,7 +29,7 @@ set_instance_assignment -name FAST_INPUT_REGISTER ON -to sdram_data[0]
 endsnippet
 
 snippet vlog
-vlog -work work -incr -vopt ${1:D:/nandflash/testbench/nand_basic_opTb.v}
+vlog -work work -incr +define+sg187E(=x) -vopt ${1:D:/nandflash/testbench/nand_basic_opTb.v}
 endsnippet
 
 snippet glbl

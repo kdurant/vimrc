@@ -18,7 +18,7 @@
 	quotepath = false
 	ignoreCygwinFSTricks = true
 	excludesfile = C:\\Users\\wangj\\Documents\\gitignore_global.txt
-	safecrlf = true
+	;safecrlf = true
 [diff]
 	tool = gvimdiff
 	guitool = kdiff3
