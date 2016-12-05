@@ -10,16 +10,6 @@ snippet group
 virtual signal -install ${1:/tb/dut/driver} { (context $1 )&{2:signa}local_row_addr ,local_bank_addr ,local_col_addr }} xxxx
 endsnippet
 
-snippet state "parameter state"
-virtual type {
-    {0 sIdleState}
- 
-} FSM;
-
-virtual function {( FSM )                /path/state} state_new
-add wave -hex -color Magenta -label   state    /path/state_new
-endsnippet
-
 snippet pin
 set_location_assignment PIN_$1 -to sdram_data[14]
 endsnippet
@@ -36,3 +26,13 @@ snippet glbl
 vlog -work work -incr C:/Xilinx/14.7/ISE_DS/ISE/verilog/src/glbl.v
 endsnippet
 
+snippet temp
+quit -sim
+#vlog -work work -incr *.v
+#vlog -work work -sv -incr *.sv
+#vlog -work work -incr +define+MODELSIM uart.v
+
+#vsim -t ns -novopt work.uartTb
+#add wave -divide txd
+#run 1ms
+endsnippet
