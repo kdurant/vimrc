@@ -497,7 +497,7 @@ end
 // synthesis translate_on
 always @(posedge clk)
 begin
-    if(~rst)
+    if(rst)
         cs <= 'd1;
     else
         cs <= ns;
@@ -529,7 +529,7 @@ end
 
 always @ (posedge clk)
 begin
-    if(~rst)
+    if(rst)
     begin
     end
     else
@@ -550,7 +550,7 @@ end
 
 always @ (posedge clk)
 begin
-    if(~rst)
+    if(rst)
         state_cnt <= 0;
     else if (cs != ns)
         state_cnt <= 0;
