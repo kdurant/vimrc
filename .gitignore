@@ -4,6 +4,7 @@ bundle
 ctrlp
 BookMark
 session.vim
+nvim_session.vim
 _viminfo
 *.old
 known_hosts
