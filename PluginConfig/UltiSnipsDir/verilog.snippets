@@ -41,6 +41,11 @@ module `!v expand('%:r')` #
 endmodule
 endsnippet
 
+snippet clk
+reg                     ${1:clk} = 0;
+always
+    #(1s/${2:freq}) clk = ~clk;
+endsnippet
 #always
 snippet al
 always @ (posedge ${1:clk} or negedge ${2:rst})
@@ -464,7 +469,7 @@ snippet keep    "altera"
 endsnippet
 
 snippet keep    "xilinx"
-(* KEEP = "TRUE" *) 
+(* KEEP = "TRUE" *)
 endsnippet
 
 snippet file
