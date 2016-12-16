@@ -44,7 +44,7 @@ endsnippet
 snippet clk
 reg                     ${1:clk} = 0;
 always
-    #(1s/${2:freq}) clk = ~clk;
+    #(1s/${2:freq}/2) $1 = ~$1;
 endsnippet
 #always
 snippet al
@@ -276,7 +276,7 @@ begin
     wait (clk !== 1'bx);
     @ (negedge clk);
     rst <= 1'b0;
-    repeat(HoldLowTime)
+    repeat(low_time)
         @ (negedge clk);
     rst <= 1'b1;
 end
