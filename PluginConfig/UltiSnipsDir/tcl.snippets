@@ -31,16 +31,19 @@ quit -sim
 set env(XILINX)        C:/Xilinx/14.7/ISE_DS/ISE
 set env(SIM_LIB)       F:/crack/ise14.7_lib
 
-#vlog  -incr *.v
+#工程所需要的文件
 vlog -incr $env(XILINX)/verilog/src/glbl.v
 vlog -incr +define+MODELSIM uart.v
-vlog -work work -sv -incr *.sv
+vlog -sv -incr *.sv
 
 vsim -t ps -novopt +notimingchecks -L unisims_ver -L unimacro_ver -L secureip -L XilinxCoreLib_ver work.tb glbl
 
 log -r /*
 radix 16
 
+#view -title {wang} wave
+#具体模块需要添加的信号
 #do wave.tcl
+
 run 10us
 endsnippet
