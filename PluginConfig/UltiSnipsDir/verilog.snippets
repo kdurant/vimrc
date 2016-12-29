@@ -110,42 +110,42 @@ input   wire                ${1:inport},
 endsnippet
 
 snippet inb     "input wire [MSB:0] inport"
-input   wire [${1:MSB}:0]          ${2:inport},
+input   wire [${1:MSB}:00]        ${2:inport},
 endsnippet
 
 #output
-snippet our    "output  reg  xxx"
+snippet our    "reg  xxx"
 output  reg                 ${1:outport},
 endsnippet
 
-snippet ouw    "output  wire  xxx"
+snippet ouw    "wire  xxx"
 output  wire                ${1:outport},
 endsnippet
 
-snippet outr    "output  reg  [MSB:0]"
-output  reg  [${1:MSB}:0]          ${2:outport},
+snippet outr    "reg  [MSB:0]"
+output  reg  [${1:MSB}:90]        ${2:outport},
 endsnippet
 
-snippet outb    "output  wire [MSB:0]"
-output  wire [${1:MSB}:0]          ${2:outport},
+snippet outb    "wire [MSB:0]"
+output  wire [${1:MSB}:00]        ${2:outport},
 endsnippet
 
 #reg
 snippet reg
-reg                     ${1:outport};
+reg                         ${1:outport};
 endsnippet
 
 snippet regb
-reg     [${1:MSB}:0]           ${2:outport};
+reg     [${1:MSB}:00]             ${2:outport};
 endsnippet
 
 #wire
 snippet wi      "wire   port"
-wire                    ${1:port};
+wire                        ${1:port};
 endsnippet
 
 snippet wib     "wire   [MSB:0] port"
-wire    [${1:MSB}:0]           ${2:port};
+wire    [${1:MSB}:00]             ${2:port};
 endsnippet
 
 #case
@@ -189,7 +189,7 @@ endsnippet
 
 #
 snippet :   "display" i
-[${1:MSB}:${2:0}]
+[${1:MSB}:${2:00}]
 endsnippet
 
 snippet edge
