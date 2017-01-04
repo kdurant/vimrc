@@ -485,7 +485,8 @@ endsnippet
 snippet state   "one hot encode machine state"
 localparam              IDLE = 0;
 localparam              OVER = 1;
-reg     [OVER:0]        cs = 'd1, ns = 'd1;
+(* KEEP = "TRUE" *)reg     [OVER:0]        cs = 'd1;
+(* KEEP = "TRUE" *)reg     [OVER:0]        ns = 'd1;
 reg     [15:0]          state_cnt;
 
 // synthesis translate_off

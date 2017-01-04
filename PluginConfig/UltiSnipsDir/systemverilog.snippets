@@ -1,5 +1,74 @@
-extends verilog
+#可综合部分
+snippet /*
+/*
+ * ${1}
+ */
+endsnippet
 
+snippet co
+/*-------------------------------------------------------------------------
+//description   :   ${1}
+//condition     :
+//others        :
+-------------------------------------------------------------------------*/
+endsnippet
+
+snippet mo
+\`timescale  1 ns/1 ps
+
+module `!v expand('%:r')`
+(
+    input   logic               clk,
+    input   logic               rst,
+    ${1:/*port*/}
+);
+
+endmodule
+endsnippet
+
+#module ${1:/*module*/} #
+snippet mod  "parameter"
+module `!v expand('%:r')` #
+(
+    ${1:/*parameter*/}
+)
+(
+    input   logic               clk,
+    input   logic               rst,
+    ${2:/*port*/}
+);
+
+endmodule
+endsnippet
+
+snippet ff "sequential logic"
+always_ff @ (posedge ${1:clk} or negedge ${2:rst})
+begin
+    ${3:/*code*/}
+end
+
+endsnippet
+
+snippet comb "combination logic"
+always_comb
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+snippet latch "D latch"
+always_latch
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+snippet inside "a inside x"
+${1:/*var*/} inside ${2:/*var*/}
+endsnippet
+
+
+#仿真部分
 snippet array "fixed width"
 ${1:int} name[0:${2:row}];
 endsnippet
@@ -15,21 +84,15 @@ ${1:int} ${2:name}[$] ${3:= {3,4}};
 endsnippet
 
 snippet interface
-// vmm rule 4-4 -- interfaces shall be packaged into the same files as the
-// transactors that use them
-interface ${1:name_if} (input wire clk);
-	parameter hold_time = 0ns;
-	parameter setup_time = 1ns;
-	// imports
-	// import pkg::*;
-	//logic list
-
-	// Clocking Blocks
-	// just type clocking and tab to invoke snippet
-
-	// Modports
-	// just type modport and tab to invoke snippet
-
+interface ${1:name_if}
+(
+    input logic clk,
+    input logic rst,
+);
+/*
+    wire xxx;
+    logic xxx;
+*/
 endinterface: $1
 endsnippet
 
@@ -43,18 +106,6 @@ modport ${1:name_mp}
 );
 endsnippet
 
-snippet alff "combination logic" !b
-
-endsnippet
-
-snippet alcomb "sequential logic" !b
-
-endsnippet
-
-snippet allatch "D latch" !b
-
-endsnippet
-
 snippet enum
 enum ${1:/*[optional data type]*/}
 {
@@ -66,11 +117,11 @@ snippet tde
 typedef enum
 {
     /*data*/,
-}${1:/*struct*/}_e;
+}${1:/*enum*/}_e;
 endsnippet
 
 snippet tds
-typedef struct //packed unsigned
+typedef struct packed
 {
     /*data*/;
 }${1:/*struct*/}_s;
@@ -80,7 +131,7 @@ snippet tdu
 typedef union
 {
     /*data*/;
-}${1:/*struct*/}_u;
+}${1:/*union*/}_u;
 endsnippet
 
 snippet foreach
