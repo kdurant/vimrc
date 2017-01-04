@@ -56,50 +56,50 @@ endsnippet
 
 #always
 # If Condition
-snippet ifb
+snippet ifb "if...begin...end"
 if(${1:/*condition*/})
 begin
     ${2:/*code*/}
 end
 endsnippet
 
-snippet if "condition"
+snippet if "if..."
 if(${1:/*condition*/})
     ${2:/*code*/}
 endsnippet
 
-snippet ifrb
+snippet ifrb "if(~rst)...begin...end"
 if(~rst)
 begin
     ${1:/*code*/}
 end
 endsnippet
 
-snippet ifr "no bracket"
+snippet ifr "if(~rst)..."
 if(~rst)
     ${1:/*code*/}
 endsnippet
 
-snippet el
+snippet el  "else..."
 else
     ${1:code}
 endsnippet
 
-snippet elb
+snippet elb "else...begin...end"
 else
 begin
     ${1:/*code*/}
 end
 endsnippet
 
-snippet eib
+snippet eib "else if...begin...end"
 else if(${1:/*condition*/})
 begin
     ${2:/*code*/}
 end
 endsnippet
 
-snippet ei
+snippet ei "else if...begin...end"
 else if(${1:/*condition*/})
     ${2:/*code*/}
 endsnippet
@@ -163,26 +163,22 @@ end
 endcase
 endsnippet
 
-#assign
-snippet as
+snippet as  "assign ..."
 assign                  ${1:LHS} = ${2:RHS};
 endsnippet
 
-#parameter
-snippet pa
+snippet pa  "paramter ..."
 parameter               ${1:LHS} = ${2:RHS};
 endsnippet
 
-snippet lo
+snippet lo  "localparam ..."
 localparam              ${1:LHS} = ${2:RHS};
 endsnippet
-#<=
-#${1:LHS} <=# ${2:RHS};
+
 snippet ;
 ${1:LHS} <= ${2:RHS};
 endsnippet
 
-#
 snippet ?
 ${1:/*LHS*/} = ${2:/*condition*/} ? ${3:/*expr1*/} : ${4:/*expr2*/};
 endsnippet
@@ -192,7 +188,7 @@ snippet :   "display" i
 [${1:MSB}:${2:00}]
 endsnippet
 
-snippet edge
+snippet edge "detect edge"
 reg    [1:0]            ${1:Reg}_r;
 wire                    $1_rise;
 wire                    $1_fall;
@@ -206,7 +202,6 @@ begin
     else
         $1_r    <= {$1_r[0],$1};
 end
-
 endsnippet
 
 snippet <<  "left shift"
@@ -229,7 +224,7 @@ reg     [7:0]           mem[0:255];
 endsnippet
 
 # initial
-snippet ini
+snippet ini "initial ... begin ... end"
 initial
 begin
     ${1:/*code*/}

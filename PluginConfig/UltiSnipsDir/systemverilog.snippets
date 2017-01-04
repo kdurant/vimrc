@@ -63,11 +63,122 @@ begin
 end
 endsnippet
 
+snippet ifb "if...begin...end"
+if(${1:/*condition*/})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+snippet if "if..."
+if(${1:/*condition*/})
+    ${2:/*code*/}
+endsnippet
+
+snippet ifrb "if(~rst)...begin...end"
+if(~rst)
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+snippet ifr "if(~rst)..."
+if(~rst)
+    ${1:/*code*/}
+endsnippet
+
+snippet el  "else..."
+else
+    ${1:code}
+endsnippet
+
+snippet elb "else...begin...end"
+else
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+snippet eib "else if...begin...end"
+else if(${1:/*condition*/})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+snippet ei "else if...begin...end"
+else if(${1:/*condition*/})
+    ${2:/*code*/}
+endsnippet
+
 snippet inside "a inside x"
 ${1:/*var*/} inside ${2:/*var*/}
 endsnippet
 
+snippet lo  "logic"  
+logic                       ${1:inport};
+endsnippet
 
+snippet lob "logic  [xx:00]"
+logic   [${1:MSB}:00]             ${2:inport};
+endsnippet
+
+snippet in      "input logic  inport"
+input   logic               ${1:inport},
+endsnippet
+
+snippet inb     "input wire [MSB:0] inport"
+input   logic   [${1:MSB}:00]     ${2:inport},
+endsnippet
+
+#output
+snippet our    "logic  xxx"
+output  logic               ${1:outport},
+endsnippet
+
+snippet outr    "logic  [MSB:00]"
+output  logic   [${1:MSB}:00]     ${2:outport},
+endsnippet
+
+snippet package
+package ${1:name}
+endpackage
+endsnippet
+
+snippet as  "assign ..."
+assign                  ${1:LHS} = ${2:RHS};
+endsnippet
+
+snippet pa  "paramter ..."
+parameter               ${1:LHS} = ${2:RHS};
+endsnippet
+
+snippet lo  "localparam ..."
+localparam              ${1:LHS} = ${2:RHS};
+endsnippet
+
+snippet edge "detect edge"
+reg    [1:0]            ${1:Reg}_r;
+wire                    $1_rise;
+wire                    $1_fall;
+
+assign          $1_rise = $1_r[1:0] == 2'b01;
+assign          $1_fall = $1_r[1:0] == 2'b10;
+always @ (posedge clk or negedge rst)
+begin
+    if(~rst)
+        $1_r    <= 2'b00;
+    else
+        $1_r    <= {$1_r[0],$1};
+end
+endsnippet
+
+snippet ini "initial ... begin ... end"
+initial
+begin
+    ${1:/*code*/}
+end
+endsnippet
 #仿真部分
 snippet array "fixed width"
 ${1:int} name[0:${2:row}];
@@ -109,7 +220,7 @@ endsnippet
 snippet enum
 enum ${1:/*[optional data type]*/}
 {
-	${2:/*name1 = value1*/,}
+    ${2:/*name1 = value1*/,}
 } ${3:var_name};
 endsnippet
 
@@ -141,51 +252,38 @@ endsnippet
 snippet fork
 initial
 begin
-	fork
-		begin
-		${1:/*code_block1()*/}
-		end
-		begin
-		/*code_block2()*/
-		end
-	join/*_any or _none*/
+    fork
+        begin
+        ${1:/*code_block1()*/}
+        end
+        begin
+        /*code_block2()*/
+        end
+    join/*_any or _none*/
 end
 endsnippet
 
 snippet class
 class ${1:class_name} extends ${2:base_class};
-	/*class property*/
-	$2
-	/*class method*/
-	function new(/*parameter*/);
-		//this.x = x;
-	endfunction
+    /*class property*/
+    $2
+    /*class method*/
+    function new(/*parameter*/);
+        //this.x = x;
+    endfunction
 endclass
 endsnippet
 
 snippet clocking
 clocking ${1:cb} @ (posedge clk);
-	//default input #1ns output #1ns;
-	// port list
+    //default input #1ns output #1ns;
+    // port list
 endclocking
-endsnippet
-
-snippet logic
-logic					${1:inport};
-endsnippet
-
-snippet logicb
-logic	[${1:MSB}:0]           ${2:inport};
-endsnippet
-
-snippet package
-package ${1:name}
-endpackage
 endsnippet
 
 snippet assert
 assert("condition")
 else
-	$error("failed");
+    $error("failed");
 endsnippet
 
