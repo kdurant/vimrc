@@ -41,6 +41,7 @@ Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'vim-scripts/ucf.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'neomake/neomake'
 
 call plug#end()
 

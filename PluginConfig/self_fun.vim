@@ -36,19 +36,22 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CompileFile()
     if &filetype == 'verilog' || &filetype == 'systemverilog'
+        "   if &filetype == 'verilog'
+        "       set makeprg=vlog\ -work\ work\ %
+        "   else
+        "       set makeprg=vlog\ -work\ work\ -sv\ %
+        "   endif
+        "   set errorformat=**\ Error:\ %f(%l):\ %m
+        "   if(isdirectory("work"))
+        "       exe "make" | exe "cw"
+        "   else
+        "       call job_start('vlib work')
+        "       exe "make" | exe "cw"
+        "       call delete('work', 'rf')
+        "   endif
         if &filetype == 'verilog'
-            set makeprg=vlog\ -work\ work\ %
-        else
-            set makeprg=vlog\ -work\ work\ -sv\ %
-        endif
-        set errorformat=**\ Error:\ %f(%l):\ %m
-        if(isdirectory("work"))
+            set makeprg=iverilog\ -o\ %<.out\ %
             exe "make" | exe "cw"
-        else
-            call job_start('vlib work')
-            exe "make" | exe "cw"
-            call delete('work', 'rf')
-            "echohl ErrorMsg | echo "No work library!"
         endif
     elseif &filetype == 'systemverilog'
         if(isdirectory("work"))
