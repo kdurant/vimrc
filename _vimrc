@@ -42,6 +42,7 @@ Plug 'vim-scripts/ucf.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 
 call plug#end()
 
