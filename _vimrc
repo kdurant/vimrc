@@ -308,3 +308,5 @@ au QuickfixCmdPost make call QfMakeConv()
 let python_highlight_all = 1
 source ~/PluginConfig/plugin_config.vim
 source ~/PluginConfig/self_fun.vim
+
+autocmd! BufWritePost * Neomake
