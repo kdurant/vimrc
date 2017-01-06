@@ -35,22 +35,15 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CompileFile()
     if &filetype == 'verilog'
-        "   if &filetype == 'verilog'
-        "       set makeprg=vlog\ -work\ work\ %
-        "   else
-        "       set makeprg=vlog\ -work\ work\ -sv\ %
-        "   endif
-        "   set errorformat=**\ Error:\ %f(%l):\ %m
-        "   if(isdirectory("work"))
-        "       exe "make" | exe "cw"
-        "   else
-        "       call job_start('vlib work')
-        "       exe "make" | exe "cw"
-        "       call delete('work', 'rf')
-        "   endif
-        "set makeprg=iverilog\ -o\ %<.out\ %
-        set makeprg=iverilog\ -t\ null\ %
-        exe "make" | exe "cw"
+        set makeprg=vlog\ -work\ work\ %
+        set errorformat=**\ Error:\ %f(%l):\ %m
+        if(isdirectory("work"))
+            exe "make" | exe "cw"
+        else
+            call job_start('vlib work')
+            exe "make" | exe "cw"
+            call delete('work', 'rf')
+        endif
     elseif &filetype == 'systemverilog'
         set makeprg=vlog\ -work\ work\ -sv\ %
         set errorformat=**\ Error:\ %f(%l):\ %m

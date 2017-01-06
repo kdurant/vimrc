@@ -41,8 +41,6 @@ Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'vim-scripts/ucf.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'neomake/neomake'
-Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -180,5 +178,3 @@ let python_highlight_all = 1
 source ~/PluginConfig/plugin_config.vim
 source ~/PluginConfig/self_fun.vim
 source ~/PluginConfig/map.vim
-
-autocmd! BufWritePost *.v Neomake
