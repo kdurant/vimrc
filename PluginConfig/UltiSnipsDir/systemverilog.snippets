@@ -115,11 +115,11 @@ snippet inside "a inside x"
 ${1:/*var*/} inside ${2:/*var*/}
 endsnippet
 
-snippet lo  "logic"  
+snippet log  "logic"  
 logic                       ${1:inport};
 endsnippet
 
-snippet lob "logic  [xx:00]"
+snippet logb "logic  [xx:00]"
 logic   [${1:MSB}:00]             ${2:inport};
 endsnippet
 
@@ -239,7 +239,7 @@ typedef struct packed
 endsnippet
 
 snippet tdu
-typedef union
+typedef union packed
 {
     /*data*/;
 }${1:/*union*/}_u;

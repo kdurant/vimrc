@@ -13,7 +13,6 @@ function! Search_Word()
             exe "cd " . Search_root()
             exe 'grep ' . expand("<cword>") . ' ' . '**/*'
             exe 'cw'
-            " 遍历列表，找到里面的每个字典 " haskey() 找到不符合要求的
         endif
         echo '' | echohl none
     else
@@ -35,7 +34,7 @@ endfunction
 "compile c, cpp, and verilog file
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CompileFile()
-    if &filetype == 'verilog' || &filetype == 'systemverilog'
+    if &filetype == 'verilog'
         "   if &filetype == 'verilog'
         "       set makeprg=vlog\ -work\ work\ %
         "   else
@@ -49,17 +48,18 @@ function! CompileFile()
         "       exe "make" | exe "cw"
         "       call delete('work', 'rf')
         "   endif
-        if &filetype == 'verilog'
-            set makeprg=iverilog\ -o\ %<.out\ %
-            exe "make" | exe "cw"
-        endif
+        "set makeprg=iverilog\ -o\ %<.out\ %
+        set makeprg=iverilog\ -t\ null\ %
+        exe "make" | exe "cw"
     elseif &filetype == 'systemverilog'
+        set makeprg=vlog\ -work\ work\ -sv\ %
+        set errorformat=**\ Error:\ %f(%l):\ %m
         if(isdirectory("work"))
-            set makeprg=vlog\ -work\ work\ -sv\ %
-            set errorformat=**\ Error:\ %f(%l):\ %m
             exe "make" | exe "cw"
         else
-            echohl ErrorMsg | echo "No work library!"
+            call job_start('vlib work')
+            exe "make" | exe "cw"
+            call delete('work', 'rf')
         endif
     elseif &filetype == 'c' || &filetype == 'cpp' || &filetype == 'java'
         if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -o\ %<.exe\ %
@@ -371,3 +371,20 @@ function! AgWrap()
         endif
     endif
 endfunction
+
+function! GitCmd(git_cmd)
+    if has('win32') || has('win64')
+        exe "cd " . Search_root()
+        echo iconv(system('git ' . a:git_cmd), "utf-8", &enc)
+    endif
+endfunction
+
+function! QfMakeConv()
+   let qflist = getqflist()
+   for i in qflist
+      let i.text = iconv(i.text, "cp936", "utf-8")
+   endfor
+   call setqflist(qflist)
+endfunction
+au QuickfixCmdPost make call QfMakeConv()
+
