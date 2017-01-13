@@ -200,16 +200,16 @@ begin
     if(~rst)
         $1_r    <= 2'b00;
     else
-        $1_r    <= {$1_r[0],$1};
+        $1_r    <= {$1_r[0], $1};
 end
 endsnippet
 
 snippet <<  "left shift"
-${1:RegOut} <=# {$1[${2:6}:${3:0}],${4:RightIn}};             //left shift, new data is appeare LSB
+${1:RegOut} <=# {$1[${2:6}:${3:0}], ${4:RightIn}};             //left shift, new data is appeare LSB
 endsnippet
 
 snippet >>  "right shift"
-${1:RegOut} <=# {${3:LeftIn},$1[${2:7}:${4:1}]};              //right shift,new data is appeare MSB
+${1:RegOut} <=# {${3:LeftIn}, $1[${2:7}:${4:1}]};              //right shift,new data is appeare MSB
 endsnippet
 
 # begin

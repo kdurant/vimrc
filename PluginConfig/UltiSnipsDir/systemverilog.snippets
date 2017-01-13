@@ -208,12 +208,9 @@ endinterface: $1
 endsnippet
 
 snippet modport
-modport ${1:name_mp}
-(${2}
-// clocking clocking_cb,
-// input input_name,
-// output output_port,
-// ....
+modport ${1:master}
+(
+    input                       ${2:clk},
 );
 endsnippet
 
@@ -287,3 +284,6 @@ else
     $error("failed");
 endsnippet
 
+snippet $ra
+${1:veriable} = ({$random} % ${2:2});
+endsnippet
