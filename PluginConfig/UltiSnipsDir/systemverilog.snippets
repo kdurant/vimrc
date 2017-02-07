@@ -1,4 +1,11 @@
+snippet `in
+\`include "${1:uvm_macros.svh}"
+endsnippet
+
 #可综合部分
+snippet im  "import package"
+import   ${1:uvm_pkg}::*;
+endsnippet
 snippet /*
 /*
  * ${1}
@@ -23,7 +30,7 @@ module `!v expand('%:r')`
     ${1:/*port*/}
 );
 
-endmodule
+endmodule : `!v expand('%:r')`
 endsnippet
 
 #module ${1:/*module*/} #
@@ -38,7 +45,7 @@ module `!v expand('%:r')` #
     ${2:/*port*/}
 );
 
-endmodule
+endmodule : `!v expand('%:r')`
 endsnippet
 
 snippet ff "sequential logic"
@@ -115,7 +122,7 @@ snippet inside "a inside x"
 ${1:/*var*/} inside ${2:/*var*/}
 endsnippet
 
-snippet log  "logic"  
+snippet log  "logic"
 logic                       ${1:inport};
 endsnippet
 
@@ -141,7 +148,7 @@ output  logic   [${1:MSB}:00]     ${2:outport},
 endsnippet
 
 snippet package
-package ${1:name}
+package ${1:name};
 endpackage
 endsnippet
 
@@ -179,7 +186,13 @@ begin
     ${1:/*code*/}
 end
 endsnippet
+
+
 #仿真部分
+snippet @
+@ (negedge clk);
+endsnippet
+
 snippet array "fixed width"
 ${1:int} name[0:${2:row}];
 endsnippet
@@ -195,7 +208,7 @@ ${1:int} ${2:name}[$] ${3:= {3,4}};
 endsnippet
 
 snippet interface
-interface ${1:name_if}
+interface ${1:name_bfm}
 (
     input logic clk,
     input logic rst,
@@ -247,26 +260,40 @@ foreach(${1:name}[${2:index}])
 endsnippet
 
 snippet fork
-initial
-begin
-    fork
-        begin
-        ${1:/*code_block1()*/}
-        end
-        begin
-        /*code_block2()*/
-        end
-    join/*_any or _none*/
-end
+fork
+    begin
+    ${1:/*code_block1()*/}
+    end
+    begin
+    /*code_block2()*/
+    end
+join/*_any or _none*/
 endsnippet
 
-snippet class
-class ${1:class_name} extends ${2:base_class};
-    /*class property*/
-    $2
-    /*class method*/
+snippet class   "base class"
+class ${1:`!v expand('%:r')`};
+    /*
+     * 静态属性
+     */
     function new(/*parameter*/);
         //this.x = x;
+    endfunction
+endclass
+endsnippet
+
+snippet extend  "extend class"
+class ${1:class_name} extends ${2:uvm_component};
+    function new(/*parameter*/);
+        //this.x = x;
+    endfunction
+endclass
+endsnippet
+
+snippet uvm  "uvm extend class"
+class ${1:class_name} extends ${2:uvm_component};
+\`uvm_component_utils($1);
+    function new (string name, uvm_component parent);
+        super.new(name, parent);
     endfunction
 endclass
 endsnippet
@@ -285,5 +312,12 @@ else
 endsnippet
 
 snippet $ra
-${1:veriable} = ({$random} % ${2:2});
+${1:veriable} = $urandom_range(0, 255);
+endsnippet
+
+snippet cover
+endsnippet
+
+snippet $di
+$display("${1:format}", ${2:variable});
 endsnippet
