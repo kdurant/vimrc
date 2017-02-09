@@ -187,8 +187,16 @@ begin
 end
 endsnippet
 
+snippet for
+for(int i = 0; i < ${1:num}; i = i + 1 )
+begin
+    ${2:/*code*/}
+end
+endsnippet
 
-#仿真部分
+#######################################################################
+######################   SIM          #################################
+#######################################################################
 snippet @
 @ (negedge clk);
 endsnippet
@@ -202,9 +210,7 @@ ${1:int} name[0:${2:row}][0:${3:col}];
 endsnippet
 
 snippet queue
-
 ${1:int} ${2:name}[$] ${3:= {3,4}};
-
 endsnippet
 
 snippet interface
@@ -270,6 +276,12 @@ fork
 join/*_any or _none*/
 endsnippet
 
+snippet task
+task ${1:name}($2);
+    $3
+endtask:$1
+endsnippet
+
 snippet class   "base class"
 class ${1:`!v expand('%:r')`};
     /*
@@ -282,7 +294,7 @@ endclass
 endsnippet
 
 snippet extend  "extend class"
-class ${1:class_name} extends ${2:uvm_component};
+class ${1:`!v expand('%:r')`} extends ${2:uvm_component};
     function new(/*parameter*/);
         //this.x = x;
     endfunction
@@ -320,4 +332,52 @@ endsnippet
 
 snippet $di
 $display("${1:format}", ${2:variable});
+endsnippet
+
+#######################################################################
+######################   UVM          #################################
+#######################################################################
+
+snippet uvm_info
+\`uvm_info("`!v expand('%:r')`", "${1:info}", UVM_LOW);
+endsnippet
+
+snippet set
+uvm_config_db#(virtual ${1:interface})::set(null, "*", "bfm", bfm);
+endsnippet
+
+snippet get
+uvm_config_db#(virtual ${1:interface})::get(this, "*", "bfm", bfm);
+endsnippet
+
+snippet `ifn "`ifndef ... `define ... `endif"
+\`ifndef `!v toupper(expand('%:r'))`_SVH
+\`define `!v toupper(expand('%:r'))`_SVH
+$1
+\`endif
+endsnippet
+
+snippet build_phase
+virtual function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    \`uvm_info("dut_driver", "bulid phase is called", UVM_LOW);
+
+    if(!uvm_config_db #(virtual dut_bfm)::get(this, "", "bfm", bfm))
+        \`uvm_fatal("dut_driver", "virtual interface must be set for bfm");
+endfunction: build_phase
+endsnippet
+
+snippet main_phase
+virtual task main_phase(uvm_phase phase);
+    phase.raise_objection(this);
+    \`uvm_info("dut_driver", "main phase is called", UVM_LOW);
+    $1
+    phase.drop_objection(this);
+endtask:main_phase
+endsnippet
+
+snippet connect_phase
+virtual function void connect_phase(uvm_phase phase);
+    super.connect_phase(phase);
+endfunction
 endsnippet

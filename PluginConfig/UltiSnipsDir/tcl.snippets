@@ -31,12 +31,18 @@ quit -sim
 set env(XILINX)        C:/Xilinx/14.7/ISE_DS/ISE
 set env(SIM_LIB)       F:/crack/ise14.7_lib
 
+set env(UVM_SRC)       F:/crack/uvm-1.1d/src
+set env(UVM_DPI)       C:/modeltech64_10.2c/uvm-1.1d/win64/uvm_dpi
+
 #工程所需要的文件
 vlog -incr $env(XILINX)/verilog/src/glbl.v
 vlog -incr +define+MODELSIM uart.v
 vlog -sv -incr *.sv
 
+#vlog +incdir+$env(UVM_SRC) -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF hello_world.sv
+
 vsim -t ps -novopt +notimingchecks -L unisims_ver -L unimacro_ver -L secureip -L XilinxCoreLib_ver work.tb glbl
+#vsim -t ns -novopt -sv_lib $env(UVM_DPI) work.hello_world_example 
 
 log -r /*
 radix 16
