@@ -123,7 +123,7 @@ output  wire                ${1:outport},
 endsnippet
 
 snippet outr    "reg  [MSB:0]"
-output  reg  [${1:MSB}:90]        ${2:outport},
+output  reg  [${1:MSB}:00]        ${2:outport},
 endsnippet
 
 snippet outb    "wire [MSB:0]"
@@ -164,7 +164,7 @@ endcase
 endsnippet
 
 snippet as  "assign ..."
-assign                  ${1:LHS} = ${2:RHS};
+assign                      ${1:LHS} = ${2:RHS};
 endsnippet
 
 snippet pa  "paramter ..."
