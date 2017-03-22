@@ -28,8 +28,22 @@ endsnippet
 
 snippet demo
 quit -sim
-set env(XILINX)        C:/Xilinx/14.7/ISE_DS/ISE
-set env(SIM_LIB)       F:/crack/ise14.7_lib
+set env(XILINX)         C:/Xilinx/14.7/ISE_DS/ISE
+set env(ISE_SIM)        F:/crack/ise14.7_lib
+vmap secureip           $env(ISE_SIM)/secureip
+vmap unisims_ver        $env(ISE_SIM)/unisims_ver
+vmap unimacro_ver       $env(ISE_SIM)/unimacro_ver
+vmap xilinxcorelib_ver  $env(ISE_SIM)/xilinxcorelib_ver
+
+set env(VIVADO_SIM)     F:/crack/vivado201504_lib
+vmap secureip           $env(VIVADO_SIM)/secureip
+vmap unisims_ver        $env(VIVADO_SIM)/unisims_ver
+vmap unimacro_ver       $env(VIVADO_SIM)/unimacro_ver
+vmap unifast_ver        $env(VIVADO_SIM)/unifast_ver
+vmap simprims_ver       $env(VIVADO_SIM)/simprims_ver
+vmap unisim             $env(VIVADO_SIM)/unisim
+vmap unimacro           $env(VIVADO_SIM)/unimacro
+vmap unifast            $env(VIVADO_SIM)/unifast
 
 set env(UVM_SRC)       F:/crack/uvm-1.1d/src
 set env(UVM_DPI)       C:/modeltech64_10.2c/uvm-1.1d/win64/uvm_dpi
