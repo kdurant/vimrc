@@ -198,15 +198,15 @@ endsnippet
 ######################   SIM          #################################
 #######################################################################
 snippet @
-@ (negedge clk);
+@ (posedge clk);
 endsnippet
 
-snippet array "fixed width"
-${1:int} name[0:${2:row}];
+snippet array "unpacked array"
+${1:type} name[${2:msb}:0];
 endsnippet
 
-snippet array_mul "fixed width"
-${1:int} name[0:${2:row}][0:${3:col}];
+snippet array "packed array"
+${1:type} [${2:msb}:0]name;
 endsnippet
 
 snippet queue
@@ -214,7 +214,7 @@ ${1:int} ${2:name}[$] ${3:= {3,4}};
 endsnippet
 
 snippet interface
-interface ${1:name_bfm}
+interface ${1:name_bfm};
 (
     input logic clk,
     input logic rst,
@@ -224,6 +224,12 @@ interface ${1:name_bfm}
     logic xxx;
 */
 endinterface: $1
+endsnippet
+
+snippet clocking
+clocking ${1:cb} @ (posedge clk);
+$2
+endclocking
 endsnippet
 
 snippet modport
@@ -308,13 +314,6 @@ class ${1:class_name} extends ${2:uvm_component};
         super.new(name, parent);
     endfunction
 endclass
-endsnippet
-
-snippet clocking
-clocking ${1:cb} @ (posedge clk);
-    //default input #1ns output #1ns;
-    // port list
-endclocking
 endsnippet
 
 snippet assert

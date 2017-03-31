@@ -35,7 +35,7 @@ Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'Lokaltog/vim-easymotion'
 Plug 'rking/ag.vim'
 Plug 'iamcco/markdown-preview.vim'
-Plug 'WeiChungWu/vim-SystemVerilog'
+"Plug 'WeiChungWu/vim-SystemVerilog'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'vim-scripts/ucf.vim'
