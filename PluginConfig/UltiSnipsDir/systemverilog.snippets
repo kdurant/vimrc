@@ -371,6 +371,11 @@ task ${1:name}($2);
 endtask
 endsnippet
 
+snippet fun
+function ${1:void} ${2:name}($3);
+endfunction
+endsnippet
+
 snippet class   "base class"
 class ${1:`!v expand('%:r')`};
     /*
