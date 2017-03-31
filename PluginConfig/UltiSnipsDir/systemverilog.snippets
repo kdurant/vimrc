@@ -30,7 +30,7 @@ module `!v expand('%:r')`
     ${1:/*port*/}
 );
 
-endmodule : `!v expand('%:r')`
+endmodule
 endsnippet
 
 #module ${1:/*module*/} #
@@ -45,7 +45,7 @@ module `!v expand('%:r')` #
     ${2:/*port*/}
 );
 
-endmodule : `!v expand('%:r')`
+endmodule
 endsnippet
 
 snippet ff "sequential logic"
@@ -194,6 +194,89 @@ begin
 end
 endsnippet
 
+snippet state   "one hot encode machine state"
+localparam              IDLE = 0;
+localparam              OVER = 1;
+(* KEEP = "TRUE" *)reg     [OVER:0]        cs = 'd1;
+(* KEEP = "TRUE" *)reg     [OVER:0]        ns = 'd1;
+reg     [15:0]          state_cnt;
+
+// synthesis translate_off
+reg [127:0] cs_STRING;
+always @(*)
+begin
+    case(1'b1)
+        cs[IDLE]: cs_STRING = "IDLE";
+        cs[HEAD]: cs_STRING = "HEAD";
+        cs[DISC]: cs_STRING = "DISC";
+        default: cs_STRING = "XXXX";
+    endcase
+end
+// synthesis translate_on
+always @(posedge clk)
+begin
+    if(rst)
+        cs <= 'd1;
+    else
+        cs <= ns;
+end
+
+always @(*)
+begin
+    ns = 'd0;
+    case(1'b1)
+        cs[IDLE]:
+        begin
+            if(/*condition*/)
+                ns[/*next_state*/] = 1'b1;
+            else
+                ns[IDLE] = 1'b1;
+        end
+        cs[HEAD]:
+        begin
+            if(/*condition*/)
+                ns[/*next_state*/] = 1'b1;
+            else
+                ns[HEAD] = 1'b1;
+        end
+        default:
+            ns[IDLE] = 1'b1;
+    endcase
+end
+
+
+always @ (posedge clk)
+begin
+    if(rst)
+    begin
+    end
+    else
+    begin
+        case (1'b1)
+            ns[IDLE]:
+            begin
+                /*code*/
+            end
+            /*code*/
+            default:
+            begin
+                /*code*/
+            end
+        endcase
+    end
+end
+
+always @ (posedge clk)
+begin
+    if(rst)
+        state_cnt <= 0;
+    else if (cs != ns)
+        state_cnt <= 0;
+    else
+        state_cnt <= state_cnt + 1'b1;
+end
+endsnippet
+
 #######################################################################
 ######################   SIM          #################################
 #######################################################################
@@ -285,7 +368,7 @@ endsnippet
 snippet task
 task ${1:name}($2);
     $3
-endtask:$1
+endtask
 endsnippet
 
 snippet class   "base class"
