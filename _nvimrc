@@ -1,2 +1,63 @@
+"source _nvimrc
+"C:\Users\1\AppData\Local\nvim
+"
+let g:is_win = has('win32') || has('win64')
+let g:is_unix = has('unix')
+call plug#begin('~/nvim/bundle')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'kshenoy/vim-signature'
+Plug 'SirVer/ultisnips'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-fugitive', {'frozen': 1}
+Plug 'Lokaltog/vim-easymotion'
+call plug#end()
+"set number
+"source ~/PluginConfig/plugin_config.vim
+"source ~/PluginConfig/self_fun.vim
+
+map     ,so     :source $MYVIMRC<cr>
+map     ,se     :tabnew $MYVIMRC<cr>
+
+set guifont=Consolas:h13
 set number
+set scrolloff=3
+set linebreak
+set clipboard+=unnamed
+set noswapfile
+if g:is_win
+    set fileformat=dos
+    set fileformats=dos
+elseif g:is_unix
+    set fileformat=unix
+    set fileformats=unix
+endif
+set confirm
+set splitright
+set nowrap
+set cursorline
+
+
+set cindent
+set shiftwidth=4
+set softtabstop=4
+set expandtab                           " Use the appropriate number of spaces to insert a <Tab>
+set autochdir
+set virtualedit=block
+set suffixesadd+=.v
+
+set ignorecase
+set smartcase
+
+autocmd BufRead,BufNewFile *.cmd set filetype=cmd
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.ucf set filetype=ucf
+autocmd FileType lua  setlocal iskeyword+=.
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+source ~/nvim/PluginConfig/plugin_config.vim
+source ~/nvim/PluginConfig/self_fun.vim
+source ~/nvim/PluginConfig/map.vim
 
