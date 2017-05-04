@@ -4,6 +4,10 @@
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = 'No Repo'
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "UltiSnips settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -16,9 +20,7 @@ let g:UltiSnipsSnippetDirectories=["E:/home/PluginConfig/UltiSnipsDir/"]
 "ctrlp setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<M-d>f'
-map <M-d>b      :CtrlPBuffer<cr>
 map <M-d>d      :CtrlPBookmarkDir<cr>
-map <M-d>r      :CtrlPMRU<cr>
 let g:ctrlp_by_filename = 1
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_working_path_mode = 'ra'
@@ -90,3 +92,18 @@ hi  link    CtrlPBufferPath PreProc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap    -   ]`
 nmap    0   [`
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"neovim window settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neovim_window_enable=0
+function! NeoVim_Window()
+    if g:neovim_window_enable == 0
+        call GuiWindowMaximized(1)
+        let g:neovim_window_enable=1
+    elseif g:neovim_window_enable == 1
+        call GuiWindowMaximized(0)
+        let g:neovim_window_enable=0
+    endif
+endfunction
+map <F12>     :call NeoVim_Window()<cr>

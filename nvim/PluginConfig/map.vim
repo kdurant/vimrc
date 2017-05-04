@@ -1,3 +1,9 @@
+map     ,so     :source $MYVIMRC<cr>
+"map     ,se     :tabnew $MYVIMRC<cr>
+map     ,se     :tabnew ~/_nvimrc<cr>
+
+
+
 map     <M-j>       zj
 map     <M-k>       zk
 
@@ -94,13 +100,32 @@ map    <M-7>        7gt
 map    <M-8>        8gt
 map    <M-9>        9gt
 
-"map     <F7>        :so $VIMSESSION<cr>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"session settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map     <F7>        :so ~/Session.vim<cr>
+set viminfo+=!  " Save and restore global variables.
+set sessionoptions=sesdir,help,tabpages,winsize,winpos,resize
+autocmd VimLeave *  mksession! ~/Session.vim
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "git settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map     ,sg     :exe "cd " . Search_root()<cr>:tabnew .gitignore<cr>
+
 command! -nargs=1 Dit call GitCmd(<f-args>)
 map     <M-g>       :Git!<space>
-nmap     <M-v>a      :call jobstart('gitk --all')<cr>
-nmap     <M-v>s      :Dit st<cr>
+nmap    <M-v>a      :call jobstart('gitk --all')<cr>
+nmap    <M-v>s      :Dit st<cr>
 
 map     <M-;>       :Dit<space>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"NERD Comment settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map     <F3>    \ci
+map     ,ca     \cA
+
+map     <F6>        :call AgWrap()<cr>
+map     ,re         :call Replace()<cr>
+

@@ -12,15 +12,22 @@ Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive', {'frozen': 1}
 Plug 'Lokaltog/vim-easymotion'
+Plug 'git@github.com:kdurant/misc_mine'
+Plug 'git@github.com:kdurant/verilog-testbench'
+Plug 'kdurant/AuthorInfo', {'frozen': 1}
+Plug 'kdurant/nerdcommenter', {'frozen': 1}
+Plug 'equalsraf/neovim-gui-shim'
+Plug 'vim-scripts/Align', {'frozen': 1}
+Plug 'rking/ag.vim'
+Plug 'amal-khailtash/vim-xdc-syntax'
+Plug 'vim-scripts/ucf.vim'
 call plug#end()
-"set number
-"source ~/PluginConfig/plugin_config.vim
-"source ~/PluginConfig/self_fun.vim
 
 map     ,so     :source $MYVIMRC<cr>
 map     ,se     :tabnew $MYVIMRC<cr>
 
-set guifont=Consolas:h13
+"set guifont=Consolas:h14
+colorscheme james
 set number
 set scrolloff=3
 set linebreak
@@ -50,6 +57,8 @@ set suffixesadd+=.v
 set ignorecase
 set smartcase
 
+set completeopt+=noinsert
+
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.ucf set filetype=ucf
@@ -60,4 +69,3 @@ autocmd FileType lua  setlocal iskeyword+=.
 source ~/nvim/PluginConfig/plugin_config.vim
 source ~/nvim/PluginConfig/self_fun.vim
 source ~/nvim/PluginConfig/map.vim
-

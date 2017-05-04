@@ -3,7 +3,7 @@ mplayer
 bundle
 ctrlp
 BookMark
-session.vim
+[sS]ession.vim
 nvim_session.vim
 _viminfo
 *.old

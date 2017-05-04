@@ -63,7 +63,8 @@ set rop=type:directx
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set ambiwidth=double
 if g:is_win
-    set guifont=Consolas:h13
+    "set guifont=Consolas:h13
+    set guifont=Monaco:h11
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
