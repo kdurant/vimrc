@@ -98,6 +98,7 @@ function! CompileFile()
         silent exe "make"
     elseif &filetype == 'python'
         if executable("python")
+            set autochdir
             echo iconv(system("python " . expand('%')), "cp936", &enc)
         endif
         "exe "!%<.py"
@@ -380,4 +381,14 @@ function! QfMakeConv()
    call setqflist(qflist)
 endfunction
 au QuickfixCmdPost make call QfMakeConv()
+
+
+function! AutoColorScheme(color_timer)
+    if strftime("%M") == 0
+        exec 'colorscheme '.["codeschool", "quantum", "james"][strftime("%H")%3]
+    endif
+endfunction
+"                               s   m
+let color_timer = timer_start(1000*60, 'AutoColorScheme',
+            \ {'repeat': -1})
 

@@ -195,11 +195,10 @@ end
 endsnippet
 
 snippet state   "one hot encode machine state"
-localparam              IDLE = 0;
-localparam              OVER = 1;
-(* KEEP = "TRUE" *)reg     [OVER:0]        cs = 'd1;
-(* KEEP = "TRUE" *)reg     [OVER:0]        ns = 'd1;
-reg     [15:0]          state_cnt;
+localparam              IDLE    = 0;
+localparam              OVER    = 1;
+(* KEEP = "TRUE" *)reg    [OVER:00]        cs = 'd1, ns = 'd1;
+reg     [15:00]         state_cnt;
 
 // synthesis translate_off
 reg [127:0] cs_STRING;
@@ -208,12 +207,12 @@ begin
     case(1'b1)
         cs[IDLE]: cs_STRING = "IDLE";
         cs[HEAD]: cs_STRING = "HEAD";
-        cs[DISC]: cs_STRING = "DISC";
         default: cs_STRING = "XXXX";
     endcase
 end
 // synthesis translate_on
-always @(posedge clk)
+
+always_ff @(posedge clk)
 begin
     if(rst)
         cs <= 'd1;
@@ -221,7 +220,7 @@ begin
         cs <= ns;
 end
 
-always @(*)
+always_comb @(*)
 begin
     ns = 'd0;
     case(1'b1)
@@ -245,7 +244,7 @@ begin
 end
 
 
-always @ (posedge clk)
+always_ff @ (posedge clk)
 begin
     if(rst)
     begin
@@ -266,7 +265,7 @@ begin
     end
 end
 
-always @ (posedge clk)
+always_ff @ (posedge clk)
 begin
     if(rst)
         state_cnt <= 0;

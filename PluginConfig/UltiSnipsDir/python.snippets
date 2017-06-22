@@ -1,32 +1,48 @@
-snippet if
+snippet if "simple if"
 if ${1:#condition}:
     ${2:#code}
 endsnippet
 
-snippet ei
+snippet ei  "elif"
 elif ${1:#condition}:
     ${2:#code}
 endsnippet
 
-snippet el
+snippet el  "else"
 else:
     ${1:#code}
 endsnippet
 
-snippet wh
+snippet wh  "while"
 while ${1:#condition}:
     ${2:#code}
 endsnippet
 
-snippet for
+snippet for "for ... in ..."
 for ${1:key} in ${2:dict}:
     ${3:#code}
 endsnippet
 
-snippet def
+snippet def "def func"
 def ${1:function}(${2:parameter}):
     ${3:#code}
     return ${4:#value}
+endsnippet
+
+snippet try "try...except...else"
+try:
+    $1
+except:
+    $2
+else:
+    $3
+endsnippet
+
+snippet finally "try...finally"
+try:
+    $1
+finally:
+    $2
 endsnippet
 
 snippet init
