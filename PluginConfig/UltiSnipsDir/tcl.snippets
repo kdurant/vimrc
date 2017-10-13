@@ -55,7 +55,11 @@ vlog -sv -incr *.sv
 
 #vlog +incdir+$env(UVM_SRC) -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF hello_world.sv
 
-vsim -t ps -novopt +notimingchecks -L unisims_ver -L unimacro_ver -L secureip -L XilinxCoreLib_ver work.tb glbl
+vsim -t ps -novopt +notimingchecks \
+                                    -L unisims_ver -L unimacro_ver \
+                                    -L unisim -L unimacro \
+                                    -L secureip \
+                                    -L XilinxCoreLib_ver work.tb glbl
 #vsim -t ns -novopt -sv_lib $env(UVM_DPI) work.hello_world_example 
 
 log -r /*
