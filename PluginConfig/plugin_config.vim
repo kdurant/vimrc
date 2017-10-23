@@ -96,7 +96,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:UltiSnipsSnippetsDir="~/PluginConfig/UltiSnipsDir/"
-let g:UltiSnipsSnippetDirectories=["E:/home/PluginConfig/UltiSnipsDir/"]
+let g:UltiSnipsSnippetDirectories=["C:/home/PluginConfig/UltiSnipsDir/"]
 
 autocmd FileType snippets  setlocal expandtab
 "let g:UltiSnipsSnippetDirectories=["UltiSnipsDir"]
@@ -106,8 +106,6 @@ autocmd FileType snippets  setlocal expandtab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_map = '<M-d>f'
 map <M-d>b      :CtrlPBuffer<cr>
-map <M-d>d      :CtrlPBookmarkDir<cr>
-map <M-d>r      :CtrlPMRU<cr>
 let g:ctrlp_by_filename = 1
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_working_path_mode = 'ra'

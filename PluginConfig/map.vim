@@ -90,6 +90,7 @@ map     K       \cr
 map     <M-g>       :Git!<space>
 map     <M-v>a      :call job_start('gitk --all')<cr>
 map     <M-v>s      :Dit st<cr>
+map     <M-v>r      :Dit archive -o master.zip HEAD
 
 map     <M-;>       :Dit<space>
 
