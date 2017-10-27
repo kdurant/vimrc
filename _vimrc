@@ -22,7 +22,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'mbriggs/mark.vim', {'frozen': 1}
 "Plug 'ntpeters/vim-better-whitespace'
-Plug 'Shougo/vimproc.vim' "make -f make_mingw32.mak
 if g:is_win
     Plug 'Shougo/neocomplete.vim'
 elseif g:is_unix
