@@ -110,3 +110,5 @@ map    <M-8>        8gt
 map    <M-9>        9gt
 
 map     <F7>        :so $VIMSESSION<cr>
+"map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
+map     <M-d>p      :call PacketPythonExe()<cr>

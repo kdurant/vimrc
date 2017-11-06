@@ -117,6 +117,15 @@ function! CompileFile()
     echohl None
 endfunction
 
+function! PacketPythonExe()
+    if &filetype == 'python'
+        "call system("pyinstaller -F -w " . expand('%'))
+        exe "!pyinstaller -F -w  %"
+    else
+        echohl ErrorMsg | echo "Can't packet this filetype!"
+    endif
+endfunction
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Usage:  :Rename[!] {newname}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
