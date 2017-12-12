@@ -26,7 +26,7 @@ snippet glbl
 vlog -work work -incr C:/Xilinx/14.7/ISE_DS/ISE/verilog/src/glbl.v
 endsnippet
 
-snippet demo
+snippet xilinx
 quit -sim
 set env(XILINX)         C:/Xilinx/14.7/ISE_DS/ISE
 set env(ISE_SIM)        F:/crack/ise14.7_lib
@@ -70,4 +70,22 @@ radix 16
 #do wave.tcl
 
 run 10us
+endsnippet
+
+snippet altera
+quit -sim
+set env(ALTERA_SIM)     F:/crack/altera13.0_lib
+vmap altera13.0_lib     $env(ALTERA_SIM)
+
+#工程所需要的文件
+vlog -sv -incr ../tb/top_tb.sv
+
+vsim -t ps -novopt -L altera13.0_lib work.top_tb
+
+log -r /*
+radix 16
+
+do wave.do
+
+run 20us
 endsnippet
