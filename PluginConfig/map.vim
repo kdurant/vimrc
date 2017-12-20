@@ -1,13 +1,16 @@
 map     ,so     :source $MYVIMRC<cr>
-map     ,se     :tabnew $MYVIMRC<cr>
 map     ,sg     :exe "cd " . Search_root()<cr>:tabnew .gitignore<cr>
+if g:isvim
+    map     ,se     :tabnew $MYVIMRC<cr>
+    map     ,ma         :set fdm=manual<cr>
+    map     ,in         :set fdm=indent<cr>
+    map     ,sy         :set fdm=syntax<cr>
+    map     <M-e>       ^zf%
+    nmap     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
+else
+    map     ,se     :tabnew ~/_nvimrc<cr>
+endif
 
-map     ,ma         :set fdm=manual<cr>
-map     ,in         :set fdm=indent<cr>
-map     ,sy         :set fdm=syntax<cr>
-map     <M-e>       ^zf%
-
-nmap     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
 map     <M-j>       zj
 map     <M-k>       zk
 
@@ -30,7 +33,7 @@ map     <H>         <C-W><
 map     <L>         <C-W>>
 map     <M-c>       :clo<cr>
 if g:is_win
-    map     ,sx     :call Maximize()<cr>
+    map     <M-x>   :call Maximize()<cr>
     map     ,st     :call Topmost()<cr>
 endif
 
@@ -71,14 +74,20 @@ imap    <M-o>       <esc>o
 
 map     <M-d>e      :call ChangeHead()<cr>
 
-map <silent> <M-F12> :call MenuBar()<cr>
+if g:isvim
+    map <silent> <M-F12> :call MenuBar()<cr>
+endif
 
 if has('python3')
     command! -nargs=+ Calc :py3 print (<args>)
     py3 from math import *
     map     <M-q>   :Calc<space>
 else
-    map     <M-q>   :call job_start('calc')<cr>
+    if g:isvim
+        map     <M-q>   :call job_start('calc')<cr>
+    else
+        map     <M-q>   :call jobstart('calc')<cr>
+    endif
 endif
 
 map     Y       y$
@@ -88,7 +97,11 @@ map     K       \cr
 "git settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map     <M-g>       :Git!<space>
-map     <M-v>a      :call job_start('gitk --all')<cr>
+if g:isvim
+    map     <M-v>a      :call job_start('gitk --all')<cr>
+else
+    map     <M-v>a      :call jobstart('gitk --all')<cr>
+endif
 map     <M-v>s      :Dit st<cr>
 map     <M-v>r      :Dit archive -o master.zip HEAD
 
@@ -109,6 +122,8 @@ map    <M-7>        7gt
 map    <M-8>        8gt
 map    <M-9>        9gt
 
-map     <F7>        :so $VIMSESSION<cr>
+if g:isvim
+    map     <F7>        :so $VIMSESSION<cr>
+endif
 "map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
 map     <M-d>p      :call PacketPythonExe()<cr>

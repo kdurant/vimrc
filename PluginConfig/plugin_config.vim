@@ -5,11 +5,14 @@ let g:airline_theme='kolor'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = 'No Repo'
 "let g:airline#extensions#whitespace#enabled = 1
+"let g:airline_extensions = ['branch', 'tabline']
+"let g:airline#extensions#tabline#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "neocomplete settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !empty(glob($HOME. "/vimfiles/bundle/neocomplete.vim"))
+
+if g:isvim
     let g:neocomplete#enable_insert_char_pre = 1
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
@@ -44,6 +47,17 @@ if !empty(glob($HOME. "/vimfiles/bundle/neocomplete.vim"))
     else
         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     endif
+else
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "deopltete settings
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_refresh_always=1
+    let g:deoplete#auto_completion_start_length = 1
+    let g:deoplete#enable_debug=1
+    let g:deoplete#sources#padawan#add_parentheses = 1
+    let g:deoplete#sources#padawan#auto_update = 1
+    let g:deoplete#skip_chars = ['$']
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -104,8 +118,9 @@ autocmd FileType snippets  setlocal expandtab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ctrlp setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_map = '<M-d>f'
-map <M-d>b      :CtrlPBuffer<cr>
+let g:ctrlp_map = '<space>f'
+map <space>b      :CtrlPBuffer<cr>
+map <space>m      :CtrlPMRU<cr>
 let g:ctrlp_by_filename = 1
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_working_path_mode = 'ra'

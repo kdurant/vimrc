@@ -40,7 +40,11 @@ function! CompileFile()
         if(isdirectory("work"))
             exe "make" | exe "cw"
         else
-            call job_start('vlib work')
+            if g:isvim
+                call job_start('vlib work')
+            else
+                call jobstart('vlib work')
+            endif
             exe "make" | exe "cw"
             call delete('work', 'rf')
         endif
@@ -50,7 +54,11 @@ function! CompileFile()
         if(isdirectory("work"))
             exe "make" | exe "cw"
         else
-            call job_start('vlib work')
+            if g:isvim
+                call job_start('vlib work')
+            else
+                call jobstart('vlib work')
+            endif
             exe "make" | exe "cw"
             call delete('work', 'rf')
         endif
@@ -237,7 +245,11 @@ endfunction
 function! GenerateCtags()
     exe "cd " . Search_root()
     if &filetype == 'c' || &filetype == 'cpp'
-        call job_start('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
+        if g:isvim
+            call job_start('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
+        else
+            call jobstart('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
+        endif
     elseif &filetype == "verilog"
         call system ('ctags --language-force=verilog -R .')
     else
@@ -265,20 +277,25 @@ endfunction
 
 let g:maximize = 1
 function! Maximize()
-    if executable("vimtweak.dll")
-        call libcallnr("vimtweak.dll", "EnableMaximize", g:maximize)
-        if g:maximize == 0
-            set lines=38 columns=85
-            exe "winpos 570 0"
-        endif
-        let g:maximize = !g:maximize
-    else
-        if g:maximize == 1
-            exec "simalt ~x"
+    if g:isvim
+        if executable("vimtweak.dll")
+            call libcallnr("vimtweak.dll", "EnableMaximize", g:maximize)
+            if g:maximize == 0
+                set lines=38 columns=85
+                exe "winpos 570 0"
+            endif
+            let g:maximize = !g:maximize
         else
-            set lines=38 columns=85
-            exe "winpos 570 0"
+            if g:maximize == 1
+                exec "simalt ~x"
+            else
+                set lines=38 columns=85
+                exe "winpos 570 0"
+            endif
+            let g:maximize = !g:maximize
         endif
+    else
+        call GuiWindowMaximized(g:maximize)
         let g:maximize = !g:maximize
     endif
 endfunction

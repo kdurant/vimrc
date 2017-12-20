@@ -2,6 +2,7 @@ set nocompatible
 filetype plugin indent on
 let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
+let g:isvim = 1
 if g:is_win
     call plug#begin('~/vimfiles/bundle')
 elseif g:is_unix

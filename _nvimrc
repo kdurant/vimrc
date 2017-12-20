@@ -3,10 +3,13 @@
 "
 let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
+let g:isvim = 0
+let g:isnvim = 1
 call plug#begin('~/nvim/bundle')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mhinz/vim-startify'
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -20,14 +23,14 @@ Plug 'equalsraf/neovim-gui-shim'
 Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'rking/ag.vim'
 Plug 'amal-khailtash/vim-xdc-syntax'
-Plug 'vim-scripts/ucf.vim'
+"Plug 'vim-scripts/ucf.vim'
 call plug#end()
 
 map     ,so     :source $MYVIMRC<cr>
 map     ,se     :tabnew $MYVIMRC<cr>
 
 "set guifont=Consolas:h14
-colorscheme james
+exec 'colorscheme '.["codeschool", "quantum", "james"][strftime("%H")%3]
 set number
 set scrolloff=3
 set linebreak
@@ -63,9 +66,11 @@ autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.ucf set filetype=ucf
 autocmd FileType lua  setlocal iskeyword+=.
-
+let g:python_host_prg = 'python.exe'
+command! -nargs=1 Dit call GitCmd(<f-args>)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-source ~/nvim/PluginConfig/plugin_config.vim
-source ~/nvim/PluginConfig/self_fun.vim
-source ~/nvim/PluginConfig/map.vim
+source ~/PluginConfig/plugin_config.vim
+source ~/PluginConfig/self_fun.vim
+source ~/PluginConfig/map.vim
+
