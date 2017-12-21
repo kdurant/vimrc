@@ -204,12 +204,36 @@ begin
 end
 endsnippet
 
-snippet <<  "left shift"
+snippet shift_in_high   "first data in high"
 ${1:new_data}[7:0] <= {$1[${2:6}:${3:0}], ${4:data_in}};             // 最先进来的数据在最高位
 endsnippet
 
-snippet >>  "right shift"
+snippet shift_in_low   "first in in low"
 ${1:new_data}[7:0] <= {${3:data_in}, $1[${2:7}:${4:1}]};             // 最先进来的数据在最低位
+endsnippet
+
+snippet shift_out_high   "High bit first go out"
+/* 需要其他地方不断给 data_in_reg 赋值，例如
+if(load)
+    ${1:data_in_reg} <= data_in
+else
+*/
+begin
+    $1 <= ($1 << 8);
+    ${2:data_out} <= $1[31:24]
+end
+endsnippet
+
+snippet shift_out_low   "low bit first go out"
+/* 需要其他地方不断给 data_in_reg 赋值，例如
+if(load)
+    ${1:data_in_reg} <= data_in
+else
+*/
+begin
+    $1 <= ($1 >> 8);
+    ${2:data_out} <= $1[07:00]
+end
 endsnippet
 
 # begin

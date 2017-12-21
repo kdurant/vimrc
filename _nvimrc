@@ -1,6 +1,11 @@
 "source _nvimrc
-"C:\Users\1\AppData\Local\nvim
 "
+"C:\Users\1\AppData\Local\nvim
+"UpdateRemotePlugins
+"
+
+    "set guifont=Monaco:h11
+let g:is_nvim = 1
 let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
 let g:isvim = 0
@@ -73,4 +78,3 @@ command! -nargs=1 Dit call GitCmd(<f-args>)
 source ~/PluginConfig/plugin_config.vim
 source ~/PluginConfig/self_fun.vim
 source ~/PluginConfig/map.vim
-
