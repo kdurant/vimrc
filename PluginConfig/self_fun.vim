@@ -258,8 +258,8 @@ function! GenerateCtags()
     exe 'set tags+=' . substitute(Search_root(), " ", '\\ ', "g") .'/tags'
 endfunction
 
-autocmd BufWritePost *.c call GenerateCtags()
-autocmd BufWritePost *.h call GenerateCtags()
+"autocmd BufWritePost *.c call GenerateCtags()
+"autocmd BufWritePost *.h call GenerateCtags()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vimtweak settings

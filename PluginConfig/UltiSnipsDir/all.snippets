@@ -199,6 +199,7 @@ simulation
 *.smsg
 *.summary
 *.jdi
+*.qdf
 endsnippet
 
 snippet all
@@ -506,9 +507,25 @@ endsnippet
 
 
 snippet nios
+# qsys 文件存放于sopc文件夹下，其他文件都可以从此文件生成
+# qsys 命名为kernel.qsys
+
+.qsys_edit
+kernel
+*.bsp
+*.cmp
+*.html
+*.rpt
+*.sopcinfo
+tags
+
 *.d
 obj
-.qsys_edit
-
-
+*.elf
+*.map
+*.objdump
+*.html
+*.mk
+*.gdb
+*.a
 endsnippet
