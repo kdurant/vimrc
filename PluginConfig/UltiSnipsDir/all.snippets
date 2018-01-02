@@ -244,10 +244,10 @@ snippet vivado
 *.cache
 *.hw
 *.runs
+# IP选项改变可以重新生成
+*.ip_user_files
 *.tmp
 
-*.veo
-*.vho
 *.jou
 *.log
 *.str
@@ -260,6 +260,17 @@ ies
 questa
 vcs
 xsim
+
+# IP一般情况下只需要xci文件，vivado就可以重新生成
+doc
+hdl
+sim
+simulation
+synth
+*.veo
+*.vho
+*.xdc
+*.xml
 endsnippet
 
 snippet ise "myself" 
