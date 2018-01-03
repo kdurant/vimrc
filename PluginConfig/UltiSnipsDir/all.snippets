@@ -243,9 +243,10 @@ snippet vivado
 .Xil
 *.cache
 *.hw
-*.runs
+*.ioplanning
 # IP选项改变可以重新生成
 *.ip_user_files
+*.runs
 *.tmp
 
 *.jou
@@ -282,6 +283,7 @@ iseconfig
 _ngo
 xlnx_auto_0_xdb
 xst
+planAhead_run_*
 
 *.bgn
 *.bit
@@ -324,19 +326,19 @@ xst
 *.cpj
 
 impact.xsl
+*.ipf
 
-# IP 文件夹
+# IP 文件夹  *.xco和*.gise为必须，其他都可以生成
+doc
+example_design
+implement
+simulation
+tmp
 *.cgp
 *.asy
 *.ncf
 *.sym
 *.veo
-tmp
-# IP 文件夹
-doc
-#example_design  部分IP需要这个文件夹
-implement
-simulation
 endsnippet
 
 snippet ise "github"
