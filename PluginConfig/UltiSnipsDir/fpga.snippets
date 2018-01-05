@@ -1,0 +1,191 @@
+snippet co
+/*-------------------------------------------------------------------------
+//description   :   ${1}
+//condition     :
+//others        :
+-------------------------------------------------------------------------*/
+endsnippet
+
+#module`!v strftime("%Y-%m-%d")`
+#module ${1:/*module*/}
+snippet mo
+\`timescale  1 ns/1 ps
+
+module `!v expand('%:r')`
+(
+    input   wire                clk,
+    input   wire                rst,
+    ${1:/*port*/}
+);
+
+endmodule
+endsnippet
+
+#module ${1:/*module*/} #
+snippet mod  "wait"
+module `!v expand('%:r')` #
+(
+    ${1:/*parameter*/}
+)
+(
+    input   wire                clk,
+    input   wire                rst,
+    ${2:/*port*/}
+);
+
+endmodule
+endsnippet
+
+snippet clk
+reg                     ${1:clk} = 0;
+always
+    #(1s/${2:freq}/2) $1 = ~$1;
+endsnippet
+
+snippet ifb "if...begin...end"
+if(${1:/*condition*/})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+snippet if "if..."
+if(${1:/*condition*/})
+    ${2:/*code*/}
+endsnippet
+
+snippet ifrb "if(~rst)...begin...end"
+if(~rst)
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+snippet ifr "if(~rst)..."
+if(~rst)
+    ${1:/*code*/}
+endsnippet
+
+snippet el  "else..."
+else
+    ${1:code}
+endsnippet
+
+snippet elb "else...begin...end"
+else
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+snippet eib "else if...begin...end"
+else if(${1:/*condition*/})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+snippet ei "else if...begin...end"
+else if(${1:/*condition*/})
+    ${2:/*code*/}
+endsnippet
+
+snippet as  "assign ..."
+assign                  ${1:LHS} = ${2:RHS};
+endsnippet
+
+snippet pa  "paramter ..."
+parameter               ${1:LHS} = ${2:RHS};
+endsnippet
+
+snippet lo  "localparam ..."
+localparam              ${1:LHS} = ${2:RHS};
+endsnippet
+
+snippet edge "detect edge"
+reg    [1:0]            ${1:Reg}_r;
+wire                    $1_rise;
+wire                    $1_fall;
+
+assign          $1_rise = $1_r[1:0] == 2'b01;
+assign          $1_fall = $1_r[1:0] == 2'b10;
+always @ (posedge clk or negedge rst)
+begin
+    if(~rst)
+        $1_r    <= 2'b00;
+    else
+        $1_r    <= {$1_r[0], $1};
+end
+endsnippet
+
+snippet ini "initial ... begin ... end"
+initial
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+#case
+snippet ca      "case ... endcase"
+case (${1:/*condition*/})
+${2:/*first*/}:
+begin
+    ${3:/*code*/}
+end
+${4:/*code*/}
+default:
+begin
+    ${5:/*code*/}
+end
+endcase
+endsnippet
+
+snippet ;
+${1:LHS} <= ${2:RHS};
+endsnippet
+
+snippet ?
+${1:/*LHS*/} = ${2:/*condition*/} ? ${3:/*expr1*/} : ${4:/*expr2*/};
+endsnippet
+
+snippet be  "beging...end"
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+snippet for
+for(int i = 0; i < ${1:num}; i = i + 1 )
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+#repeat
+snippet repeat
+repeat(${1:Number})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+#forever
+snippet forever
+forever
+    #CLKPRIEOD  clk = ~clk;         //only use initial block
+endsnippet
+
+snippet `t
+\`timescale 1 ns/1 ps
+
+endsnippet
+
+snippet `d
+\`define          DELAY   1
+
+endsnippet
+
+snippet $di
+$display("${1:format}", ${2:variable});
+endsnippet
+

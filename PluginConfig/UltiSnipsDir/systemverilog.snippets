@@ -1,3 +1,5 @@
+extends fpga
+
 snippet `in
 \`include "${1:uvm_macros.svh}"
 endsnippet
@@ -12,41 +14,6 @@ snippet /*
  */
 endsnippet
 
-snippet co
-/*-------------------------------------------------------------------------
-//description   :   ${1}
-//condition     :
-//others        :
--------------------------------------------------------------------------*/
-endsnippet
-
-snippet mo
-\`timescale  1 ns/1 ps
-
-module `!v expand('%:r')`
-(
-    input   logic               clk,
-    input   logic               rst,
-    ${1:/*port*/}
-);
-
-endmodule
-endsnippet
-
-#module ${1:/*module*/} #
-snippet mod  "parameter"
-module `!v expand('%:r')` #
-(
-    ${1:/*parameter*/}
-)
-(
-    input   logic               clk,
-    input   logic               rst,
-    ${2:/*port*/}
-);
-
-endmodule
-endsnippet
 
 snippet ff "sequential logic"
 always_ff @ (posedge ${1:clk} or negedge ${2:rst})
@@ -68,54 +35,6 @@ always_latch
 begin
     ${1:/*code*/}
 end
-endsnippet
-
-snippet ifb "if...begin...end"
-if(${1:/*condition*/})
-begin
-    ${2:/*code*/}
-end
-endsnippet
-
-snippet if "if..."
-if(${1:/*condition*/})
-    ${2:/*code*/}
-endsnippet
-
-snippet ifrb "if(~rst)...begin...end"
-if(~rst)
-begin
-    ${1:/*code*/}
-end
-endsnippet
-
-snippet ifr "if(~rst)..."
-if(~rst)
-    ${1:/*code*/}
-endsnippet
-
-snippet el  "else..."
-else
-    ${1:code}
-endsnippet
-
-snippet elb "else...begin...end"
-else
-begin
-    ${1:/*code*/}
-end
-endsnippet
-
-snippet eib "else if...begin...end"
-else if(${1:/*condition*/})
-begin
-    ${2:/*code*/}
-end
-endsnippet
-
-snippet ei "else if...begin...end"
-else if(${1:/*condition*/})
-    ${2:/*code*/}
 endsnippet
 
 snippet inside "a inside x"
@@ -150,48 +69,6 @@ endsnippet
 snippet package
 package ${1:name};
 endpackage
-endsnippet
-
-snippet as  "assign ..."
-assign                  ${1:LHS} = ${2:RHS};
-endsnippet
-
-snippet pa  "paramter ..."
-parameter               ${1:LHS} = ${2:RHS};
-endsnippet
-
-snippet lo  "localparam ..."
-localparam              ${1:LHS} = ${2:RHS};
-endsnippet
-
-snippet edge "detect edge"
-reg    [1:0]            ${1:Reg}_r;
-wire                    $1_rise;
-wire                    $1_fall;
-
-assign          $1_rise = $1_r[1:0] == 2'b01;
-assign          $1_fall = $1_r[1:0] == 2'b10;
-always @ (posedge clk or negedge rst)
-begin
-    if(~rst)
-        $1_r    <= 2'b00;
-    else
-        $1_r    <= {$1_r[0],$1};
-end
-endsnippet
-
-snippet ini "initial ... begin ... end"
-initial
-begin
-    ${1:/*code*/}
-end
-endsnippet
-
-snippet for
-for(int i = 0; i < ${1:num}; i = i + 1 )
-begin
-    ${2:/*code*/}
-end
 endsnippet
 
 snippet state   "one hot encode machine state"
@@ -414,10 +291,6 @@ ${1:veriable} = $urandom_range(0, 255);
 endsnippet
 
 snippet cover
-endsnippet
-
-snippet $di
-$display("${1:format}", ${2:variable});
 endsnippet
 
 snippet mail
