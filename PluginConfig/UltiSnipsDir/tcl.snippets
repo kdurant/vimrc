@@ -48,17 +48,21 @@ set env(UVM_SRC)       F:/crack/uvm-1.1d/src
 set env(UVM_DPI)       C:/modeltech64_10.2c/uvm-1.1d/win64/uvm_dpi
 
 #工程所需要的文件
-vlog $env(ISE_SIM)/glbl.v;
+vlog -incr $env(ISE_SIM)/glbl.v;
 vlog -incr +define+MODELSIM uart.v
 vlog -sv -incr *.sv
 
 #vlog +incdir+$env(UVM_SRC) -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF hello_world.sv
 
 vsim -t ps -novopt +notimingchecks \
-                                    -L unisims_ver -L unimacro_ver \
-                                    -L unisim -L unimacro \
                                     -L secureip \
-                                    -L XilinxCoreLib_ver work.tb glbl
+                                    -L simprims_ver \
+                                    -L unifast -L unifast_ver \
+                                    -L unimacro -L unimacro_ver \
+                                    -L unisim -L unisims_ver \
+                                    glbl \
+                                    work.tb
+
 #vsim -t ns -novopt -sv_lib $env(UVM_DPI) work.hello_world_example 
 
 log -r /*

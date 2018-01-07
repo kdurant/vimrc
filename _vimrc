@@ -72,7 +72,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "colorscheme james
 "exec 'colorscheme '.["bubblegum-256-light","solarized","Tomorrow","molokai","bubblegum-256-dark","molokai"][strftime("%S")%6]
-exec 'colorscheme '.["codeschool", "quantum", "james"][strftime("%H")%3]
+exec 'colorscheme '.["codeschool", "james"][strftime("%H")%2]
 set guitablabel=%N\ %t
 set shortmess=atT
 set lines=38 columns=90
