@@ -81,7 +81,7 @@ endif
 if has('python3')
     command! -nargs=+ Calc :py3 print (<args>)
     py3 from math import *
-    map     <M-q>   :Calc<space>
+    map     <M-w>   :Calc<space>
 else
     if g:isvim
         map     <M-q>   :call job_start('calc')<cr>
