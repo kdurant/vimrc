@@ -13,15 +13,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edsono/vim-matchit', {'frozen': 1}
-Plug 'git@github.com:kdurant/misc_mine'
-Plug 'git@github.com:kdurant/verilog-testbench'
+Plug 'kdurant/misc_mine'
+Plug 'kdurant/verilog-testbench'
 Plug 'hdima/python-syntax'
 Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
 Plug 'kdurant/AuthorInfo', {'frozen': 1}
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'kshenoy/vim-signature'
 Plug 'KabbAmine/vCoolor.vim'
-Plug 'mbriggs/mark.vim', {'frozen': 1}
 "Plug 'ntpeters/vim-better-whitespace'
 if g:is_win
     Plug 'Shougo/neocomplete.vim'
@@ -175,9 +174,9 @@ autocmd VimLeave *  mksession! $VIMSESSION
 autocmd VimLeave *  let save_cursor = getpos(".")
 autocmd VimEnter    call setpos('.', save_cursor)
 
-
 let python_highlight_all = 1
 let g:vcoolor_disable_mappings=1
 source ~/PluginConfig/plugin_config.vim
 source ~/PluginConfig/self_fun.vim
 source ~/PluginConfig/map.vim
+

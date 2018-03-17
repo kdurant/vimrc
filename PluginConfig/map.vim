@@ -1,14 +1,15 @@
-map     ,so     :source $MYVIMRC<cr>
 map     ,sg     :exe "cd " . Search_root()<cr>:tabnew .gitignore<cr>
 if g:isvim
-    map     ,se     :tabnew $MYVIMRC<cr>
+    map     ,se         :tabnew $MYVIMRC<cr>
     map     ,ma         :set fdm=manual<cr>
     map     ,in         :set fdm=indent<cr>
     map     ,sy         :set fdm=syntax<cr>
     map     <M-e>       ^zf%
     nmap     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
 else
-    map     ,se     :tabnew ~/_nvimrc<cr>
+    map     ,so     :source $HOME/_nvimrc<cr>
+    map     ,se     :tabnew $HOME/_nvimrc<cr>
+    tnoremap <Esc>  <C-\><C-n>
 endif
 
 map     <M-j>       zj
@@ -54,7 +55,6 @@ map!    <c-l>       <S-Right>
 map     <C-s>       :w!<cr>
 imap    <C-s>       <esc>:w!<cr>
 
-map     <M-r>       :bro e<cr>
 map     ,rm         :%s/\r//g<cr>:w<cr>
 map     ,rn         :%s/\s\+$//g<cr>
 map     ,rg         :%s/^\n\+/\r/g<cr>
