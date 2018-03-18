@@ -1,4 +1,4 @@
-snippet co
+snippet co      "comment always block"
 /*-------------------------------------------------------------------------
 //description   :   ${1}
 //condition     :
@@ -8,7 +8,7 @@ endsnippet
 
 #module`!v strftime("%Y-%m-%d")`
 #module ${1:/*module*/}
-snippet mo
+snippet mo      "modele without parameter"
 \`timescale  1 ns/1 ps
 
 module `!v expand('%:r')`
@@ -22,7 +22,7 @@ endmodule
 endsnippet
 
 #module ${1:/*module*/} #
-snippet mod  "wait"
+snippet mod  "modele with parameter"
 module `!v expand('%:r')` #
 (
     ${1:/*parameter*/}
@@ -36,7 +36,7 @@ module `!v expand('%:r')` #
 endmodule
 endsnippet
 
-snippet clk
+snippet clk     "generate clock"
 reg                     ${1:clk} = 0;
 always
     #(1s/${2:freq}/2) $1 = ~$1;
@@ -140,10 +140,6 @@ end
 endcase
 endsnippet
 
-snippet ;
-${1:LHS} <= ${2:RHS};
-endsnippet
-
 snippet ?
 ${1:/*LHS*/} = ${2:/*condition*/} ? ${3:/*expr1*/} : ${4:/*expr2*/};
 endsnippet
@@ -154,7 +150,7 @@ begin
 end
 endsnippet
 
-snippet for
+snippet for     "for loop"
 for(int i = 0; i < ${1:num}; i = i + 1 )
 begin
     ${2:/*code*/}
@@ -162,7 +158,7 @@ end
 endsnippet
 
 #repeat
-snippet repeat
+snippet repeat      "repeat loop"
 repeat(${1:Number})
 begin
     ${2:/*code*/}
@@ -170,12 +166,12 @@ end
 endsnippet
 
 #forever
-snippet forever
+snippet forever     "forever"
 forever
     #CLKPRIEOD  clk = ~clk;         //only use initial block
 endsnippet
 
-snippet `t
+snippet `t      "timescale"
 \`timescale 1 ns/1 ps
 
 endsnippet

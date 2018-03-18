@@ -1,12 +1,24 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "airline settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme='kolor'
+let g:airline_theme='powerlineish'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = 'No Repo'
 "let g:airline#extensions#whitespace#enabled = 1
-"let g:airline_extensions = ['branch', 'tabline']
-"let g:airline#extensions#tabline#enabled = 1
+if g:isnvim
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+    let g:airline#extensions#tabline#show_tab_nr = 1
+    let g:airline#extensions#tabline#show_tab_type = 0
+    let g:airline#extensions#tabline#formatter = 'default'
+    let g:airline#extensions#tabline#buffer_nr_show = 0
+    let g:airline#extensions#tabline#fnametruncate = 16
+    let g:airline#extensions#tabline#fnamecollapse = 2
+    let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline#extensions#tabline#fnamemod = ':p:t'
+    let g:airline#extensions#hunks#enabled = 0
+    let g:airline#extensions#tabline#show_buffers = 0
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "neocomplete settings
@@ -58,6 +70,10 @@ else
     let g:deoplete#sources#padawan#add_parentheses = 1
     let g:deoplete#sources#padawan#auto_update = 1
     let g:deoplete#skip_chars = ['$']
+    let g:deoplete#ignore_sources = {}
+    let g:deoplete#ignore_sources._ = ['tag', 'around']
+    "call deoplete#custom#source('ultisnips', 'buffer', 'rank', 9999)
+    call deoplete#custom#source('ultisnips', 'rank', 1000)
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -7,7 +7,7 @@ snippet /*
 endsnippet
 
 #always
-snippet al  "always"
+snippet al  "always block"
 always @ (posedge ${1:clk} or negedge ${2:rst})
 begin
     ${3:/*code*/}
@@ -104,7 +104,7 @@ snippet @
 endsnippet
 
 #task prototype
-snippet task
+snippet task        "task declaration"
 task ${1:/*task_name*/};
     ${2:/*port declaration*/}
     begin
@@ -113,7 +113,7 @@ task ${1:/*task_name*/};
 endtask
 endsnippet
 
-snippet hr
+snippet hr      "reset task"
 task reset;
 input   [7:0]   low_time;
 begin
@@ -129,7 +129,7 @@ endtask
 endsnippet
 
 #function prototype
-snippet fun
+snippet fun     "function declaration"
 function ${1:/*return_type_or_scope*/} ${2:/*function_name*/}
     ${3:/*port declaration*/}
     begin
@@ -174,13 +174,13 @@ snippet $fdi
 $fdisplay(${1:handle},"${2:veriable} = 0${3:x}%${4:h}",$2);
 endsnippet
 
-snippet inout
+snippet inout   "inout declaration"
 tri [7:0] ${1:nand_data} = 100'bz;
 assign (weak1, weak0) $1 = 0;
 endsnippet
 
 #test
-snippet st
+snippet st  "three state machine"
 reg     [3:0]           current_state, next_state;
 reg     [15:0]          state_cnt;
 localparam              sIdle_state = 0;
@@ -247,7 +247,7 @@ begin
 end
 endsnippet
 
-snippet sync
+snippet sync        "signal sync"
 module sync
 (
     input   wire                clk,

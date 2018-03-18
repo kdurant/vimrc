@@ -33,9 +33,9 @@ call plug#end()
 
 exec 'colorscheme '.["codeschool", "quantum", "james"][strftime("%H")%3]
 set number
+set clipboard+=unnamed
 set scrolloff=3
 set linebreak
-set clipboard+=unnamed
 set noswapfile
 if g:is_win
     set fileformat=dos
@@ -48,7 +48,6 @@ set confirm
 set splitright
 set nowrap
 set cursorline
-
 
 set cindent
 set shiftwidth=4
@@ -75,3 +74,48 @@ command! -nargs=1 Dit call GitCmd(<f-args>)
 source ~/PluginConfig/plugin_config.vim
 source ~/PluginConfig/self_fun.vim
 source ~/PluginConfig/map.vim
+
+
+"set tabline=%!MyTabLine()
+"function MyTabLine()
+    "for i in range(tabpagenr('$'))
+        "echo i
+    "endfor
+"endfunction
+
+" 每切换一次tabpage， 函数执行一次
+function MyTabLine()
+    let s = ''
+    for i in range(tabpagenr('$'))   " 当前打开几个tabpage
+        " 设置高亮
+        if i + 1 == tabpagenr()     " 当前选择的tabpage编号
+            let s .= '%#TabLineSel#'
+        else
+            let s .= '%#TabLine#'
+        endif
+
+        " set the tab page number (for mouse clicks)
+        let s .= '%' . (i + 1) . 'T'
+
+        " the label is made by MyTabLabel()
+        let s .= i+1 . ' %{MyTabLabel(' . (i + 1) . ')} '
+    endfor
+
+    " after the last tab fill with TabLineFill and reset tab page nr
+    let s .= '%#TabLineFill#%T'
+
+    hi TabLine           guifg=#C0C0C0           guibg=#C3C3C3    gui=none
+    hi TabLineFill       guifg=black             guibg=#000000    gui=none
+    hi TabLineSel        guifg=#8080FF             guibg=#ACFF59    gui=none
+    return s
+endfunction
+
+function MyTabLabel(n)
+    let buflist = tabpagebuflist(a:n)
+    let winnr = tabpagewinnr(a:n)
+    if bufname(buflist[winnr - 1]) == ''
+        return "[No Name]"
+    else
+        return fnamemodify(bufname(buflist[winnr - 1]), ":t")
+    endif
+endfunction

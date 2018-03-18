@@ -1,17 +1,8 @@
-map     ,sg     :exe "cd " . Search_root()<cr>:tabnew .gitignore<cr>
-if g:isvim
-    map     ,se         :tabnew $MYVIMRC<cr>
-    map     ,ma         :set fdm=manual<cr>
-    map     ,in         :set fdm=indent<cr>
-    map     ,sy         :set fdm=syntax<cr>
-    map     <M-e>       ^zf%
-    nmap     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
-else
-    map     ,so     :source $HOME/_nvimrc<cr>
-    map     ,se     :tabnew $HOME/_nvimrc<cr>
-    tnoremap <Esc>  <C-\><C-n>
-endif
+exe "GuiFont! Monaco:h12"
+set clipboard+=unnamed
 
+map     ,so     :source $HOME/_onivimrc<cr>
+map     ,se     :tabnew $HOME/_onivimrc<cr>
 map     <M-j>       zj
 map     <M-k>       zk
 
@@ -20,11 +11,6 @@ map     <M-d>h      :noh<cr>
 map     <M-h>       :h<space>
 map     <M-a>       ggVG
 map     <M-d>n      :setlocal modifiable!<cr>
-map     <M-d>e      :call ChangeHead()<cr>
-map     <M-d>v      :call CompileFile()<cr>
-
-map     <F6>        :call AgWrap()<cr>
-map     ,re         :call Replace()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "window jump settings
@@ -38,10 +24,6 @@ map     <M-=>       <C-W>+
 map     <H>         <C-W><
 map     <L>         <C-W>>
 map     <M-c>       :clo<cr>
-if g:is_win
-    map     <M-x>   :call Maximize()<cr>
-    map     ,st     :call Topmost()<cr>
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others key map settings
@@ -69,35 +51,16 @@ map     <C-P>       :cp<cr>
 map     <C-N>       :cn<cr>
 map     j           gj
 map     k           gk
-if g:isvim
-    map <silent> <M-F12> :call MenuBar()<cr>
-endif
 
-if has('python3')
-    command! -nargs=+ Calc :py3 print (<args>)
-    py3 from math import *
-    map     <M-w>   :Calc<space>
-else
-    if g:isvim
-        map     <M-q>   :call job_start('calc')<cr>
-    else
-        map     <M-q>   :call jobstart('calc')<cr>
-    endif
-endif
+command! -nargs=+ Calc :py3 print (<args>)
+py3 from math import *
+map     <M-w>   :Calc<space>
 
 map     Y       y$
 map     K       \cr
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"git settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if g:isvim
-    map     <M-v>a      :call job_start('gitk --all')<cr>
-else
-    map     <M-v>a      :call jobstart('gitk --all')<cr>
-endif
-command! -nargs=1 Dit call GitCmd(<f-args>)
 
+map     <M-v>a      :call jobstart('gitk --all')<cr>
 map     <M-v>s      :Dit st<cr>
 map     <M-v>r      :Dit archive -o master.zip HEAD
 map     <M-;>       :Dit<space>
@@ -106,6 +69,7 @@ map     <M-;>       :Dit<space>
 "tab settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map    <M-o>        :tabnew<cr>:setlocal buftype=nowrite<cr>
+map    <M-t>        :tabm
 map    <M-1>        1gt
 map    <M-2>        2gt
 map    <M-3>        3gt
@@ -116,14 +80,45 @@ map    <M-7>        7gt
 map    <M-8>        8gt
 map    <M-9>        9gt
 
-if g:isvim
-    map     <F7>        :so $VIMSESSION<cr>
+function! GitCmd(git_cmd)
+    if has('win32') || has('win64')
+        exe "cd " . Search_root()
+        echo iconv(system('git ' . a:git_cmd), "utf-8", &enc)
+    endif
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"look up project root directory
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !exists('g:root_marker')
+  let g:root_marker = [".git"]
 endif
-"map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
-map     <M-d>p      :call PacketPythonExe()<cr>
-"   "没有选择的的tab
-"   hi TabLine          guifg=gray80            guibg=#000000   gui=NONE
-"   " 空白空间填充
-"   hi TabLineFill      guifg=gray80            guibg=#E3FFE3   gui=NONE
-"   " 填充
-"   hi TabLineSel       guifg=#8000FF	    guibg=#9B9BFF   gui=NONE
+function! Search_root()
+    let l:root = fnamemodify(".", ":p:h")
+
+    if !empty(g:root_marker)
+        let root_found = 0
+        let l:cur_dir = fnamemodify(l:root, ":p:h")
+        let l:prev_dir = ""
+        while l:cur_dir != l:prev_dir
+            for tags_dir in g:root_marker
+                let l:tag_path = l:cur_dir . "/" . tags_dir
+                if filereadable(l:tag_path) || isdirectory(l:tag_path)
+                    let root_found = 1 | break
+                endif
+            endfor
+
+            if root_found
+                let l:root = l:cur_dir | break
+            endif
+
+            let l:prev_dir = l:cur_dir
+            let l:cur_dir = fnamemodify(l:cur_dir, ":p:h:h")
+        endwhile
+
+        return root_found ? l:root : fnamemodify(".", ":p:h")
+    endif
+
+    return l:root
+endfunction
+
