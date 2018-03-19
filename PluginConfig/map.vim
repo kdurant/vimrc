@@ -121,9 +121,3 @@ if g:isvim
 endif
 "map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
 map     <M-d>p      :call PacketPythonExe()<cr>
-"   "没有选择的的tab
-"   hi TabLine          guifg=gray80            guibg=#000000   gui=NONE
-"   " 空白空间填充
-"   hi TabLineFill      guifg=gray80            guibg=#E3FFE3   gui=NONE
-"   " 填充
-"   hi TabLineSel       guifg=#8000FF	    guibg=#9B9BFF   gui=NONE
