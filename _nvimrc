@@ -19,7 +19,6 @@ Plug 'mhinz/vim-startify'
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
 Plug 'tpope/vim-fugitive', {'frozen': 1}
 Plug 'Lokaltog/vim-easymotion'
 Plug 'git@github.com:kdurant/misc_mine'
@@ -31,6 +30,8 @@ Plug 'iamcco/markdown-preview.vim'
 Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'rking/ag.vim'
 Plug 'amal-khailtash/vim-xdc-syntax'
+Plug 'ianva/vim-youdao-translater'
+Plug 'git@github.com:kdurant/nvim-example-python-plugin'
 "Plug 'vim-scripts/ucf.vim'
 call plug#end()
 
