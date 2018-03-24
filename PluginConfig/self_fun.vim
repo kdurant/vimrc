@@ -370,13 +370,24 @@ function! MenuBar()
 endfunction
 
 if !exists('g:ag_file_types')
-  let g:ag_file_types = " --verilog --cc --asm "
+  let g:ag_file_types = ""
 endif
 function! AgWrap()
-    if &filetype != 'verilog' && &filetype != 'c' && &filetype != 'asm' && &filetype != 'cpp'
-        echohl ErrorMsg | echo "Filetype don't match" | echohl none | return
-    else
+    if &filetype == 'verilog' || &filetype == 'c' || &filetype == 'asm' || &filetype == 'cpp' || &filetype == 'python' || &filetype == 'vim'
         let key_word = input('Search current word, [y] or [n] or [other]? ')
+        if &filetype == 'verilog'
+            let g:ag_file_types = '--verilog '
+        elseif &filetype == 'c'
+            let g:ag_file_types = '--cc '
+        elseif &filetype == 'asm'
+            let g:ag_file_types = '--asm '
+        elseif &filetype == 'cpp'
+            let g:ag_file_types = '--cpp '
+        elseif &filetype == 'python'
+            let g:ag_file_types = '--python '
+        elseif &filetype == 'vim'
+            let g:ag_file_types = '--vim '
+        endif
 
         if key_word == 'y'
             exe "cd " . Search_root()
@@ -389,6 +400,8 @@ function! AgWrap()
             exe "cd " . Search_root()
             exe "Ag! -w " . g:ag_file_types . key_word
         endif
+    else
+        echohl ErrorMsg | echo "Filetype don't match" | echohl none | return
     endif
 endfunction
 
