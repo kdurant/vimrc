@@ -114,7 +114,6 @@ set browsedir=buffer
 syntax on
 set autoread
 set textwidth=999
-set nowrap
 set cursorline
 "set colorcolumn=80
 set autoindent

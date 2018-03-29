@@ -51,7 +51,6 @@ elseif g:is_unix
 endif
 set confirm
 set splitright
-set nowrap
 set cursorline
 
 set cindent
