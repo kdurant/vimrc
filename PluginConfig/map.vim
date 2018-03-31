@@ -124,3 +124,6 @@ if g:isvim
 endif
 "map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
 map     <M-d>p      :call PacketPythonExe()<cr>
+
+vnoremap <silent> <space>t :<C-u>Ydv<CR>
+nnoremap <silent> <space>t :<C-u>Ydc<CR>
