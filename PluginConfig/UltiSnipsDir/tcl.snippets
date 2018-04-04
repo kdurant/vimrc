@@ -28,24 +28,24 @@ endsnippet
 
 snippet xilinx
 quit -sim
-set env(ISE_SIM)        F:/crack/ise14.7_lib
-vmap secureip           $env(ISE_SIM)/secureip
-vmap unisims_ver        $env(ISE_SIM)/unisims_ver
-vmap unimacro_ver       $env(ISE_SIM)/unimacro_ver
-vmap xilinxcorelib_ver  $env(ISE_SIM)/xilinxcorelib_ver
+set env(ISE_SIM)                F:/crack/ise14.7_lib
+vmap secureip                   $env(ISE_SIM)/secureip
+vmap unisims_ver                $env(ISE_SIM)/unisims_ver
+vmap unimacro_ver               $env(ISE_SIM)/unimacro_ver
+vmap xilinxcorelib_ver          $env(ISE_SIM)/xilinxcorelib_ver
 
-set env(VIVADO_SIM)     F:/crack/vivado2017.4_lib
-vmap secureip           $env(VIVADO_SIM)/secureip
-vmap simprims_ver       $env(VIVADO_SIM)/simprims_ver
-vmap unifast            $env(VIVADO_SIM)/unifast
-vmap unifast_ver        $env(VIVADO_SIM)/unifast_ver
-vmap unimacro           $env(VIVADO_SIM)/unimacro
-vmap unimacro_ver       $env(VIVADO_SIM)/unimacro_ver
-vmap unisim             $env(VIVADO_SIM)/unisim
-vmap unisims_ver        $env(VIVADO_SIM)/unisims_ver
+set env(VIVADO_SIM)             F:/crack/vivado2017.4_lib
+vmap secureip                   $env(VIVADO_SIM)/secureip
+vmap simprims_ver               $env(VIVADO_SIM)/simprims_ver
+vmap unifast                    $env(VIVADO_SIM)/unifast
+vmap unifast_ver                $env(VIVADO_SIM)/unifast_ver
+vmap unimacro                   $env(VIVADO_SIM)/unimacro
+vmap unimacro_ver               $env(VIVADO_SIM)/unimacro_ver
+vmap unisim                     $env(VIVADO_SIM)/unisim
+vmap unisims_ver                $env(VIVADO_SIM)/unisims_ver
 
-set env(UVM_SRC)       F:/crack/uvm-1.1d/src
-set env(UVM_DPI)       C:/modeltech64_10.2c/uvm-1.1d/win64/uvm_dpi
+set env(UVM_SRC)                F:/crack/uvm-1.1d/src
+set env(UVM_DPI)                C:/modeltech64_10.2c/uvm-1.1d/win64/uvm_dpi
 
 #工程所需要的文件
 vlog -incr $env(ISE_SIM)/glbl.v;
