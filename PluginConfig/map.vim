@@ -6,6 +6,8 @@ if g:isvim
     map     ,sy         :set fdm=syntax<cr>
     map     <M-e>       ^zf%
     nmap     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
+    map     ,so     :source $HOME/_vimrc<cr>
+    map     ,se     :tabnew $HOME/_vimrc<cr>
 else
     map     ,so     :source $HOME/_nvimrc<cr>
     map     ,se     :tabnew $HOME/_nvimrc<cr>

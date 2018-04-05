@@ -41,6 +41,8 @@ Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'vim-scripts/ucf.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'ianva/vim-youdao-translater'
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 

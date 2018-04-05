@@ -201,3 +201,12 @@ nmap    ,       <Plug>(easymotion-prev)
 let g:ag_highlight=1
 let g:ag_mapping_message = 0
 au FileType qf set ft=c
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"nerdtree settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDTreeShowBookmarks=1
+let NERDTreeShowLineNumbers=1
+nmap    <M-b>   :NERDTreeToggle<cr>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
