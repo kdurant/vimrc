@@ -39,7 +39,7 @@ map     <M-->       <C-W>-
 map     <M-=>       <C-W>+
 map     <H>         <C-W><
 map     <L>         <C-W>>
-map     <M-c>       :clo<cr>
+map     <M-c>       :close<cr>
 if g:is_win
     map     <M-x>   :call Maximize()<cr>
     map     ,st     :call Topmost()<cr>

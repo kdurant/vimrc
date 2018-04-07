@@ -208,5 +208,5 @@ au FileType qf set ft=c
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeShowBookmarks=1
 let NERDTreeShowLineNumbers=1
-nmap    <M-b>   :NERDTreeToggle<cr>
+nmap    <M-b>   :NERDTreeCWD<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
