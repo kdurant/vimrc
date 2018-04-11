@@ -218,9 +218,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nmap    <M-f>   :call FormatCode()<cr>
 func! FormatCode()  
     if executable('astyle')
+        if &filetype == 'c' || &filetype == 'h'  || &filetype == 'cpp'
+            echo iconv(system("astyle --style=ansi --ascii -pnU " . expand("%")), "utf-8", &enc)
+        endif  
+    else
         echoerr "Please check astyle.exe in execute path"
-        return
-    if &filetype == 'c' || &filetype == 'h'  || &filetype == 'cpp'
-        echo iconv(system("astyle --style=ansi --ascii -pnU " . expand("%")), "utf-8", &enc)
-    endif  
+    endif
 endfunc  
