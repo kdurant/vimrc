@@ -62,7 +62,9 @@ map!    <c-l>       <S-Right>
 map     <C-s>       :w!<cr>
 imap    <C-s>       <esc>:w!<cr>
 
+" 删除
 map     ,rm         :%s/\r//g<cr>:w<cr>
+" 删除行尾空白符
 map     ,rn         :%s/\s\+$//g<cr>
 map     ,rg         :%s/^\n\+/\r/g<cr>
 map     ,rc         :%s/\i\+/&/gn|noh
