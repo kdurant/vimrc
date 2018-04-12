@@ -67,6 +67,7 @@ set smartcase
 
 set completeopt+=noinsert
 
+autocmd FocusGained * :checktime
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.ucf set filetype=ucf
