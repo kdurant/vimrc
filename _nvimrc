@@ -72,6 +72,7 @@ autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.ucf set filetype=ucf
 autocmd FileType lua  setlocal iskeyword+=.
+autocmd BufNewFile .gitignore let @i = ".vscode\n*.pdf\n*.doc\n*.docx\n*.rar\n*.txt\n*.html\n*.jpg\n*.chm\n*.log\n*.zip\n*.xml\ntmp*" | exe "normal \"iP"
 "let g:python_host_prg = 'python.exe'
 "let g:python3_host_prog = 'C:/Users/wj/AppData/Local/Programs/Python/Python36/python.exe'
 let g:python3_host_prog = exepath('python')

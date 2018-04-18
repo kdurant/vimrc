@@ -430,4 +430,3 @@ endfunction
 "                               s   m
 let color_timer = timer_start(1000*60, 'AutoColorScheme',
             \ {'repeat': -1})
-
