@@ -33,7 +33,7 @@ Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'ianva/vim-youdao-translater'
 Plug 'git@github.com:kdurant/nvim-example-python-plugin'
 Plug 'scrooloose/nerdtree'
-"Plug 'vim-scripts/ucf.vim'
+Plug 'vim-scripts/ucf.vim'
 call plug#end()
 
 
