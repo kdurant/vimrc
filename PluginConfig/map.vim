@@ -122,9 +122,9 @@ map    <M-9>        9gt
 
 if g:isvim
     map     <F7>        :so $VIMSESSION<cr>
-"else
-    "autocmd VimLeave * exec  "mksession! nvim_session.vim"
-    "map     <F7>        :so ~/PluginConfig/nvim_session.vim<cr>
+else
+    autocmd VimLeave * exec  "mksession! ~/PluginConfig/nvim_session.vim"
+    map     <F7>        :so ~/PluginConfig/nvim_session.vim<cr>
 endif
 "map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
 map     <M-d>p      :call PacketPythonExe()<cr>

@@ -185,3 +185,16 @@ snippet $di
 $display("${1:format}", ${2:variable});
 endsnippet
 
+snippet axi_stream_master "axi stream master"
+output  reg                 m_axi_tvalid,
+output  reg                 m_axi_tlast,
+input   wire                m_axi_tready,
+output  reg  [${1:07}:00]        m_axi_tdata,
+endsnippet
+
+snippet axi_stream_slave "axi stream slave"
+input   wire                s_axi_tvalid,
+input   wire                s_axi_tlast,
+output  wire                s_axi_tready,
+input   wire [${1:07}:00]        s_axi_tdata,
+endsnippet
