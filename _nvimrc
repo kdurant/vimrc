@@ -80,6 +80,14 @@ let g:python3_host_prog = exepath('python')
 command! -nargs=1 Dit call GitCmd(<f-args>)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-source ~/PluginConfig/plugin_config.vim
-source ~/PluginConfig/self_fun.vim
-source ~/PluginConfig/map.vim
+if g:is_nvim
+    if g:is_win
+        source ~/PluginConfig/plugin_config.vim
+        source ~/PluginConfig/self_fun.vim
+        source ~/PluginConfig/map.vim
+    else
+        source ~/.config/nvim/PluginConfig/map.vim
+        source ~/.config/nvim/PluginConfig/plugin_config.vim
+        source ~/.config/nvim/PluginConfig/self_fun.vim
+    endif
+endif

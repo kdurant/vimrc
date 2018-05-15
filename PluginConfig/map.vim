@@ -9,8 +9,13 @@ if g:isvim
     map     ,so     :source $HOME/_vimrc<cr>
     map     ,se     :tabnew $HOME/_vimrc<cr>
 else
-    map     ,so     :source $HOME/_nvimrc<cr>
-    map     ,se     :tabnew $HOME/_nvimrc<cr>
+    if g:is_win
+        map     ,so     :source $HOME/_nvimrc<cr>
+        map     ,se     :tabnew $HOME/_nvimrc<cr>
+    else
+        map     ,so     :source ~/.config/nvim/init.vim<cr>
+        map     ,se     :tabnew ~/.config/nvim/init.vim<cr>
+    endif
     tnoremap <Esc>  <C-\><C-n>
 endif
 
