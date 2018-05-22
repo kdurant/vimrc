@@ -30,7 +30,6 @@ Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'rking/ag.vim'
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'ianva/vim-youdao-translater'
-Plug 'git@github.com:kdurant/nvim-example-python-plugin'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/ucf.vim'
 call plug#end()
