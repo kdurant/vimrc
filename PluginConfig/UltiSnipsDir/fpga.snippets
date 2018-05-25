@@ -198,3 +198,17 @@ input   wire                s_axi_tlast,
 output  wire                s_axi_tready,
 input   wire [${1:07}:00]        s_axi_tdata,
 endsnippet
+
+
+snippet string "state machine string"
+// synthesis translate_off
+reg [127:0] cs_STRING;
+always @(*)
+begin
+    case(1'b1)
+        cs[IDLE]: cs_STRING = "IDLE";
+        default: cs_STRING = "XXXX";
+    endcase
+end
+// synthesis translate_on
+endsnippet
