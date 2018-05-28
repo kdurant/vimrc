@@ -37,6 +37,7 @@ call plug#end()
 
 exec 'colorscheme '.["codeschool", "quantum", "james"][strftime("%H")%3]
 set number
+set mouse=a
 set clipboard+=unnamed
 set scrolloff=3
 set linebreak
