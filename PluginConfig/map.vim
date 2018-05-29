@@ -9,6 +9,8 @@ if g:isvim
     map     ,so     :source $HOME/_vimrc<cr>
     map     ,se     :tabnew $HOME/_vimrc<cr>
 else
+    " 在terminal里使用<C-r>{register}
+    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
     if g:is_win
         map     ,so     :source $HOME/_nvimrc<cr>
         map     ,se     :tabnew $HOME/_nvimrc<cr>
@@ -36,10 +38,16 @@ map     ,re         :call Replace()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "window jump settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map     <C-k>       <C-W>k
-map     <C-l>       <C-W>l
-map     <C-h>       <C-W>h
-map     <C-j>       <C-W>j
+nmap     <C-k>       <C-W>k
+nmap     <C-l>       <C-W>l
+nmap     <C-h>       <C-W>h
+nmap     <C-j>       <C-W>j
+if g:isnvim
+    tnoremap <C-k> <C-\><C-N><C-w>k
+    tnoremap <C-l> <C-\><C-N><C-w>l
+    tnoremap <C-h> <C-\><C-N><C-w>h
+    tnoremap <C-j> <C-\><C-N><C-w>j
+endif
 map     <M-->       <C-W>-
 map     <M-=>       <C-W>+
 map     <H>         <C-W><
