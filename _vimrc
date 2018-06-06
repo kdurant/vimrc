@@ -178,5 +178,6 @@ let python_highlight_all = 1
 let g:vcoolor_disable_mappings=1
 source ~/PluginConfig/plugin_config.vim
 source ~/PluginConfig/self_fun.vim
-source ~/PluginConfig/map.vim
+source ~/PluginConfig/basic_map.vim
+source ~/PluginConfig/plugin_map.vim
 

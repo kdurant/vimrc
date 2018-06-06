@@ -29,6 +29,7 @@ fun! Replace()
         exe '%s/\C\<' . expand('<cword>') . '\>/' . l:word . '/ge | update'
     endif
 endfunction
+map     ,re         :call Replace()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "compile c, cpp, and verilog file
@@ -124,6 +125,7 @@ function! CompileFile()
     endif
     echohl None
 endfunction
+map     <M-d>v      :call CompileFile()<cr>
 
 function! PacketPythonExe()
     if &filetype == 'python'
@@ -133,6 +135,7 @@ function! PacketPythonExe()
         echohl ErrorMsg | echo "Can't packet this filetype!"
     endif
 endfunction
+map     <M-d>p      :call PacketPythonExe()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Usage:  :Rename[!] {newname}
@@ -195,6 +198,7 @@ function! Search_root()
 
     return l:root
 endfunction
+map     ,sg     :exe "cd " . Search_root()<cr>:tabnew .gitignore<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "generate cscope files
@@ -307,6 +311,10 @@ function! Topmost()
         let g:topmost = !g:topmost
     endif
 endfunction
+if g:is_win
+    map     <M-x>   :call Maximize()<cr>
+    map     ,st     :call Topmost()<cr>
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -404,6 +412,7 @@ function! AgWrap()
         echohl ErrorMsg | echo "Filetype don't match" | echohl none | return
     endif
 endfunction
+map     <F6>        :call AgWrap()<cr>
 
 function! GitCmd(git_cmd)
     if has('win32') || has('win64')
@@ -411,6 +420,11 @@ function! GitCmd(git_cmd)
         echo iconv(system('git ' . a:git_cmd), "utf-8", &enc)
     endif
 endfunction
+command! -nargs=1 Dit call GitCmd(<f-args>)
+map     <M-v>s      :Dit st<cr>
+map     <M-v>r      :Dit archive -o master.zip HEAD
+map     <M-;>       :Dit<space>
+
 
 function! QfMakeConv()
    let qflist = getqflist()

@@ -75,16 +75,17 @@ autocmd BufNewFile .gitignore let @i = "##############basic###################\n
 "let g:python_host_prg = 'python.exe'
 "let g:python3_host_prog = 'C:/Users/wj/AppData/Local/Programs/Python/Python36/python.exe'
 let g:python3_host_prog = exepath('python')
-command! -nargs=1 Dit call GitCmd(<f-args>)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 if g:isnvim
     if g:is_win
         source ~/PluginConfig/plugin_config.vim
         source ~/PluginConfig/self_fun.vim
-        source ~/PluginConfig/map.vim
+        source ~/PluginConfig/basic_map.vim
+        source ~/PluginConfig/plugin_map.vim
     else
-        source ~/.config/nvim/PluginConfig/map.vim
+        source ~/.config/nvim/PluginConfig/basic_map.vim
+        source ~/.config/nvim/PluginConfig/plugin_map.vim
         source ~/.config/nvim/PluginConfig/plugin_config.vim
         source ~/.config/nvim/PluginConfig/self_fun.vim
     endif

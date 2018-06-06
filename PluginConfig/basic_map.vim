@@ -1,4 +1,3 @@
-map     ,sg     :exe "cd " . Search_root()<cr>:tabnew .gitignore<cr>
 if g:isvim
     map     ,se         :tabnew $MYVIMRC<cr>
     map     ,ma         :set fdm=manual<cr>
@@ -29,11 +28,6 @@ map     <M-d>h      :noh<cr>
 map     <M-h>       :h<space>
 map     <M-a>       ggVG
 map     <M-d>n      :setlocal modifiable!<cr>
-map     <M-d>e      :call ChangeHead()<cr>
-map     <M-d>v      :call CompileFile()<cr>
-
-map     <F6>        :call AgWrap()<cr>
-map     ,re         :call Replace()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "window jump settings
@@ -53,11 +47,7 @@ map     <M-=>       <C-W>+
 map     <H>         <C-W><
 map     <L>         <C-W>>
 map     <M-c>       :close<cr>
-if g:is_win
-    map     <M-x>   :call Maximize()<cr>
-    map     ,st     :call Topmost()<cr>
-endif
-
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others key map settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -113,11 +103,6 @@ if g:isvim
 else
     map     <M-v>a      :call jobstart('gitk --all')<cr>
 endif
-command! -nargs=1 Dit call GitCmd(<f-args>)
-
-map     <M-v>s      :Dit st<cr>
-map     <M-v>r      :Dit archive -o master.zip HEAD
-map     <M-;>       :Dit<space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "tab settings
@@ -140,7 +125,3 @@ else
     map     <F7>        :so ~/PluginConfig/nvim_session.vim<cr>
 endif
 "map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
-map     <M-d>p      :call PacketPythonExe()<cr>
-
-vnoremap <silent> <space>; :<C-u>Ydv<CR>
-nnoremap <silent> <space>; :<C-u>Ydc<CR>
