@@ -7,10 +7,17 @@ snippet /*
 endsnippet
 
 #always
-snippet al  "always block"
+snippet always_altera  "always block, altera format"
 always @ (posedge ${1:clk} or negedge ${2:rst})
 begin
     ${3:/*code*/}
+end
+endsnippet
+
+snippet always_xilinx  "always block, xilinx format"
+always @ (posedge ${1:clk})
+begin
+    ${2:/*code*/}
 end
 endsnippet
 
