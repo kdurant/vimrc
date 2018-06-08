@@ -13,7 +13,8 @@
 	email = wangjun850725@163.com
 	name = kdurant
 [core]
-    editor = "\"c:/vim/vim80/gvim.exe\"" 
+    ;editor = "\"c:/vim/vim80/gvim.exe\"" 
+    editor = "\"c:/Neovim/bin/nvim-qt.exe\"" 
 	autocrlf = true
 	quotepath = false
 	ignoreCygwinFSTricks = true
@@ -39,3 +40,5 @@
 	helper = store
 [merge]
 	tool = kdiff3
+[winUpdater]
+	recentlySeenVersion = 2.17.1.windows.2

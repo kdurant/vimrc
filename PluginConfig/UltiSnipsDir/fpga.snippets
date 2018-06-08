@@ -42,6 +42,16 @@ always
     #(1s/${2:freq}/2) $1 = ~$1;
 endsnippet
 
+snippet rst "generate rst"
+reg                     ${1:rst} = 0;
+initial
+begin
+    $1 = 1; #1us;
+    $1 = 0; #1us;
+    $1 = 1; #1us;
+end
+endsnippet
+
 snippet ifb "if...begin...end"
 if(${1:/*condition*/})
 begin

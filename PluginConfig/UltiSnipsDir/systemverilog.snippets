@@ -172,8 +172,8 @@ snippet queue
 ${1:int} ${2:name}[$] ${3:= {3,4}};
 endsnippet
 
-snippet interface
-interface ${1:name_bfm};
+snippet interface   "use it like module"
+interface ${1:name} 
 (
     input logic clk,
     input logic rst,
@@ -182,7 +182,12 @@ interface ${1:name_bfm};
     wire xxx;
     logic xxx;
 */
-endinterface: $1
+
+clocking ${1:cb} @ (posedge clk);
+${2:signal}
+endclocking
+
+endinterface
 endsnippet
 
 snippet clocking
@@ -257,7 +262,7 @@ class ${1:`!v expand('%:r')`};
     /*
      * 静态属性
      */
-    function new(/*parameter*/);
+    function new(/*parameter*/);  // 需要赋初值的属性
         //this.x = x;
     endfunction
 endclass
