@@ -381,7 +381,7 @@ if !exists('g:ag_file_types')
   let g:ag_file_types = ""
 endif
 function! AgWrap()
-    if &filetype == 'verilog' || &filetype == 'c' || &filetype == 'asm' || &filetype == 'cpp' || &filetype == 'python' || &filetype == 'vim'
+    if &filetype == 'verilog' || &filetype == 'systemverilog' || &filetype == 'c' || &filetype == 'asm' || &filetype == 'cpp' || &filetype == 'python' || &filetype == 'vim'
         let key_word = input('Search current word, [y] or [n] or [other]? ')
         if &filetype == 'verilog'
             let g:ag_file_types = '--verilog '
