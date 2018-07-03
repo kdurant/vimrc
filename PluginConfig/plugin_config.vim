@@ -207,6 +207,13 @@ let g:ag_highlight=1
 let g:ag_mapping_message = 0
 "au FileType qf set ft=c
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"vim-grep settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:grepper           = {}
+let g:grepper.tools = ['git', 'ag', 'grep']
+let g:grepper.dir = 'repo,file'
+let g:grepper.repo = ['.git', '.hg', '.svn']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "nerdtree settings
