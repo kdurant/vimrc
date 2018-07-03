@@ -77,13 +77,13 @@ endsnippet
 
 snippet altera
 quit -sim
-set env(ALTERA_SIM)     F:/crack/altera13.0_lib
-vmap altera13.0_lib     $env(ALTERA_SIM)
+set env(ALTERA_SIM)     F:/crack/altera18.0_modelsim10.5_lib
+vmap   altera18.0_modelsim10.5_lib   $env(ALTERA_SIM)
 
 #工程所需要的文件
 vlog -sv -incr ../tb/top_tb.sv
 
-vsim -t ps -novopt -L altera13.0_lib work.top_tb
+vsim -t ps -novopt -L altera18.0_modelsim10.5_lib work.top_tb
 
 log -r /*
 radix 16
