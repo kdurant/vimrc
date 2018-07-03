@@ -429,11 +429,12 @@ map     <M-;>       :Dit<space>
 function! QfMakeConv()
    let qflist = getqflist()
    for i in qflist
-      let i.text = iconv(i.text, "cp936", "utf-8")
+      "let i.text = iconv(i.text, "cp936", "utf-8")
+      let i.text = substitute(i.text, '\r', '', 'g')
    endfor
    call setqflist(qflist)
 endfunction
-au QuickfixCmdPost make call QfMakeConv()
+au QuickfixCmdPost * call QfMakeConv()
 
 
 function! AutoColorScheme(color_timer)
