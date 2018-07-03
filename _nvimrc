@@ -34,6 +34,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/ucf.vim'
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'skywind3000/gutentags_plus'
+Plug 'mhinz/vim-grepper'
 call plug#end()
 
 
