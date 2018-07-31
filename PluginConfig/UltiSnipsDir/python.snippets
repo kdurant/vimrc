@@ -115,3 +115,33 @@ from tkinter import ${1:Label}
 #widget.pack()
 #widget.mainloop()
 endsnippet
+
+
+#########################pyqt5#########################
+snippet pyqt_window "QWidget"
+#-*- coding:utf-8 -*-
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+
+class PyQt5_Temp(QWidget):
+    def __init__(self):
+        super(PyQt5_Temp, self).__init__()
+        self.initUI()
+
+    def initUI(self):
+        self.text = QTextEdit()
+        mainLayout = QVBoxLayout()
+        mainLayout.addWidget(self.text)
+        self.setLayout(mainLayout)
+        self.setWindowTitle('PyQt5_Temp')
+
+if __name__ == '__main__':
+    import sys
+    app = QApplication(sys.argv)
+
+    ui = PyQt5_Temp()
+    ui.show()
+    #ui.setStyleSheet(style)
+    sys.exit(app.exec_())
+endsnippet
