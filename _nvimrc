@@ -35,6 +35,8 @@ Plug 'vim-scripts/ucf.vim'
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'skywind3000/gutentags_plus'
 Plug 'mhinz/vim-grepper'
+Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 

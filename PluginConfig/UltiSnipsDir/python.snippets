@@ -118,7 +118,7 @@ endsnippet
 
 
 #########################pyqt5#########################
-snippet pyqt_window "QWidget"
+snippet pyqt_widget "QWidget"
 #-*- coding:utf-8 -*-
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -131,9 +131,12 @@ class PyQt5_Temp(QWidget):
 
     def initUI(self):
         self.text = QTextEdit()
+
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(self.text)
+
         self.setLayout(mainLayout)
+
         self.setWindowTitle('PyQt5_Temp')
 
 if __name__ == '__main__':
