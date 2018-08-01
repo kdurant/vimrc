@@ -238,6 +238,7 @@ func! FormatCode()
     endif
 endfunc  
 
+let g:python_highlight_all = 1
 
 "           """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "           "gutentags settings

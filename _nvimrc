@@ -38,6 +38,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'zchee/deoplete-jedi'
 "Plug 'davidhalter/jedi-vim'
 Plug 'numirias/semshi'
+Plug 'vim-python/python-syntax'
 call plug#end()
 
 
@@ -97,4 +98,3 @@ if g:isnvim
         source ~/.config/nvim/PluginConfig/self_fun.vim
     endif
 endif
-
