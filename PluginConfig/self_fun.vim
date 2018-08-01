@@ -460,3 +460,12 @@ function! HighlightWordUnderCursor()
     endif
 endfunction
 autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
+
+function! OpenFileDir()
+    if g:isnvim
+        call jobstart('start '.expand("%:p:h"))
+    else
+        call job_start('start '.expand("%:p:h"))
+    endif
+endfunction
+nmap <leader>o  :call OpenFileDir()<cr>
