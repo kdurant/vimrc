@@ -96,3 +96,4 @@ if g:isnvim
         source ~/.config/nvim/PluginConfig/self_fun.vim
     endif
 endif
+
