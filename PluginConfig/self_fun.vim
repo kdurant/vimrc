@@ -451,15 +451,15 @@ let color_timer = timer_start(1000*60, 'AutoColorScheme',
             \ {'repeat': -1})
 
 
-set updatetime=500
-function! HighlightWordUnderCursor()
-    if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]' 
-        exec 'match' 'Search' '/\V\<'.expand('<cword>').'\>/' 
-    else 
-        match none 
-    endif
-endfunction
-autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
+"set updatetime=500
+"function! HighlightWordUnderCursor()
+    "if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]' 
+        "exec 'match' 'Search' '/\V\<'.expand('<cword>').'\>/' 
+    "else 
+        "match none 
+    "endif
+"endfunction
+"autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
 
 function! OpenFileDir()
     if g:isnvim

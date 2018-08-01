@@ -36,7 +36,7 @@ Plug 'vim-scripts/ucf.vim'
 "Plug 'skywind3000/gutentags_plus'
 Plug 'mhinz/vim-grepper'
 Plug 'zchee/deoplete-jedi'
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 Plug 'numirias/semshi'
 call plug#end()
 
@@ -71,6 +71,7 @@ set ignorecase
 set smartcase
 
 set completeopt+=noinsert
+set completeopt-=preview
 
 autocmd FocusGained * :checktime
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
