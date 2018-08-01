@@ -120,14 +120,18 @@ endsnippet
 #########################pyqt5#########################
 snippet pyqt_widget "QWidget"
 #-*- coding:utf-8 -*-
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
+#from PyQt5.QtGui import *
+from PyQt5.QtCore import pyqtSignal, pyqtSlot
+from PyQt5.QtWidgets import QApplication, QWidget, QTextEdit, QVBoxLayout
 
 class PyQt5_Temp(QWidget):
+    signalTemp = pyqtSignal([str])
+    #self.signalTemp.emit('temp')
     def __init__(self):
         super(PyQt5_Temp, self).__init__()
         self.initUI()
+
+        #self.tempBtn.clicked.connect(self.tempSlot)
 
     def initUI(self):
         self.text = QTextEdit()
@@ -138,6 +142,11 @@ class PyQt5_Temp(QWidget):
         self.setLayout(mainLayout)
 
         self.setWindowTitle('PyQt5_Temp')
+
+    @pyqtSlot()
+    def tempSlot(self):
+        #code
+        return #value
 
 if __name__ == '__main__':
     import sys
