@@ -37,6 +37,7 @@ Plug 'vim-scripts/ucf.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
+Plug 'numirias/semshi'
 call plug#end()
 
 
