@@ -109,6 +109,8 @@ function! CompileFile()
         if executable("python")
             set autochdir
             echo iconv(system("python " . expand('%')), "cp936", &enc)
+        else
+            echohl ErrorMsg | echo "No python Compiler"
         endif
         "exe "!%<.py"
     elseif &filetype == 'vhdl'
