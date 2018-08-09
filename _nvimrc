@@ -85,6 +85,7 @@ autocmd BufNewFile .gitignore let @i = "##############basic###################\n
 "let g:python3_host_prog = 'C:/Users/wj/AppData/Local/Programs/Python/Python36/python.exe'
 let g:python3_host_skip_check=1
 let g:python3_host_prog = exepath('python')
+let g:wakatime_PythonBinary = exepath('python')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 if g:isnvim

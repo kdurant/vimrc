@@ -471,3 +471,14 @@ function! OpenFileDir()
     endif
 endfunction
 nmap <leader>o  :call OpenFileDir()<cr>
+
+let g:stock_info = ''
+function! StockInfo()
+    call stock#price('603970')
+    let g:stock_info = @i
+    call stock#price('603980')
+    let g:stock_info = g:stock_info . '\t' . @i
+    exec "AirlineRefresh"
+endfunction
+"let stock_refresh = timer_start(1000, 'StockInfo',
+            "\ {'repeat': -1})
