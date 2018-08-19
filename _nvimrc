@@ -42,8 +42,12 @@ Plug 'vim-python/python-syntax'
 Plug 'wakatime/vim-wakatime'
 call plug#end()
 
+if &rtp =~ 'mine'
+    colorscheme james
+else
+    colorscheme evening
+endif
 
-colorscheme evening
 set number
 set mouse=a
 set clipboard+=unnamed
