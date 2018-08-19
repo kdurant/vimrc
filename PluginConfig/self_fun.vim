@@ -233,6 +233,7 @@ function! Do_CsTag()
         echo "Can't generate cscope.out file!"
     endif
 endfunction
+map         <F9> :call Do_CsTag()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "use system command and not prompt new window
@@ -263,6 +264,13 @@ function! GenerateCtags()
     endif
     exe 'set tags+=' . substitute(Search_root(), " ", '\\ ', "g") .'/tags'
 endfunction
+map <silent> <F12>     :call GenerateCtags()<cr>
+map <silent> <F11>     :if &filetype == 'c' <bar> exe "!%<.exe" <bar> endif <bar><cr>
+"兼容ctags,此设置会导致查找符号的时候不出现选择界面
+"set cscopequickfix=s-,c-,d-,i-,t-,e-
+set csto=0
+set cscopetag
+
 
 "autocmd BufWritePost *.c call GenerateCtags()
 "autocmd BufWritePost *.h call GenerateCtags()

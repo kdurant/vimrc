@@ -43,7 +43,7 @@ Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 
-exec 'colorscheme '.["codeschool", "quantum", "james"][strftime("%H")%3]
+colorscheme evening
 set number
 set mouse=a
 set clipboard+=unnamed
@@ -90,14 +90,14 @@ let g:wakatime_PythonBinary = exepath('python')
 """""""""""""""""""""""""""""""""""""""""""""""""""
 if g:isnvim
     if g:is_win
-        source ~/PluginConfig/plugin_config.vim
-        source ~/PluginConfig/self_fun.vim
         source ~/PluginConfig/basic_map.vim
+        source ~/PluginConfig/self_fun.vim
+        source ~/PluginConfig/plugin_config.vim
         source ~/PluginConfig/plugin_map.vim
     else
         source ~/.config/nvim/PluginConfig/basic_map.vim
+        source ~/.config/nvim/PluginConfig/self_fun.vim
         source ~/.config/nvim/PluginConfig/plugin_map.vim
         source ~/.config/nvim/PluginConfig/plugin_config.vim
-        source ~/.config/nvim/PluginConfig/self_fun.vim
     endif
 endif
