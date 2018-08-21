@@ -112,6 +112,11 @@ snippet lo  "localparam ..."
 localparam              ${1:LHS} = ${2:RHS};
 endsnippet
 
+snippet inout   "inout declaration"
+tri [7:0] ${1:nand_data} = 100'bz;
+assign (weak1, weak0) $1 = 0;
+endsnippet
+
 snippet edge "detect edge"
 reg    [1:0]            ${1:Reg}_r;
 wire                    $1_rise;

@@ -181,11 +181,6 @@ snippet $fdi
 $fdisplay(${1:handle},"${2:veriable} = 0${3:x}%${4:h}",$2);
 endsnippet
 
-snippet inout   "inout declaration"
-tri [7:0] ${1:nand_data} = 100'bz;
-assign (weak1, weak0) $1 = 0;
-endsnippet
-
 #test
 snippet st  "three state machine"
 reg     [3:0]           current_state, next_state;
