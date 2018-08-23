@@ -3,10 +3,9 @@ if g:isvim
     map     ,ma         :set fdm=manual<cr>
     map     ,in         :set fdm=indent<cr>
     map     ,sy         :set fdm=syntax<cr>
-    map     <M-e>       ^zf%
-    nmap     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
-    map     ,so     :source $HOME/_vimrc<cr>
-    map     ,se     :tabnew $HOME/_vimrc<cr>
+    "nmap     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
+    map     ,so         :source $HOME/_vimrc<cr>
+    map     ,se         :tabnew $HOME/_vimrc<cr>
 else
     " 在terminal里使用<C-r>{register}
     tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
@@ -19,15 +18,6 @@ else
     endif
     tnoremap <Esc>  <C-\><C-n>
 endif
-
-map     <M-j>       zj
-map     <M-k>       zk
-
-map     <M-d>w      :setlocal wrapscan!<cr>
-map     <M-d>h      :noh<cr>
-map     <M-h>       :h<space>
-map     <M-a>       ggVG
-map     <M-d>n      :setlocal modifiable!<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "window jump settings
@@ -44,17 +34,11 @@ if g:isnvim
 endif
 map     <M-->       <C-W>-
 map     <M-=>       <C-W>+
-map     <M-c>       :close<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others key map settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map     <F2>        @@
-
-map!    <M-j>       <Down>
-map!    <M-k>       <Up>
-map!    <M-h>       <left>
-map!    <M-l>       <Right>
 
 map!    <C-v>       <C-r>+
 map!    <c-h>       <S-Left>
@@ -81,40 +65,17 @@ endif
 if has('python3')
     command! -nargs=+ Calc :py3 print (<args>)
     py3 from math import *
-    map     <M-w>   :Calc<space>
+    map     <space>w   :Calc<space>
 else
     if g:isvim
-        map     <M-q>   :call job_start('calc')<cr>
+        map     <space>w   :call job_start('calc')<cr>
     else
-        map     <M-q>   :call jobstart('calc')<cr>
+        map     <space>q   :call jobstart('calc')<cr>
     endif
 endif
 
 map     Y       y$
 map     K       \cr
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"git settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if g:isvim
-    map     <M-v>a      :call job_start('gitk --all')<cr>
-else
-    map     <M-v>a      :call jobstart('gitk --all')<cr>
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"tab settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map    <M-o>        :tabnew<cr>:setlocal buftype=nowrite<cr>
-map    <M-1>        1gt
-map    <M-2>        2gt
-map    <M-3>        3gt
-map    <M-4>        4gt
-map    <M-5>        5gt
-map    <M-6>        6gt
-map    <M-7>        7gt
-map    <M-8>        8gt
-map    <M-9>        9gt
 
 if g:isvim
     map     <F7>        :so $VIMSESSION<cr>
@@ -123,3 +84,38 @@ else
     map     <F7>        :so ~/PluginConfig/nvim_session.vim<cr>
 endif
 "map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"git settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if g:isvim
+    map     <space>va      :call job_start('gitk --all')<cr>
+else
+    map     <space>va      :call jobstart('gitk --all')<cr>
+endif
+
+"tab settings
+map     <space>o         :tabnew<cr>:setlocal buftype=nowrite<cr>
+map     <space>1         1gt
+map     <space>2         2gt
+map     <space>3         3gt
+map     <space>4         4gt
+map     <space>5         5gt
+map     <space>6         6gt
+map     <space>7         7gt
+map     <space>8         8gt
+map     <space>9         9gt
+nmap    <tab>            :tabn<cr>
+nmap    <S-tab>          :tabp<cr>
+
+map    <space>dw        :setlocal wrapscan!<cr>
+map    <space>dh        :noh<cr>
+map    <space>dn        :setlocal modifiable!<cr>
+map    <space>ca        ggVG
+map    <space>q         :close<cr>
+
+map!    <M-j>           <Down>
+map!    <M-k>           <Up>
+map!    <M-h>           <left>
+map!    <M-l>           <Right>
+

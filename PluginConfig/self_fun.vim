@@ -127,7 +127,7 @@ function! CompileFile()
     endif
     echohl None
 endfunction
-map     <M-d>v      :call CompileFile()<cr>
+map     <space>dv      :call CompileFile()<cr>
 
 function! PacketPythonExe()
     if &filetype == 'python'
@@ -137,7 +137,7 @@ function! PacketPythonExe()
         echohl ErrorMsg | echo "Can't packet this filetype!"
     endif
 endfunction
-map     <M-d>p      :call PacketPythonExe()<cr>
+map     <space>dp      :call PacketPythonExe()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Usage:  :Rename[!] {newname}
@@ -327,9 +327,6 @@ if g:is_win
 endif
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" find c project include dir and add it to $PATH
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Search_Inc()
     exe "cd " . Search_root()
 
@@ -435,9 +432,8 @@ function! GitCmd(git_cmd)
     endif
 endfunction
 command! -nargs=1 Dit call GitCmd(<f-args>)
-map     <M-v>s      :Dit st<cr>
-map     <M-v>r      :Dit archive -o master.zip HEAD
-map     <M-;>       :Dit<space>
+map     <space>vr      :Dit archive -o master.zip HEAD
+noremap     <space>;       :Dit<space>
 
 
 function! QfMakeConv()

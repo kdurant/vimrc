@@ -1,6 +1,3 @@
-
-map     <M-d>e      :call ChangeHead()<cr>
-
-vnoremap <silent> <space>; :<C-u>Ydv<CR>
-nnoremap <silent> <space>; :<C-u>Ydc<CR>
+vnoremap <silent> <space>v; :<C-u>Ydv<CR>
+nnoremap <silent> <space>v; :<C-u>Ydc<CR>
 
