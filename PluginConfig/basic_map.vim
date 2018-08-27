@@ -17,6 +17,7 @@ else
         map     ,se     :tabnew ~/.config/nvim/init.vim<cr>
     endif
     tnoremap <Esc>  <C-\><C-n>
+    nmap <C-6>          :e #<cr>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
