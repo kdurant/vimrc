@@ -2,28 +2,21 @@ snippet color
 #EE82EE  #AE81FF
 endsnippet
 
-snippet vsim
-vsim -t ns -L Altera_lib -novopt work.${1:testbench}
-endsnippet
-
 snippet group
 virtual signal -install ${1:/tb/dut/driver} { (context $1 )&{2:signa}local_row_addr ,local_bank_addr ,local_col_addr }} xxxx
 endsnippet
 
-snippet pin
+snippet pin "altera"
 set_location_assignment PIN_$1 -to sdram_data[14]
 endsnippet
 
+snippet pin "vivado"
+set_property -dict {PACKAGE_PIN K26 IOSTANDARD LVCMOS33 SLEW FAST} [get_ports gmii_txd[1]] 
+endsnippet
+
+
 snippet fastin
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to sdram_data[0]
-endsnippet
-
-snippet vlog
-vlog -work work -incr +define+sg187E(=x) -vopt ${1:D:/nandflash/testbench/nand_basic_opTb.v}
-endsnippet
-
-snippet glbl
-vlog -work work -incr C:/Xilinx/14.7/ISE_DS/ISE/verilog/src/glbl.v
 endsnippet
 
 snippet xilinx
