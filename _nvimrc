@@ -55,6 +55,8 @@ set clipboard+=unnamed
 set scrolloff=3
 set linebreak
 set noswapfile
+set nowrap
+set splitbelow
 if g:is_win
     set fileformat=dos
     set fileformats=dos

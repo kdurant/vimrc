@@ -33,8 +33,10 @@ if g:isnvim
     tnoremap <C-h> <C-\><C-N><C-w>h
     tnoremap <C-j> <C-\><C-N><C-w>j
 endif
-map     <M-->       <C-W>-
-map     <M-=>       <C-W>+
+nmap    <space>wj   <C-W>-
+nmap    <space>wk   <C-W>+
+nmap    <space>wh   <C-W>>
+nmap    <space>wl   <C-W><
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others key map settings
@@ -66,12 +68,12 @@ endif
 if has('python3')
     command! -nargs=+ Calc :py3 print (<args>)
     py3 from math import *
-    map     <space>w   :Calc<space>
+    map     <space>wq   :Calc<space>
 else
     if g:isvim
-        map     <space>w   :call job_start('calc')<cr>
+        map     <space>wq   :call job_start('calc')<cr>
     else
-        map     <space>q   :call jobstart('calc')<cr>
+        map     <space>qq   :call jobstart('calc')<cr>
     endif
 endif
 
