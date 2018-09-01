@@ -21,6 +21,7 @@ endsnippet
 
 snippet xilinx
 quit -sim
+.main clear
 set env(ISE_SIM)                F:/crack/ise14.7_modelsim10.5_lib
 vmap secureip                   $env(ISE_SIM)/secureip
 vmap unisims_ver                $env(ISE_SIM)/unisims_ver
@@ -70,6 +71,7 @@ endsnippet
 
 snippet altera
 quit -sim
+.main clear
 set env(ALTERA_SIM)     F:/crack/altera18.0_modelsim10.5_lib
 vmap   altera18.0_modelsim10.5_lib   $env(ALTERA_SIM)
 
