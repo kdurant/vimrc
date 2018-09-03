@@ -10,11 +10,6 @@ snippet pin "altera"
 set_location_assignment PIN_$1 -to sdram_data[14]
 endsnippet
 
-snippet pin "vivado"
-set_property -dict {PACKAGE_PIN K26 IOSTANDARD LVCMOS33 SLEW FAST} [get_ports gmii_txd[1]] 
-endsnippet
-
-
 snippet fastin
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to sdram_data[0]
 endsnippet
