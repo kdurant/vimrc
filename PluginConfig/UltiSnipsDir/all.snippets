@@ -277,7 +277,7 @@ xsim
 
 # IP一般情况下只需要xci文件，vivado就可以重新生成
 doc
-hdl
+#hdl
 sim
 simulation
 synth
@@ -286,16 +286,21 @@ synth
 *.xml
 
 # zynq cpu 目录忽略文件。zynq处理器默认命名为:cpu
-*.ui
-cpu_processing_system7_0_0
-bd/cpu/hdl/
-bd/cpu/ip/
-hw_handoff
-bd/cpu/ipshared/
-bd/cpu/sim/
-bd/cpu/synth/
-bd/cpu/ui/
+# *.ui
+# cpu_processing_system7_0_0
+# bd/cpu/hdl/
+# bd/cpu/ip/
+# hw_handoff
+# bd/cpu/ipshared/
+# bd/cpu/sim/
+# bd/cpu/synth/
+# bd/cpu/ui/
 
+# sdk忽略文件
+*.o
+.metadata
+RemoteSystemsTempFiles
+Debug
 endsnippet
 
 snippet ise "myself" 
