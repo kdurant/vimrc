@@ -477,38 +477,38 @@ function! OpenFileDir()
 endfunction
 nmap <leader>o  :call OpenFileDir()<cr>
 
-python3 << EOF
-import vim
-import requests
-def stock_rise(id='603970'):
-    if id[0] == '6':
-        url = 'https://hq.sinajs.cn/list=sh' + id
-    else:
-        url = 'https://hq.sinajs.cn/list=sz' + id
-    r = requests.get(url)
-    info = r.text.split(',')
-    
-    cur_price = float(info[3])  # 当前价格
-    open_price = float(info[2])  # 昨天的收盘价
-    per = (cur_price - open_price) / open_price
-    per *= 100
-    per = '%.2f%%' % per
-    
-    name = (info[0].split('"'))[1]
-    
-    txt = name + ': ' + per
-    #vim.command("let @i = '%s'" % txt)
-    return txt
-
-def stock_self():
-    l = ['603970', '600884', '600623', '002921', '002136', '000009']
-    txt = ''
-    for s in l:
-        txt += stock_rise(s)
-        txt += '  '
-    vim.command("let stock_info = '%s'" % txt)
-    vim.command("echo stock_info")
-EOF
+"   python3 << EOF
+"   import vim
+"   import requests
+"   def stock_rise(id='603970'):
+"       if id[0] == '6':
+"           url = 'https://hq.sinajs.cn/list=sh' + id
+"       else:
+"           url = 'https://hq.sinajs.cn/list=sz' + id
+"       r = requests.get(url)
+"       info = r.text.split(',')
+"       
+"       cur_price = float(info[3])  # 当前价格
+"       open_price = float(info[2])  # 昨天的收盘价
+"       per = (cur_price - open_price) / open_price
+"       per *= 100
+"       per = '%.2f%%' % per
+"       
+"       name = (info[0].split('"'))[1]
+"       
+"       txt = name + ': ' + per
+"       #vim.command("let @i = '%s'" % txt)
+"       return txt
+"   
+"   def stock_self():
+"       l = ['603970', '600884', '600623', '002921', '002136', '000009']
+"       txt = ''
+"       for s in l:
+"           txt += stock_rise(s)
+"           txt += '  '
+"       vim.command("let stock_info = '%s'" % txt)
+"       vim.command("echo stock_info")
+"   EOF
 
 function! StockInfo()
     exec "py3do stock_self()"

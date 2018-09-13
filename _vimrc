@@ -4,47 +4,47 @@ let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
 let g:isvim = 1
 let g:isnvim = 0
-if g:is_win
-    call plug#begin('~/vimfiles/bundle')
-elseif g:is_unix
-    call plug#begin('~/.vim/bundle')
-endif
-"Plug 'asins/vimcdoc', {'frozen': 1}
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'edsono/vim-matchit', {'frozen': 1}
-Plug 'kdurant/misc_mine'
-Plug 'kdurant/verilog-testbench'
-Plug 'hdima/python-syntax'
-Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
-Plug 'kdurant/AuthorInfo', {'frozen': 1}
-Plug 'kdurant/nerdcommenter', {'frozen': 1}
-Plug 'kshenoy/vim-signature'
-Plug 'KabbAmine/vCoolor.vim'
-"Plug 'ntpeters/vim-better-whitespace'
-if g:is_win
-    Plug 'Shougo/neocomplete.vim'
-elseif g:is_unix
-    Plug 'Valloric/YouCompleteMe'
-endif
-Plug 'SirVer/ultisnips'
-Plug 'tpope/vim-fugitive', {'frozen': 1}
-Plug 'tpope/vim-surround', {'frozen': 1}
-Plug 'vim-scripts/Align', {'frozen': 1}
-Plug 'Lokaltog/vim-easymotion'
-Plug 'rking/ag.vim'
-Plug 'iamcco/markdown-preview.vim'
-"Plug 'WeiChungWu/vim-SystemVerilog'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'amal-khailtash/vim-xdc-syntax'
-Plug 'vim-scripts/ucf.vim'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'joshdick/onedark.vim'
-Plug 'ianva/vim-youdao-translater'
-Plug 'scrooloose/nerdtree'
-
-call plug#end()
+"       if g:is_win
+"           call plug#begin('~/vimfiles/bundle')
+"       elseif g:is_unix
+"           call plug#begin('~/.vim/bundle')
+"       endif
+"       "Plug 'asins/vimcdoc', {'frozen': 1}
+"       Plug 'vim-airline/vim-airline'
+"       Plug 'vim-airline/vim-airline-themes'
+"       Plug 'ctrlpvim/ctrlp.vim'
+"       Plug 'edsono/vim-matchit', {'frozen': 1}
+"       Plug 'kdurant/misc_mine'
+"       Plug 'kdurant/verilog-testbench'
+"       Plug 'hdima/python-syntax'
+"       Plug 'kdurant/Asciitable.vim'", {'frozen': 1}
+"       Plug 'kdurant/AuthorInfo', {'frozen': 1}
+"       Plug 'kdurant/nerdcommenter', {'frozen': 1}
+"       Plug 'kshenoy/vim-signature'
+"       Plug 'KabbAmine/vCoolor.vim'
+"       "Plug 'ntpeters/vim-better-whitespace'
+"       if g:is_win
+"           Plug 'Shougo/neocomplete.vim'
+"       elseif g:is_unix
+"           Plug 'Valloric/YouCompleteMe'
+"       endif
+"       Plug 'SirVer/ultisnips'
+"       Plug 'tpope/vim-fugitive', {'frozen': 1}
+"       Plug 'tpope/vim-surround', {'frozen': 1}
+"       Plug 'vim-scripts/Align', {'frozen': 1}
+"       Plug 'Lokaltog/vim-easymotion'
+"       Plug 'rking/ag.vim'
+"       Plug 'iamcco/markdown-preview.vim'
+"       "Plug 'WeiChungWu/vim-SystemVerilog'
+"       Plug 'skywind3000/asyncrun.vim'
+"       Plug 'amal-khailtash/vim-xdc-syntax'
+"       Plug 'vim-scripts/ucf.vim'
+"       Plug 'skywind3000/asyncrun.vim'
+"       Plug 'joshdick/onedark.vim'
+"       Plug 'ianva/vim-youdao-translater'
+"       Plug 'scrooloose/nerdtree'
+"       
+"       call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "file coding settings
@@ -72,9 +72,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "display settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"colorscheme james
-"exec 'colorscheme '.["bubblegum-256-light","solarized","Tomorrow","molokai","bubblegum-256-dark","molokai"][strftime("%S")%6]
-exec 'colorscheme '.["codeschool", "james"][strftime("%H")%2]
+"   exec 'colorscheme '.["codeschool", "james"][strftime("%H")%2]
 set guitablabel=%N\ %t
 set shortmess=atT
 set lines=38 columns=90
@@ -174,10 +172,10 @@ autocmd VimLeave *  mksession! $VIMSESSION
 autocmd VimLeave *  let save_cursor = getpos(".")
 autocmd VimEnter    call setpos('.', save_cursor)
 
-let python_highlight_all = 1
-let g:vcoolor_disable_mappings=1
-source ~/PluginConfig/plugin_config.vim
-source ~/PluginConfig/self_fun.vim
-source ~/PluginConfig/basic_map.vim
-source ~/PluginConfig/plugin_map.vim
+"       let python_highlight_all = 1
+"       let g:vcoolor_disable_mappings=1
+"       source ~/PluginConfig/plugin_config.vim
+"       source ~/PluginConfig/self_fun.vim
+"       source ~/PluginConfig/basic_map.vim
+"       source ~/PluginConfig/plugin_map.vim
 
