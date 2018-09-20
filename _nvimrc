@@ -42,6 +42,8 @@ Plug 'zchee/deoplete-jedi'
 Plug 'numirias/semshi'
 Plug 'vim-python/python-syntax'
 Plug 'wakatime/vim-wakatime'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
 call plug#end()
 
 if &rtp =~ 'mine'

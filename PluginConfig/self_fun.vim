@@ -387,7 +387,7 @@ endfunction
 if !exists('g:ag_file_types')
   let g:ag_file_types = ""
 endif
-function! AgWrap()
+function! AgWrap(type)
     "if g:ag_prg == "git grep -n"
         "let g:ag_file_types = ''
     "else
@@ -408,22 +408,21 @@ function! AgWrap()
         "echohl ErrorMsg | echo "Filetype don't match" | echohl none | return
     endif
 
-    "endif
-
-    let key_word = input('Search current word, [y] or [n] or [other]? ')
-    if key_word == 'y'
+    if a:type == "current"
         exe "cd " . Search_root()
         exe "Ag! -w " . g:ag_file_types . expand("<cword>")
-    elseif key_word == 'n'
-        echohl Function | echo "Abolish search!" | echohl none | return
-    elseif key_word == ''
-        echohl Function | echo "No input!" | echohl none | return
     else
-        exe "cd " . Search_root()
-        exe "Ag! -w " . g:ag_file_types . key_word
+        let key_word = input('Please enter word: ')
+        if key_word == ''
+            echohl Function | echo "No input!" | echohl none | return
+        else
+            exe "cd " . Search_root()
+            exe "Ag! -w " . g:ag_file_types . key_word
+        endif
     endif
 endfunction
-map     <F6>        :call AgWrap()<cr>
+map     <space>fw        :call AgWrap("current")<cr>
+map     <space>fe        :call AgWrap("enter")<cr>
 
 function! GitCmd(git_cmd)
     if has('win32') || has('win64')

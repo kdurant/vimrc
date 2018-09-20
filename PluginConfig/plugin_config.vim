@@ -141,9 +141,10 @@ endif
 "ctrlp setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if &rtp =~ 'ctrlp'
-    let g:ctrlp_map = '<space>f'
-    map <space>b      :CtrlPBuffer<cr>
-    map <space>m      :CtrlPMRU<cr>
+    "let g:ctrlp_map = '<space>fg'
+    map <space>fg      :CtrlP<cr>
+    map <space>fb      :CtrlPBuffer<cr>
+    map <space>fm      :CtrlPMRU<cr>
     let g:ctrlp_by_filename = 1
     let g:ctrlp_clear_cache_on_exit = 1
     let g:ctrlp_working_path_mode = 'ra'
