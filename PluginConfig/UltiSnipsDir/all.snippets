@@ -276,14 +276,12 @@ vcs
 xsim
 
 # IP一般情况下只需要xci文件，vivado就可以重新生成
-doc
-# hdl
-# sim
-simulation
-# synth
-*.veo
-*.vho
-*.xml
+**/ip/**/doc
+**/ip/**/tcl
+**/ip/**/*.veo
+**/ip/**/*.xdc
+**/ip/**/*.xml
+**/ip/**/*.v
 
 # block design 目录忽略文件。 除了bd 和 wrapper文件，其他全部忽略
 **/bd/**/hw_handoff
@@ -291,12 +289,14 @@ simulation
 **/bd/**/ipshared
 **/bd/**/sim
 **/bd/**/synth
+**/bd/**/ui
 **/bd/**/*.bxml
 **/bd/**/*.xdc
 
 # sdk忽略文件
 *.o
 .metadata
+webtalk
 RemoteSystemsTempFiles
 Debug
 endsnippet
