@@ -285,16 +285,14 @@ simulation
 *.vho
 *.xml
 
-# zynq cpu 目录忽略文件。zynq处理器默认命名为:cpu
-# *.ui
-# cpu_processing_system7_0_0
-# bd/cpu/hdl/
-# bd/cpu/ip/
-# hw_handoff
-# bd/cpu/ipshared/
-# bd/cpu/sim/
-# bd/cpu/synth/
-# bd/cpu/ui/
+# block design 目录忽略文件。 除了bd 和 wrapper文件，其他全部忽略
+**/bd/**/hw_handoff
+**/bd/**/ip
+**/bd/**/ipshared
+**/bd/**/sim
+**/bd/**/synth
+**/bd/**/*.bxml
+**/bd/**/*.xdc
 
 # sdk忽略文件
 *.o
