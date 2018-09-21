@@ -37,6 +37,7 @@ nmap    <space>wj   <C-W>-
 nmap    <space>wk   <C-W>+
 nmap    <space>wh   <C-W>>
 nmap    <space>wl   <C-W><
+autocmd FileType qf noremap <buffer> <esc> :close<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "others key map settings

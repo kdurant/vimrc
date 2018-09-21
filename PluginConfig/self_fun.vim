@@ -408,17 +408,21 @@ function! AgWrap(type)
         "echohl ErrorMsg | echo "Filetype don't match" | echohl none | return
     endif
 
-    if a:type == "current"
-        exe "cd " . Search_root()
-        exe "Ag! -w " . g:ag_file_types . expand("<cword>")
-    else
-        let key_word = input('Please enter word: ')
-        if key_word == ''
-            echohl Function | echo "No input!" | echohl none | return
-        else
+    if executable('ag')
+        if a:type == "current"
             exe "cd " . Search_root()
-            exe "Ag! -w " . g:ag_file_types . key_word
+            exe "Ag! -w " . g:ag_file_types . expand("<cword>")
+        else
+            let key_word = input('Please enter word: ')
+            if key_word == ''
+                echohl Function | echo "No input!" | echohl none | return
+            else
+                exe "cd " . Search_root()
+                exe "Ag! -w " . g:ag_file_types . key_word
+            endif
         endif
+    else
+        echohl Function | echo "Ag not in PATH" | echohl none | return
     endif
 endfunction
 map     <space>fw        :call AgWrap("current")<cr>
