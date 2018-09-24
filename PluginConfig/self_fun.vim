@@ -122,6 +122,8 @@ function! CompileFile()
         else
             echohl ErrorMsg | echo "No lua Compiler"
         endif
+    elseif &filetype == 'dosbatch'
+        echo iconv(system(expand('%')), "cp936", &enc)
     else
         echohl ErrorMsg | echo "This filetype can't be compiled !"
     endif
