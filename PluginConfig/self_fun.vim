@@ -478,7 +478,7 @@ function! OpenFileDir()
         call job_start('start '.expand("%:p:h"))
     endif
 endfunction
-nmap <leader>o  :call OpenFileDir()<cr>
+nmap <space>fo  :call OpenFileDir()<cr>
 
 "   python3 << EOF
 "   import vim

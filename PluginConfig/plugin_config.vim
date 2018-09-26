@@ -233,7 +233,7 @@ endif
 if &rtp =~ 'nerdtree'
     let NERDTreeShowBookmarks=1
     let NERDTreeShowLineNumbers=1
-    nmap    <space>cb   :NERDTreeCWD<cr>
+    nmap    <space>wb   :NERDTreeCWD<cr>
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 endif
 
