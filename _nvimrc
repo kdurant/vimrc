@@ -44,6 +44,7 @@ Plug 'vim-python/python-syntax'
 Plug 'wakatime/vim-wakatime'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "Plug 'junegunn/fzf.vim'
+Plug 'liuchengxu/vim-which-key'
 call plug#end()
 
 if &rtp =~ 'mine'
@@ -111,3 +112,9 @@ if g:isnvim
         source ~/.config/nvim/PluginConfig/plugin_config.vim
     endif
 endif
+
+nnoremap <silent> <space> :WhichKey '<Space>'<CR>
+set timeoutlen=500
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
