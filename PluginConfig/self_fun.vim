@@ -389,7 +389,7 @@ endfunction
 if !exists('g:ag_file_types')
   let g:ag_file_types = ""
 endif
-function! AgWrap(type)
+function! AgSearch(type)
     "if g:ag_prg == "git grep -n"
         "let g:ag_file_types = ''
     "else
@@ -414,21 +414,26 @@ function! AgWrap(type)
         if a:type == "current"
             exe "cd " . Search_root()
             exe "Ag! -w " . g:ag_file_types . expand("<cword>")
+        elseif a:type == "all_filetype"
+            exe "cd " . Search_root()
+            let g:ag_file_types = ''
+            exe "Ag! -w " . g:ag_file_types . expand("<cword>")
         else
             let key_word = input('Please enter word: ')
             if key_word == ''
                 echohl Function | echo "No input!" | echohl none | return
             else
                 exe "cd " . Search_root()
-                exe "Ag! -w " . g:ag_file_types . key_word
+                exe "Ag! -w " . key_word
             endif
         endif
     else
         echohl Function | echo "Ag not in PATH" | echohl none | return
     endif
 endfunction
-map     <space>fw        :call AgWrap("current")<cr>
-map     <space>fe        :call AgWrap("enter")<cr>
+map     <space>fw        :call AgSearch("current")<cr>
+map     <space>fe        :call AgSearch("cur_filetype")<cr>
+map     <space>fa        :call AgSearch("all_filetype")<cr>
 
 function! GitCmd(git_cmd)
     if has('win32') || has('win64')
