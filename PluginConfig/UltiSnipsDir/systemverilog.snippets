@@ -235,7 +235,7 @@ snippet foreach
 foreach(${1:name}[${2:index}])
 endsnippet
 
-snippet fork
+snippet fork "阻塞到所有子进程结束"
 fork
     begin
     ${1:/*code_block1()*/}
@@ -243,7 +243,29 @@ fork
     begin
     /*code_block2()*/
     end
-join/*_any or _none*/
+join
+endsnippet
+
+snippet fork_any "阻塞到任意一子进程结束"
+fork
+    begin
+    ${1:/*code_block1()*/}
+    end
+    begin
+    /*code_block2()*/
+    end
+join_any
+endsnippet
+
+snippet fork_none "所有进程并发执行"
+fork
+    begin
+    ${1:/*code_block1()*/}
+    end
+    begin
+    /*code_block2()*/
+    end
+join_none
 endsnippet
 
 snippet task
