@@ -36,12 +36,9 @@ Plug 'vim-scripts/ucf.vim'
 "Plug 'vim-scripts/vim-do-syntax'
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'skywind3000/gutentags_plus'
-Plug 'mhinz/vim-grepper'
 Plug 'zchee/deoplete-jedi'
 "Plug 'davidhalter/jedi-vim'
-Plug 'numirias/semshi'
 Plug 'vim-python/python-syntax'
-Plug 'wakatime/vim-wakatime'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-which-key'
@@ -115,8 +112,17 @@ endif
 
 nnoremap <silent> <space> :WhichKey '<Space>'<CR>
 set timeoutlen=500
+call which_key#register('<Space>', "g:which_key_map")
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-"let g:which_key_map =  {}
-"let g:which_key_map.f = { 'name' : '+file' }
+let g:which_key_map =  {}
+
+let g:which_key_map.e = { 'name' : '+edit' }
+let g:which_key_map.e.m = 'toggle comment'
+let g:which_key_map.e.a = 'append comment'
+
+let g:which_key_map.f = { 'name' : '+file' }
+let g:which_key_map.f.a = 'search word in all filetype'
+
+let g:which_key_map.w = { 'name' : '+window' }
