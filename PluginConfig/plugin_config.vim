@@ -22,64 +22,15 @@ if &rtp =~ 'airline'
     endif
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"neocomplete settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-if g:isvim
-    if &rtp =~ 'neocomplete'
-        let g:neocomplete#enable_insert_char_pre = 1
-        let g:neocomplete#enable_at_startup = 1
-        let g:neocomplete#enable_smart_case = 1
-        " Set minimum syntax keyword length.
-        let g:neocomplete#auto_completion_start_length = 1
-        let g:neocomplete#enable_auto_select = 1
-        let g:neocomplete#enable_refresh_always = 1
-        let g:neocomplete#sources#syntax#min_keyword_length = 3
-        let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-        if !exists('g:neocomplete#keyword_patterns')
-            let g:neocomplete#keyword_patterns = {}
-        endif
-        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-        let g:neocomplete#enable_ignore_case = 0
-        "complete all buffers
-        let g:neocomplete#same_filetypes = {}
-        let g:neocomplete#same_filetypes._ = '_'
-
-        inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-        inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-        let g:neocomplete#data_directory='$HOME\PluginConfig\neocomplete'
-
-        nmap     <M-b>   :NeoCompleteBufferMakeCache<cr>
-        inoremap <expr><M-e>  neocomplete#cancel_popup()
-
-        set completefunc=neocomplete#complete#auto_complete
-
-        if has('python3')
-            autocmd FileType python setlocal omnifunc=python3complete#Complete
-        else
-            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-        endif
-    endif
-else
-    if &rtp =~ 'deoplete'
-        """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-        "deopltete settings
-        """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-        let g:deoplete#enable_at_startup = 1
-        "let g:deoplete#enable_refresh_always=1
-        "let g:deoplete#auto_completion_start_length = 1
-        "let g:deoplete#enable_debug=1
-        "let g:deoplete#sources#padawan#add_parentheses = 1
-        "let g:deoplete#sources#padawan#auto_update = 1
-        "let g:deoplete#skip_chars = ['$']
-        let g:deoplete#ignore_sources = {}
-        let g:deoplete#ignore_sources._ = ['tag', 'around']
-        "call deoplete#custom#source('ultisnips', 'buffer', 'rank', 9999)
-        call deoplete#custom#source('ultisnips', 'rank', 1000)
-    endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"deopltete settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if &rtp =~ 'deoplete'
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#ignore_sources = {}
+    let g:deoplete#ignore_sources._ = ['tag', 'around']
+    "call deoplete#custom#source('ultisnips', 'buffer', 'rank', 9999)
+    call deoplete#custom#source('ultisnips', 'rank', 1000)
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

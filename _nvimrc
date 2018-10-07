@@ -17,6 +17,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-syntax',
 Plug 'Shougo/neoinclude.vim'
 Plug 'tpope/vim-fugitive', {'frozen': 1}
@@ -36,12 +37,12 @@ Plug 'vim-scripts/ucf.vim'
 "Plug 'vim-scripts/vim-do-syntax'
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'skywind3000/gutentags_plus'
-Plug 'zchee/deoplete-jedi'
 "Plug 'davidhalter/jedi-vim'
 Plug 'vim-python/python-syntax'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-which-key'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 call plug#end()
 
 if &rtp =~ 'mine'
