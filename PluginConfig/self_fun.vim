@@ -442,7 +442,7 @@ function! GitCmd(git_cmd)
     endif
 endfunction
 command! -nargs=1 Dit call GitCmd(<f-args>)
-nmap    <space>vr      :Dit archive -o master.zip HEAD
+nmap    <space>dr      :Dit archive -o master.zip HEAD
 nmap    <space>vc      :echo iconv(system('git checkout ' . expand("%")), "utf-8", &enc)<cr>
 noremap     <space>;       :Dit<space>
 

@@ -69,12 +69,12 @@ endif
 if has('python3')
     command! -nargs=+ Calc :py3 print (<args>)
     py3 from math import *
-    map     <space>wq   :Calc<space>
+    map     <space>dq   :Calc<space>
 else
     if g:isvim
-        map     <space>wq   :call job_start('calc')<cr>
+        map     <space>dq   :call job_start('calc')<cr>
     else
-        map     <space>qq   :call jobstart('calc')<cr>
+        map     <space>dq   :call jobstart('calc')<cr>
     endif
 endif
 
@@ -115,8 +115,8 @@ nmap    <S-tab>          :tabp<cr>
 map    <space>dw        :setlocal wrapscan!<cr>
 map    <space>dh        :noh<cr>
 map    <space>dn        :setlocal modifiable!<cr>
-map    <space>ca        ggVG
-map    <space>q         :close<cr>
+map    <space>eg        ggVG
+map    <space>wq        :close<cr>
 
 map!    <M-j>           <Down>
 map!    <M-k>           <Up>
