@@ -323,6 +323,16 @@ endsnippet
 snippet mail
 endsnippet
 
+snippet example     "interface class useage exaple"
+dut_bfm dut_bfm_i();    // interface 声明
+dut_drive dut_drive_h;  // class声明
+initial
+begin
+    dut_driver_h = new(dut_bfm_i);
+end
+endsnippet
+
+
 #######################################################################
 ######################   UVM          #################################
 #######################################################################
