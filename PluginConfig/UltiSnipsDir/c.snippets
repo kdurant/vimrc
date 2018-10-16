@@ -193,7 +193,7 @@ snippet tds "typedef struct"
 typedef struct __${1:/*struct*/}
 {
     ${2:/*data*/};
-    void (*construct)(struct __$1 *this);
+    void (*function)(void);   // 结构体的相关操作可以使用函数指针封装到这里
 }$1_t;
 endsnippet
 
