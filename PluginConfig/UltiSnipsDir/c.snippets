@@ -195,6 +195,11 @@ typedef struct __${1:/*struct*/}
     ${2:/*data*/};
     void (*function)(struct __$1 var);   // 结构体的相关操作可以使用函数指针封装到这里
 }$1_t;
+//extern $1_t  var; 
+// 上面的放到.h文件，下面的放到.c文件
+//$1_t var = {
+//  .var1 = 0x01
+//}
 endsnippet
 
 snippet ist
