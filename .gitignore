@@ -15,3 +15,7 @@ _vsvimrc
 my_info
 
 .*
+
+GPATH
+GRTAGS
+GTAGS

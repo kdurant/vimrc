@@ -17,7 +17,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-syntax',
 Plug 'Shougo/neoinclude.vim'
 Plug 'tpope/vim-fugitive', {'frozen': 1}
@@ -43,6 +42,9 @@ Plug 'vim-python/python-syntax'
 "Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-which-key'
 "Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'bfredl/nvim-lspmirror'
+Plug 'shougo/deoplete-lsp'
+
 call plug#end()
 
 if &rtp =~ 'mine'
@@ -89,7 +91,8 @@ autocmd BufRead,BufNewFile *.cmd set filetype=cmd
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.ucf set filetype=ucf
 autocmd FileType lua  setlocal iskeyword+=.
-autocmd BufNewFile .gitignore let @i = "##############basic###################\n.vscode\n*.pdf\n*.doc\n*.docx\n*.rar\n*.txt\n*.html\n*.jpg\n*.chm\n*.log\n*.zip\n*.xml\ntmp*" | exe "normal \"iP"
+
+autocmd BufNewFile .gitignore let @i = "#basic\n.vscode\n*.pdf\n*.doc\n*.docx\n*.rar\n*.txt\n*.html\n*.jpg\n*.chm\n*.log\n*.zip\n*.xml\ntmp\nGPATH\nGRTAGS\nGTAGS*" | exe "normal \"iP"
 "let g:python_host_prg = 'python.exe'
 "let g:python3_host_prog = 'C:/Users/wj/AppData/Local/Programs/Python/Python36/python.exe'
 let g:python3_host_skip_check=1
@@ -139,3 +142,6 @@ let g:which_key_map.d = { 'name' : '+混合' }
 let g:which_key_map.d.v = 'compile source'
 let g:which_key_map.d.q = 'calc'
 let g:which_key_map.d.r = 'archive git file'
+
+
+call lsp#server#add('python', 'pyls')
