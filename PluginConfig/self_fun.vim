@@ -36,33 +36,13 @@ map     ,re         :call Replace()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CompileFile()
     if &filetype == 'verilog'
-        set makeprg=vlog\ -work\ work\ %
-        set errorformat=**\ Error:\ %f(%l):\ %m
-        if(isdirectory("work"))
-            exe "make" | exe "cw"
-        else
-            if g:isvim
-                call job_start('vlib work')
-            else
-                call jobstart('vlib work')
-            endif
-            exe "make" | exe "cw"
-            call delete('work', 'rf')
-        endif
+        set makeprg=vlog\ -work\ ~\.cache\work\ %
+        set errorformat=**\ Error:\ %s\ %f(%l):\ %m
+        exe "make" | exe "cw"
     elseif &filetype == 'systemverilog'
-        set makeprg=vlog\ -work\ work\ -sv\ %
-        set errorformat=**\ Error:\ %f(%l):\ %m
-        if(isdirectory("work"))
-            exe "make" | exe "cw"
-        else
-            if g:isvim
-                call job_start('vlib work')
-            else
-                call jobstart('vlib work')
-            endif
-            exe "make" | exe "cw"
-            call delete('work', 'rf')
-        endif
+        set makeprg=vlog\ -work\ ~\.cache\work\ -sv\ %
+        set errorformat=**\ Error:\ %s\ %f(%l):\ %m
+        exe "make" | exe "cw"
     elseif &filetype == 'c' || &filetype == 'cpp' || &filetype == 'java'
         if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -o\ %<.exe\ %
         elseif &filetype == 'java' | set makeprg=javac\ %
