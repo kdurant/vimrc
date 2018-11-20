@@ -42,8 +42,8 @@ Plug 'vim-python/python-syntax'
 "Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-which-key'
 "Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'bfredl/nvim-lspmirror'
-Plug 'shougo/deoplete-lsp'
+"Plug 'bfredl/nvim-lspmirror'
+"Plug 'shougo/deoplete-lsp'
 
 call plug#end()
 
@@ -142,6 +142,3 @@ let g:which_key_map.d = { 'name' : '+混合' }
 let g:which_key_map.d.v = 'compile source'
 let g:which_key_map.d.q = 'calc'
 let g:which_key_map.d.r = 'archive git file'
-
-
-call lsp#server#add('python', 'pyls')
