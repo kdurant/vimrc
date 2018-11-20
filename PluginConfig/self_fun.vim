@@ -38,6 +38,8 @@ function! CompileFile()
     if &filetype == 'verilog'
         set makeprg=vlog\ -work\ ~\.cache\work\ %
         set errorformat=**\ Error:\ %s\ %f(%l):\ %m
+        set errorformat+=**\ Error:\ %f(%l):\ %m
+        set errorformat+=**\ Error:\ %f(%l):\ %s\ %m
         exe "make" | exe "cw"
     elseif &filetype == 'systemverilog'
         set makeprg=vlog\ -work\ ~\.cache\work\ -sv\ %
