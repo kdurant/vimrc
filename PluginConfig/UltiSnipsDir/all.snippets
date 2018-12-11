@@ -210,14 +210,16 @@ simulation
 *.summary
 *.jdi
 *.qdf
+endsnippet
 
+snippet nios
+##############nios###################
 # qsys 文件存放于sopc文件夹下，其他文件都可以从此文件生成
 # qsys 命名为kernel.qsys
 
-.settings
 .qsys_edit
 kernel
-*.bsf
+*.bsp
 *.cmp
 *.html
 *.rpt
@@ -231,16 +233,9 @@ obj
 *.map
 *.objdump
 *.html
-# *.mk
+*.mk
 *.gdb
 *.a
-
-# bsp会重新生成的文件
-alt_sys_init.c
-linker.h
-linker.x
-system.h
-*bsp/Makefile
 endsnippet
 
 snippet all
@@ -581,29 +576,3 @@ dist
 *.spec
 endsnippet
 
-
-snippet nios
-##############nios###################
-# qsys 文件存放于sopc文件夹下，其他文件都可以从此文件生成
-# qsys 命名为kernel.qsys
-
-.qsys_edit
-kernel
-*.bsp
-*.cmp
-*.html
-*.rpt
-*.sopcinfo
-.force_relink
-tags
-
-*.d
-obj
-*.elf
-*.map
-*.objdump
-*.html
-*.mk
-*.gdb
-*.a
-endsnippet
