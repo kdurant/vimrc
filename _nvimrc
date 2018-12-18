@@ -11,9 +11,11 @@ let g:is_unix = has('unix')
 let g:isvim = 0
 let g:isnvim = 1
 call plug#begin('~/nvim/bundle')
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
+if exists("g:gui_oni")
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'ctrlpvim/ctrlp.vim'
+endif
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -44,6 +46,7 @@ Plug 'liuchengxu/vim-which-key'
 "Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 "Plug 'bfredl/nvim-lspmirror'
 "Plug 'shougo/deoplete-lsp'
+Plug 'wsdjeg/FlyGrep.vim'
 
 call plug#end()
 
