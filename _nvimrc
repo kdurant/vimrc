@@ -11,11 +11,9 @@ let g:is_unix = has('unix')
 let g:isvim = 0
 let g:isnvim = 1
 call plug#begin('~/nvim/bundle')
-if exists("g:gui_oni")
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'ctrlpvim/ctrlp.vim'
-endif
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -100,7 +98,6 @@ autocmd BufNewFile .gitignore let @i = "#basic\n.vscode\n*.pdf\n*.doc\n*.docx\n*
 "let g:python3_host_prog = 'C:/Users/wj/AppData/Local/Programs/Python/Python36/python.exe'
 let g:python3_host_skip_check=1
 let g:python3_host_prog = exepath('python')
-let g:wakatime_PythonBinary = exepath('python')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 if g:isnvim

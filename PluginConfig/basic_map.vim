@@ -68,7 +68,7 @@ endif
 
 if has('python3')
     command! -nargs=+ Calc :py3 print (<args>)
-    py3 from math import *
+    "py3 from math import *  " 此语句导致启动窗口变小
     map     <space>dc   :Calc<space>
 else
     if g:isvim

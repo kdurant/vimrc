@@ -228,10 +228,14 @@ end
 endsnippet
 
 snippet clogb2
-function integer clogb2 (input integer bit_depth);              
-    begin                                                           
-        for(clogb2 = 0; bit_depth > 0; clogb2 = clogb2 + 1)                   
-            bit_depth = bit_depth >> 1;                                 
-    end                                                           
-endfunction                                                     
+/* 
+ * 2^x = bit_depth, return x
+ */
+function integer clogb2 (input integer size);
+    begin
+      size = size - 1;
+      for (clogb2=1; size>1; clogb2=clogb2+1)
+        size = size >> 1;
+    end
+  endfunction // clogb2
 endsnippet
