@@ -45,6 +45,8 @@ Plug 'liuchengxu/vim-which-key'
 "Plug 'bfredl/nvim-lspmirror'
 "Plug 'shougo/deoplete-lsp'
 Plug 'wsdjeg/FlyGrep.vim'
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+Plug 'eugen0329/vim-esearch'
 
 call plug#end()
 

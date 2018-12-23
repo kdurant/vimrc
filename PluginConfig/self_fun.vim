@@ -372,9 +372,6 @@ if !exists('g:ag_file_types')
   let g:ag_file_types = ""
 endif
 function! AgSearch(type)
-    "if g:ag_prg == "git grep -n"
-        "let g:ag_file_types = ''
-    "else
     if &filetype == 'verilog'
         let g:ag_file_types = '--verilog '
     elseif &filetype == 'c'
@@ -393,11 +390,10 @@ function! AgSearch(type)
     endif
 
     if executable('ag')
+        exe "cd " . Search_root()
         if a:type == "current"
-            exe "cd " . Search_root()
             exe "Ag! -w " . g:ag_file_types . expand("<cword>")
         elseif a:type == "all_filetype"
-            exe "cd " . Search_root()
             let g:ag_file_types = ''
             exe "Ag! -w " . g:ag_file_types . expand("<cword>")
         else
@@ -405,7 +401,6 @@ function! AgSearch(type)
             if key_word == ''
                 echohl Function | echo "No input!" | echohl none | return
             else
-                exe "cd " . Search_root()
                 exe "Ag! -w " . key_word
             endif
         endif
