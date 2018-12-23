@@ -51,52 +51,25 @@ begin
 end
 endsnippet
 
-snippet ifb "if...begin...end"
+snippet if "if...begin...end"
 if(${1:/*condition*/})
 begin
     ${2:/*code*/}
 end
 endsnippet
 
-snippet if "if..."
-if(${1:/*condition*/})
-    ${2:/*code*/}
-endsnippet
-
-snippet ifrb "if(~rst)...begin...end"
-if(~rst)
-begin
-    ${1:/*code*/}
-end
-endsnippet
-
-snippet ifr "if(~rst)..."
-if(~rst)
-    ${1:/*code*/}
-endsnippet
-
-snippet el  "else..."
-else
-    ${1:code}
-endsnippet
-
-snippet elb "else...begin...end"
+snippet el "else...begin...end"
 else
 begin
     ${1:/*code*/}
 end
 endsnippet
 
-snippet eib "else if...begin...end"
+snippet elif "else if...begin...end"
 else if(${1:/*condition*/})
 begin
     ${2:/*code*/}
 end
-endsnippet
-
-snippet ei "else if...begin...end"
-else if(${1:/*condition*/})
-    ${2:/*code*/}
 endsnippet
 
 snippet as  "assign ..."
@@ -132,7 +105,7 @@ begin
 end
 endsnippet
 
-snippet ini "initial ... begin ... end"
+snippet ini     "initial ... begin ... end"
 initial
 begin
     ${1:/*code*/}
@@ -171,7 +144,6 @@ begin
 end
 endsnippet
 
-#repeat
 snippet repeat      "repeat loop"
 repeat(${1:Number})
 begin
@@ -179,7 +151,6 @@ begin
 end
 endsnippet
 
-#forever
 snippet forever     "forever"
 forever
     #CLKPRIEOD  clk = ~clk;         //only use initial block
@@ -195,7 +166,12 @@ snippet `d
 
 endsnippet
 
-snippet $di
+snippet @
+@(posedge clk);
+endsnippet
+
+
+snippet display
 $display("${1:format}", ${2:variable});
 endsnippet
 
@@ -227,7 +203,7 @@ end
 // synthesis translate_on
 endsnippet
 
-snippet clogb2
+snippet clogb2  "return log2(b)"
 /* 
  * 2^x = bit_depth, return x
  */

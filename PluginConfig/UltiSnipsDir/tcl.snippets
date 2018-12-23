@@ -43,7 +43,7 @@ vlog -sv -incr *.sv
 
 #vlog +incdir+$env(UVM_SRC) -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF hello_world.sv
 
-vsim -t ps -novopt +notimingchecks \
+vsim -t ps -voptargs="+acc" +notimingchecks \
                                     -L secureip \
                                     -L simprims_ver \
                                     -L unifast -L unifast_ver \
@@ -74,7 +74,7 @@ vmap   $env(ALTERA_LIB)     $env(LIB_PATH)$env(ALTERA_LIB)
 #工程所需要的文件
 vlog -sv -incr ../tb/top_tb.sv
 
-vsim -t ps -novopt -L $env(ALTERA_LIB) work.top_tb
+vsim -t ps -voptargs="+acc" -L $env(ALTERA_LIB) work.top_tb
 
 log -r /*
 radix 16

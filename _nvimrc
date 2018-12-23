@@ -38,8 +38,8 @@ Plug 'vim-scripts/ucf.vim'
 "Plug 'skywind3000/gutentags_plus'
 "Plug 'davidhalter/jedi-vim'
 Plug 'vim-python/python-syntax'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-which-key'
 "Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 "Plug 'bfredl/nvim-lspmirror'
