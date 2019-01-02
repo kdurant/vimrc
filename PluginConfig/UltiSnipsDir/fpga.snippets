@@ -215,3 +215,33 @@ function integer clogb2 (input integer size);
     end
   endfunction // clogb2
 endsnippet
+
+snippet fifo "altera fifo primitive"
+scfifo	${1:scfifo}Ex01
+(
+    .clock           (    clk         ),
+    .data            (    data_in     ),
+    .rdreq           (    valid_in    ),
+    .wrreq           (    rst_n       ),
+    .empty           (                ),
+    .full            (                ),
+    .q               (    data_out    ),
+    .usedw           (                ),
+    .aclr            (                ),
+    .almost_empty    (                ),
+    .almost_full     (                ),
+    .eccstatus       (                ),
+    .sclr            (                )     
+);
+defparam
+    $1.add_ram_output_register = "OFF",
+    $1.intended_device_family = "Cyclone IV GX",
+    $1.lpm_numwords = 2048,
+    $1.lpm_showahead = "OFF",
+    $1.lpm_type = "scfifo",
+    $1.lpm_width = 8,
+    $1.lpm_widthu = 11,
+    $1.overflow_checking = "ON",
+    $1.underflow_checking = "ON",
+    $1.use_eab = "ON";
+endsnippet

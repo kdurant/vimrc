@@ -13,7 +13,7 @@
 	email = wangjun850725@163.com
 	name = kdurant
 [core]
-        editor = "\"c:/vim/vim81/gvim.exe\"" 
+        editor = "\"c:/vim/vim80/gvim.exe\"" 
         ;editor = "\"c:/Neovim/bin/nvim-qt.exe\"" 
 	autocrlf = true
 	quotepath = false
