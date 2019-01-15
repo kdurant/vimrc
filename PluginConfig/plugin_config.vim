@@ -310,6 +310,6 @@ if &rtp =~ 'vim-grepper'
     let g:grepper.tools = ['rg', 'git']
 endif
 
-if &rtp =~ 'ctrlp'
+if &rtp =~ 'LeaderF'
 let g:Lf_WindowHeight = 0.4
 endif
