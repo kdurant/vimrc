@@ -312,4 +312,5 @@ endif
 
 if &rtp =~ 'LeaderF'
 let g:Lf_WindowHeight = 0.4
+let g:Lf_WorkingDirectoryMode ='Ac'
 endif
