@@ -13,9 +13,9 @@ let g:isnvim = 1
 call plug#begin('~/nvim/bundle')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
+Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-syntax',
 Plug 'Shougo/neoinclude.vim'
@@ -28,7 +28,6 @@ Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'vim-scripts/Align', {'frozen': 1}
-Plug 'rking/ag.vim'
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'ianva/vim-youdao-translater'
 Plug 'scrooloose/nerdtree'
@@ -38,15 +37,18 @@ Plug 'vim-scripts/ucf.vim'
 "Plug 'skywind3000/gutentags_plus'
 "Plug 'davidhalter/jedi-vim'
 Plug 'vim-python/python-syntax'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-which-key'
 "Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 "Plug 'bfredl/nvim-lspmirror'
 "Plug 'shougo/deoplete-lsp'
-Plug 'wsdjeg/FlyGrep.vim'
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-Plug 'eugen0329/vim-esearch'
+
+"Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'rking/ag.vim'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
+"Plug 'wsdjeg/FlyGrep.vim'
+"Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+"Plug 'eugen0329/vim-esearch'
 
 call plug#end()
 
@@ -144,3 +146,9 @@ let g:which_key_map.d = { 'name' : '+混合' }
 let g:which_key_map.d.v = 'compile source'
 let g:which_key_map.d.q = 'calc'
 let g:which_key_map.d.r = 'archive git file'
+
+map <space>fg      :LeaderfFile<cr>
+map <space>fb      :LeaderfBuffer<cr>
+map <space>fm      :LeaderfMru<cr>
+map <space>fw      :Leaderf rg<cr>
+map <space>fa      :LeaderfRgInteractive<cr>

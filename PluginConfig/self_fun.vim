@@ -368,50 +368,6 @@ function! MenuBar()
     endif
 endfunction
 
-if !exists('g:ag_file_types')
-  let g:ag_file_types = ""
-endif
-function! AgSearch(type)
-    if &filetype == 'verilog'
-        let g:ag_file_types = '--verilog '
-    elseif &filetype == 'c'
-        let g:ag_file_types = '--cc '
-    elseif &filetype == 'asm'
-        let g:ag_file_types = '--asm '
-    elseif &filetype == 'cpp'
-        let g:ag_file_types = '--cpp '
-    elseif &filetype == 'python'
-        let g:ag_file_types = '--python '
-    elseif &filetype == 'vim'
-        let g:ag_file_types = '--vim '
-    else
-        let g:ag_file_types = ''
-        "echohl ErrorMsg | echo "Filetype don't match" | echohl none | return
-    endif
-
-    if executable('ag')
-        exe "cd " . Search_root()
-        if a:type == "current"
-            exe "Ag! -w " . g:ag_file_types . expand("<cword>")
-        elseif a:type == "all_filetype"
-            let g:ag_file_types = ''
-            exe "Ag! -w " . g:ag_file_types . expand("<cword>")
-        else
-            let key_word = input('Please enter word: ')
-            if key_word == ''
-                echohl Function | echo "No input!" | echohl none | return
-            else
-                exe "Ag! -w " . key_word
-            endif
-        endif
-    else
-        echohl Function | echo "Ag not in PATH" | echohl none | return
-    endif
-endfunction
-map     <space>fw        :call AgSearch("current")<cr>
-map     <space>fe        :call AgSearch("cur_filetype")<cr>
-map     <space>fa        :call AgSearch("all_filetype")<cr>
-
 function! GitCmd(git_cmd)
     if has('win32') || has('win64')
         exe "cd " . Search_root()
