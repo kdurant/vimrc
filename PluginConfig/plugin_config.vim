@@ -313,4 +313,6 @@ endif
 if &rtp =~ 'LeaderF'
 let g:Lf_WindowHeight = 0.4
 let g:Lf_WorkingDirectoryMode ='Ac'
+let g:Lf_DefaultMode = 'NameOnly'
+let g:Lf_CommandMap = {'<C-U>': ['<C-W>']}
 endif
