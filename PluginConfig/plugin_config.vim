@@ -131,8 +131,8 @@ if &rtp =~ 'align'
     "align '//' that in source code
     nmap    <silent>    ,#      :AlignCtrl lp4P0<cr>:AlignCtrl g \S\+.\+\zs\/\/\ze\(\s*\S\+\)\@=<cr>:AlignCtrl W<cr>:%Align\/\/<cr>
     "align '(' or ')' that in instance
-    nmap    <silent>    ,(      :AlignCtrl lp4P4<cr>:AlignCtrl g \.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align(<cr>
-    nmap    <silent>    ,)      :AlignCtrl lp4P0<cr>:AlignCtrl g \.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align)<cr>
+    nmap    <silent>    ,(      :AlignCtrl lp4P4<cr>:AlignCtrl g ^\s\+\.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align(<cr>
+    nmap    <silent>    ,)      :AlignCtrl lp4P0<cr>:AlignCtrl g ^\s\+\.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align)<cr>
     "align '=' that in parameter, assign statement
     nmap    <silent>    ,=      :AlignCtrl lp4P1<cr>:AlignCtrl g [^<\|^>]\s\zs=\ze\s.*;<cr>:AlignCtrl W<cr>:%Align[^<\|^>]\s\zs=\ze\s.*;<cr>
     
