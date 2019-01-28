@@ -32,7 +32,7 @@ Plug 'iamcco/markdown-preview.vim'
 Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'ianva/vim-youdao-translater'
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/ucf.vim'
 Plug 'vim-python/python-syntax'
 Plug 'liuchengxu/vim-which-key'
