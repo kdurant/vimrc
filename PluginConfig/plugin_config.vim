@@ -2,6 +2,7 @@
 "airline settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if &rtp =~ 'airline'
+    let g:airline_extensions = ['branch', 'tabline']
     let g:airline_theme='powerlineish'
     let g:airline#extensions#branch#enabled = 1
     let g:airline#extensions#branch#empty_message = 'No Repo'
@@ -26,7 +27,10 @@ endif
 "deopltete settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if &rtp =~ 'deoplete'
-    let g:deoplete#enable_at_startup = 1
+    "let g:deoplete#enable_at_startup = 1
+    " 减少启动时 VimEnter autocommands 部分的时间(150ms)
+    let g:deoplete#enable_at_startup = 0
+    autocmd InsertEnter * call deoplete#enable()
     let g:deoplete#ignore_sources = {}
     let g:deoplete#ignore_sources._ = ['tag', 'around']
     "call deoplete#custom#source('ultisnips', 'buffer', 'rank', 9999)
@@ -315,4 +319,10 @@ let g:Lf_WindowHeight = 0.4
 let g:Lf_WorkingDirectoryMode ='Ac'
 let g:Lf_DefaultMode = 'NameOnly'
 let g:Lf_CommandMap = {'<C-U>': ['<C-W>']}
+
+map <space>fg      :LeaderfFile<cr>
+map <space>fb      :LeaderfBuffer<cr>
+map <space>fm      :LeaderfMru<cr>
+map <space>fw      :Leaderf rg<cr>
+map <space>fa      :LeaderfRgInteractive<cr>
 endif

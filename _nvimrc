@@ -11,15 +11,17 @@ let g:is_unix = has('unix')
 let g:isvim = 0
 let g:isnvim = 1
 call plug#begin('~/nvim/bundle')
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'      "增加100ms左右启动时间(opening buffers)
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
+
 Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-syntax',
 Plug 'Shougo/neoinclude.vim'
 Plug 'tpope/vim-fugitive', {'frozen': 1}
+
 Plug 'Lokaltog/vim-easymotion'
 Plug 'git@github.com:kdurant/misc_mine'
 Plug 'git@github.com:kdurant/verilog-testbench'
@@ -32,24 +34,22 @@ Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'ianva/vim-youdao-translater'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/ucf.vim'
-"Plug 'vim-scripts/vim-do-syntax'
-"Plug 'ludovicchabant/vim-gutentags'
-"Plug 'skywind3000/gutentags_plus'
-"Plug 'davidhalter/jedi-vim'
 Plug 'vim-python/python-syntax'
 Plug 'liuchengxu/vim-which-key'
-"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-"Plug 'bfredl/nvim-lspmirror'
-"Plug 'shougo/deoplete-lsp'
-
-"Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'rking/ag.vim'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
-"Plug 'wsdjeg/FlyGrep.vim'
-"Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-"Plug 'eugen0329/vim-esearch'
-
+            "Plug 'vim-scripts/vim-do-syntax'
+            "Plug 'ludovicchabant/vim-gutentags'
+            "Plug 'skywind3000/gutentags_plus'
+            "Plug 'davidhalter/jedi-vim'
+            "Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+            "Plug 'bfredl/nvim-lspmirror'
+            "Plug 'shougo/deoplete-lsp'
+            "Plug 'ctrlpvim/ctrlp.vim'
+            "Plug 'rking/ag.vim'
+            "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+            "Plug 'junegunn/fzf.vim'
+            "Plug 'wsdjeg/FlyGrep.vim'
+            "Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+            "Plug 'eugen0329/vim-esearch'
 call plug#end()
 
 if &rtp =~ 'mine'
@@ -118,37 +118,34 @@ if g:isnvim
     endif
 endif
 
-nnoremap <silent> <space> :WhichKey '<Space>'<CR>
-set timeoutlen=500
-call which_key#register('<Space>', "g:which_key_map")
-autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-let g:which_key_map =  {}
+if &rtp =~ 'vim-which-key'
+    nnoremap <silent> <space> :WhichKey '<Space>'<CR>
+    set timeoutlen=500
+    call which_key#register('<Space>', "g:which_key_map")
+    autocmd! FileType which_key
+    autocmd  FileType which_key set laststatus=0 noshowmode noruler
+                \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+    let g:which_key_map =  {}
 
-let g:which_key_map.e = { 'name' : '+edit' }
-let g:which_key_map.e.m = 'toggle comment'
-let g:which_key_map.e.a = 'append comment'
-let g:which_key_map.e.g = 'select all text'
+    let g:which_key_map.e = { 'name' : '+edit' }
+    let g:which_key_map.e.m = 'toggle comment'
+    let g:which_key_map.e.a = 'append comment'
+    let g:which_key_map.e.g = 'select all text'
 
-let g:which_key_map.f = { 'name' : '+file' }
-let g:which_key_map.f.a = 'search word in all filetype'
+    let g:which_key_map.f = { 'name' : '+file' }
+    let g:which_key_map.f.a = 'search word in all filetype'
 
-let g:which_key_map.w = { 'name' : '+window' }
-let g:which_key_map.w.n = 'toggle nerdtree'
-let g:which_key_map.w.q = 'close window'
-let g:which_key_map.w.j = 'vertical inc'
-let g:which_key_map.w.k = 'vertical dec'
-let g:which_key_map.w.h = 'horizontal inc'
-let g:which_key_map.w.l = 'horizontal dec'
+    let g:which_key_map.w = { 'name' : '+window' }
+    let g:which_key_map.w.n = 'toggle nerdtree'
+    let g:which_key_map.w.q = 'close window'
+    let g:which_key_map.w.j = 'vertical inc'
+    let g:which_key_map.w.k = 'vertical dec'
+    let g:which_key_map.w.h = 'horizontal inc'
+    let g:which_key_map.w.l = 'horizontal dec'
 
-let g:which_key_map.d = { 'name' : '+混合' }
-let g:which_key_map.d.v = 'compile source'
-let g:which_key_map.d.q = 'calc'
-let g:which_key_map.d.r = 'archive git file'
+    let g:which_key_map.d = { 'name' : '+混合' }
+    let g:which_key_map.d.v = 'compile source'
+    let g:which_key_map.d.q = 'calc'
+    let g:which_key_map.d.r = 'archive git file'
+endif
 
-map <space>fg      :LeaderfFile<cr>
-map <space>fb      :LeaderfBuffer<cr>
-map <space>fm      :LeaderfMru<cr>
-map <space>fw      :Leaderf rg<cr>
-map <space>fa      :LeaderfRgInteractive<cr>
