@@ -160,59 +160,8 @@ if &rtp =~ 'easymotion'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"ag settings
+" executable('ag.exe')类似语句会增加启动时间
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if executable('ag.exe')
-    "let g:ag_prg="git grep -n"
-    let g:ag_highlight=1
-    let g:ag_mapping_message = 0
-    "au FileType qf set ft=c
-
-    if !exists('g:ag_file_types')
-        let g:ag_file_types = ""
-    endif
-    function! AgSearch(type)
-        if &filetype == 'verilog'
-            let g:ag_file_types = '--verilog '
-        elseif &filetype == 'c'
-            let g:ag_file_types = '--cc '
-        elseif &filetype == 'asm'
-            let g:ag_file_types = '--asm '
-        elseif &filetype == 'cpp'
-            let g:ag_file_types = '--cpp '
-        elseif &filetype == 'python'
-            let g:ag_file_types = '--python '
-        elseif &filetype == 'vim'
-            let g:ag_file_types = '--vim '
-        else
-            let g:ag_file_types = ''
-            "echohl ErrorMsg | echo "Filetype don't match" | echohl none | return
-        endif
-
-        if executable('ag')
-            exe "cd " . Search_root()
-            if a:type == "current"
-                exe "Ag! -w " . g:ag_file_types . expand("<cword>")
-            elseif a:type == "all_filetype"
-                let g:ag_file_types = ''
-                exe "Ag! -w " . g:ag_file_types . expand("<cword>")
-            else
-                let key_word = input('Please enter word: ')
-                if key_word == ''
-                    echohl Function | echo "No input!" | echohl none | return
-                else
-                    exe "Ag! -w " . key_word
-                endif
-            endif
-        else
-            echohl Function | echo "Ag not in PATH" | echohl none | return
-        endif
-    endfunction
-    "map     <space>fw        :call AgSearch("current")<cr>
-    "map     <space>fe        :call AgSearch("cur_filetype")<cr>
-    "map     <space>fa        :call AgSearch("all_filetype")<cr>
-
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vim-grep settings

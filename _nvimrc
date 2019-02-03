@@ -2,6 +2,7 @@
 "2. pip install neovim
 "3. C:\Users\wj\AppData\Local\nvim\init.vim 里加载此文件   source $HOME/_nvimrc
 "4. ginit.vim里修改字体     GuiFont! Monaco:h12       GuiTabline 0
+"5. 不加载此文件C:\Neovim\share\nvim\runtime\autoload\provider\clipboard.vim
 "
 "UpdateRemotePlugins
 "

@@ -1,26 +1,4 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""self function*************************************************
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"search word that is at current work path
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! Search_Word()
-    if !empty((glob($VIMRUNTIME. "\\grep.exe")))
-        set autochdir
-        echohl Function
-        if input('Search current word with current filetype, y or n ? ') == 'y'
-            exe "cd " . Search_root()
-            exe 'grep ' . expand("<cword>") . ' ' . '**/*'
-            exe 'cw'
-        endif
-        echo '' | echohl none
-    else
-        echohl ErrorMsg | echo "No grep.exe. Please put it into $VIMRUNTIME" | echohl none
-    endif
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "replace current cursor word
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 fun! Replace()
@@ -186,38 +164,6 @@ function! Search_root()
 endfunction
 map     ,sg     :exe "cd " . Search_root()<cr>:tabnew .gitignore<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"generate cscope files
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! Do_CsTag()
-    exe "cd " . Search_root()
-    if &filetype == 'c' || &filetype == 'cpp'
-        if(executable('cscope') && has("cscope") )
-            if(has('unix'))
-                silent! exe "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' > cscope.files"
-            else
-                "call system('dir /s/b *.c,*.cpp,*.h > cscope.files')
-                silent! exe '!dir /s/b *.c,*.cpp,*.h > cscope.files'
-            endif
-            exe "cd " . Search_root()
-            silent! exe 'cscope kill -1'
-            call system('del cscope.out') | call system('cscope -Rb')
-            if filereadable("cscope.out")
-                exe 'cs add cscope.out'
-            endif
-        endif
-    elseif &filetype == 'verilog'
-        silent! exe '!dir /s/b *.v > cscope.files'
-        silent! exe "cscope kill -1"
-        call delete('cscope.out') | call system('cscope -Rb')
-        if filereadable("cscope.out")
-            exe 'cs add cscope.out'
-        endif
-    else
-        echo "Can't generate cscope.out file!"
-    endif
-endfunction
-map         <F9> :call Do_CsTag()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "use system command and not prompt new window
@@ -256,22 +202,9 @@ set csto=0
 set cscopetag
 
 
-"autocmd BufWritePost *.c call GenerateCtags()
-"autocmd BufWritePost *.h call GenerateCtags()
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vimtweak settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! -nargs=0 Lucency call LUcency()
-let g:tweak_value = 235
-function! LUcency()
-    if executable("vimtweak.dll")
-        call libcallnr("vimtweak.dll", "SetAlpha", g:tweak_value)
-        if(g:tweak_value == 235) | let g:tweak_value = 255
-        else | let g:tweak_value = 235
-        endif
-    endif
-endfunction
 
 let g:maximize = 1
 function! Maximize()
@@ -298,75 +231,21 @@ function! Maximize()
     endif
 endfunction
 
-let g:topmost = 1
-function! Topmost()
-    if executable("vimtweak.dll")
-        call libcallnr("vimtweak.dll", "EnableTopMost", g:topmost)
-        let g:topmost = !g:topmost
-    endif
-endfunction
 if g:is_win
     map     <M-x>   :call Maximize()<cr>
-    map     ,st     :call Topmost()<cr>
 endif
 
 
-function! Search_Inc()
-    exe "cd " . Search_root()
-
-    if !empty(finddir("include", "**", -1))
-        for l:idx in finddir("include", "**", -1)
-            exe "set path+=" . fnamemodify(l:idx, ":p")
-        endfor
-    endif
-
-    if !empty(finddir("inc", "**", -1))
-        for l:idx in finddir("inc", "**", -1)
-            exe "set path+=" . fnamemodify(l:idx, ":p")
-        endfor
-    endif
-endfunction
-
-
-let g:src_pos = []
-let g:head_pos =[]
-function! ChangeHead()
-    exe "cd " . Search_root()
-    if &filetype == 'c'
-        if !empty(findfile(expand("%:t:r") . '.h', "**"))
-            let g:src_pos = getpos('.')
-            exe "edit " . fnamemodify(findfile(expand("%:t:r") . '.h', "**"), ":p")
-            call setpos('.', g:head_pos)
-        else
-            echohl ErrorMsg | echo "Not find head file!" | echohl NONE
-        endif
-    else
-        if !empty(findfile(expand("%:t:r") . '.c', "**"))
-            let g:head_pos = getpos('.')
-            exe "edit " . fnamemodify(findfile(expand("%:t:r") . '.c', "**"), ":p")
-            call setpos('.', g:src_pos)
-        else
-            echohl ErrorMsg | echo "Not find source file!" | echohl NONE
-        endif
-    endif
-endfunction
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-if executable('astyle')
-    function! Astyle()
-        "silent !astyle --add-brackets %
-        silent !astyle  --style=ansi --suffix=none -p %
-        " --pad-oper %         "insert spaces padding around operators
-        " --pad-paren-in %     "insert spaces padding around parenthesis on ther inside only
-        " --suffix=none  不保存原始文件
-    endfunction
-endif
-
-function! MenuBar()
-    if &go =~# 'T' | set go-=T | set go-=m
-    else | set go+=T | set go+=m
-    endif
-endfunction
+" 加载时间很长(50ms)
+"   if executable('astyle')   
+"       function! Astyle()
+"           "silent !astyle --add-brackets %
+"           silent !astyle  --style=ansi --suffix=none -p %
+"           " --pad-oper %         "insert spaces padding around operators
+"           " --pad-paren-in %     "insert spaces padding around parenthesis on ther inside only
+"           " --suffix=none  不保存原始文件
+"       endfunction
+"   endif
 
 function! GitCmd(git_cmd)
     if has('win32') || has('win64')
@@ -401,16 +280,6 @@ let color_timer = timer_start(1000*60, 'AutoColorScheme',
             \ {'repeat': -1})
 
 
-"set updatetime=500
-"function! HighlightWordUnderCursor()
-    "if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]' 
-        "exec 'match' 'Search' '/\V\<'.expand('<cword>').'\>/' 
-    "else 
-        "match none 
-    "endif
-"endfunction
-"autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
-
 function! OpenFileDir()
     if g:isnvim
         call jobstart('start '.expand("%:p:h"))
@@ -420,43 +289,3 @@ function! OpenFileDir()
 endfunction
 nmap <space>fo  :call OpenFileDir()<cr>
 
-"   python3 << EOF
-"   import vim
-"   import requests
-"   def stock_rise(id='603970'):
-"       if id[0] == '6':
-"           url = 'https://hq.sinajs.cn/list=sh' + id
-"       else:
-"           url = 'https://hq.sinajs.cn/list=sz' + id
-"       r = requests.get(url)
-"       info = r.text.split(',')
-"       
-"       cur_price = float(info[3])  # 当前价格
-"       open_price = float(info[2])  # 昨天的收盘价
-"       per = (cur_price - open_price) / open_price
-"       per *= 100
-"       per = '%.2f%%' % per
-"       
-"       name = (info[0].split('"'))[1]
-"       
-"       txt = name + ': ' + per
-"       #vim.command("let @i = '%s'" % txt)
-"       return txt
-"   
-"   def stock_self():
-"       l = ['603970', '600884', '600623', '002921', '002136', '000009']
-"       txt = ''
-"       for s in l:
-"           txt += stock_rise(s)
-"           txt += '  '
-"       vim.command("let stock_info = '%s'" % txt)
-"       vim.command("echo stock_info")
-"   EOF
-
-function! StockInfo()
-    exec "py3do stock_self()"
-    echo stock_info
-    "exec "AirlineRefresh"
-endfunction
-"let stock_refresh = timer_start(1000, 'StockInfo',
-            "\ {'repeat': -1})

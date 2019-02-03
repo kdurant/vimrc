@@ -62,9 +62,6 @@ map     <C-P>       :cp<cr>
 map     <C-N>       :cn<cr>
 map     j           gj
 map     k           gk
-if g:isvim
-    map <silent> <M-F12> :call MenuBar()<cr>
-endif
 
 if has('python3')
     command! -nargs=+ Calc :py3 print (<args>)
