@@ -17,8 +17,8 @@ let g:is_unix = has('unix')
 let g:isvim = 0
 let g:isnvim = 1
 call plug#begin('~/nvim/bundle')
-Plug 'vim-airline/vim-airline'      "增加100ms左右启动时间(opening buffers)
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'      "增加100ms左右启动时间(opening buffers)
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 
