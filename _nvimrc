@@ -7,6 +7,11 @@
 "UpdateRemotePlugins
 "
 
+"let g:python_host_prg = 'python.exe'
+"let g:python3_host_prog = 'C:/Users/wj/AppData/Local/Programs/Python/Python36/python.exe'
+let g:python3_host_skip_check=1
+let g:python3_host_prog = exepath('python')
+
 let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
 let g:isvim = 0
@@ -99,11 +104,6 @@ autocmd BufRead,BufNewFile *.ucf set filetype=ucf
 autocmd FileType lua  setlocal iskeyword+=.
 
 autocmd BufNewFile .gitignore let @i = "#basic\n.vscode\n*.pdf\n*.doc\n*.docx\n*.rar\n*.txt\n*.html\n*.jpg\n*.chm\n*.log\n*.zip\n*.xml\ntmp\nGPATH\nGRTAGS\nGTAGS*" | exe "normal \"iP"
-"let g:python_host_prg = 'python.exe'
-"let g:python3_host_prog = 'C:/Users/wj/AppData/Local/Programs/Python/Python36/python.exe'
-let g:python3_host_skip_check=1
-let g:python3_host_prog = exepath('python')
-
 """""""""""""""""""""""""""""""""""""""""""""""""""
 if g:isnvim
     if g:is_win
