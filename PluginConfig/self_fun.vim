@@ -304,7 +304,7 @@ function! BuildTabLine()
         let result .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
 
         " tab label
-        let result .= ' ' . tab . ':'
+        let result .= ' ' . tab . '. '
         " pathname/filename
         if (bufname != '')
             let fnames = split(bufname, '/')

@@ -102,10 +102,19 @@ if &rtp =~ 'ctrlp'
     let g:ctrlp_match_window = 'bot,order:ttb,min:10,max:10'
     let g:ctrlp_use_caching = 1
     let g:ctrlp_cache_dir = $HOME.'/PluginConfig/ctrlp'
-    if executable('git')
-        let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-        "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
+    "if executable('git')
+    "    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+    "    "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
+    "endif
+    if executable('rg')
+        set grepprg=rg\ --color=never
+        let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+        let g:ctrlp_use_caching = 0
+
+        let g:ackprg = 'rg --vimgrep'
+        map <space>fw      :exe "cd " . Search_root()<cr>:Ack! 
     endif
+
     "let g:ctrlp_custom_ignore = {
     "\ 'dir': '\.git$\|\.hg$\|\.svn$\|release$\|work$\|PluginConfig/neocomplete$\|PluginConfig/ctrlp\|output_files\|incremental_db\|db',
     "\ 'file': '\v\.(o|pbi|cout|exe|so|dll|ppf|lnk|qip|rpt|csv|wlf|)$',
@@ -119,9 +128,6 @@ if &rtp =~ 'ctrlp'
     let g:ctrlp_map = '<space>fg'
     map <space>fb      :CtrlPBuffer<cr>
     map <space>fm      :CtrlPMRUFiles<cr>
-
-    let g:ackprg = 'rg --vimgrep'
-    map <space>fw      :exe "cd " . Search_root()<cr>:Ack! 
 
 endif
 
