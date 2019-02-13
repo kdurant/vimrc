@@ -119,13 +119,11 @@ if &rtp =~ 'ctrlp'
     let g:ctrlp_map = '<space>fg'
     map <space>fb      :CtrlPBuffer<cr>
     map <space>fm      :CtrlPMRUFiles<cr>
-endif
 
-"diff setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set diffopt=filler,context:4,vertical,foldcolumn:4
-"set diffexpr=MyDiff()
-autocmd BufWritePost * if &diff | diffupdate | endif
+    let g:ackprg = 'rg --vimgrep'
+    map <space>fw      :Ack! 
+
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "align settings
