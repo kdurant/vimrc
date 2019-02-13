@@ -96,7 +96,6 @@ endif
 "ctrlp setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if &rtp =~ 'ctrlp'
-    "let g:ctrlp_map = '<space>fg'
     let g:ctrlp_by_filename = 1
     let g:ctrlp_clear_cache_on_exit = 1
     let g:ctrlp_working_path_mode = 'ra'
@@ -116,6 +115,10 @@ if &rtp =~ 'ctrlp'
     let g:ctrlp_root_markers = ['README.md']
     hi  link    CtrlPMatch      Define
     hi  link    CtrlPBufferPath PreProc
+
+    let g:ctrlp_map = '<space>fg'
+    map <space>fb      :CtrlPBuffer<cr>
+    map <space>fm      :CtrlPMRUFiles<cr>
 endif
 
 "diff setting
