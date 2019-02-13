@@ -271,14 +271,18 @@ if &rtp =~ 'vim-grepper'
 endif
 
 if &rtp =~ 'LeaderF'
-let g:Lf_WindowHeight = 0.4
-let g:Lf_WorkingDirectoryMode ='Ac'
-let g:Lf_DefaultMode = 'NameOnly'
-let g:Lf_CommandMap = {'<C-U>': ['<C-W>']}
+    let g:Lf_WindowHeight = 0.4
+    let g:Lf_WorkingDirectoryMode ='Ac'
+    let g:Lf_DefaultMode = 'NameOnly'
+    let g:Lf_CommandMap = {'<C-U>': ['<C-W>']}
 
-map <space>fg      :LeaderfFile<cr>
-map <space>fb      :LeaderfBuffer<cr>
-map <space>fm      :LeaderfMru<cr>
-map <space>fw      :Leaderf rg<cr>
-map <space>fa      :LeaderfRgInteractive<cr>
+    map <space>fg      :LeaderfFile<cr>
+    map <space>fb      :LeaderfBuffer<cr>
+    map <space>fm      :LeaderfMru<cr>
+    map <space>fw      :Leaderf rg<cr>
+    map <space>fa      :LeaderfRgInteractive<cr>
+endif
+
+if &rtp =~ 'FlyGrep'
+    map <space>f/      :exe "cd " . Search_root()<cr>:FlyGrep<cr>
 endif
