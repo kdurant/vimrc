@@ -121,7 +121,7 @@ if &rtp =~ 'ctrlp'
     map <space>fm      :CtrlPMRUFiles<cr>
 
     let g:ackprg = 'rg --vimgrep'
-    map <space>fw      :Ack! 
+    map <space>fw      :exe "cd " . Search_root()<cr>:Ack! 
 
 endif
 

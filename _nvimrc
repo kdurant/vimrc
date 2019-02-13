@@ -41,7 +41,7 @@ Plug 'ianva/vim-youdao-translater'
 Plug 'vim-scripts/ucf.vim'
 Plug 'vim-python/python-syntax'
 
-Plug 'airblade/vim-rooter'
+"Plug 'airblade/vim-rooter'
 
             "Plug 'vim-airline/vim-airline'      "增加100ms左右启动时间(opening buffers)
             "Plug 'vim-airline/vim-airline-themes'
@@ -61,6 +61,13 @@ Plug 'airblade/vim-rooter'
             "Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
             "Plug 'eugen0329/vim-esearch'
 call plug#end()
+
+if g:isvim
+    map     <F7>        :so $VIMSESSION<cr>
+else
+    autocmd VimLeave * exec  "mksession! ~/PluginConfig/nvim_session.vim"
+    map     <F7>        :so ~/PluginConfig/nvim_session.vim<cr>
+endif
 
 if &rtp =~ 'mine'
     colorscheme james

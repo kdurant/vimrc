@@ -77,13 +77,6 @@ endif
 
 map     Y       y$
 map     K       \cr
-
-if g:isvim
-    map     <F7>        :so $VIMSESSION<cr>
-else
-    autocmd VimLeave * exec  "mksession! ~/PluginConfig/nvim_session.vim"
-    map     <F7>        :so ~/PluginConfig/nvim_session.vim<cr>
-endif
 "map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
