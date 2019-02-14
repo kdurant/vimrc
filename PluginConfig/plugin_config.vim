@@ -107,10 +107,10 @@ if &rtp =~ 'ctrlp'
     "    "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
     "endif
     if executable('rg')
-        set grepprg=rg\ --color=never
-        let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+        "let g:ctrlp_user_command = 'rg %s --no-ignore --files --color=never --glob ""'
         let g:ctrlp_use_caching = 0
 
+        set grepprg=rg\ --color=never
         let g:ackprg = 'rg --vimgrep'
         map <space>fw      :exe "cd " . Search_root()<cr>:Ack! 
     endif
@@ -125,7 +125,8 @@ if &rtp =~ 'ctrlp'
     hi  link    CtrlPMatch      Define
     hi  link    CtrlPBufferPath PreProc
 
-    let g:ctrlp_map = '<space>fg'
+    map <space>fg      :let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'<cr>:CtrlP<cr>
+    map <space>fa      :let g:ctrlp_user_command = 'rg %s --no-ignore --files --color=never --glob ""'<cr>:CtrlP<cr>
     map <space>fb      :CtrlPBuffer<cr>
     map <space>fm      :CtrlPMRUFiles<cr>
 
