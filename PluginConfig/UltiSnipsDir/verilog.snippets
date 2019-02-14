@@ -288,7 +288,7 @@ snippet state   "one hot encode machine state"
 localparam              IDLE    = 0;
 localparam              OVER    = 1;
 (* KEEP = "TRUE" *)reg     [OVER:00]       cs = 'd1, ns = 'd1;
-reg     [15:00]         state_cnt;
+reg     [15:00]         state_cnt, state_cnt_n;
 
 // synthesis translate_off
 reg [127:0] cs_STRING;
@@ -355,14 +355,22 @@ begin
     end
 end
 
-always @ (posedge clk)
+always @ (posedge clk or negedge rst)
 begin
-    if(rst)
-        state_cnt <= 0;
-    else if (cs != ns)
+    if(~rst)
         state_cnt <= 0;
     else
-        state_cnt <= state_cnt + 1'b1;
+        state_cnt <= state_cnt_n;
+end
+
+always @ (*)
+begin
+    if(~rst)
+        state_cnt_n <= 0;
+    else if (cs != ns)
+        state_cnt_n <= 0;
+    else
+        state_cnt_n <= state_cnt + 1'b1;
 end
 endsnippet
 
