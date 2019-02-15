@@ -24,8 +24,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'mileszs/ack.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neco-syntax',
-Plug 'Shougo/neoinclude.vim'
+"Plug 'Shougo/neco-syntax',
+"Plug 'Shougo/neoinclude.vim'
 Plug 'tpope/vim-fugitive', {'frozen': 1}
 
 Plug 'Lokaltog/vim-easymotion'

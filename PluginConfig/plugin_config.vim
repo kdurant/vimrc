@@ -31,10 +31,12 @@ if &rtp =~ 'deoplete'
     " 减少启动时 VimEnter autocommands 部分的时间(150ms)
     let g:deoplete#enable_at_startup = 0
     autocmd InsertEnter * call deoplete#enable()
-    let g:deoplete#ignore_sources = {}
-    let g:deoplete#ignore_sources._ = ['tag', 'around']
-    "call deoplete#custom#source('ultisnips', 'buffer', 'rank', 9999)
-    call deoplete#custom#source('ultisnips', 'rank', 1000)
+    call deoplete#custom#source('ultisnips', 'rank', 9000)
+    call deoplete#custom#source('buffer', 'rank', 2000)
+
+    "call deoplete#custom#option('sources', {
+                "\ '_': ['ultisnips', 'buffer'],
+                "\})
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
