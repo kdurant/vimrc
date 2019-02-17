@@ -298,3 +298,15 @@ if &rtp =~ 'coc.nvim'
     nmap <silent> <space>gi <Plug>(coc-implementation)
     nmap <silent> <space>gr <Plug>(coc-references)
 endif
+
+if &rtp =~ 'lightline.vim'
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status'
+      \ },
+      \ }
+endif

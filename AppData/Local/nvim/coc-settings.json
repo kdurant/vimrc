@@ -3,8 +3,9 @@
         "C:/home/PluginConfig/UltiSnipsDir"
     ],
     "snippets.shortcut": "US",
+    "coc.preferences.triggerAfterInsertEnter": false,
     "coc.source.buffer.shortcut": "B",
-    "coc.preferences.snippetIndicator": " ~",
+    "coc.preferences.snippetIndicator": " ►",
     "coc.preferences.minTriggerInputLength": 2,
     "coc.preferences.noselect": false
 }

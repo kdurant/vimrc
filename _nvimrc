@@ -20,13 +20,11 @@ call plug#begin('~/nvim/bundle')
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'mileszs/ack.vim'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'Shougo/neco-syntax',
-"Plug 'Shougo/neoinclude.vim'
-Plug 'tpope/vim-fugitive', {'frozen': 1}
+Plug 'wsdjeg/FlyGrep.vim'
 
 Plug 'Lokaltog/vim-easymotion'
 Plug 'git@github.com:kdurant/misc_mine'
@@ -40,9 +38,14 @@ Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'ianva/vim-youdao-translater'
 Plug 'vim-scripts/ucf.vim'
 Plug 'vim-python/python-syntax'
+Plug 'itchyny/lightline.vim'
 
 "Plug 'airblade/vim-rooter'
 
+            "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+            "Plug 'Shougo/neco-syntax',
+            "Plug 'Shougo/neoinclude.vim'
+            "Plug 'tpope/vim-fugitive', {'frozen': 1}
             "Plug 'vim-airline/vim-airline'      "增加100ms左右启动时间(opening buffers)
             "Plug 'vim-airline/vim-airline-themes'
             "Plug 'scrooloose/nerdtree'
@@ -50,15 +53,9 @@ Plug 'vim-python/python-syntax'
             "Plug 'ludovicchabant/vim-gutentags'
             "Plug 'skywind3000/gutentags_plus'
             "Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
-            "Plug 'davidhalter/jedi-vim'
-            Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-            "Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
-            "Plug 'bfredl/nvim-lspmirror'
-            "Plug 'shougo/deoplete-lsp'
             "Plug 'rking/ag.vim'
             "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             "Plug 'junegunn/fzf.vim'
-            Plug 'wsdjeg/FlyGrep.vim'
             "Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
             "Plug 'eugen0329/vim-esearch'
 call plug#end()
