@@ -1,7 +1,7 @@
 "1. 下载neovim，添加环境变量
 "2. pip install neovim
 "3. C:\Users\wj\AppData\Local\nvim\init.vim 里加载此文件   source $HOME/_nvimrc
-"4. ginit.vim里修改字体     GuiFont! Monaco:h12       GuiTabline 0
+"4. ginit.vim里修改字体     GuiFont! Monaco:h12       GuiTabline 0   GuiPopupmenu 0
 "5. 不加载此文件C:\Neovim\share\nvim\runtime\autoload\provider\clipboard.vim
 "
 "UpdateRemotePlugins
@@ -23,7 +23,7 @@ Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'mileszs/ack.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'Shougo/neco-syntax',
 "Plug 'Shougo/neoinclude.vim'
 Plug 'tpope/vim-fugitive', {'frozen': 1}
@@ -51,7 +51,8 @@ Plug 'vim-python/python-syntax'
             "Plug 'skywind3000/gutentags_plus'
             "Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
             "Plug 'davidhalter/jedi-vim'
-            "Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+            Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+            "Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
             "Plug 'bfredl/nvim-lspmirror'
             "Plug 'shougo/deoplete-lsp'
             "Plug 'rking/ag.vim'
@@ -160,4 +161,3 @@ if &rtp =~ 'vim-which-key'
     let g:which_key_map.d.q = 'calc'
     let g:which_key_map.d.r = 'archive git file'
 endif
-

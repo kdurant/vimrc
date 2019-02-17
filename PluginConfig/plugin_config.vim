@@ -289,3 +289,12 @@ endif
 if &rtp =~ 'FlyGrep'
     map <space>f/      :exe "cd " . Search_root()<cr>:FlyGrep<cr>
 endif
+
+if &rtp =~ 'coc.nvim'
+    set updatetime=300
+    set hidden
+    nmap <silent> <space>gd <Plug>(coc-definition)
+    nmap <silent> <space>gy <Plug>(coc-type-definition)
+    nmap <silent> <space>gi <Plug>(coc-implementation)
+    nmap <silent> <space>gr <Plug>(coc-references)
+endif
