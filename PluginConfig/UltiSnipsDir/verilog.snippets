@@ -133,7 +133,7 @@ endsnippet
 
 #system function or task
 #readmemh
-snippet readmemh
+snippet readmemh    "read file data to memory"
 reg     [7:0]   DataMem[0:31];
 $readmemh("${1:/*data.txt*/}",${2:/*DataMem*/});
 endsnippet
@@ -154,7 +154,7 @@ $monitor($time,"${1:veriable} = 0${2:x}%${3:h}",$1);
 endsnippet
 
 #handle
-snippet handle
+snippet handle  "file handle"
 integer ${1:handle};
 initial
 begin
@@ -163,7 +163,7 @@ end
 endsnippet
 
 #fdisplay, write data to file
-snippet fdisplay
+snippet fdisplay "$fdisplay() function"
 $fdisplay(${1:handle},"${2:veriable} = 0${3:x}%${4:h}",$2);
 endsnippet
 
@@ -266,11 +266,11 @@ snippet prune
 /* synthesis noprune */
 endsnippet
 
-snippet keep    "altera"
+snippet keep    "altera format"
 /* synthesis keep */
 endsnippet
 
-snippet keep    "xilinx"
+snippet keep    "xilinx format"
 (* KEEP = "TRUE" *)
 endsnippet
 
