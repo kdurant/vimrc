@@ -333,8 +333,12 @@ endsnippet
 ######################   UVM          #################################
 #######################################################################
 
-snippet uvm_info
-\`uvm_info("`!v expand('%:r')`", "${1:info}", UVM_LOW);
+snippet uvm_info    "LOW < MEDIUM < HIGH < FULL < DEBUG"
+\`uvm_info("${1:class_name}", "${1:info}", UVM_LOW);
+endsnippet
+
+snippet uvm_component_utils "注册新类"
+\`uvm_component_utils(${1:class_name});
 endsnippet
 
 snippet set
@@ -346,9 +350,9 @@ uvm_config_db#(virtual ${1:interface})::get(this, "*", "bfm", bfm);
 endsnippet
 
 snippet `ifn "`ifndef ... `define ... `endif"
-\`ifndef `!v toupper(expand('%:r'))`_SVH
-\`define `!v toupper(expand('%:r'))`_SVH
-$1
+\`ifndef ${1:FILE_NAME}_SVH
+\`define ${1:FILE_NAME}_SVH
+$2
 \`endif
 endsnippet
 
