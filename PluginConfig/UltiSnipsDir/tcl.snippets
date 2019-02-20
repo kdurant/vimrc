@@ -1,12 +1,4 @@
-snippet color
-#EE82EE  #AE81FF
-endsnippet
-
-snippet group
-virtual signal -install ${1:/tb/dut/driver} { (context $1 )&{2:signa}local_row_addr ,local_bank_addr ,local_col_addr }} xxxx
-endsnippet
-
-snippet pin "altera"
+snippet pin "altera assgin format"
 set_location_assignment PIN_$1 -to sdram_data[14]
 endsnippet
 
@@ -14,7 +6,7 @@ snippet fastin
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to sdram_data[0]
 endsnippet
 
-snippet xilinx
+snippet xilinx  "modelsim simulate templet"
 quit -sim
 .main clear
 set env(ISE_SIM)                F:/crack/ise14.7_modelsim10.5_lib
@@ -32,9 +24,6 @@ vmap unimacro                   $env(VIVADO_SIM)/unimacro
 vmap unimacro_ver               $env(VIVADO_SIM)/unimacro_ver
 vmap unisim                     $env(VIVADO_SIM)/unisim
 vmap unisims_ver                $env(VIVADO_SIM)/unisims_ver
-
-set env(UVM_SRC)                F:/crack/uvm-1.1d/src
-set env(UVM_DPI)                C:/modeltech64_10.2c/uvm-1.1d/win64/uvm_dpi
 
 #工程所需要的文件
 vlog -incr $env(ISE_SIM)/glbl.v;
@@ -64,7 +53,7 @@ radix 16
 run 10us
 endsnippet
 
-snippet altera
+snippet altera  "modelsim simulate templet"
 quit -sim
 .main clear
 set env(ALTERA_LIB)         altera18.0_questasim_10.6c_lib
@@ -82,4 +71,18 @@ radix 16
 do wave.do
 
 run 20us
+endsnippet
+
+
+snippet uvm "modelsim simulate templet"
+quit -sim
+.main clear
+set UVM_HOME               C:/questasim64_10.6c/verilog_src/uvm-1.1d
+set UVM_DPI_DIR            C:/questasim64_10.6c/uvm-1.1d/win64/uvm_dpi
+set WORK_HOME              D:/puvm
+
+vlog +incdir+$UVM_HOME/src -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF  $UVM_HOME/src/uvm_pkg.sv
+vlog +incdir+$UVM_HOME/src -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF  user_file.sv
+
+vsim -voptargs="+acc" -sv_lib $UVM_DPI_DIR work.top_tb
 endsnippet
