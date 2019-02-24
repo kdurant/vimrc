@@ -8,6 +8,7 @@ endsnippet
 snippet im  "import package"
 import   ${1:uvm_pkg}::*;
 endsnippet
+
 snippet /*
 /*
  * ${1}
@@ -179,48 +180,33 @@ interface ${1:name}
     logic xxx;
 */
 
-clocking ${1:cb} @ (posedge clk);
-${2:signal}
-endclocking
-
 endinterface
 endsnippet
 
-snippet clocking
+snippet clocking    "clocking block"
 clocking ${1:cb} @ (posedge clk);
-$2
+input   #${2:time}  /*signal*/;
+output  #${3:time}  /*signal*/;     // clk之后延迟time时间才会输出信号
 endclocking
 endsnippet
 
-snippet modport
+snippet modport  "接口信号的不同方向"   
+// 使用modport的模块端口方向和modport里声明的一致
 modport ${1:master}
 (
     input                       ${2:clk},
+    output                      ${2:clk},
 );
 endsnippet
 
-snippet enum
-enum ${1:/*[optional data type]*/}
-{
-    ${2:/*name1 = value1*/,}
-} ${3:var_name};
-endsnippet
-
-snippet tde
-typedef enum
-{
-    /*data*/,
-}${1:/*enum*/}_e;
-endsnippet
-
-snippet tds
+snippet struct  "typedef struct"
 typedef struct packed
 {
     /*data*/;
 }${1:/*struct*/}_s;
 endsnippet
 
-snippet tdu
+snippet union     "typedef union"
 typedef union packed
 {
     /*data*/;
@@ -313,13 +299,10 @@ snippet $ra
 ${1:veriable} = $urandom_range(0, 255);
 endsnippet
 
-snippet cover
-endsnippet
-
 snippet mail
 endsnippet
 
-snippet example     "interface class useage exaple"
+snippet interface_ex     "interface class useage exaple"
 dut_bfm dut_bfm_i();    // interface 声明
 dut_drive dut_drive_h;  // class声明
 initial
@@ -328,6 +311,45 @@ begin
 end
 endsnippet
 
+snippet program "program block"
+program ${1:name}
+(
+)
+$2
+endprogram
+endsnippet
+
+snippet enum "typdef enum"
+typedef enum
+{
+    IDLE,
+    WRITE
+    //and so on
+}${1:name};
+$1      /*instance*/;
+endsnippet
+
+
+snippet covergroup "covergroup basic template"
+covergroup ${1:name} @(posedge clk);
+    address : coverpoint addr 
+    {
+        bins low = {0, 50};
+        bins med = {51, 150};
+        bins med = {151, 152};
+    }
+endgroup
+endsnippet
+
+snippet coverpoint "coverpoint template"
+${1:name} : coverpoint ${2:name}
+{
+    bins low = {0, 50};
+    bins med = {51, 100};
+    bins hig = {101, 150};
+}
+
+endsnippet
 
 #######################################################################
 ######################   UVM          #################################

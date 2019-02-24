@@ -11,11 +11,11 @@ endsnippet
 snippet mo      "modele without parameter"
 \`timescale  1 ns/1 ps
 
-module `!v expand('%:r')`
+module ${1:name}
 (
     input   wire                clk,
     input   wire                rst,
-    ${1:/*port*/}
+    ${2:/*port*/}
 );
 
 endmodule
@@ -23,14 +23,14 @@ endsnippet
 
 #module ${1:/*module*/} #
 snippet mod  "modele with parameter"
-module `!v expand('%:r')` #
+module ${1:name} #
 (
-    ${1:/*parameter*/}
+    ${2:/*parameter*/}
 )
 (
     input   wire                clk,
     input   wire                rst,
-    ${2:/*port*/}
+    ${3:/*port*/}
 );
 
 endmodule
