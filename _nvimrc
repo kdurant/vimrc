@@ -73,6 +73,7 @@ else
     colorscheme evening
 endif
 
+set dictionary+=c:/home/uvm_dictionary.txt
 set number
 set mouse=a
 set clipboard+=unnamed

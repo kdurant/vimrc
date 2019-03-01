@@ -250,13 +250,13 @@ fork
 join_none
 endsnippet
 
-snippet task
+snippet task    "task template"
 task ${1:name}($2);
     $3
 endtask
 endsnippet
 
-snippet fun
+snippet fun     "function template"
 function ${1:void} ${2:name}($3);
 endfunction
 endsnippet
@@ -356,11 +356,19 @@ endsnippet
 #######################################################################
 
 snippet uvm_info    "LOW < MEDIUM < HIGH < FULL < DEBUG"
-\`uvm_info("${1:class_name}", "${1:info}", UVM_LOW);
+\`uvm_info("${1:class_name}", "${2:info}", UVM_LOW);
+endsnippet
+
+snippet uvm_fatal    "LOW < MEDIUM < HIGH < FULL < DEBUG"
+`uvm_fatal("${1:class_name}", "${2:info}");
 endsnippet
 
 snippet uvm_component_utils "注册新类"
 \`uvm_component_utils(${1:class_name});
+endsnippet
+
+snippet uvm_object_utils "注册新类"
+\`uvm_object_utils(${1:class_name});
 endsnippet
 
 snippet set "set - get"
@@ -410,4 +418,8 @@ endsnippet
 
 snippet raise_objection "如果没有drop, 结束当前phase"
 raise_objection
+endsnippet
+
+snippet create "factory机制实例化方式"
+drv = ${1:type_name}::type_id::create("drv", this);
 endsnippet
