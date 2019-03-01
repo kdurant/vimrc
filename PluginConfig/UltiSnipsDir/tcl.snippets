@@ -55,7 +55,10 @@ endsnippet
 
 snippet altera  "modelsim simulate templet"
 quit -sim
-.main clear
+# 可以不手动建立library
+#vlib    work
+#vmap    work work
+
 set env(ALTERA_LIB)         altera18.0_questasim_10.6c_lib
 set env(LIB_PATH)           F:/crack/
 vmap   $env(ALTERA_LIB)     $env(LIB_PATH)$env(ALTERA_LIB)
@@ -85,4 +88,6 @@ vlog +incdir+$UVM_HOME/src -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF  $UVM_HOME/sr
 vlog +incdir+$UVM_HOME/src -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF  user_file.sv
 
 vsim -voptargs="+acc" -sv_lib $UVM_DPI_DIR work.top_tb
+# 命令行模式仿真
+# vsim -c -do demo.tcl
 endsnippet
