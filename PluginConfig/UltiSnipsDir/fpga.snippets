@@ -72,15 +72,15 @@ begin
 end
 endsnippet
 
-snippet as  "assign ..."
+snippet assign  "assign ..."
 assign                  ${1:LHS} = ${2:RHS};
 endsnippet
 
-snippet pa  "paramter ..."
+snippet paramter  "paramter ..."
 parameter               ${1:LHS} = ${2:RHS};
 endsnippet
 
-snippet lo  "localparam ..."
+snippet localparam  "localparam ..."
 localparam              ${1:LHS} = ${2:RHS};
 endsnippet
 
@@ -146,6 +146,13 @@ endsnippet
 
 snippet repeat      "repeat loop"
 repeat(${1:Number})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+snippet while      "while loop"
+while(${1:condition})
 begin
     ${2:/*code*/}
 end
@@ -261,7 +268,7 @@ defparam
 endsnippet
 
 
-snippet ram2port "altera ram 2 port"
+snippet ram2port "altera 2 port ram "
 altsyncram	${1:ramEx01}
 (
     .clock0            (    clock        ),

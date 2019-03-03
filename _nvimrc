@@ -28,6 +28,7 @@ Plug 'wsdjeg/FlyGrep.vim'
 
 Plug 'Lokaltog/vim-easymotion'
 Plug 'git@github.com:kdurant/misc_mine'
+Plug 'git@github.com:kdurant/verilog_systemverilog.vim'
 Plug 'git@github.com:kdurant/verilog-testbench'
 Plug 'kdurant/AuthorInfo', {'frozen': 1}
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
