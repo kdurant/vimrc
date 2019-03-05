@@ -76,7 +76,7 @@ else
     colorscheme evening
 endif
 
-set dictionary+=c:/home/uvm.dic
+set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
 set number
 set mouse=a
 set clipboard+=unnamed
