@@ -41,6 +41,8 @@ Plug 'vim-scripts/ucf.vim'
 Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
 
+"Plug 'qxxxb/vim-searchhi'
+
 "Plug 'airblade/vim-rooter'
 
             "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -69,7 +71,7 @@ else
 endif
 
 if &rtp =~ 'mine'
-    colorscheme james
+    exec 'colorscheme '.["codeschool", "quantum", "james"][strftime("%H")%3]
 else
     colorscheme evening
 endif
