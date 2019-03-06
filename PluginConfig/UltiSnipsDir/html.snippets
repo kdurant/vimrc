@@ -8,7 +8,7 @@ endsnippet
 
 snippet address
 <address>
-	$1
+    $1
 </address>
 endsnippet
 
@@ -62,21 +62,21 @@ snippet h1	"a"
 <h1>$1</h1>
 endsnippet
 
-snippet html    "html docment"
+snippet html    "html template"
 <!DOCTYPE HTML>
 <html>
-	<head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<title>This is title</title>
-	</head>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>This is title</title>
+    </head>
 
-	<body>
-	$1
-	</body>
+    <body>
+    $1
+    </body>
 </html>
 endsnippet
 
-snippet head
+snippet head    "head tag"
 <head>
 	$1
 </head>
@@ -99,9 +99,15 @@ snippet p	"paragraph"	 i
 <p>${1:This is text.}</p>
 endsnippet
 
-snippet script  "inser javascript"
-<script>
-	$1
+snippet script_inter  "inser javascript"
+<script type="text/javascript">
+    ${1:function}
+</script>
+endsnippet
+
+snippet script_extern  "extern file"
+<script type="text/javascript" src="example.js">
+    ${1:function}
 </script>
 endsnippet
 
