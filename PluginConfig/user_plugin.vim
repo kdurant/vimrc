@@ -37,7 +37,11 @@ Plug 'yuttie/inkstained-vim'
 Plug 'cormacrelf/vim-colors-github'
 Plug 'emhaye/ceudah.vim'
 Plug 'ajmwagar/vim-deus'
-Plug 'trevordmiller/nova-vim'
+Plug 'trevordmiller/nova-vim'   "不是很喜欢
+Plug 'ayu-theme/ayu-vim'
+Plug 'romainl/Apprentice'
+Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
 
             "Plug 'tpope/vim-fugitive', {'frozen': 1}
             "Plug 'vim-airline/vim-airline'      "增加100ms左右启动时间(opening buffers)
@@ -50,23 +54,26 @@ Plug 'trevordmiller/nova-vim'
             "Plug 'eugen0329/vim-esearch'
 call plug#end()
 
-let color_list = ["codeschool", "github", "jellybeans", "one", "snazzy", "quantum",
-                \ "material-monokai", "james", "inkstained", "ceudah", "deus", "nova"]
+let g:color_list = ["codeschool", "github", "jellybeans", "one", "snazzy", "quantum", "ayu", "apprentice",
+                \ "material-monokai", "james", "inkstained", "ceudah", "deus", "nova",
+                \ "gruvbox", "PaperColor"
+                \]
 if &rtp =~ 'mine'
-    exec 'colorscheme '. color_list[strftime("%S")%(len(color_list))]
-    hi Comment      gui=NONE | hi TabLine      gui=NONE | hi TabLineFill  gui=NONE
+    exec 'colorscheme '. g:color_list[strftime("%S")%(len(g:color_list))]
+    hi Comment      gui=NONE | hi TabLine      gui=NONE | hi TabLineFill  gui=NONE | hi Boolean      gui=NONE
     hi TabLineSel   gui=NONE | hi StatusLine   gui=NONE | hi StatusLineNC gui=NONE | hi Folded       gui=NONE
+    hi Character    gui=NONE | hi Exception    gui=NONE | hi Symbol       gui=NONE | hi Type         gui=NONE
 else
     colorscheme evening
 endif
 
 function! AutoColorScheme(color_timer)
     if strftime("%M") == 0 || strftime("%M") == 30
-        exec 'colorscheme '. color_list[localtime()%(len(color_list))]
-        hi Comment      gui=NONE | hi TabLine      gui=NONE | hi TabLineFill  gui=NONE
+        exec 'colorscheme '. g:color_list[localtime()%(len(g:color_list))]
+        hi Comment      gui=NONE | hi TabLine      gui=NONE | hi TabLineFill  gui=NONE | hi Boolean      gui=NONE
         hi TabLineSel   gui=NONE | hi StatusLine   gui=NONE | hi StatusLineNC gui=NONE | hi Folded       gui=NONE
+        hi Character    gui=NONE | hi Exception    gui=NONE | hi Symbol       gui=NONE | hi Type         gui=NONE
     endif
 endfunction
 "                               s   m
-let color_timer = timer_start(1000*60, 'AutoColorScheme',
-            \ {'repeat': -1})
+let color_timer = timer_start(1000*60, 'AutoColorScheme', {'repeat': -1})
