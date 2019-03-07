@@ -269,17 +269,6 @@ function! QfMakeConv()
 endfunction
 au QuickfixCmdPost * call QfMakeConv()
 
-
-function! AutoColorScheme(color_timer)
-    if strftime("%M") == 0
-        exec 'colorscheme '.["codeschool", "quantum", "james"][strftime("%H")%3]
-    endif
-endfunction
-"                               s   m
-let color_timer = timer_start(1000*60, 'AutoColorScheme',
-            \ {'repeat': -1})
-
-
 function! OpenFileDir()
     if g:isnvim
         call jobstart('start '.expand("%:p:h"))

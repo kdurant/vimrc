@@ -16,64 +16,14 @@ let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
 let g:isvim = 0
 let g:isnvim = 1
-call plug#begin('~/nvim/bundle')
-Plug 'kshenoy/vim-signature'
-Plug 'SirVer/ultisnips'
 
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'liuchengxu/vim-which-key'
-Plug 'mileszs/ack.vim'
-Plug 'wsdjeg/FlyGrep.vim'
-
-Plug 'Lokaltog/vim-easymotion'
-Plug 'git@github.com:kdurant/misc_mine'
-Plug 'git@github.com:kdurant/verilog_systemverilog.vim'
-Plug 'git@github.com:kdurant/verilog-testbench'
-Plug 'kdurant/AuthorInfo', {'frozen': 1}
-Plug 'kdurant/nerdcommenter', {'frozen': 1}
-Plug 'equalsraf/neovim-gui-shim'
-Plug 'iamcco/markdown-preview.vim'
-Plug 'vim-scripts/Align', {'frozen': 1}
-Plug 'amal-khailtash/vim-xdc-syntax'
-Plug 'ianva/vim-youdao-translater'
-Plug 'vim-scripts/ucf.vim'
-Plug 'vim-python/python-syntax'
-Plug 'itchyny/lightline.vim'
-
-"Plug 'qxxxb/vim-searchhi'
-
-"Plug 'airblade/vim-rooter'
-
-            "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-            "Plug 'Shougo/neco-syntax',
-            "Plug 'Shougo/neoinclude.vim'
-            "Plug 'tpope/vim-fugitive', {'frozen': 1}
-            "Plug 'vim-airline/vim-airline'      "增加100ms左右启动时间(opening buffers)
-            "Plug 'vim-airline/vim-airline-themes'
-            "Plug 'scrooloose/nerdtree'
-            "Plug 'vim-scripts/vim-do-syntax'
-            "Plug 'ludovicchabant/vim-gutentags'
-            "Plug 'skywind3000/gutentags_plus'
-            "Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
-            "Plug 'rking/ag.vim'
-            "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-            "Plug 'junegunn/fzf.vim'
-            "Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-            "Plug 'eugen0329/vim-esearch'
-call plug#end()
+source ~/PluginConfig/user_plugin.vim
 
 if g:isvim
     map     <F7>        :so $VIMSESSION<cr>
 else
     autocmd VimLeave * exec  "mksession! ~/PluginConfig/nvim_session.vim"
     map     <F7>        :so ~/PluginConfig/nvim_session.vim<cr>
-endif
-
-if &rtp =~ 'mine'
-    exec 'colorscheme '.["codeschool", "quantum", "james"][strftime("%H")%3]
-else
-    colorscheme evening
 endif
 
 set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
