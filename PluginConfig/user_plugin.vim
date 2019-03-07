@@ -35,6 +35,9 @@ Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'skielbasa/vim-material-monokai'
 Plug 'yuttie/inkstained-vim'
 Plug 'cormacrelf/vim-colors-github'
+Plug 'emhaye/ceudah.vim'
+Plug 'ajmwagar/vim-deus'
+Plug 'trevordmiller/nova-vim'
 
             "Plug 'tpope/vim-fugitive', {'frozen': 1}
             "Plug 'vim-airline/vim-airline'      "增加100ms左右启动时间(opening buffers)
@@ -47,8 +50,10 @@ Plug 'cormacrelf/vim-colors-github'
             "Plug 'eugen0329/vim-esearch'
 call plug#end()
 
+let color_list = ["codeschool", "github", "jellybeans", "one", "snazzy", "quantum",
+                \ "material-monokai", "james", "inkstained", "ceudah", "deus", "nova"]
 if &rtp =~ 'mine'
-    exec 'colorscheme '.["codeschool", "github", "jellybeans", "one", "snazzy", "quantum", "material-monokai", "james", "inkstained"][strftime("%S")%9]
+    exec 'colorscheme '. color_list[strftime("%S")%(len(color_list))]
     hi Comment      gui=NONE | hi TabLine      gui=NONE | hi TabLineFill  gui=NONE
     hi TabLineSel   gui=NONE | hi StatusLine   gui=NONE | hi StatusLineNC gui=NONE | hi Folded       gui=NONE
 else
@@ -56,8 +61,8 @@ else
 endif
 
 function! AutoColorScheme(color_timer)
-    if strftime("%M") == 0
-        exec 'colorscheme '.["codeschool", "github", "jellybeans", "one", "snazzy", "quantum", "material-monokai", "james", "inkstained"][localtime()%9]
+    if strftime("%M") == 0 || strftime("%M") == 30
+        exec 'colorscheme '. color_list[localtime()%(len(color_list))]
         hi Comment      gui=NONE | hi TabLine      gui=NONE | hi TabLineFill  gui=NONE
         hi TabLineSel   gui=NONE | hi StatusLine   gui=NONE | hi StatusLineNC gui=NONE | hi Folded       gui=NONE
     endif
