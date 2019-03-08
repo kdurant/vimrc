@@ -298,7 +298,7 @@ if &rtp =~ 'coc.nvim'
     nmap <silent> <space>gi <Plug>(coc-implementation)
     nmap <silent> <space>gr <Plug>(coc-references)
 
-    call coc#add_extension('coc-json', 'coc-pyls', 'coc-snippets', 'coc-tag', 'coc-tsserver', 'coc-html', 'coc-css')
+    call coc#add_extension('coc-json', 'coc-snippets', 'coc-tag', 'coc-tsserver', 'coc-html', 'coc-css')
 endif
 
 if &rtp =~ 'lightline.vim'
