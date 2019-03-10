@@ -113,3 +113,4 @@ map!    <M-k>           <Up>
 map!    <M-h>           <left>
 map!    <M-l>           <Right>
 
+nnoremap <silent> <F5> :update<Bar>silent !start chrome.exe "file://%:p"<CR>
