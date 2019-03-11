@@ -153,15 +153,6 @@ snippet monitor
 $monitor($time,"${1:veriable} = 0${2:x}%${3:h}",$1);
 endsnippet
 
-#handle
-snippet handle  "file handle"
-integer ${1:handle};
-initial
-begin
-    $1 = $fopen("${2:file.out}");
-end
-endsnippet
-
 #fdisplay, write data to file
 snippet fdisplay "$fdisplay() function"
 $fdisplay(${1:handle},"${2:veriable} = 0${3:x}%${4:h}",$2);
@@ -274,13 +265,25 @@ snippet keep    "xilinx format"
 (* KEEP = "TRUE" *)
 endsnippet
 
-snippet file    "open file"
+snippet fopen    "open file"
 integer ${1:name};
 initial
 begin
     $1 = $fopen("${2:file}.txt");
     $fmonitor($1, "%h %t", ${3:variable}, $time);
     $fclose($1);
+end
+endsnippet
+
+snippet fwrite    "write file"
+integer ${1:name};
+initial
+begin
+    $1 = $fopen("${2:file}.txt", "w");
+    while(1)
+    begin
+    
+    end
 end
 endsnippet
 
