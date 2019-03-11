@@ -4,6 +4,8 @@ mplayer
 bundle
 ctrlp
 BookMark
+cdssetup
+pcbenv
 [sS]ession.vim
 nvim_session.vim
 _viminfo
