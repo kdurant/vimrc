@@ -26,7 +26,12 @@ else
     map     <F7>        :so ~/PluginConfig/nvim_session.vim<cr>
 endif
 
-set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
+"set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
+autocmd BufEnter *.sv  set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
+autocmd BufLeave *.sv  set tags-=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
+autocmd BufEnter *.svh  set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
+autocmd BufLeave *.svh  set tags-=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
+
 set number
 set mouse=a
 set clipboard+=unnamed
