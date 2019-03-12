@@ -293,10 +293,10 @@ endif
 if &rtp =~ 'coc.nvim'
     set updatetime=300
     set hidden
-    nmap <silent> <space>gd <Plug>(coc-definition)
-    nmap <silent> <space>gy <Plug>(coc-type-definition)
-    nmap <silent> <space>gi <Plug>(coc-implementation)
-    nmap <silent> <space>gr <Plug>(coc-references)
+    "nmap <silent> <space>gd <Plug>(coc-definition)
+    "nmap <silent> <space>gy <Plug>(coc-type-definition)
+    "nmap <silent> <space>gi <Plug>(coc-implementation)
+    "nmap <silent> <space>gr <Plug>(coc-references)
 
     call coc#add_extension('coc-json', 'coc-snippets', 'coc-tag', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-emmet')
     "autocmd CursorHold * call CocActionAsync('doHover')
@@ -339,4 +339,5 @@ endif
 
 if &rtp =~ 'git-messenger'
     nmap <space>gm <Plug>(git-messenger)
+    let g:which_key_map.g.m = '显示git信息'
 endif

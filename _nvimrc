@@ -72,21 +72,8 @@ autocmd BufRead,BufNewFile *.ucf set filetype=ucf
 autocmd FileType lua  setlocal iskeyword+=.
 
 autocmd BufNewFile .gitignore let @i = "#basic\n.vscode\n*.pdf\n*.doc\n*.docx\n*.rar\n*.txt\n*.html\n*.jpg\n*.chm\n*.log\n*.zip\n*.xml\ntmp\nGPATH\nGRTAGS\nGTAGS*" | exe "normal \"iP"
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-if g:isnvim
-    if g:is_win
-        source ~/PluginConfig/basic_map.vim
-        source ~/PluginConfig/self_fun.vim
-        source ~/PluginConfig/plugin_config.vim
-        source ~/PluginConfig/plugin_map.vim
-    else
-        source ~/.config/nvim/PluginConfig/basic_map.vim
-        source ~/.config/nvim/PluginConfig/self_fun.vim
-        source ~/.config/nvim/PluginConfig/plugin_map.vim
-        source ~/.config/nvim/PluginConfig/plugin_config.vim
-    endif
-endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 if &rtp =~ 'vim-which-key'
     nnoremap <silent> <space> :WhichKey '<Space>'<CR>
     set timeoutlen=500
@@ -116,4 +103,21 @@ if &rtp =~ 'vim-which-key'
     let g:which_key_map.d.v = 'compile source'
     let g:which_key_map.d.q = 'calc'
     let g:which_key_map.d.r = 'archive git file'
+
+    let g:which_key_map.g = { 'name' : '+git相关' }
 endif
+
+if g:isnvim
+    if g:is_win
+        source ~/PluginConfig/basic_map.vim
+        source ~/PluginConfig/self_fun.vim
+        source ~/PluginConfig/plugin_config.vim
+        source ~/PluginConfig/plugin_map.vim
+    else
+        source ~/.config/nvim/PluginConfig/basic_map.vim
+        source ~/.config/nvim/PluginConfig/self_fun.vim
+        source ~/.config/nvim/PluginConfig/plugin_map.vim
+        source ~/.config/nvim/PluginConfig/plugin_config.vim
+    endif
+endif
+
