@@ -336,3 +336,7 @@ if &rtp =~ 'searchhi'
     nmap <silent> <C-L> <Plug>(searchhi-clear-all)
     vmap <silent> <C-L> <Plug>(searchhi-v-clear-all)
 endif
+
+if &rtp =~ 'git-messenger'
+    nmap <space>gm <Plug>(git-messenger)
+endif
