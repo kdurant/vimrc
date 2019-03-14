@@ -90,3 +90,10 @@ vsim -voptargs="+acc" -sv_lib $UVM_DPI_DIR work.top_tb
 # 命令行模式仿真
 # vsim -c -do demo.tcl
 endsnippet
+
+snippet study "单文件命令行编译模板" !
+quit -sim
+vlog -sv -incr ${1:file_name}.sv
+vsim -t ps -voptargs="+acc"  work.${2:module}
+run 20us
+endsnippet
