@@ -254,9 +254,12 @@ function! GitCmd(git_cmd)
     endif
 endfunction
 command! -nargs=1 Dit call GitCmd(<f-args>)
-nmap    <space>dr      :Dit archive -o master.zip HEAD
-nmap    <space>vc      :echo iconv(system('git checkout ' . expand("%")), "utf-8", &enc)<cr>
+nmap    <space>gr      :Dit archive -o master.zip HEAD
+let g:which_key_map.g.r = '打包当前commit'
+nmap    <space>gc      :echo iconv(system('git checkout ' . expand("%")), "utf-8", &enc)<cr>
+let g:which_key_map.g.c = '重置当前文件'
 noremap     <space>;       :Dit<space>
+let g:which_key_map.g.g = '打开GUI视图'
 
 
 function! QfMakeConv()

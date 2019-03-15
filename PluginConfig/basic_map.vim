@@ -83,9 +83,9 @@ map     K       \cr
 "git settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if g:isvim
-    map     <space>va      :call job_start('gitk --all')<cr>
+    map     <space>gg      :call job_start('gitk --all')<cr>
 else
-    map     <space>va      :call jobstart('gitk --all')<cr>
+    map     <space>gg      :call jobstart('gitk --all')<cr>
 endif
 
 "tab settings

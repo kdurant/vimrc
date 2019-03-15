@@ -76,7 +76,7 @@ autocmd BufNewFile .gitignore let @i = "#basic\n.vscode\n*.pdf\n*.doc\n*.docx\n*
 """""""""""""""""""""""""""""""""""""""""""""""""""
 if &rtp =~ 'vim-which-key'
     nnoremap <silent> <space> :WhichKey '<Space>'<CR>
-    set timeoutlen=500
+    set timeoutlen=300
     call which_key#register('<Space>', "g:which_key_map")
     autocmd! FileType which_key
     autocmd  FileType which_key set laststatus=0 noshowmode noruler
