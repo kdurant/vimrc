@@ -80,14 +80,6 @@ map     Y       y$
 map     K       \cr
 "map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"git settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if g:isvim
-    map     <space>gg      :call job_start('gitk --all')<cr>
-else
-    map     <space>gg      :call jobstart('gitk --all')<cr>
-endif
 
 "tab settings
 map     <space>wt        :vs<cr>:terminal<cr>:set filetype=modelsim<cr>
@@ -116,3 +108,7 @@ map!    <M-h>           <left>
 map!    <M-l>           <Right>
 
 nnoremap <silent> <F5> :update<Bar>silent !start chrome.exe "file://%:p"<CR>
+
+nmap <space>fo  :call system('explorer .')<cr>
+let g:which_key_map.f.o = '打开当前文件目录'
+

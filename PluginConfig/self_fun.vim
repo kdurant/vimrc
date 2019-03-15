@@ -255,6 +255,8 @@ function! GitCmd(git_cmd)
 endfunction
 command! -nargs=1 Dit call GitCmd(<f-args>)
 noremap     <space>;       :Dit<space>
+
+nmap     <space>gg      :call system('gitk --all')<cr>
 let g:which_key_map.g.g = '打开GUI视图'
 
 nmap    <space>gr      :Dit archive -o master.zip HEAD
@@ -273,16 +275,6 @@ function! QfMakeConv()
    call setqflist(qflist)
 endfunction
 au QuickfixCmdPost * call QfMakeConv()
-
-function! OpenFileDir()
-    if g:isnvim
-        call jobstart('explorer .')
-    else
-        call job_start('explorer .')
-    endif
-endfunction
-nmap <space>fo  :call OpenFileDir()<cr>
-let g:which_key_map.f.o = '打开当前文件目录'
 
 function! BuildTabLine()
     let result = ''
