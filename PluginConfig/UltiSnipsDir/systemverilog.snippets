@@ -361,7 +361,11 @@ snippet uvm_info    "LOW < MEDIUM < HIGH < FULL < DEBUG"
 endsnippet
 
 snippet uvm_fatal    "LOW < MEDIUM < HIGH < FULL < DEBUG"
-`uvm_fatal("${1:class_name}", "${2:info}");
+\`uvm_fatal("${1:class_name}", "${2:info}");
+endsnippet
+
+snippet uvm_error    "LOW < MEDIUM < HIGH < FULL < DEBUG"
+\`uvm_error("${1:class_name}", "${2:info}");
 endsnippet
 
 snippet uvm_component_utils "注册新类"
@@ -392,23 +396,13 @@ $2
 \`endif
 endsnippet
 
-snippet build_phase     ""
-virtual function void build_phase(uvm_phase phase);
-    super.build_phase(phase);
-    \`uvm_info("dut_driver", "build phase is called", UVM_LOW);
-
-    if(!uvm_config_db #(virtual dut_bfm)::get(this, "", "bfm", bfm))
-        \`uvm_fatal("dut_driver", "virtual interface must be set for bfm");
-endfunction: build_phase
-endsnippet
-
 snippet main_phase      "drive signal to interface"
-virtual task main_phase(uvm_phase phase);
+main_phase(uvm_phase phase);
     phase.raise_objection(this);
     \`uvm_info("dut_driver", "main phase is called", UVM_LOW);
     $1
     phase.drop_objection(this);
-endtask:main_phase
+endtask
 endsnippet
 
 snippet connect_phase

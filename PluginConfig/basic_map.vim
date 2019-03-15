@@ -90,6 +90,7 @@ else
 endif
 
 "tab settings
+map     <space>wt        :vs<cr>:terminal<cr>:set filetype=modelsim<cr>
 map     <space>wo        :tabnew<cr>:setlocal buftype=nowrite<cr>
 map     <space>1         1gt
 map     <space>2         2gt

@@ -97,6 +97,8 @@ if &rtp =~ 'vim-which-key'
     let g:which_key_map.w.k = 'vertical dec'
     let g:which_key_map.w.h = 'horizontal inc'
     let g:which_key_map.w.l = 'horizontal dec'
+    let g:which_key_map.w.o = '打开标签页'
+    let g:which_key_map.w.t = '垂直打开终端'
 
     let g:which_key_map.d = { 'name' : '+混合' }
     let g:which_key_map.d.v = 'compile source'
