@@ -280,6 +280,7 @@ function! OpenFileDir()
     endif
 endfunction
 nmap <space>fo  :call OpenFileDir()<cr>
+let g:which_key_map.f.o = '打开当前文件目录'
 
 function! BuildTabLine()
     let result = ''

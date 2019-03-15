@@ -88,7 +88,7 @@ if &rtp =~ 'vim-which-key'
     let g:which_key_map.e.a = 'append comment'
     let g:which_key_map.e.g = 'select all text'
 
-    let g:which_key_map.f = { 'name' : '+file' }
+    let g:which_key_map.f = { 'name' : '+文件操作' }
     let g:which_key_map.f.a = 'search word in all filetype'
 
     let g:which_key_map.w = { 'name' : '+window' }
@@ -101,7 +101,6 @@ if &rtp =~ 'vim-which-key'
 
     let g:which_key_map.d = { 'name' : '+混合' }
     let g:which_key_map.d.v = 'compile source'
-    let g:which_key_map.d.q = 'calc'
     let g:which_key_map.d.r = 'archive git file'
 
     let g:which_key_map.g = { 'name' : '+git相关' }

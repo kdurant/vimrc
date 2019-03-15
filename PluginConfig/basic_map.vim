@@ -74,6 +74,7 @@ else
         map     <space>dc   :call jobstart('calc')<cr>
     endif
 endif
+let g:which_key_map.d.c = '计算器'
 
 map     Y       y$
 map     K       \cr
