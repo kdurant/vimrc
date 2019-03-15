@@ -114,7 +114,8 @@ if &rtp =~ 'ctrlp'
 
         set grepprg=rg\ --color=never
         let g:ackprg = 'rg --vimgrep'
-        map <space>fw      :exe "cd " . Search_root()<cr>:Ack! 
+        map <space>sw      :exe "cd " . Search_root()<cr>:Ack! 
+        let g:which_key_map.s.w = 'git file'
     endif
 
     "let g:ctrlp_custom_ignore = {
@@ -131,6 +132,10 @@ if &rtp =~ 'ctrlp'
     map <space>fa      :let g:ctrlp_user_command = 'rg %s --no-ignore --files --color=never --glob ""'<cr>:CtrlP<cr>
     map <space>fb      :CtrlPBuffer<cr>
     map <space>fm      :CtrlPMRUFiles<cr>
+    let g:which_key_map.f.g = 'git file'
+    let g:which_key_map.f.a = 'all file'
+    let g:which_key_map.f.b = 'vim buffers'
+    let g:which_key_map.f.m = 'MRU'
 
 endif
 
@@ -287,7 +292,7 @@ if &rtp =~ 'LeaderF'
 endif
 
 if &rtp =~ 'FlyGrep'
-    map <space>f/      :exe "cd " . Search_root()<cr>:FlyGrep<cr>
+    "map <space>s/      :exe "cd " . Search_root()<cr>:FlyGrep<cr>
 endif
 
 if &rtp =~ 'coc.nvim'

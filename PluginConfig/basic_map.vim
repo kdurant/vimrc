@@ -90,7 +90,7 @@ else
 endif
 
 "tab settings
-map     <space>o         :tabnew<cr>:setlocal buftype=nowrite<cr>
+map     <space>wo        :tabnew<cr>:setlocal buftype=nowrite<cr>
 map     <space>1         1gt
 map     <space>2         2gt
 map     <space>3         3gt
