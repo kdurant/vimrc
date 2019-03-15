@@ -276,9 +276,9 @@ au QuickfixCmdPost * call QfMakeConv()
 
 function! OpenFileDir()
     if g:isnvim
-        call jobstart('start "" "' . expand("%:p:h") . '"')
+        call jobstart('explorer .')
     else
-        call job_start('start "" "' . expand("%:p:h") . '"')
+        call job_start('explorer .')
     endif
 endfunction
 nmap <space>fo  :call OpenFileDir()<cr>
