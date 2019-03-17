@@ -305,6 +305,17 @@ if &rtp =~ 'coc.nvim'
 
     call coc#add_extension('coc-json', 'coc-snippets', 'coc-tag', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-emmet')
     "autocmd CursorHold * call CocActionAsync('doHover')
+    vmap <space>ef  <Plug>(coc-format-selected)
+    nmap <space>ef  <Plug>(coc-format-selected)
+
+    hi link CocFloating DiffAdd
+    augroup mygroup
+        autocmd!
+        " Setup formatexpr specified filetype(s).
+        autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+        " Update signature help on jump placeholder
+        autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    augroup end
 endif
 
 if &rtp =~ 'lightline.vim'
