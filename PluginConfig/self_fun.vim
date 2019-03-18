@@ -256,7 +256,7 @@ endfunction
 command! -nargs=1 Dit call GitCmd(<f-args>)
 noremap     <space>;       :Dit<space>
 
-nmap     <space>gg      :call system('gitk --all')<cr>
+nmap     <space>gg      :call jobstart('gitk --all')<cr>
 let g:which_key_map.g.g = '打开GUI视图'
 
 nmap    <space>gr      :Dit archive -o master.zip HEAD
