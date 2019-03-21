@@ -177,6 +177,18 @@ snippet @
 @(posedge clk);
 endsnippet
 
+snippet fwrite    "write file"
+integer ${1:name};
+initial
+begin
+    $1 = $fopen("${2:file}.txt", "w");
+    while(1)
+    begin
+        $fwrite(file, "%x", data);
+    end
+end
+endsnippet
+
 
 snippet display     "$display() function"
 \$display("${1:format}", ${2:variable});

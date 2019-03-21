@@ -275,18 +275,6 @@ begin
 end
 endsnippet
 
-snippet fwrite    "write file"
-integer ${1:name};
-initial
-begin
-    $1 = $fopen("${2:file}.txt", "w");
-    while(1)
-    begin
-    
-    end
-end
-endsnippet
-
 snippet state   "one hot encode machine state"
 localparam              IDLE    = 0;
 localparam              OVER    = 1;
