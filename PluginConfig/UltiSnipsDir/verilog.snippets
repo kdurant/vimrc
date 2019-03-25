@@ -1,11 +1,5 @@
 extends fpga
 
-snippet /*
-/*
- * ${1}
- */
-endsnippet
-
 snippet alrst  "always clk and rst_n"
 always @ (posedge ${1:clk} or negedge ${2:rst_n})
 begin
