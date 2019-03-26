@@ -73,7 +73,8 @@ endif
 
 function! AutoColorScheme(color_timer)
     if strftime("%M")%20 == 0 
-        let b:colorscheme = g:color_list[(localtime()%100)%(len(g:color_list))]
+        echomsg "strftime %20 == 0"
+        let b:colorscheme = g:color_list[(localtime()/100)%(len(g:color_list))]
         exec 'colorscheme '. b:colorscheme
         echomsg "use colorscheme " . b:colorscheme
         hi Comment      gui=NONE | hi TabLine      gui=NONE | hi TabLineFill  gui=NONE | hi Boolean      gui=NONE
