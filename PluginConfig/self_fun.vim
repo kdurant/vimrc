@@ -259,10 +259,12 @@ noremap     <space>;       :Dit<space>
 nmap     <space>gg      :call jobstart('gitk --all')<cr>
 let g:which_key_map.g.g = '打开GUI视图'
 
-nmap    <space>gr      :Dit archive -o master.zip HEAD
-let g:which_key_map.g.r = '打包当前commit'
+nmap    <space>gv      :Dit archive -o master.zip HEAD
+let g:which_key_map.g.v = '打包当前commit'
 nmap    <space>gc      :echo iconv(system('git checkout ' . expand("%")), "utf-8", &enc)<cr>
-let g:which_key_map.g.c = '重置当前文件'
+let g:which_key_map.g.c = '撤销工作区文件修改'
+nmap    <space>gr      :echo iconv(system('git reset HEAD ' . expand("%")), "utf-8", &enc)<cr>
+let g:which_key_map.g.r = '撤销暂存区文件修改'
 nmap    <space>ga      :Dit add .<cr>
 let g:which_key_map.g.a = '提交工作区'
 

@@ -10,23 +10,23 @@ snippet xilinx  "modelsim simulate templet"
 quit -sim
 .main clear
 set env(ISE_SIM)                F:/crack/ise14.7_modelsim10.5_lib
-vmap secureip                   $env(ISE_SIM)/secureip
-vmap unisims_ver                $env(ISE_SIM)/unisims_ver
-vmap unimacro_ver               $env(ISE_SIM)/unimacro_ver
-vmap xilinxcorelib_ver          $env(ISE_SIM)/xilinxcorelib_ver
+vmap secureip                   \$env(ISE_SIM)/secureip
+vmap unisims_ver                \$env(ISE_SIM)/unisims_ver
+vmap unimacro_ver               \$env(ISE_SIM)/unimacro_ver
+vmap xilinxcorelib_ver          \$env(ISE_SIM)/xilinxcorelib_ver
 
 set env(VIVADO_SIM)             F:/crack/vivado2017.4_lib
-vmap secureip                   $env(VIVADO_SIM)/secureip
-vmap simprims_ver               $env(VIVADO_SIM)/simprims_ver
-vmap unifast                    $env(VIVADO_SIM)/unifast
-vmap unifast_ver                $env(VIVADO_SIM)/unifast_ver
-vmap unimacro                   $env(VIVADO_SIM)/unimacro
-vmap unimacro_ver               $env(VIVADO_SIM)/unimacro_ver
-vmap unisim                     $env(VIVADO_SIM)/unisim
-vmap unisims_ver                $env(VIVADO_SIM)/unisims_ver
+vmap secureip                   \$env(VIVADO_SIM)/secureip
+vmap simprims_ver               \$env(VIVADO_SIM)/simprims_ver
+vmap unifast                    \$env(VIVADO_SIM)/unifast
+vmap unifast_ver                \$env(VIVADO_SIM)/unifast_ver
+vmap unimacro                   \$env(VIVADO_SIM)/unimacro
+vmap unimacro_ver               \$env(VIVADO_SIM)/unimacro_ver
+vmap unisim                     \$env(VIVADO_SIM)/unisim
+vmap unisims_ver                \$env(VIVADO_SIM)/unisims_ver
 
 #工程所需要的文件
-vlog -incr $env(ISE_SIM)/glbl.v;
+vlog -incr \$env(ISE_SIM)/glbl.v;
 vlog -incr +define+MODELSIM uart.v
 vlog -sv -incr *.sv
 
@@ -40,8 +40,6 @@ vsim -t ps -voptargs="+acc" +notimingchecks \
                                     -L unisim -L unisims_ver \
                                     glbl \
                                     work.tb
-
-#vsim -t ns -novopt -sv_lib $env(UVM_DPI) work.hello_world_example 
 
 log -r /*
 radix 16
@@ -61,7 +59,7 @@ quit -sim
 
 set env(ALTERA_LIB)         altera18.0_questasim_10.6c_lib
 set env(LIB_PATH)           F:/crack/
-vmap   $env(ALTERA_LIB)     $env(LIB_PATH)$env(ALTERA_LIB)
+vmap   \$env(ALTERA_LIB)     \$env(LIB_PATH)$env(ALTERA_LIB)
 
 #工程所需要的文件
 vlog -sv -incr ../tb/top_tb.sv

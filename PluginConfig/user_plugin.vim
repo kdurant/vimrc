@@ -1,6 +1,6 @@
 call plug#begin('~/nvim/bundle')
 Plug 'kshenoy/vim-signature'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 
 "Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
