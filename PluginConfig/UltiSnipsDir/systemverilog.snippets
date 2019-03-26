@@ -286,14 +286,14 @@ class ${1:class_name} extends ${2:uvm_component};
 endclass
 endsnippet
 
-snippet assert
-assert("condition")
+snippet assert  "assert ... else"
+assert(${1:condition})
 else
-    $error("failed");
+    $error(${2:failed});
 endsnippet
 
-snippet $ra
-${1:veriable} = $urandom_range(0, 255);
+snippet urandom	"urandom_range"
+${1:veriable} = \$urandom_range(0, 255);
 endsnippet
 
 snippet mail
