@@ -283,7 +283,8 @@ endsnippet
 snippet ram2port "altera 2 port ram "
 altsyncram	${1:ramEx01}
 (
-    .clock0            (    clock        ),
+    .clock0            (    clk          ),
+
     .wren_a            (    wren         ),
     .address_a         (    wraddress    ),
     .data_a            (    data         ),
@@ -291,6 +292,7 @@ altsyncram	${1:ramEx01}
     .rden_b            (    rden         ),
     .address_b         (    rdaddress    ),
     .q_b               (                 ),  // sub_wire0
+
     .aclr0             (    1'b0         ),
     .aclr1             (    1'b0         ),
     .addressstall_a    (    1'b0         ),
@@ -302,7 +304,7 @@ altsyncram	${1:ramEx01}
     .clocken1          (    1'b1         ),
     .clocken2          (    1'b1         ),
     .clocken3          (    1'b1         ),
-    .data_b            (    {8{1'b1}}    ),
+    .data_b            (    {8{1'b1}}    ),	// 和data 位宽相同
     .eccstatus         (                 ),
     .q_a               (                 ),
     .rden_a            (    1'b1         ),
