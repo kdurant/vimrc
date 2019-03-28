@@ -6,7 +6,7 @@ snippet fastin
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to sdram_data[0]
 endsnippet
 
-snippet xilinx  "modelsim simulate templet"
+snippet xilinx  "xilinx simulate script"
 quit -sim
 .main clear
 set env(ISE_SIM)                F:/crack/ise14.7_modelsim10.5_lib
@@ -51,7 +51,7 @@ radix 16
 run 10us
 endsnippet
 
-snippet altera  "modelsim simulate templet"
+snippet altera  "altera simulate script"
 quit -sim
 # 可以不手动建立library
 #vlib    work
@@ -75,14 +75,14 @@ run 20us
 endsnippet
 
 
-snippet uvm "modelsim simulate templet"
+snippet uvm "uvm simulate script"
 quit -sim
 set UVM_HOME               C:/questasim64_10.6c/verilog_src/uvm-1.1d
 set UVM_DPI_DIR            C:/questasim64_10.6c/uvm-1.1d/win64/uvm_dpi
 set WORK_HOME              D:/puvm
 
-vlog +incdir+\$UVM_HOME/src -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF  \$UVM_HOME/src/uvm_pkg.sv
-vlog +incdir+\$UVM_HOME/src -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF  user_file.sv
+vlog +incdir+\$UVM_HOME/src  \$UVM_HOME/src/uvm_pkg.sv
+vlog +incdir+\$UVM_HOME/src  user_file.sv
 
 vsim -voptargs="+acc" -sv_lib \$UVM_DPI_DIR work.top_tb
 # 命令行模式仿真
