@@ -357,3 +357,12 @@ if &rtp =~ 'git-messenger'
     nmap <space>gm <Plug>(git-messenger)
     let g:which_key_map.g.m = '显示git信息'
 endif
+
+if &rtp =~'vim-clang-format'
+    let g:clang_format#command = 'D:\Program\LLVM\bin\clang-format.exe'
+    let g:clang_format#style_options = {
+                \ "AccessModifierOffset" : -4,
+                \ "AllowShortIfStatementsOnASingleLine" : "true",
+                \ "AlwaysBreakTemplateDeclarations" : "true",
+                \ "Standard" : "C++11"}
+endif

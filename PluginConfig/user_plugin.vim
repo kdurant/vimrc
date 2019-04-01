@@ -24,6 +24,7 @@ Plug 'ianva/vim-youdao-translater'
 Plug 'vim-scripts/ucf.vim'
 Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
+Plug 'rhysd/vim-clang-format'
 
 "Plug 'qxxxb/vim-searchhi'
 
