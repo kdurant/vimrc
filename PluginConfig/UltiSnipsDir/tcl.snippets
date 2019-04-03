@@ -59,12 +59,12 @@ quit -sim
 
 set env(ALTERA_LIB)         altera18.0_questasim_10.6c_lib
 set env(LIB_PATH)           F:/crack/
-vmap   \$env(ALTERA_LIB)     \$env(LIB_PATH)$env(ALTERA_LIB)
+vmap   \$env(ALTERA_LIB)     \$env(LIB_PATH)\$env(ALTERA_LIB)
 
 #工程所需要的文件
 vlog -sv -incr ../tb/top_tb.sv
 
-vsim -t ps -voptargs="+acc" -L $env(ALTERA_LIB) work.top_tb
+vsim -t ps -voptargs="+acc" -L \$env(ALTERA_LIB) work.top_tb
 
 log -r /*
 radix 16
