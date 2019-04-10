@@ -217,11 +217,10 @@ endsnippet
 
 snippet nios    "nios project ignore"
 ##############nios###################
-# qsys 文件存放于sopc文件夹下，其他文件都可以从此文件生成
-# qsys 命名为kernel.qsys
-
 .qsys_edit
-kernel
+*_bsp
+flash
+
 *.bsp
 *.cmp
 *.html
