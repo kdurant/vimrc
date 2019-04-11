@@ -1,4 +1,5 @@
 {
+    "python.jediEnabled": false,
     "snippets.ultisnips.directories": [
         "C:/home/PluginConfig/UltiSnipsDir"
     ],
