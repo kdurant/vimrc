@@ -17,6 +17,7 @@ _vsvimrc
 my_info
 
 .*
+!.gitconfig
 
 GPATH
 GRTAGS
