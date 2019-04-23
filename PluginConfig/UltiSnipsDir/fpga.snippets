@@ -13,8 +13,8 @@ snippet mo      "modele without parameter"
 
 module ${1:name}
 (
-    input   wire                clk,
-    input   wire                rst,
+    input                       clk,
+    input                       rst,
     ${2:/*port*/}
 );
 
@@ -28,8 +28,8 @@ module ${1:name} #
     ${2:/*parameter*/}
 )
 (
-    input   wire                clk,
-    input   wire                rst,
+    input                       clk,
+    input                       rst,
     ${3:/*port*/}
 );
 
@@ -197,15 +197,15 @@ endsnippet
 snippet axis_master "axi stream master"
 output  reg                 m_axis_tvalid,
 output  reg                 m_axis_tlast,
-input   wire                m_axis_tready,
+input                       m_axis_tready,
 output  reg  [${1:07}:00]        m_axis_tdata,
 endsnippet
 
 snippet axis_slave "axi stream slave"
-input   wire                s_axis_tvalid,
-input   wire                s_axis_tlast,
-output  wire                s_axis_tready,
-input   wire [${1:07}:00]        s_axis_tdata,
+input                       s_axis_tvalid,
+input                       s_axis_tlast,
+output                      s_axis_tready,
+input        [${1:07}:00]        s_axis_tdata,
 endsnippet
 
 snippet pipe "pipeline data"
