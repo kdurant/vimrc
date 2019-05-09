@@ -23,6 +23,13 @@ function! CompileFile()
         set makeprg=vlog\ -work\ ~\.cache\work\ -sv\ %
         set errorformat=**\ Error:\ %s\ %f(%l):\ %m
         exe "make" | exe "cw"
+    elseif &filetype == 'rust'
+        if iconv(system("rustc " . expand('%')), "cp936", &enc) !~ 'error'
+            exe "!%<.exe"
+        else
+            echo iconv(system("rustc " . expand('%')), "cp936", &enc)
+        endif
+
     elseif &filetype == 'c' || &filetype == 'cpp' || &filetype == 'java'
         if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -o\ %<.exe\ %
         elseif &filetype == 'java' | set makeprg=javac\ %

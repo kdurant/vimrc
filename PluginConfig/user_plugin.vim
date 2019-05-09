@@ -20,11 +20,11 @@ Plug 'equalsraf/neovim-gui-shim'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'amal-khailtash/vim-xdc-syntax'
-Plug 'ianva/vim-youdao-translater'
 Plug 'vim-scripts/ucf.vim'
 Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'voldikss/vim-translate-me'
 
 "Plug 'qxxxb/vim-searchhi'
 
