@@ -373,7 +373,7 @@ if &rtp =~'vim-clang-format'
                 \ "SpaceBeforeParens" : "Never",
                 \ "AccessModifierOffset" : -4,
                 \ "AlwaysBreakTemplateDeclarations" : "true",
-                \ "SortIncludes" : "true",
+                \ "SortIncludes" : "false",
                 \ "UseTab" : "Never",
                 \ "Standard" : "C++11"}
 endif
