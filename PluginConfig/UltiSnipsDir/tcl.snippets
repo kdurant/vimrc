@@ -6,6 +6,12 @@ snippet fastin
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to sdram_data[0]
 endsnippet
 
+snippet add_file "add quartus project file"
+set_global_assignment -name VERILOG_FILE ../test/nios_test/quartus/pll.v
+set_global_assignment -name QIP_FILE ../hdl/scanner/IP/mul_p.qip
+set_global_assignment -name QSYS_FILE sopc/kernel.qsys
+endsnippet
+
 snippet xilinx  "xilinx simulate script"
 quit -sim
 .main clear
