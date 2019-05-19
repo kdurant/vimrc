@@ -377,3 +377,13 @@ if &rtp =~'vim-clang-format'
                 \ "UseTab" : "Never",
                 \ "Standard" : "C++11"}
 endif
+
+if exists('g:fvim_loaded')
+    set guifont=Monaco:h17
+    " 1st param = blink animation
+    " 2nd param = move animation
+    nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
+    nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
+    nnoremap <M-x> :call rpcnotify(1, 'ToggleFullScreen', 1)<CR>
+    call rpcnotify(1, 'SetCursorAnimation', v:true, v:true)
+endif
