@@ -303,7 +303,7 @@ if &rtp =~ 'coc.nvim'
     "nmap <silent> <space>gi <Plug>(coc-implementation)
     "nmap <silent> <space>gr <Plug>(coc-references)
 
-    call coc#add_extension('coc-json', 'coc-snippets', 'coc-tag', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-emmet', 'coc-pairs', 'coc-calc')
+    call coc#add_extension('coc-json', 'coc-snippets', 'coc-tag', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-emmet', 'coc-calc')
     "autocmd CursorHold * call CocActionAsync('doHover')
     vmap <space>ef  <Plug>(coc-format-selected)
     nmap <space>ef  <Plug>(coc-format-selected)
