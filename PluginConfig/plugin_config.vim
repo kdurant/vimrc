@@ -303,10 +303,12 @@ if &rtp =~ 'coc.nvim'
     "nmap <silent> <space>gi <Plug>(coc-implementation)
     "nmap <silent> <space>gr <Plug>(coc-references)
 
-    call coc#add_extension('coc-json', 'coc-snippets', 'coc-tag', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-emmet', 'coc-calc')
+    call coc#add_extension('coc-json', 'coc-snippets', 'coc-tag', 'coc-calc', 'coc-syntax')
     "autocmd CursorHold * call CocActionAsync('doHover')
     vmap <space>ef  <Plug>(coc-format-selected)
     nmap <space>ef  <Plug>(coc-format-selected)
+
+    "inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : \<TAB>" 
 
     hi link CocFloating DiffAdd
     augroup mygroup
