@@ -1,4 +1,9 @@
 {
+    "list.insertMappings": {
+        "<C-t>": "action:tabe",
+        "<C-w>": "command:wincmd k"
+    },
+
     "python.jediEnabled": false,
     "snippets.ultisnips.directories": [
         "C:/home/PluginConfig/UltiSnipsDir"

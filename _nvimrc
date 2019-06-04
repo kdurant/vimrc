@@ -123,3 +123,7 @@ if g:isnvim
     endif
 endif
 
+list.insertMappings": {
+  "<C-t>": "action:tabe",
+  "<C-w>": "command:wincmd k"
+}

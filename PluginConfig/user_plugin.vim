@@ -25,6 +25,7 @@ Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'voldikss/vim-translate-me'
+Plug 'Shougo/denite.nvim'
 
 "Plug 'qxxxb/vim-searchhi'
 
