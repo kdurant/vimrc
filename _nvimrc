@@ -122,8 +122,3 @@ if g:isnvim
         source ~/.config/nvim/PluginConfig/plugin_config.vim
     endif
 endif
-
-list.insertMappings": {
-  "<C-t>": "action:tabe",
-  "<C-w>": "command:wincmd k"
-}
