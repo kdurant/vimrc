@@ -11,6 +11,6 @@
     "suggest.triggerAfterInsertEnter": false,
     "suggest.snippetIndicator": " ►",
     "suggest.minTriggerInputLength": 2,
-    "suggest.lowPrioritySourceLimit": 3,
+    //"suggest.lowPrioritySourceLimit": 3,
     "suggest.noselect": false
 }
