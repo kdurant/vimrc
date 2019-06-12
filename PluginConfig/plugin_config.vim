@@ -395,5 +395,5 @@ if exists('g:fvim_loaded')
     nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
     nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
     nnoremap <M-x> :call rpcnotify(1, 'ToggleFullScreen', 1)<CR>
-    call rpcnotify(1, 'SetCursorAnimation', v:true, v:true)
+    "call rpcnotify(1, 'SetCursorAnimation', v:true, v:true)
 endif
