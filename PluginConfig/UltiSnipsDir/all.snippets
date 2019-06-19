@@ -325,11 +325,19 @@ xsim
 **/bd/**/*.xdc
 
 # sdk忽略文件
+# 将c代码放到工程外，可以忽略整个sdk文件夹
+*.sdk
+# 导出硬件步骤出来的文件，可以忽略，下次重新导出
+*.hdf
+
+
+cpu_wrapper_hw_platform_*
+RemoteSystemsTempFiles
+.metadata
+
 *.o
 .sdk
-.metadata
 webtalk
-RemoteSystemsTempFiles
 Debug
 endsnippet
 
