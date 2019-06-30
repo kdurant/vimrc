@@ -2,8 +2,7 @@ call plug#begin('~/nvim/bundle')
 Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 
-"Plug 'neoclide/coc.nvim', {'do': './install.cmd nightly'}
-Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'mileszs/ack.vim'
@@ -24,7 +23,6 @@ Plug 'vim-scripts/ucf.vim'
 Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'rhysd/vim-clang-format'
-Plug 'voldikss/vim-translate-me'
 Plug 'Shougo/denite.nvim'
 
 "Plug 'qxxxb/vim-searchhi'
