@@ -326,6 +326,8 @@ if &rtp =~ 'coc.nvim'
         " Update signature help on jump placeholder
         autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     augroup end
+
+    nmap <space>df  <Plug>(coc-translator-p)
 endif
 
 if &rtp =~ 'lightline.vim'
