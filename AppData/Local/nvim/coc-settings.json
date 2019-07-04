@@ -1,5 +1,7 @@
 {
     "list.insertMappings": {
+        "<C-v>": "action:vsplit",
+        "<C-s>": "action:split",
         "<C-t>": "action:tabe",
         "<C-w>": "command:wincmd k"
     },
@@ -8,9 +10,16 @@
     "snippets.ultisnips.directories": [
         "C:/home/PluginConfig/UltiSnipsDir"
     ],
+
+    "list.maxHeight": 15,
+
+    "codeLens.enable": true,
+
     "suggest.triggerAfterInsertEnter": false,
     "suggest.snippetIndicator": " ►",
     "suggest.minTriggerInputLength": 2,
     //"suggest.lowPrioritySourceLimit": 3,
-    "suggest.noselect": false
+    "suggest.noselect": false,
+
+    "git.enableGutters": true
 }

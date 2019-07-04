@@ -3,7 +3,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'SirVer/ultisnips'
 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'mileszs/ack.vim'
 Plug 'wsdjeg/FlyGrep.vim'
@@ -23,9 +23,6 @@ Plug 'vim-scripts/ucf.vim'
 Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'rhysd/vim-clang-format'
-Plug 'Shougo/denite.nvim'
-
-"Plug 'qxxxb/vim-searchhi'
 
 "Plug 'airblade/vim-rooter'
 

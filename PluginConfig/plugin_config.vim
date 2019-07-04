@@ -328,13 +328,26 @@ if &rtp =~ 'coc.nvim'
     augroup end
 
     nmap <space>df  <Plug>(coc-translator-p)
+    let g:which_key_map.d.f = 'translator'
+
+    nmap <space>fg      :CocList gfiles<cr>
+    nmap <space>fa      :exe "cd " . Search_root()<cr>:CocList files<cr>
+    nmap <space>fb      :CocList buffers<cr>
+    nmap <space>fm      :CocList mru<cr>
+    let g:which_key_map.f.g = 'git file'
+    let g:which_key_map.f.a = 'all file'
+    let g:which_key_map.f.b = 'vim buffers'
+    let g:which_key_map.f.m = 'MRU'
+
+
+
 endif
 
 if &rtp =~ 'lightline.vim'
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \             ['cocstatus', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status'
