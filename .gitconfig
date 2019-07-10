@@ -15,7 +15,7 @@
 [core]
         ;editor = "\"c:/vim/vim81/gvim.exe\"" 
         editor = "\"c:/Neovim/bin/nvim-qt.exe\"" 
-	autocrlf = false
+	autocrlf = true
 	quotepath = false
 	ignoreCygwinFSTricks = true
 	excludesfile = C:\\Users\\wangj\\Documents\\gitignore_global.txt
