@@ -15,6 +15,15 @@
 
     "codeLens.enable": true,
 
+    "pairs.enableCharacters": [
+        "(",
+        "[",
+        "{",
+        "<",
+        "'",
+        "\""
+    ],
+
     "suggest.triggerAfterInsertEnter": false,
     "suggest.snippetIndicator": " ►",
     "suggest.minTriggerInputLength": 2,
