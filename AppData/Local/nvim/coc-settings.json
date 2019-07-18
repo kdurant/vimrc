@@ -1,4 +1,13 @@
 {
+    "languageserver": {
+        "clangd": {
+            "command": "clangd",
+            "args": ["-index"],
+            "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["c", "cpp", "objc", "objcpp"]
+        }
+    },
+
     "list.insertMappings": {
         "<C-v>": "action:vsplit",
         "<C-s>": "action:split",
