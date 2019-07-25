@@ -310,6 +310,7 @@ if &rtp =~ 'coc.nvim'
                 \ 'coc-calc', 
                 \ 'coc-syntax', 
                 \ 'coc-lists', 
+                \ 'coc-pairs', 
                 \ 'coc-marketplace'
                 \ )
     "autocmd CursorHold * call CocActionAsync('doHover')
