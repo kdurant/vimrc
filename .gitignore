@@ -1,4 +1,6 @@
-coc
+**/coc/extensions/**
+**/coc/*.json
+
 neocomplete
 mplayer
 bundle

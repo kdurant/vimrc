@@ -23,6 +23,7 @@ Plug 'vim-scripts/ucf.vim'
 Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'dhruvasagar/vim-table-mode'
 
 "Plug 'airblade/vim-rooter'
 

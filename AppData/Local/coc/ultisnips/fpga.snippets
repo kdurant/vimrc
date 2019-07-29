@@ -1,0 +1,334 @@
+snippet co      "comment always block"
+/*-------------------------------------------------------------------------
+//description   : ${1}
+//parameter     :
+//others        :
+-------------------------------------------------------------------------*/
+endsnippet
+
+#module`!v strftime("%Y-%m-%d")`
+#module ${1:/*module*/}
+snippet mo      "modele without parameter"
+\`timescale  1 ns/1 ps
+
+module ${1:name}
+(
+    input                       clk,
+    input                       rst,
+    ${2:/*port*/}
+);
+
+endmodule
+endsnippet
+
+#module ${1:/*module*/} #
+snippet mod  "modele with parameter"
+module ${1:name} #
+(
+    ${2:/*parameter*/}
+)
+(
+    input                       clk,
+    input                       rst,
+    ${3:/*port*/}
+);
+
+endmodule
+endsnippet
+
+snippet clk     "generate clock"
+reg                     ${1:clk} = 0;
+always
+    #(1s/${2:freq}/2) $1 = ~$1;
+endsnippet
+
+snippet rst "generate reset" 
+reg                     ${1:rst} = 0;
+initial
+begin
+    #1us; $1 = 1;
+    #1us; $1 = 0;
+end
+endsnippet
+
+snippet if "if...begin...end"
+if(${1:/*condition*/})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+snippet el "else...begin...end"
+else
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+snippet elif "else if...begin...end"
+else if(${1:/*condition*/})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+snippet assign  "assign ..."
+assign                  ${1:LHS} = ${2:RHS};
+endsnippet
+
+snippet paramter  "paramter ..."
+parameter               ${1:LHS} = ${2:RHS};
+endsnippet
+
+snippet localparam  "localparam ..."
+localparam              ${1:LHS} = ${2:RHS};
+endsnippet
+
+snippet inout   "inout declaration"
+tri [7:0] ${1:nand_data} = 100'bz;
+assign (weak1, weak0) $1 = 0;
+endsnippet
+
+snippet edge "detect edge"
+reg    [1:0]            ${1:Reg}_r;
+wire                    $1_rise;
+wire                    $1_fall;
+
+assign          $1_rise = $1_r[1:0] == 2'b01;
+assign          $1_fall = $1_r[1:0] == 2'b10;
+always @ (posedge clk or negedge rst)
+begin
+    if(~rst)
+        $1_r    <= 2'b00;
+    else
+        $1_r    <= {$1_r[0], $1};
+end
+endsnippet
+
+snippet ini     "initial ... begin ... end"
+initial
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+#case
+snippet ca      "case ... endcase"
+case (${1:/*condition*/})
+${2:/*first*/}:
+begin
+    ${3:/*code*/}
+end
+${4:/*code*/}
+default:
+begin
+    ${5:/*code*/}
+end
+endcase
+endsnippet
+
+snippet ?
+${1:/*LHS*/} = ${2:/*condition*/} ? ${3:/*expr1*/} : ${4:/*expr2*/};
+endsnippet
+
+snippet be  "beging...end"
+begin
+    ${1:/*code*/}
+end
+endsnippet
+
+snippet for     "for loop"
+for(int i = 0; i < ${1:num}; i = i + 1 )
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+snippet repeat      "repeat loop"
+repeat(${1:Number})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+snippet while      "while loop"
+while(${1:condition})
+begin
+    ${2:/*code*/}
+end
+endsnippet
+
+snippet forever     "forever"
+forever
+    #CLKPRIEOD  clk = ~clk;         //only use initial block
+endsnippet
+
+snippet `t      "timescale"
+\`timescale 1 ns/1 ps
+
+endsnippet
+
+snippet `d
+\`define          DELAY   1
+
+endsnippet
+
+snippet @
+@(posedge clk);
+endsnippet
+
+snippet fwrite    "write file"
+integer ${1:name};
+initial
+begin
+    $1 = \$fopen("${2:file}.txt", "w");
+    while(1)
+    begin
+        $fwrite(file, "%x", data);
+    end
+end
+endsnippet
+
+
+snippet display     "$display() function"
+\$display("${1:format}", ${2:variable});
+endsnippet
+
+snippet axis_master "axi stream master"
+output  reg                 m_axis_tvalid,
+output  reg                 m_axis_tlast,
+input                       m_axis_tready,
+output  reg  [${1:07}:00]        m_axis_tdata,
+endsnippet
+
+snippet axis_slave "axi stream slave"
+input                       s_axis_tvalid,
+input                       s_axis_tlast,
+output                      s_axis_tready,
+input        [${1:07}:00]        s_axis_tdata,
+endsnippet
+
+snippet pipe "pipeline data"
+reg     [17:00]             ${1:data_in}_r0;
+reg     [17:00]             $1_r1;
+
+always @ (posedge clk)
+begin
+    $1_r0 <= $1;
+    $1_r1 <= $1_r0;
+end
+endsnippet
+
+snippet string "state machine string"
+// synthesis translate_off
+reg [127:0] cs_STRING;
+always @(*)
+begin
+    case(1'b1)
+        cs[IDLE]: cs_STRING = "IDLE";
+        default: cs_STRING = "XXXX";
+    endcase
+end
+// synthesis translate_on
+endsnippet
+
+snippet clogb2  "return log2(b)"
+/* 
+ * 2^x = bit_depth, return x
+ */
+function integer clogb2 (input integer size);
+    begin
+      size = size - 1;
+      for (clogb2=1; size>1; clogb2=clogb2+1)
+        size = size >> 1;
+    end
+  endfunction // clogb2
+endsnippet
+
+snippet scfifo "altera single-clock fifo"
+scfifo	${1:scfifoEx01}
+(
+    .clock           (    clk         ),
+
+    .wrreq           (                ),
+    .data            (                ),
+    .full            (                ),
+    .almost_full     (                ),
+
+    .rdreq           (                ),
+    .q               (                ),
+    .empty           (                ),
+    .almost_empty    (                ),
+
+    .usedw           (                ),
+    .aclr            (                ),
+    .eccstatus       (                ),
+    .sclr            (                )     
+);
+defparam
+    $1.add_ram_output_register = "OFF",                 // ON: 性能优先
+    $1.intended_device_family = "Cyclone IV GX",
+    $1.lpm_hint = "RAM_BLOCK_TYPE=M9K",
+    $1.lpm_numwords = 2048,                             // FIFO深度
+    $1.lpm_showahead = "OFF",
+    $1.lpm_type = "scfifo",
+    $1.lpm_width = 8,                                   // 指定FIFO的数据端口宽度
+    $1.lpm_widthu = 11,                                 // FIFO深度所需要的位宽
+    $1.overflow_checking = "ON",
+    $1.underflow_checking = "ON",
+    $1.use_eab = "ON";
+endsnippet
+
+
+snippet ram2port "altera 2 port ram "
+altsyncram	${1:ramEx01}
+(
+    .clock0            (    clk          ),
+
+    .wren_a            (    wren         ),
+    .address_a         (    wraddress    ),
+    .data_a            (    data         ),
+
+    .rden_b            (    rden         ),
+    .address_b         (    rdaddress    ),
+    .q_b               (                 ),  // sub_wire0
+
+    .aclr0             (    1'b0         ),
+    .aclr1             (    1'b0         ),
+    .addressstall_a    (    1'b0         ),
+    .addressstall_b    (    1'b0         ),
+    .byteena_a         (    1'b1         ),
+    .byteena_b         (    1'b1         ),
+    .clock1            (    1'b1         ),
+    .clocken0          (    1'b1         ),
+    .clocken1          (    1'b1         ),
+    .clocken2          (    1'b1         ),
+    .clocken3          (    1'b1         ),
+    .data_b            (    {8{1'b1}}    ),	// 和data 位宽相同
+    .eccstatus         (                 ),
+    .q_a               (                 ),
+    .rden_a            (    1'b1         ),
+    .wren_b            (    1'b0         )
+);
+defparam
+    $1.address_aclr_b = "NONE",
+    $1.address_reg_b = "CLOCK0",
+    $1.clock_enable_input_a = "BYPASS",
+    $1.clock_enable_input_b = "BYPASS",
+    $1.clock_enable_output_b = "BYPASS",
+    $1.intended_device_family = "Cyclone IV GX",
+    $1.lpm_type = "altsyncram",
+    $1.numwords_a = 1024,                             // RAM 深度
+    $1.numwords_b = 1024,
+    $1.operation_mode = "DUAL_PORT",
+    $1.outdata_aclr_b = "NONE",
+    $1.outdata_reg_b = "CLOCK0",
+    $1.power_up_uninitialized = "FALSE",
+    $1.rdcontrol_reg_b = "CLOCK0",
+    $1.read_during_write_mode_mixed_ports = "DONT_CARE",
+    $1.widthad_a = 10,
+    $1.widthad_b = 10,
+    $1.width_a = 8,                                   // 每个单位数据宽度 data_b与此相同
+    $1.width_b = 8,
+    $1.width_byteena_a = 1;
+endsnippet

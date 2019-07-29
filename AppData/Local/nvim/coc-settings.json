@@ -16,6 +16,7 @@
         "<C-t>": "action:tabe",
         "<C-w>": "command:wincmd k"
     },
+    "list.source.mru.defaultArgs": ["-A"],
 
     "python.jediEnabled": false,
     "snippets.ultisnips.directories": [
