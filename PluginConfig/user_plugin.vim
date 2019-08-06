@@ -54,10 +54,12 @@ Plug 'NLKNguyen/papercolor-theme'
             "Plug 'eugen0329/vim-esearch'
 call plug#end()
 
-let g:color_list = ["codeschool", "github", "jellybeans", "one", "snazzy", "quantum", "ayu", "apprentice",
+let g:color_list = ["codeschool", "github", "jellybeans", "one", 
+                \ "quantum", "ayu", "apprentice",
                 \ "material-monokai", "james", "inkstained", "ceudah", "deus", "nova",
                 \ "gruvbox", "PaperColor"
                 \]
+                "\ "snazzy", 
 if &rtp =~ 'mine'
     let s:colorscheme = g:color_list[strftime("%S")%(len(g:color_list))]
     exec 'colorscheme '. s:colorscheme

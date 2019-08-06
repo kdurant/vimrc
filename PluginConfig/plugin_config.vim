@@ -385,6 +385,7 @@ if &rtp =~ 'git-messenger'
 endif
 
 if &rtp =~'vim-clang-format'
+    let g:clang_format#auto_format = 1
     let g:clang_format#command = 'D:\Program\LLVM\bin\clang-format.exe'
     let g:clang_format#style_options = {
                 \ "AllowShortBlocksOnASingleLine" : "false",

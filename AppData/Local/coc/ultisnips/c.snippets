@@ -246,18 +246,6 @@ snippet setbuf
 setbuf(${1:stdout},${2:NULL});  //display infomation when use eclipse debug
 endsnippet
 
-snippet memset  "memset(void *block, int c, size_t size)"
-memset(${1:buffer}, ${2:0x00}, sizeof(${3:type})/sizeof(${4:int}));
-endsnippet
-
-snippet memcpy  "copy src to dest"
-memcpy(${1:/*dest*/}, ${2:/*src*/}, ${3:size});
-endsnippet
-
-snippet memmove "copy src to dest"
-memmove(${1:/*dest*/}, ${2:/*src*/}, ${3:size});
-endsnippet
-
 snippet pack
 #pragma pack(push,1)
 $1
