@@ -420,3 +420,12 @@ endif
 if &rtp =~ 'rainbow'
     let g:rainbow_active = 1
 endif
+
+if &rtp =~ 'ack'
+    if executable('rg')
+        set grepprg=rg\ --color=never
+        let g:ackprg = 'rg --vimgrep'
+        map <space>sw      :exe "cd " . Search_root()<cr>:Ack! 
+        let g:which_key_map.s.w = 'git file'
+    endif
+endif
