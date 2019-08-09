@@ -388,9 +388,12 @@ if &rtp =~'vim-clang-format'
     let g:clang_format#auto_format = 1
     let g:clang_format#command = 'D:\Program\LLVM\bin\clang-format.exe'
     let g:clang_format#style_options = {
+                \ "AlignConsecutiveAssignments" : "true",
+                \ "AlignConsecutiveDeclarations" : "true",
+                \ "AlignTrailingComments " : " true",
                 \ "AllowShortBlocksOnASingleLine" : "false",
                 \ "AllowShortCaseLabelsOnASingleLine" : "false",
-                \ "AllowShortFunctionsOnASingleLine" : "None",
+                \ "AllowShortFunctionsOnASingleLine " : "false",
                 \ "AllowShortIfStatementsOnASingleLine" : "false",
                 \ "AllowShortLoopsOnASingleLine" : "false",
                 \ "ColumnLimit" : 150,
