@@ -24,6 +24,7 @@ Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'luochen1990/rainbow'
 
 "Plug 'airblade/vim-rooter'
 

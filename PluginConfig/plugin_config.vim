@@ -390,14 +390,13 @@ if &rtp =~'vim-clang-format'
     let g:clang_format#style_options = {
                 \ "AlignConsecutiveAssignments" : "true",
                 \ "AlignConsecutiveDeclarations" : "true",
-                \ "AlignTrailingComments " : " true",
+                "\ "AlignTrailingComments " : " true",
                 \ "AllowShortBlocksOnASingleLine" : "false",
                 \ "AllowShortCaseLabelsOnASingleLine" : "false",
-                \ "AllowShortFunctionsOnASingleLine " : "false",
+                \ "AllowShortFunctionsOnASingleLine" : "None",
                 \ "AllowShortIfStatementsOnASingleLine" : "false",
                 \ "AllowShortLoopsOnASingleLine" : "false",
                 \ "ColumnLimit" : 150,
-                \ "AlignTrailingComments" : "true",
                 \ "MaxEmptyLinesToKeep" : 1,
                 \ "BreakBeforeBraces" : "Allman",
                 \ "SpaceBeforeParens" : "Never",
@@ -416,4 +415,8 @@ if exists('g:fvim_loaded')
     nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
     nnoremap <M-x> :call rpcnotify(1, 'ToggleFullScreen', 1)<CR>
     "call rpcnotify(1, 'SetCursorAnimation', v:true, v:true)
+endif
+
+if &rtp =~ 'rainbow'
+    let g:rainbow_active = 1
 endif
