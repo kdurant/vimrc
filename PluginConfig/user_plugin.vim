@@ -63,7 +63,6 @@ let g:color_list = ["codeschool", "github", "jellybeans", "one",
 if &rtp =~ 'mine'
     let s:colorscheme = g:color_list[strftime("%S")%(len(g:color_list))]
     exec 'colorscheme '. s:colorscheme
-    echomsg "use colorscheme " . s:colorscheme
     hi Comment      gui=NONE | hi TabLine      gui=NONE | hi TabLineFill  gui=NONE | hi Boolean      gui=NONE
     hi TabLineSel   gui=NONE | hi StatusLine   gui=NONE | hi StatusLineNC gui=NONE | hi Folded       gui=NONE
     hi Character    gui=NONE | hi Exception    gui=NONE | hi Symbol       gui=NONE | hi Type         gui=NONE
@@ -73,10 +72,8 @@ endif
 
 function! AutoColorScheme(color_timer)
     if strftime("%M")%20 == 0 
-        echomsg "strftime %20 == 0"
         let b:colorscheme = g:color_list[(localtime()/100)%(len(g:color_list))]
         exec 'colorscheme '. b:colorscheme
-        echomsg "use colorscheme " . b:colorscheme
         hi Comment      gui=NONE | hi TabLine      gui=NONE | hi TabLineFill  gui=NONE | hi Boolean      gui=NONE
         hi TabLineSel   gui=NONE | hi StatusLine   gui=NONE | hi StatusLineNC gui=NONE | hi Folded       gui=NONE
         hi Character    gui=NONE | hi Exception    gui=NONE | hi Symbol       gui=NONE | hi Type         gui=NONE
