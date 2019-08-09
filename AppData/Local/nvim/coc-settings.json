@@ -1,4 +1,5 @@
 {
+    "git.enableGutters": false,
     "languageserver": {
         "clangd": {
             "command": "clangd",
@@ -18,7 +19,6 @@
     },
     "list.source.mru.defaultArgs": ["-A"],
 
-    "python.jediEnabled": false,
     "snippets.ultisnips.directories": [
         "C:/home/PluginConfig/UltiSnipsDir"
     ],
