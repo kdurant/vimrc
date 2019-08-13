@@ -31,7 +31,13 @@ function! CompileFile()
         endif
 
     elseif &filetype == 'c' || &filetype == 'cpp' || &filetype == 'java'
-        if &filetype == 'c' | set makeprg=gcc\ -std=c99\ -o\ %<.exe\ %
+        if &filetype == 'c' 
+            if file_readable('Makefile')
+                set makeprg=make
+            else
+                set makeprg=gcc\ -std=c99\ -o\ %<.exe\ %
+            endif
+
         elseif &filetype == 'java' | set makeprg=javac\ %
         else                | set makeprg=g++\ -o\ %<.exe\ %
         endif

@@ -299,8 +299,6 @@ if &rtp =~ 'coc.nvim'
     set updatetime=300
     set hidden
     nmap <silent> <space>gd <Plug>(coc-definition)
-    nmap <silent> <c-]> <Plug>(coc-definition)
-    nmap <silent> <c-t> <c-o>
     "nmap <silent> <space>gy <Plug>(coc-type-definition)
     "nmap <silent> <space>gi <Plug>(coc-implementation)
     "nmap <silent> <space>gr <Plug>(coc-references)
