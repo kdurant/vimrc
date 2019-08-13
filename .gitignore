@@ -21,6 +21,7 @@ tmp*
 
 .*
 !.gitconfig
+!.clang-format
 
 GPATH
 GRTAGS

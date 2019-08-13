@@ -387,24 +387,24 @@ endif
 if &rtp =~'vim-clang-format'
     let g:clang_format#auto_format = 1
     let g:clang_format#command = 'D:\Program\LLVM\bin\clang-format.exe'
-    let g:clang_format#style_options = {
-                \ "AlignConsecutiveAssignments" : "true",
-                \ "AlignConsecutiveDeclarations" : "true",
-                "\ "AlignTrailingComments " : " true",
-                \ "AllowShortBlocksOnASingleLine" : "false",
-                \ "AllowShortCaseLabelsOnASingleLine" : "false",
-                \ "AllowShortFunctionsOnASingleLine" : "None",
-                \ "AllowShortIfStatementsOnASingleLine" : "false",
-                \ "AllowShortLoopsOnASingleLine" : "false",
-                \ "ColumnLimit" : 150,
-                \ "MaxEmptyLinesToKeep" : 1,
-                \ "BreakBeforeBraces" : "Allman",
-                \ "SpaceBeforeParens" : "Never",
-                \ "AccessModifierOffset" : -4,
-                \ "AlwaysBreakTemplateDeclarations" : "true",
-                \ "SortIncludes" : "false",
-                \ "UseTab" : "Never",
-                \ "Standard" : "C++11"}
+    " let g:clang_format#style_options = {
+    "             \ "AlignConsecutiveAssignments" : "true",
+    "             \ "AlignConsecutiveDeclarations" : "true",
+    "             "\ "AlignTrailingComments " : " true",
+    "             \ "AllowShortBlocksOnASingleLine" : "false",
+    "             \ "AllowShortCaseLabelsOnASingleLine" : "false",
+    "             \ "AllowShortFunctionsOnASingleLine" : "None",
+    "             \ "AllowShortIfStatementsOnASingleLine" : "false",
+    "             \ "AllowShortLoopsOnASingleLine" : "false",
+    "             \ "ColumnLimit" : 150,
+    "             \ "MaxEmptyLinesToKeep" : 1,
+    "             \ "BreakBeforeBraces" : "Allman",
+    "             \ "SpaceBeforeParens" : "Never",
+    "             \ "AccessModifierOffset" : -4,
+    "             \ "AlwaysBreakTemplateDeclarations" : "true",
+    "             \ "SortIncludes" : "false",
+    "             \ "UseTab" : "Never",
+    "             \ "Standard" : "C++11"}
 endif
 
 if exists('g:fvim_loaded')

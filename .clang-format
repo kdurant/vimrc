@@ -1,0 +1,18 @@
+AccessModifierOffset : -4
+AlwaysBreakTemplateDeclarations : true
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine : false
+BreakBeforeBraces : Allman
+ColumnLimit : 150
+IndentWidth: 4
+MaxEmptyLinesToKeep : 1
+SpaceBeforeParens : Never
+SortIncludes : false
+Standard : C++11
+UseTab : Never
+
