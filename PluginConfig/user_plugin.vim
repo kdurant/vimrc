@@ -57,10 +57,12 @@ call plug#end()
 
 let g:color_list = ["codeschool", "github", "jellybeans", "one", 
                 \ "quantum", "ayu", "apprentice",
-                \ "material-monokai", "james", "inkstained", "ceudah", "deus", "nova",
+                \ "material-monokai", "james", 
+                \ "ceudah", "deus", "nova",
                 \ "gruvbox", "PaperColor"
                 \]
                 "\ "snazzy", 
+                "\ "inkstained", 
 if &rtp =~ 'mine'
     let s:colorscheme = g:color_list[strftime("%S")%(len(g:color_list))]
     exec 'colorscheme '. s:colorscheme
