@@ -19,6 +19,7 @@
     },
     "list.source.mru.defaultArgs": ["-A"],
 
+    "suggest.labelMaxLength": 40,
     "snippets.ultisnips.directories": [
         "C:/home/PluginConfig/UltiSnipsDir"
     ],
