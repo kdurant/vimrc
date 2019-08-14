@@ -396,7 +396,7 @@ if &rtp =~'vim-clang-format'
                 \ "AllowShortFunctionsOnASingleLine" : "None",
                 \ "AllowShortIfStatementsOnASingleLine" : "false",
                 \ "AllowShortLoopsOnASingleLine" : "false",
-                \ "ColumnLimit" : 80,
+                \ "ColumnLimit" : 150,
                 \ "MaxEmptyLinesToKeep" : 1,
                 \ "BreakBeforeBraces" : "Allman",
                 \ "SpaceBeforeParens" : "Never",
