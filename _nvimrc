@@ -124,3 +124,16 @@ if g:isnvim
         source ~/.config/nvim/PluginConfig/plugin_config.vim
     endif
 endif
+
+function Test1111()
+    let s:function_txt = ''
+    let s:para = []
+    let s:start_line = line('.')
+    let s:line = line('.')
+    while matchstr(getline(s:line), '{') || matchstr(getline(s:line), '{') == '' || s:line - s:start_line > 10
+        let s:function_txt .= getline(s:line)
+        let s:line += 1
+    endw
+    echo s:function_txt
+        
+endfunction

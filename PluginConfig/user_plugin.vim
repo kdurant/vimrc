@@ -1,5 +1,5 @@
 call plug#begin('~/nvim/bundle')
-Plug 'kshenoy/vim-signature'
+"Plug 'kshenoy/vim-signature'
 "Plug 'SirVer/ultisnips'
 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
