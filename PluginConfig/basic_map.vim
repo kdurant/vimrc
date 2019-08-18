@@ -43,6 +43,8 @@ autocmd FileType qf noremap <buffer> <esc> :close<CR>
 "others key map settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map     <F2>        @@
+imap    <M-;>       <Esc>A;<Esc>
+nmap    <M-;>       <Esc>A;<Esc>
 
 map!    <C-v>       <C-r>+
 map!    <c-h>       <S-Left>

@@ -1,0 +1,90 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+
+snippet make "makefile templet"
+
+CC = gcc
+
+CFLGAS += -std=c99
+CFLAGS += -D TEST
+CFLAGS += -g
+
+OBJ_PATH = .
+BIN_PATH = .
+SRC_PATH = .
+
+IDIR = ./head
+INC += -I$(IDIR)
+
+TARGET = $(BIN_PATH)/main 
+# ifeq ($(OS),Windows_NT)
+# 	TARGET_NAME := $(addsuffix .exe,$(TARGET_NAME))
+# endif
+
+C_SRCS += ./main.c
+C_SRCS += ./head/list.c
+OBJ := $(patsubst %.c,%.o,$(filter %.c,$(C_SRCS)))
+
+
+$(TARGET) : $(OBJ_PATH)/$(OBJ)
+	$(CC) $(INC) $(CFLAGS)  $(OBJ)  -o $(TARGET)
+	# @find . -name "*.o"  | xargs rm -f
+	# @-rm *.exe
+	./$(TARGET)
+
+$(OBJ): %.o : %.c
+	$(CC) $(INC) $(CFLAGS) -c $< -o $@
+
+.PHONY : clean
+clean:
+	@-rm *.exe
+	@-rm *.o
+endsnippet
+
+
+snippet make1 "another template" b
+CC = gcc
+TARGET = build/test
+INC_DIRS = -Isrc -I$(UNITY_HOME)
+SYMBOLS = -DTEST
+
+UNITY_HOME = /home/agu/gitpool/Unity/src
+
+SRC_FILES = $(UNITY_HOME)/unity.c src/ProductionCode.c test/TestProductionCode.c test/TestProductionCode_Runner.c
+
+CLEANUP = rm -fr build/
+
+all: clean default
+
+default:
+	mkdir -p build
+	$(CC) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES) -o $(TARGET)
+	./$(TARGET)
+
+clean:
+	$(CLEANUP)
+endsnippet
