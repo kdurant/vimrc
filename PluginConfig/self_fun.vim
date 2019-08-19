@@ -194,28 +194,6 @@ function! System(cmd)
     endif
 endfunction
 
-function! GenerateCtags()
-    exe "cd " . Search_root()
-    if &filetype == 'c' || &filetype == 'cpp'
-        if g:isvim
-            call job_start('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
-        else
-            call jobstart('ctags -R --c++-types=+p --fields=+iaS --extra=+q .')
-        endif
-    elseif &filetype == "verilog"
-        call system ('ctags --language-force=verilog -R .')
-    else
-        echohl  ErrorMsg | echo "Generate tags fail!" | echohl None
-    endif
-    exe 'set tags+=' . substitute(Search_root(), " ", '\\ ', "g") .'/tags'
-endfunction
-map <silent> <F12>     :call GenerateCtags()<cr>
-map <silent> <F11>     :if &filetype == 'c' <bar> exe "!%<.exe" <bar> endif <bar><cr>
-"兼容ctags,此设置会导致查找符号的时候不出现选择界面
-"set cscopequickfix=s-,c-,d-,i-,t-,e-
-set csto=0
-set cscopetag
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vimtweak settings
