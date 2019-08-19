@@ -84,7 +84,7 @@ map     K       \cr
 
 
 "tab settings
-map     <space>wt        :vs<cr>:terminal<cr>:set filetype=modelsim<cr>
+map     <space>wt        :vs<cr>:e term://bash<cr>:set filetype=modelsim<cr>
 map     <space>wo        :tabnew ~/.cache/tmp.txt<cr>
 map     <space>1         1gt
 map     <space>2         2gt
