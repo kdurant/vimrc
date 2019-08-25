@@ -311,3 +311,20 @@ function! BuildTabLine()
     return result
 endfunction
 set tabline=%!BuildTabLine()
+
+
+function! Semicolon()
+    let s:len = strlen(getline('.'))
+    let s:cursor = col('.')
+    let s:line = getline('.')
+
+    if &filetype == 'c' && s:line[s:cursor] == ')' && s:line[s:len-1] != ';'
+        let @z = ";"
+        exe "normal $\"zp"
+    else
+        exe "normal \"zp"
+    endif
+endfunction
+inoremap ; <Esc>:call Semicolon()<cr>a
+"imap    <M-;>       <Esc>A;<Esc>
+"nmap    <M-;>       <Esc>A;<Esc>

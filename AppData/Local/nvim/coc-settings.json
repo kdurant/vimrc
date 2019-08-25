@@ -43,6 +43,7 @@
     "coc.source.buffer.priority": 1,
     "coc.source.dictionary.priority": 1,
     "suggest.languageSourcePriority": 99,
+    "tabnine.priority": 90,
 
     "suggest.triggerAfterInsertEnter": false,
     "suggest.snippetIndicator": " ►",

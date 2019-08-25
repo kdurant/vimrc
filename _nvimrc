@@ -123,3 +123,4 @@ if g:isnvim
         source ~/.config/nvim/PluginConfig/plugin_config.vim
     endif
 endif
+
