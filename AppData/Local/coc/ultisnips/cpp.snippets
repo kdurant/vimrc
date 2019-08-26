@@ -1,1 +1,17 @@
 extends c
+
+snippet class "class template" b
+class ${1:Name}
+{
+private:
+
+public:
+    $1();
+    ~$1();
+};
+endsnippet
+
+snippet templatef "function template" b
+template <typename T>
+${1:void Swap(T &a, T&b);}
+endsnippet
