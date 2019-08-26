@@ -318,9 +318,17 @@ function! Semicolon()
     let s:cursor = col('.')
     let s:line = getline('.')
 
-    if &filetype == 'c' && s:line[s:cursor] == ')' && s:line[s:len-1] != ';'
-        let @z = ";"
-        exe "normal $\"zp"
+    let @z = ";"
+    if &filetype == 'c' || &filetype == 'cpp' 
+        if s:line[s:cursor] == ')' || s:line[s:cursor] == '"' || s:line[s:cursor] == "'"
+            if s:line[s:len-1] != ';'
+                exe "normal $\"zp"
+            else
+                exe "normal \"zp"
+            endif
+        else
+            exe "normal \"zp"
+        endif
     else
         exe "normal \"zp"
     endif

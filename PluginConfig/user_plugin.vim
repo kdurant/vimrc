@@ -26,6 +26,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'luochen1990/rainbow'
+Plug 'voldikss/vim-floaterm'
 
 "Plug 'airblade/vim-rooter'
 
@@ -56,14 +57,15 @@ Plug 'NLKNguyen/papercolor-theme'
             "Plug 'eugen0329/vim-esearch'
 call plug#end()
 
-let g:color_list = ["codeschool", "github", "jellybeans", "one", 
+let g:color_list = ["codeschool", "jellybeans", "one", 
                 \ "quantum", "ayu", "apprentice",
                 \ "material-monokai", "james", 
-                \ "ceudah", "deus", "nova",
+                \ "ceudah", "deus",
                 \ "gruvbox", "PaperColor"
                 \]
-                "\ "snazzy", 
+                "\ "snazzy", "github", 
                 "\ "inkstained", 
+                "\ "nova",
 if &rtp =~ 'mine'
     let s:colorscheme = g:color_list[strftime("%S")%(len(g:color_list))]
     exec 'colorscheme '. s:colorscheme
