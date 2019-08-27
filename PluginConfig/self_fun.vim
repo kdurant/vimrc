@@ -320,7 +320,7 @@ function! Semicolon()
 
     let @z = ";"
     if &filetype == 'c' || &filetype == 'cpp' 
-        if s:line[s:cursor] == ')' || s:line[s:cursor] == '"' || s:line[s:cursor] == "'"
+        if s:line[s:cursor] == ')' || s:line[s:cursor] == '"' || s:line[s:cursor] == "'" || s:line[s:cursor] == "]"
             if s:line[s:len-1] != ';'
                 exe "normal $\"zp"
             else

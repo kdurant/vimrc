@@ -36,19 +36,20 @@
         "\""
     ],
 
-    "coc.source.around.priority": 1,
-    "coc.source.file.priority": 10,
-    "coc.source.syntax.priority": 3,
-    "coc.source.tag.priority": 3,
-    "coc.source.buffer.priority": 1,
-    "coc.source.dictionary.priority": 1,
     "suggest.languageSourcePriority": 99,
     "tabnine.priority": 90,
+    "coc.source.file.priority": 10,
+    "coc.source.around.priority": 5,
+    "coc.source.buffer.priority": 4,
+    "coc.source.dictionary.priority": 1,
+    "coc.source.syntax.priority": 1,
+    "coc.source.tag.priority": 1,
+
+    "suggest.lowPrioritySourceLimit": 5,
 
     "suggest.triggerAfterInsertEnter": false,
     "suggest.snippetIndicator": " ►",
     "suggest.minTriggerInputLength": 2,
-    //"suggest.lowPrioritySourceLimit": 3,
     "suggest.noselect": false,
 
     "suggest.completionItemKindLabels": {
