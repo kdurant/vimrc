@@ -27,7 +27,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'luochen1990/rainbow'
 Plug 'voldikss/vim-floaterm'
-Plug 'vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 "Plug 'airblade/vim-rooter'
 
