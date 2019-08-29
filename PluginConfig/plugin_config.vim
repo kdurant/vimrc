@@ -340,8 +340,8 @@ if &rtp =~ 'coc.nvim'
     let g:which_key_map.f.b = 'vim buffers'
     let g:which_key_map.f.m = 'MRU'
 
-
-
+    nmap <space>cr      :CocRestart<cr>
+    let g:which_key_map.c.r = 'restart coc'
 endif
 
 if &rtp =~ 'lightline.vim'
@@ -410,6 +410,7 @@ if exists('g:fvim_loaded')
     set guifont=Monaco:h17
     " 1st param = blink animation
     " 2nd param = move animation
+    set guifont=FiraCode\ NF:h17
     nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
     nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
     nnoremap <M-x> :call rpcnotify(1, 'ToggleFullScreen', 1)<CR>
