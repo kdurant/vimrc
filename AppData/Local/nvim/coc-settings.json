@@ -37,13 +37,13 @@
     ],
 
     "suggest.languageSourcePriority": 99,
-    "tabnine.priority": 90,
-    "coc.source.file.priority": 10,
-    "coc.source.around.priority": 5,
-    "coc.source.buffer.priority": 4,
-    "coc.source.dictionary.priority": 1,
-    "coc.source.syntax.priority": 1,
-    "coc.source.tag.priority": 1,
+    "coc.source.file.priority": 50,
+    "coc.source.around.priority": 40,
+    "coc.source.buffer.priority": 30,
+    "coc.source.syntax.priority": 10,
+    "coc.source.dictionary.priority": 8,
+    "coc.source.tag.priority": 6,
+    "tabnine.priority": 4,
 
     "suggest.lowPrioritySourceLimit": 5,
 

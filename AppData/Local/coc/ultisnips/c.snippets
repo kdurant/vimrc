@@ -155,6 +155,21 @@ $1
 #pragma pack(pop)
 endsnippet
 
+snippet cmockery "simple cmockery template" b
+#include <stdarg.h>
+#include <stddef.h>
+#include <setjmp.h>
+#include "cmockery.h"
+
+
+int main(int argc, char* argv[]) {
+    const UnitTest tests[] = {
+        unit_test($1),
+    };
+    return run_tests(tests);
+}
+endsnippet
+
 snippet decla
 /* Includes ------------------------------------------------------------------*/
 $1
