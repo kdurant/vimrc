@@ -40,10 +40,18 @@ vlog -sv -incr *.sv
 
 vsim -t ps -voptargs="+acc" +notimingchecks \
                                     -L secureip \
+                                    -L unisims_ver \
+                                    -L unimacro_ver \
+                                    -L xilinxcorelib_ver \
+
+                                    -L secureip \
                                     -L simprims_ver \
-                                    -L unifast -L unifast_ver \
-                                    -L unimacro -L unimacro_ver \
-                                    -L unisim -L unisims_ver \
+                                    -L unifast \
+				    -L unifast_ver \
+                                    -L unimacro \
+				    -L unimacro_ver \
+                                    -L unisim \
+				    -L unisims_ver \
                                     glbl \
                                     work.tb
 
