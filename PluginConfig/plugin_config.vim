@@ -415,6 +415,34 @@ if exists('g:fvim_loaded')
     nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
     nnoremap <M-x> :call rpcnotify(1, 'ToggleFullScreen', 1)<CR>
     "call rpcnotify(1, 'SetCursorAnimation', v:true, v:true)
+    "
+    call coc#config('suggest.completionItemKindLabels', {
+                \ "text": "t",
+                \ "method": ":",
+                \ "function": "f",
+                \ "constructor": "c",
+                \ "field": ".",
+                \ "variable": "v",
+                \ "class": "C",
+                \ "interface": "I",
+                \ "module": "M",
+                \ "property": "p",
+                \ "unit": "U",
+                \ "value": "l",
+                \ "enum": "E",
+                \ "keyword": "k",
+                \ "snippet": "s",
+                \ "color": "K",
+                \ "file": "F",
+                \ "reference": "r",
+                \ "folder": "d",
+                \ "enumMember": "m",
+                \ "constant": "0",
+                \ "struct": "S",
+                \ "event": "e",
+                \ "operator": "o",
+                \ "typeParameter": "T"
+                \ })
 endif
 
 if &rtp =~ 'rainbow'

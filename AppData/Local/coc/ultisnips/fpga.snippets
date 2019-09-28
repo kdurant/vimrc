@@ -163,6 +163,15 @@ forever
     #CLKPRIEOD  clk = ~clk;         //only use initial block
 endsnippet
 
+snippet ifdef "Conditional compilation" b
+\`ifdef ${1:A}
+    $2
+\`elsif ${3:B}
+\`else
+\`endif
+
+endsnippet
+
 snippet `t      "timescale"
 \`timescale 1 ns/1 ps
 
