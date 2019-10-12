@@ -11,15 +11,23 @@ public:
 };
 endsnippet
 
-snippet templatef "function template" b
+snippet templatef "function template"
 template <typename T>
 ${1:void Swap(T &a, T&b);}
 endsnippet
 
-snippet vector "vector template" b
+snippet vector "vector template"
 vector<${1:type}> ${2:name};
 endsnippet
 
-snippet iterator "contains iterator" b
+snippet iterator "contains iterator"
 ${1:array<int, 4>}::iterator ${2:p};
+endsnippet
+
+snippet lambda "lambda function template"
+[] (${1:param}) -> ${2:return_type} { ${3:code}}
+endsnippet
+
+snippet point "智能指针"
+std::${1:unique}_ptr<std::${2:type}> ${point_name} {new std::$2 {"example"} };
 endsnippet

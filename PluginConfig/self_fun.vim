@@ -319,7 +319,7 @@ function! Semicolon()
     let s:line = getline('.')
 
     let @z = ";"
-    if &filetype == 'c' || &filetype == 'cpp' 
+    if (&filetype == 'c' || &filetype == 'cpp' ) && (s:line !~# "for")
         if s:line[s:cursor] == ')' || s:line[s:cursor] == '"' || s:line[s:cursor] == "'" || s:line[s:cursor] == "]"
             if s:line[s:len-1] != ';'
                 exe "normal $\"zp"

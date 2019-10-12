@@ -462,3 +462,7 @@ if &rtp =~ 'DoxygenToolkit'
     nmap <space>ed      :Dox<cr>
     let g:which_key_map.e.d = 'c function comment'
 endif
+
+if &rtp =~ 'vim-table-mode'
+    nmap <space>dt  :TableModeToggle<cr>
+endif
