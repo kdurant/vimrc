@@ -466,3 +466,7 @@ endif
 if &rtp =~ 'vim-table-mode'
     nmap <space>dt  :TableModeToggle<cr>
 endif
+
+if &rtp =~ 'floaterm'
+    nmap <space>dg  :FloatermToggle<cr>
+endif
