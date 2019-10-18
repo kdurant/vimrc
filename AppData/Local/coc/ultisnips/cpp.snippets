@@ -71,3 +71,59 @@ void customMessageOutput(QtMsgType type, const QMessageLogContext &context, cons
 }
 // qInstallMessageHandler(customMessageOutput);
 endsnippet
+
+snippet thread_template "thread use template"
+//1. thread head file
+#pragma once
+#include <QObject>
+#include <QDebug>
+
+class ${1:Worker} : public QObject
+{
+    Q_OBJECT
+
+private:
+    int	m_cnt;
+
+public:
+    $1(QObject* parent = Q_NULLPTR);
+    ~$1();
+
+private slots:
+    void process();
+
+/*  自定义信号
+signals:
+    void error(const QString& error);
+*/
+};
+
+// 2. thread implementation
+
+#include "$1.h"
+
+$1::$1(QObject* parent /* = Q_NULLPTR*/)
+    : m_cnt(1)
+{
+}
+
+Worker::~Worker()
+{
+    qDebug() << "~Worker()";
+}
+
+void Worker::process()
+{
+    while(1) // 不一定需要一直在这循环
+    {
+        // user code, 新线程的主要工作内容
+    }
+}
+
+
+// 3. 界面的构造函数里声明, 并启动线程
+$1*  worker = new $1;
+QThread* $1thread = new QThread;
+worker->moveToThread($1thread);
+$1thread.start();
+endsnippet
