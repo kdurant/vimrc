@@ -331,13 +331,10 @@ if &rtp =~ 'coc.nvim'
     nmap <space>df  <Plug>(coc-translator-p)
     let g:which_key_map.d.f = 'translator'
 
-    nmap <space>fg      :CocList gfiles<cr>
+    "nmap <space>fg      :CocList gfiles<cr>
     nmap <space>fa      :exe "cd " . Search_root()<cr>:CocList files<cr>
-    nmap <space>fb      :CocList buffers<cr>
     nmap <space>fm      :CocList mru<cr>
-    let g:which_key_map.f.g = 'git file'
     let g:which_key_map.f.a = 'all file'
-    let g:which_key_map.f.b = 'vim buffers'
     let g:which_key_map.f.m = 'MRU'
 
     nmap <space>cr      :CocRestart<cr>
@@ -454,7 +451,7 @@ if &rtp =~ 'ack'
         set grepprg=rg\ --color=never
         let g:ackprg = 'rg --vimgrep'
         map <space>sw      :exe "cd " . Search_root()<cr>:Ack! 
-        let g:which_key_map.s.w = 'git file'
+        let g:which_key_map.s.w = 'search word'
     endif
 endif
 
@@ -470,3 +467,13 @@ endif
 if &rtp =~ 'floaterm'
     nmap <space>dg  :FloatermToggle<cr>
 endif
+
+if &rtp =~ 'vim-clap'
+    nmap <space>sw      :Clap grep<cr>
+    let g:which_key_map.s.w = 'search word'
+    nmap <space>fg      :Clap gfiles<cr>
+    let g:which_key_map.f.g = 'git file'
+    nmap <space>fb      :Clap buffers<cr>
+    let g:which_key_map.f.b = 'vim buffers'
+endif
+

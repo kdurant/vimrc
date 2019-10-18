@@ -5,7 +5,7 @@ call plug#begin('~/nvim/bundle')
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 "Plug 'ctrlpvim/ctrlp.vim'
 Plug 'liuchengxu/vim-which-key'
-Plug 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'rhysd/git-messenger.vim'
 
