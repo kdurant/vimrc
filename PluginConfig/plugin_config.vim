@@ -470,7 +470,9 @@ endif
 
 if &rtp =~ 'vim-clap'
     nmap <space>sw      :Clap grep<cr>
-    let g:which_key_map.s.w = 'search word'
+    let g:which_key_map.s.w = 'search word input'
+    nmap <space>ss      :Clap grep <cword><cr>
+    let g:which_key_map.s.s = 'search word under cursor'
     nmap <space>fg      :Clap gfiles<cr>
     let g:which_key_map.f.g = 'git file'
     nmap <space>fb      :Clap buffers<cr>
