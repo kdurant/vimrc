@@ -142,16 +142,20 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "align settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if &rtp =~ 'align'
+if &rtp =~ 'vim-easy-align'
     "align '<=#`DELAY
     nmap    <silent>    ,<      :AlignCtrl lp4P1<cr>:AlignCtrl g <=#`DELAY <cr>:AlignCtrl W<cr>:%Align <=#`DELAY <cr>
     "align '/' that in modelsim tcl scripts
     nmap    <silent>    ,/      :AlignCtrl lp4P0<cr>:AlignCtrl g /<cr>:AlignCtrl W<cr>:%Align\s\zs\/\ze<cr>
     "align '//' that in source code
     nmap    <silent>    ,#      :AlignCtrl lp4P0<cr>:AlignCtrl g \S\+.\+\zs\/\/\ze\(\s*\S\+\)\@=<cr>:AlignCtrl W<cr>:%Align\/\/<cr>
+
     "align '(' or ')' that in instance
-    nmap    <silent>    ,(      :AlignCtrl lp4P4<cr>:AlignCtrl g ^\s\+\.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align(<cr>
-    nmap    <silent>    ,)      :AlignCtrl lp4P0<cr>:AlignCtrl g ^\s\+\.\w\+.*\zs(<cr>:AlignCtrl W<cr>:%Align)<cr>
+    nmap    <space>a(      :normal ml<cr>:0,$EasyAlign /\..*\zs(\ze.*)/ {'left_margin': 4, 'right_margin':2}<cr>'l
+    nmap    <space>a)      :normal ml<cr>:0,$EasyAlign /\..*(.*\zs)\ze/ {'left_margin': 4, 'right_margin':0}<cr>'l
+    xmap <space>aa  <Plug>(EasyAlign)
+    nmap <space>aa  <Plug>(EasyAlign)
+
     "align '=' that in parameter, assign statement
     nmap    <silent>    ,=      :AlignCtrl lp4P1<cr>:AlignCtrl g [^<\|^>]\s\zs=\ze\s.*;<cr>:AlignCtrl W<cr>:%Align[^<\|^>]\s\zs=\ze\s.*;<cr>
     

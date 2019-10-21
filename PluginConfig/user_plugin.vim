@@ -2,6 +2,7 @@ call plug#begin('~/nvim/bundle')
 "Plug 'kshenoy/vim-signature'
 "Plug 'SirVer/ultisnips'
 
+Plug 'junegunn/vim-easy-align'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 "Plug 'ctrlpvim/ctrlp.vim'
 Plug 'liuchengxu/vim-which-key'
@@ -18,7 +19,6 @@ Plug 'kdurant/AuthorInfo', {'frozen': 1}
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'iamcco/markdown-preview.vim'
-Plug 'vim-scripts/Align', {'frozen': 1}
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'vim-scripts/ucf.vim'
 Plug 'vim-python/python-syntax'
