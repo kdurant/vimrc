@@ -12,15 +12,9 @@ set_global_assignment -name QIP_FILE ../hdl/scanner/IP/mul_p.qip
 set_global_assignment -name QSYS_FILE sopc/kernel.qsys
 endsnippet
 
-snippet xilinx  "xilinx simulate script"
+snippet vivado  "vivado project simulate script"
 quit -sim
 .main clear
-set env(ISE_SIM)                F:/crack/ise14.7_modelsim10.5_lib
-vmap secureip                   \$env(ISE_SIM)/secureip
-vmap unisims_ver                \$env(ISE_SIM)/unisims_ver
-vmap unimacro_ver               \$env(ISE_SIM)/unimacro_ver
-vmap xilinxcorelib_ver          \$env(ISE_SIM)/xilinxcorelib_ver
-
 set env(VIVADO_SIM)             F:/crack/vivado2017.4_lib
 vmap secureip                   \$env(VIVADO_SIM)/secureip
 vmap simprims_ver               \$env(VIVADO_SIM)/simprims_ver
@@ -32,7 +26,46 @@ vmap unisim                     \$env(VIVADO_SIM)/unisim
 vmap unisims_ver                \$env(VIVADO_SIM)/unisims_ver
 
 #工程所需要的文件
-vlog -incr \$env(ISE_SIM)/glbl.v;
+vlog -incr \$env(VIVADO_SIM)/glbl.v;
+vlog -incr +define+MODELSIM uart.v
+vlog -sv -incr *.sv
+
+#vlog +incdir+$env(UVM_SRC) -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF hello_world.sv
+
+vsim -t ps -voptargs="+acc" +notimingchecks \
+                                    -L secureip \
+                                    -L simprims_ver \
+                                    -L unifast \
+				    -L unifast_ver \
+                                    -L unimacro \
+				    -L unimacro_ver \
+                                    -L unisim \
+				    -L unisims_ver \
+                                    glbl \
+                                    work.tb
+
+log -r /*
+radix 16
+
+#view -title {wang} wave
+#具体模块需要添加的信号
+#do wave.tcl
+
+run 10us
+endsnippet
+
+snippet ise  "ise project simulate script"
+quit -sim
+.main clear
+set env(XILINX)			C:/Xilinx/14.7/ISE_DS/ISE
+set env(ISE_SIM)                F:/crack/ise14.7_questasim_10.6c_lib
+vmap secureip                   \$env(ISE_SIM)/secureip
+vmap unisims_ver                \$env(ISE_SIM)/unisims_ver
+vmap unimacro_ver               \$env(ISE_SIM)/unimacro_ver
+vmap xilinxcorelib_ver          \$env(ISE_SIM)/xilinxcorelib_ver
+vlog -incr \$env(XILINX)/verilog/src/glbl.v
+
+#工程所需要的文件
 vlog -incr +define+MODELSIM uart.v
 vlog -sv -incr *.sv
 
@@ -43,15 +76,6 @@ vsim -t ps -voptargs="+acc" +notimingchecks \
                                     -L unisims_ver \
                                     -L unimacro_ver \
                                     -L xilinxcorelib_ver \
-
-                                    -L secureip \
-                                    -L simprims_ver \
-                                    -L unifast \
-				    -L unifast_ver \
-                                    -L unimacro \
-				    -L unimacro_ver \
-                                    -L unisim \
-				    -L unisims_ver \
                                     glbl \
                                     work.tb
 

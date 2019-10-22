@@ -45,7 +45,7 @@
     "coc.source.tag.priority": 6,
     "tabnine.priority": 4,
 
-    "suggest.lowPrioritySourceLimit": 5,
+    "suggest.lowPrioritySourceLimit": 10,
 
     "suggest.triggerAfterInsertEnter": false,
     "suggest.snippetIndicator": " ►",
