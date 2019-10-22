@@ -336,9 +336,7 @@ if &rtp =~ 'coc.nvim'
     let g:which_key_map.d.f = 'translator'
 
     "nmap <space>fg      :CocList gfiles<cr>
-    nmap <space>fa      :exe "cd " . Search_root()<cr>:CocList files<cr>
     nmap <space>fm      :CocList mru<cr>
-    let g:which_key_map.f.a = 'all file'
     let g:which_key_map.f.m = 'MRU'
 
     nmap <space>cr      :CocRestart<cr>
@@ -481,5 +479,8 @@ if &rtp =~ 'vim-clap'
     let g:which_key_map.f.g = 'git file'
     nmap <space>fb      :Clap buffers<cr>
     let g:which_key_map.f.b = 'vim buffers'
+
+    nmap <space>fa      :Clap files ++finder=rg --no-ignore --hidden --files<cr>
+    let g:which_key_map.f.a = 'all files'
 endif
 
