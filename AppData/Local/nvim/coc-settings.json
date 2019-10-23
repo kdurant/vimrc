@@ -18,6 +18,7 @@
         "<C-w>": "command:wincmd k"
     },
     "list.source.mru.defaultArgs": ["-A"],
+    "list.source.files.args": ["--no-ignore", "--hidden", "--files"],
 
     "suggest.labelMaxLength": 40,
     "snippets.ultisnips.directories": [

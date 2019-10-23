@@ -151,7 +151,7 @@ if &rtp =~ 'vim-easy-align'
     nmap    <silent>    ,#      :AlignCtrl lp4P0<cr>:AlignCtrl g \S\+.\+\zs\/\/\ze\(\s*\S\+\)\@=<cr>:AlignCtrl W<cr>:%Align\/\/<cr>
 
     "align '(' or ')' that in instance
-    nmap    <space>a(      :normal ml<cr>:0,$EasyAlign /\..*\zs(\ze.*)/ {'left_margin': 4, 'right_margin':2}<cr>'l
+    nmap    <space>a(      :normal ml<cr>:0,$EasyAlign /\.\w\+\s\+\zs(\ze/ {'left_margin': 4, 'right_margin':2}<cr>'l
     nmap    <space>a)      :normal ml<cr>:0,$EasyAlign /\..*(.*\zs)\ze/ {'left_margin': 4, 'right_margin':0}<cr>'l
     xmap <space>aa  <Plug>(EasyAlign)
     nmap <space>aa  <Plug>(EasyAlign)
@@ -335,7 +335,15 @@ if &rtp =~ 'coc.nvim'
     nmap <space>df  <Plug>(coc-translator-p)
     let g:which_key_map.d.f = 'translator'
 
-    "nmap <space>fg      :CocList gfiles<cr>
+    nmap <space>fa      :exe "cd " . Search_root()<cr>:CocList files<cr>
+    let g:which_key_map.f.a = 'all files'
+    nmap <space>fb      :CocList buffers<cr>
+    let g:which_key_map.f.b = 'vim buffers'
+    nmap <space>fg      :CocList gfiles<cr>
+    let g:which_key_map.f.g = 'git file'
+    "nmap <space>sw      :exe "cd " . Search_root()<cr>:CocList grep<cr>
+    "let g:which_key_map.s.w = 'search word input'
+
     nmap <space>fm      :CocList mru<cr>
     let g:which_key_map.f.m = 'MRU'
 
@@ -473,14 +481,14 @@ endif
 if &rtp =~ 'vim-clap'
     nmap <space>sw      :Clap grep<cr>
     let g:which_key_map.s.w = 'search word input'
-    nmap <space>ss      :Clap grep <cword><cr>
+    nmap <space>ss      :Clap grep ++query=<cword><cr>
     let g:which_key_map.s.s = 'search word under cursor'
-    nmap <space>fg      :Clap gfiles<cr>
-    let g:which_key_map.f.g = 'git file'
-    nmap <space>fb      :Clap buffers<cr>
-    let g:which_key_map.f.b = 'vim buffers'
+    "nmap <space>fg      :Clap gfiles<cr>
+    "let g:which_key_map.f.g = 'git file'
+    "nmap <space>fb      :Clap buffers<cr>
+    "let g:which_key_map.f.b = 'vim buffers'
 
-    nmap <space>fa      :Clap files ++finder=rg --no-ignore --hidden --files<cr>
-    let g:which_key_map.f.a = 'all files'
+    "nmap <space>fa      :Clap files ++finder=rg --no-ignore --hidden --files<cr>
+    "let g:which_key_map.f.a = 'all files'
 endif
 
