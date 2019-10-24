@@ -24,6 +24,7 @@
     "snippets.ultisnips.directories": [
         "C:/home/PluginConfig/UltiSnipsDir"
     ],
+    "project.dbpath": "~/.cache",
 
     "list.maxHeight": 15,
 
