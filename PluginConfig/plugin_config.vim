@@ -313,6 +313,8 @@ if &rtp =~ 'coc.nvim'
                 \ 'coc-tag', 
                 \ 'coc-calc', 
                 \ 'coc-syntax', 
+                \ 'coc-translator',
+                \ 'coc-project',
                 \ 'coc-lists', 
                 \ 'coc-pairs', 
                 \ 'coc-marketplace'
