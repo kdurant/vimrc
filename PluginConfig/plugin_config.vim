@@ -103,19 +103,12 @@ if &rtp =~ 'ctrlp'
     let g:ctrlp_working_path_mode = 'ra'
     let g:ctrlp_match_window = 'bot,order:ttb,min:10,max:10'
     let g:ctrlp_use_caching = 1
-    let g:ctrlp_cache_dir = $HOME.'/PluginConfig/ctrlp'
-    "if executable('git')
-    "    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-    "    "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
-    "endif
+    let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
     if executable('rg')
-        "let g:ctrlp_user_command = 'rg %s --no-ignore --files --color=never --glob ""'
         let g:ctrlp_use_caching = 0
 
         set grepprg=rg\ --color=never
         let g:ackprg = 'rg --vimgrep'
-        map <space>sw      :exe "cd " . Search_root()<cr>:Ack! 
-        let g:which_key_map.s.w = 'git file'
     endif
 
     "let g:ctrlp_custom_ignore = {
