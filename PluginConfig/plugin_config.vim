@@ -314,7 +314,6 @@ if &rtp =~ 'coc.nvim'
                 \ 'coc-calc', 
                 \ 'coc-syntax', 
                 \ 'coc-translator',
-                \ 'coc-project',
                 \ 'coc-lists', 
                 \ 'coc-pairs', 
                 \ 'coc-marketplace'
