@@ -308,6 +308,7 @@ if &rtp =~ 'coc.nvim'
     "nmap <silent> <space>gr <Plug>(coc-references)
 
     call coc#add_extension(
+                \ 'coc-word', 
                 \ 'coc-json', 
                 \ 'coc-snippets', 
                 \ 'coc-tag', 
