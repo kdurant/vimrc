@@ -291,13 +291,13 @@ if &rtp =~ 'coc.nvim'
     "nmap <silent> <space>gr <Plug>(coc-references)
 
     call coc#add_extension(
+                \ 'coc-word', 
                 \ 'coc-json', 
                 \ 'coc-snippets', 
                 \ 'coc-tag', 
                 \ 'coc-calc', 
                 \ 'coc-syntax', 
                 \ 'coc-translator',
-                \ 'coc-project',
                 \ 'coc-lists', 
                 \ 'coc-pairs', 
                 \ 'coc-marketplace'
