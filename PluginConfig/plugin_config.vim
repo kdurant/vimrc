@@ -120,16 +120,6 @@ if &rtp =~ 'ctrlp'
     let g:ctrlp_root_markers = ['README.md']
     hi  link    CtrlPMatch      Define
     hi  link    CtrlPBufferPath PreProc
-
-    map <space>fg      :let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'<cr>:CtrlP<cr>
-    map <space>fa      :let g:ctrlp_user_command = 'rg %s --no-ignore --files --color=never --glob ""'<cr>:CtrlP<cr>
-    map <space>fb      :CtrlPBuffer<cr>
-    map <space>fm      :CtrlPMRUFiles<cr>
-    let g:which_key_map.f.g = 'git file'
-    let g:which_key_map.f.a = 'all file'
-    let g:which_key_map.f.b = 'vim buffers'
-    let g:which_key_map.f.m = 'MRU'
-
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -279,13 +269,13 @@ if &rtp =~ 'LeaderF'
     let g:Lf_WindowHeight = 0.4
     let g:Lf_WorkingDirectoryMode ='Ac'
     let g:Lf_DefaultMode = 'NameOnly'
-    let g:Lf_CommandMap = {'<C-U>': ['<C-W>']}
+    let g:Lf_CommandMap = {'<C-]>': ['<C-V>'], '<C-X>': ['<C-S>'], '<C-U>': ['<C-W>']  }
+    let g:Lf_ExternalCommand = 'rg --files --no-ignore -g !.git "%s"'
 
-    map <space>fg      :LeaderfFile<cr>
-    map <space>fb      :LeaderfBuffer<cr>
-    map <space>fm      :LeaderfMru<cr>
-    map <space>fw      :Leaderf rg<cr>
-    map <space>fa      :LeaderfRgInteractive<cr>
+    let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn','.git','.hg'],
+            \ 'file': ['*.html']
+            \}
 endif
 
 if &rtp =~ 'FlyGrep'
@@ -329,18 +319,6 @@ if &rtp =~ 'coc.nvim'
 
     nmap <space>df  <Plug>(coc-translator-p)
     let g:which_key_map.d.f = 'translator'
-
-    nmap <space>fa      :exe "cd " . Search_root()<cr>:CocList files<cr>
-    let g:which_key_map.f.a = 'all files'
-    nmap <space>fb      :CocList buffers<cr>
-    let g:which_key_map.f.b = 'vim buffers'
-    nmap <space>fg      :CocList gfiles<cr>
-    let g:which_key_map.f.g = 'git file'
-    "nmap <space>sw      :exe "cd " . Search_root()<cr>:CocList grep<cr>
-    "let g:which_key_map.s.w = 'search word input'
-
-    nmap <space>fm      :CocList mru<cr>
-    let g:which_key_map.f.m = 'MRU'
 
     nmap <space>cr      :CocRestart<cr>
     let g:which_key_map.c.r = 'restart coc'
@@ -456,7 +434,6 @@ if &rtp =~ 'ack'
         set grepprg=rg\ --color=never
         let g:ackprg = 'rg --vimgrep'
         map <space>sw      :exe "cd " . Search_root()<cr>:Ack! 
-        let g:which_key_map.s.w = 'search word'
     endif
 endif
 
@@ -474,16 +451,36 @@ if &rtp =~ 'floaterm'
 endif
 
 if &rtp =~ 'vim-clap'
-    nmap <space>sw      :Clap grep<cr>
-    let g:which_key_map.s.w = 'search word input'
-    nmap <space>ss      :Clap grep ++query=<cword><cr>
-    let g:which_key_map.s.s = 'search word under cursor'
+    "nmap <space>sw      :Clap grep<cr>
+    "nmap <space>ss      :Clap grep ++query=<cword><cr>
     "nmap <space>fg      :Clap gfiles<cr>
-    "let g:which_key_map.f.g = 'git file'
     "nmap <space>fb      :Clap buffers<cr>
-    "let g:which_key_map.f.b = 'vim buffers'
-
     "nmap <space>fa      :Clap files ++finder=rg --no-ignore --hidden --files<cr>
-    "let g:which_key_map.f.a = 'all files'
 endif
 
+""""""""""""""""""""""""""搜索插件配置""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"map <space>fa      :let g:ctrlp_user_command = 'rg %s --no-ignore --files --color=never --glob ""'<cr>:CtrlP<cr>
+"map <space>fg      :let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'<cr>:CtrlP<cr>
+"map <space>fb      :CtrlPBuffer<cr>
+"map <space>fm      :CtrlPMRUFiles<cr>
+
+map <space>fa      :LeaderfFile<cr>
+map <space>fb      :LeaderfBuffer<cr>
+map <space>fm      :LeaderfMru<cr>
+map <space>sw      :Leaderf rg -e<space>
+map <space>ss      :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<cr><cr>
+map <space>sf      :Leaderf rg<cr>
+
+"nmap <space>fa      :exe "cd " . Search_root()<cr>:CocList files<cr>
+"nmap <space>fg      :CocList gfiles<cr>
+"nmap <space>fb      :CocList buffers<cr>
+"nmap <space>sw      :exe "cd " . Search_root()<cr>:CocList grep<cr>
+"nmap <space>fm      :CocList mru<cr>
+
+let g:which_key_map.f.g = 'git file'
+let g:which_key_map.f.a = 'all file'
+let g:which_key_map.f.b = 'vim buffers'
+let g:which_key_map.f.m = 'MRU'
+let g:which_key_map.s.w = 'search word input'
+let g:which_key_map.s.s = 'search word under cursor'
+let g:which_key_map.s.f = 'search fly'

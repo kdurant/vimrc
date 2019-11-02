@@ -29,6 +29,7 @@ Plug 'luochen1990/rainbow'
 Plug 'voldikss/vim-floaterm'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'liuchengxu/vim-clap'
+Plug 'Yggdroot/LeaderF'
 
 "Plug 'airblade/vim-rooter'
 
