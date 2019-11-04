@@ -266,15 +266,21 @@ if &rtp =~ 'vim-grepper'
 endif
 
 if &rtp =~ 'LeaderF'
+    let g:Lf_UseCache=0
     let g:Lf_WindowHeight = 0.4
     let g:Lf_WorkingDirectoryMode ='Ac'
     let g:Lf_DefaultMode = 'NameOnly'
     let g:Lf_CommandMap = {'<C-]>': ['<C-V>'], '<C-X>': ['<C-S>'], '<C-U>': ['<C-W>']  }
+    "let g:Lf_ExternalCommand = 'rg "%s" --files'
     let g:Lf_ExternalCommand = 'rg --files --no-ignore -g !.git "%s"'
 
     let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg'],
             \ 'file': ['*.html']
+            \}
+    let g:Lf_MruWildIgnore = {
+            \ 'dir': [],
+            \ 'file': ['*.txt', '*.log']
             \}
 endif
 
