@@ -267,12 +267,11 @@ endif
 
 if &rtp =~ 'LeaderF'
     let g:Lf_UseCache=0
+    let g:Lf_UseMemoryCache=0
     let g:Lf_WindowHeight = 0.4
     let g:Lf_WorkingDirectoryMode ='Ac'
     let g:Lf_DefaultMode = 'NameOnly'
     let g:Lf_CommandMap = {'<C-]>': ['<C-V>'], '<C-X>': ['<C-S>'], '<C-U>': ['<C-W>']  }
-    "let g:Lf_ExternalCommand = 'rg "%s" --files'
-    let g:Lf_ExternalCommand = 'rg --files --no-ignore -g !.git "%s"'
 
     let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg'],
@@ -470,7 +469,8 @@ endif
 "map <space>fb      :CtrlPBuffer<cr>
 "map <space>fm      :CtrlPMRUFiles<cr>
 
-map <space>fa      :LeaderfFile<cr>
+map <space>fa      :let g:Lf_ExternalCommand = 'rg --files --no-ignore -g !.git "%s"'<cr>:LeaderfFile<cr>
+map <space>fg      :let g:Lf_ExternalCommand = 'rg "%s" --files'<cr>:LeaderfFile<cr>
 map <space>fb      :LeaderfBuffer<cr>
 map <space>fm      :LeaderfMru<cr>
 map <space>sw      :Leaderf rg -e<space>
@@ -483,8 +483,8 @@ map <space>sf      :Leaderf rg<cr>
 "nmap <space>sw      :exe "cd " . Search_root()<cr>:CocList grep<cr>
 "nmap <space>fm      :CocList mru<cr>
 
-let g:which_key_map.f.g = 'git file'
 let g:which_key_map.f.a = 'all file'
+let g:which_key_map.f.g = 'git file'
 let g:which_key_map.f.b = 'vim buffers'
 let g:which_key_map.f.m = 'MRU'
 let g:which_key_map.s.w = 'search word input'
