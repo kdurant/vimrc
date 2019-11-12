@@ -469,8 +469,8 @@ endif
 "map <space>fb      :CtrlPBuffer<cr>
 "map <space>fm      :CtrlPMRUFiles<cr>
 
-map <space>fa      :let g:Lf_ExternalCommand = 'rg --files --no-ignore -g !.git "%s"'<cr>:LeaderfFile<cr>
-map <space>fg      :let g:Lf_ExternalCommand = 'rg "%s" --files'<cr>:LeaderfFile<cr>
+map <space>fa      :let g:Lf_ExternalCommand = 'rg --files --no-messages --no-ignore -g !.git "%s"'<cr>:LeaderfFile<cr>
+map <space>fg      :let g:Lf_ExternalCommand = 'rg "%s" --files --no-messages'<cr>:LeaderfFile<cr>
 map <space>fb      :LeaderfBuffer<cr>
 map <space>fm      :LeaderfMru<cr>
 map <space>sw      :Leaderf rg -e<space>

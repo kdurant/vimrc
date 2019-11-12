@@ -41,4 +41,4 @@
 [merge]
 	tool = kdiff3
 [winUpdater]
-	recentlySeenVersion = 2.23.0.windows.1
+	recentlySeenVersion = 2.24.0.windows.2
