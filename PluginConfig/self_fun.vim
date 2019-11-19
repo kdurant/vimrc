@@ -14,7 +14,7 @@ map     ,re         :call Replace()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CompileFile()
     if &filetype == 'verilog'
-        set makeprg=vlog\ -work\ $HOME\.cache\work\ %
+        set makeprg=vlog\ -work\ $HOME\.cache\work\ -quiet\ -lint\ %
         set errorformat=**\ Error:\ %s\ %f(%l):\ %m
         set errorformat+=**\ Error:\ %f(%l):\ %m
         set errorformat+=**\ Error:\ %f(%l):\ %s\ %m
