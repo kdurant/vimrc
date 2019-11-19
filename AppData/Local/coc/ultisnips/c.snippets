@@ -188,3 +188,18 @@ $1
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 endsnippet
+
+snippet swapt16 "swap 16bit"
+#define BSWAP_16(x)                                        \
+    (unsigned short)((((unsigned short)(x)&0x00ff) << 8) | \
+                     (((unsigned short)(x)&0xff00) >> 8))
+endsnippet
+
+snippet swapt32 "swap 32bit"
+
+#define BSWAP_32(x)                                         \
+    (unsigned int)((((unsigned int)(x)&0xff000000) >> 24) | \
+                   (((unsigned int)(x)&0x00ff0000) >> 8) |  \
+                   (((unsigned int)(x)&0x0000ff00) << 8) |  \
+                   (((unsigned int)(x)&0x000000ff) << 24))
+endsnippet
