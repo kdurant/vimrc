@@ -272,6 +272,7 @@ if &rtp =~ 'LeaderF'
     let g:Lf_WorkingDirectoryMode ='Ac'
     let g:Lf_DefaultMode = 'NameOnly'
     let g:Lf_CommandMap = {'<C-]>': ['<C-V>'], '<C-X>': ['<C-S>'], '<C-U>': ['<C-W>']  }
+    let g:Lf_WindowPosition = 'popup'
 
     let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg'],
@@ -469,13 +470,13 @@ endif
 "map <space>fb      :CtrlPBuffer<cr>
 "map <space>fm      :CtrlPMRUFiles<cr>
 
-map <space>fa      :let g:Lf_ExternalCommand = 'rg --files --no-messages --no-ignore -g !.git "%s"'<cr>:Leaderf file --popup<cr>
-map <space>fg      :let g:Lf_ExternalCommand = 'rg "%s" --files --no-messages'<cr>:Leaderf file --popup<cr>
-map <space>fb      :Leaderf buffer --popup<cr>
-map <space>fm      :Leaderf mru --popup<cr>
-map <space>sw      :Leaderf rg --popup -e<space>
-map <space>ss      :<C-U><C-R>=printf("Leaderf rg --popup -e %s ", expand("<cword>"))<cr><cr>
-map <space>sf      :Leaderf rg --popup<cr>
+map <space>fa      :let g:Lf_ExternalCommand = 'rg --files --no-messages --no-ignore -g !.git "%s"'<cr>:Leaderf file<cr>
+map <space>fg      :let g:Lf_ExternalCommand = 'rg "%s" --files --no-messages'<cr>:Leaderf file<cr>
+map <space>fb      :Leaderf buffer<cr>
+map <space>fm      :Leaderf mru<cr>
+map <space>sw      :Leaderf rg -e<space>
+map <space>ss      :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<cr><cr>
+map <space>sf      :Leaderf rg<cr>
 
 "nmap <space>fa      :exe "cd " . Search_root()<cr>:CocList files<cr>
 "nmap <space>fg      :CocList gfiles<cr>
