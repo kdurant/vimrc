@@ -48,8 +48,8 @@ map!    <C-v>       <C-r>+
 map!    <c-h>       <S-Left>
 map!    <c-l>       <S-Right>
 
-map     <C-s>       :w!<cr>
-imap    <C-s>       <esc>:w!<cr>
+map     <C-s>       :update<cr>
+imap    <C-s>       <esc>:update<cr>
 
 " 删除
 map     ,rm         :%s/\r//g<cr>:w<cr>

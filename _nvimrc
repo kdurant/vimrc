@@ -40,7 +40,7 @@ set scrolloff=3
 set linebreak
 set noswapfile
 set nowritebackup
-set nowrap
+set wrap
 set splitbelow
 if g:is_win
     set fileformat=dos
