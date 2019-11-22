@@ -14,17 +14,12 @@ let g:python3_host_prog = exepath('python')
 
 let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
-let g:isvim = 0
 let g:isnvim = 1
 
 source ~/PluginConfig/user_plugin.vim
 
-if g:isvim
-    map     <F7>        :so $VIMSESSION<cr>
-else
-    autocmd VimLeave * exec  "mksession! ~/PluginConfig/nvim_session.vim"
-    map     <F7>        :so ~/PluginConfig/nvim_session.vim<cr>
-endif
+autocmd VimLeave * exec  "mksession! ~/PluginConfig/nvim_session.vim"
+map     <F7>        :so ~/PluginConfig/nvim_session.vim<cr>
 
 "set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
 autocmd BufEnter *.sv  set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags

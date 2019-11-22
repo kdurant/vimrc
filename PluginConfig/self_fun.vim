@@ -201,27 +201,8 @@ endfunction
 
 let g:maximize = 1
 function! Maximize()
-    if g:isvim
-        if executable("vimtweak.dll")
-            call libcallnr("vimtweak.dll", "EnableMaximize", g:maximize)
-            if g:maximize == 0
-                set lines=38 columns=85
-                exe "winpos 570 0"
-            endif
-            let g:maximize = !g:maximize
-        else
-            if g:maximize == 1
-                exec "simalt ~x"
-            else
-                set lines=38 columns=85
-                exe "winpos 570 0"
-            endif
-            let g:maximize = !g:maximize
-        endif
-    else
-        call GuiWindowMaximized(g:maximize)
-        let g:maximize = !g:maximize
-    endif
+    call GuiWindowMaximized(g:maximize)
+    let g:maximize = !g:maximize
 endfunction
 
 if g:is_win

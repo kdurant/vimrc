@@ -1,24 +1,14 @@
-if g:isvim
-    map     ,se         :tabnew $MYVIMRC<cr>
-    map     ,ma         :set fdm=manual<cr>
-    map     ,in         :set fdm=indent<cr>
-    map     ,sy         :set fdm=syntax<cr>
-    "nmap     <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
-    map     ,so         :source $HOME/_vimrc<cr>
-    map     ,se         :tabnew $HOME/_vimrc<cr>
+" 在terminal里使用<C-r>{register}
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+if g:is_win
+    map     ,so     :source $HOME/_nvimrc<cr>
+    map     ,se     :tabnew $HOME/_nvimrc<cr>
 else
-    " 在terminal里使用<C-r>{register}
-    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-    if g:is_win
-        map     ,so     :source $HOME/_nvimrc<cr>
-        map     ,se     :tabnew $HOME/_nvimrc<cr>
-    else
-        map     ,so     :source ~/.config/nvim/init.vim<cr>
-        map     ,se     :tabnew ~/.config/nvim/init.vim<cr>
-    endif
-    tnoremap <Esc>  <C-\><C-n>
-    nmap <C-6>          :e #<cr>
+    map     ,so     :source ~/.config/nvim/init.vim<cr>
+    map     ,se     :tabnew ~/.config/nvim/init.vim<cr>
 endif
+tnoremap <Esc>  <C-\><C-n>
+nmap <C-6>          :e #<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "window jump settings
@@ -68,11 +58,7 @@ if has('python3')
     "py3 from math import *  " 此语句导致启动窗口变小
     map     <space>dc   :Calc<space>
 else
-    if g:isvim
-        map     <space>dc   :call job_start('calc')<cr>
-    else
-        map     <space>dc   :call jobstart('calc')<cr>
-    endif
+    map     <space>dc   :call jobstart('calc')<cr>
 endif
 let g:which_key_map.d.c = '计算器'
 
