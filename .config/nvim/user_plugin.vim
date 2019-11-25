@@ -16,7 +16,6 @@ Plug 'kdurant/misc_mine'
 Plug 'kdurant/verilog_systemverilog.vim'
 Plug 'kdurant/verilog-testbench'
 Plug 'kdurant/DoxygenToolkit.vim'
-Plug 'kdurant/AuthorInfo', {'frozen': 1}
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'iamcco/markdown-preview.vim'
