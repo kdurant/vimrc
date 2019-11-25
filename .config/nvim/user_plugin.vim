@@ -11,10 +11,11 @@ Plug 'wsdjeg/FlyGrep.vim'
 Plug 'rhysd/git-messenger.vim'
 
 Plug 'Lokaltog/vim-easymotion'
-Plug 'git@github.com:kdurant/misc_mine'
-Plug 'git@github.com:kdurant/verilog_systemverilog.vim'
-Plug 'git@github.com:kdurant/verilog-testbench'
-Plug 'git@github.com:kdurant/DoxygenToolkit.vim'
+"Plug 'git@github.com:kdurant/misc_mine'
+Plug 'kdurant/misc_mine'
+Plug 'kdurant/verilog_systemverilog.vim'
+Plug 'kdurant/verilog-testbench'
+Plug 'kdurant/DoxygenToolkit.vim'
 Plug 'kdurant/AuthorInfo', {'frozen': 1}
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'equalsraf/neovim-gui-shim'
