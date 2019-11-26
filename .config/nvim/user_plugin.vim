@@ -4,10 +4,7 @@ call plug#begin('~/nvim/bundle')
 
 Plug 'junegunn/vim-easy-align'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'liuchengxu/vim-which-key'
-"Plug 'mileszs/ack.vim'
-Plug 'wsdjeg/FlyGrep.vim'
 Plug 'rhysd/git-messenger.vim'
 
 Plug 'Lokaltog/vim-easymotion'
@@ -31,8 +28,6 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'liuchengxu/vim-clap'
 Plug 'Yggdroot/LeaderF'
 
-"Plug 'airblade/vim-rooter'
-
 Plug 'joshdick/onedark.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'rakr/vim-one'
@@ -54,10 +49,6 @@ Plug 'NLKNguyen/papercolor-theme'
             "Plug 'vim-airline/vim-airline-themes'
             "Plug 'scrooloose/nerdtree'
             "Plug 'vim-scripts/vim-do-syntax'
-            "Plug 'rking/ag.vim'
-            "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-            "Plug 'junegunn/fzf.vim'
-            "Plug 'eugen0329/vim-esearch'
 call plug#end()
 
 let g:color_list = ["codeschool", "jellybeans", "one", 
