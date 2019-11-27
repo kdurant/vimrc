@@ -4,18 +4,15 @@ call plug#begin('~/nvim/bundle')
 
 Plug 'junegunn/vim-easy-align'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'liuchengxu/vim-which-key'
-"Plug 'mileszs/ack.vim'
-Plug 'wsdjeg/FlyGrep.vim'
 Plug 'rhysd/git-messenger.vim'
 
 Plug 'Lokaltog/vim-easymotion'
-Plug 'git@github.com:kdurant/misc_mine'
-Plug 'git@github.com:kdurant/verilog_systemverilog.vim'
-Plug 'git@github.com:kdurant/verilog-testbench'
-Plug 'git@github.com:kdurant/DoxygenToolkit.vim'
-Plug 'kdurant/AuthorInfo', {'frozen': 1}
+"Plug 'git@github.com:kdurant/misc_mine'
+Plug 'kdurant/misc_mine'
+Plug 'kdurant/verilog_systemverilog.vim'
+Plug 'kdurant/verilog-testbench'
+Plug 'kdurant/DoxygenToolkit.vim'
 Plug 'kdurant/nerdcommenter', {'frozen': 1}
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'iamcco/markdown-preview.vim'
@@ -31,8 +28,6 @@ Plug 'voldikss/vim-floaterm'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'liuchengxu/vim-clap'
 Plug 'Yggdroot/LeaderF'
-
-"Plug 'airblade/vim-rooter'
 
 Plug 'joshdick/onedark.vim'
 Plug 'nanotech/jellybeans.vim'
@@ -55,10 +50,6 @@ Plug 'NLKNguyen/papercolor-theme'
             "Plug 'vim-airline/vim-airline-themes'
             "Plug 'scrooloose/nerdtree'
             "Plug 'vim-scripts/vim-do-syntax'
-            "Plug 'rking/ag.vim'
-            "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-            "Plug 'junegunn/fzf.vim'
-            "Plug 'eugen0329/vim-esearch'
 call plug#end()
 
 let g:color_list = ["codeschool", "jellybeans", "one", 
