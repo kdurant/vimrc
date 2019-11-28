@@ -9,12 +9,17 @@
 
 "let g:python_host_prg = 'python.exe'
 "let g:python3_host_prog = 'C:/Users/wj/AppData/Local/Programs/Python/Python36/python.exe'
-let g:python3_host_skip_check=1
-let g:python3_host_prog = exepath('python')
-
 let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
 let g:isnvim = 1
+
+let g:python3_host_skip_check=1
+if g:is_win
+    let g:python3_host_prog = exepath('python')
+else
+    let g:python3_host_prog = 'usr/bin/python3'
+endif
+
 
 source ~/.config/nvim/user_plugin.vim
 
