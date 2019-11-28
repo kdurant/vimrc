@@ -286,6 +286,20 @@ if &rtp =~ 'LeaderF'
             \ 'file': ['*.txt', '*.log']
             \}
 
+    let g:Lf_PreviewInPopup = 1
+    let g:Lf_PreviewResult = {
+            \ 'File': 0,
+            \ 'Buffer': 0,
+            \ 'Mru': 0,
+            \ 'Tag': 0,
+            \ 'BufTag': 1,
+            \ 'Function': 1,
+            \ 'Line': 0,
+            \ 'Colorscheme': 0,
+            \ 'Rg': 1,
+            \ 'Gtags': 0
+            \}
+
     map <expr> <space>fs      (&filetype == 'c') ? ":Leaderf gtags --result ctags-x<cr>" : "jk"
     let g:which_key_map.f.s = 'language symbol'
 endif
