@@ -17,7 +17,7 @@ let g:python3_host_skip_check=1
 if g:is_win
     let g:python3_host_prog = exepath('python')
 else
-    let g:python3_host_prog = 'usr/bin/python3'
+    let g:python3_host_prog = exepath('python3')
 endif
 
 
