@@ -8,16 +8,16 @@ ssh_config_folder="/home/wj/.ssh"
 
 if [ ! -d "$vim_config_folder" ]; then
     echo "--------------------download config file---------------------"
-	git clone https://github.com/kdurant/vimrc $vim_config_folder
+    git clone https://github.com/kdurant/vimrc $vim_config_folder
 else
-	cd $vim_config_folder
+    cd $vim_config_folder
     echo "--------------------update config file-----------------------"
-	git pull
-	cd ..
+    git pull
+    cd ..
 fi
 
 if [ ! -d $HOME/.config/nvim ]; then
-	mkdir -p $HOME/.config/nvim
+    mkdir -p $HOME/.config/nvim
 fi
 
 echo "--------------------复制vim配置文件-----------------------"
@@ -34,17 +34,17 @@ cp $vim_config_folder/AppData/Local/nvim/coc-settings.json 	~/.config/nvim
 dos2unix ~/.config/nvim/coc-settings.json
 
 if [ ! -d $HOME/.config/coc/ultisnips ]; then
-	mkdir -p $HOME/.config/coc/ultisnips
+    mkdir -p $HOME/.config/coc/ultisnips
 fi
 cp -r $vim_config_folder/AppData/Local/coc/ultisnips $HOME/.config/coc
 
 if [ ! -d $ssh_config_folder ]; then
-	mkdir $ssh_config_folder
-	cp .ssh/id_rsa $ssh_config_folder
-	cp .ssh/id_rsa.pub $ssh_config_folder
+    mkdir $ssh_config_folder
+    cp .ssh/id_rsa $ssh_config_folder
+    cp .ssh/id_rsa.pub $ssh_config_folder
 
-	chmod 600 $ssh_config_folder/id_rsa
-	chmod 600 $ssh_config_folder/id_rsa.pub
+    chmod 600 $ssh_config_folder/id_rsa
+    chmod 600 $ssh_config_folder/id_rsa.pub
 fi
 
 git config --global user.email "wj@163.com"
