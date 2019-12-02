@@ -22,13 +22,14 @@ fi
 
 echo "--------------------复制vim配置文件-----------------------"
 cd $vim_config_folder
-cp $vim_config_folder/.config/nvim/init.vim 				~/.config/nvim
-cp $vim_config_folder/.config/nvim/basic_map.vim 			~/.config/nvim
+cp $vim_config_folder/.config/nvim/init.vim 		        ~/.config/nvim
+cp $vim_config_folder/.config/nvim/basic_map.vim 	        ~/.config/nvim
 cp $vim_config_folder/config/nvim/plugin_config.vim 		~/.config/nvim
-cp $vim_config_folder/.config/nvim/plugin_map.vim 			~/.config/nvim
-cp $vim_config_folder/.config/nvim/self_fun.vim 			~/.config/nvim
-cp $vim_config_folder/.config/nvim/user_plugin.vim 			~/.config/nvim
-cp $vim_config_folder/gtags.conf 							~/.config/gtags.conf
+cp $vim_config_folder/.config/nvim/plugin_map.vim 	        ~/.config/nvim
+cp $vim_config_folder/.config/nvim/self_fun.vim 	        ~/.config/nvim
+cp $vim_config_folder/.config/nvim/user_plugin.vim 	        ~/.config/nvim
+cp $vim_config_folder/.config/nvim/vi_config.vim  	        ~/.config/nvim
+cp $vim_config_folder/gtags.conf 			        ~/.config/gtags.conf
 cp $vim_config_folder/AppData/Local/nvim/coc-settings.json 	~/.config/nvim
 dos2unix ~/.config/nvim/coc-settings.json
 
