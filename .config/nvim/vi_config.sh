@@ -6,10 +6,8 @@ if [ ! -d "$HOME/vimrc" ]; then
     echo "--------------------download config file---------------------"
     git clone https://github.com/kdurant/vimrc $HOME/vimrc
 else
-    cd $HOME/vimrc
     echo "--------------------update config file-----------------------"
-    git pull
-    cd ..
+    GIT_DIR=$HOME/vimrc/.git git pull
 fi
 
 if [ ! -d $HOME/.config/nvim ]; then
@@ -33,17 +31,6 @@ if [ ! -d $HOME/.config/coc/ultisnips ]; then
     mkdir -p $HOME/.config/coc/ultisnips
 fi
 cp -r $HOME/vimrc/AppData/Local/coc/ultisnips $HOME/.config/coc
-
-git config --global user.email "wj@163.com"
-git config --global user.name "wj"
-git config --global alias.st "status"
-git config --global alias.br "branch"
-git config --global alias.lo "log --graph --pretty=oneline"
-git config --global alias.co "commit -m"
-
-cat $HOME/.bashrc | grep update_vim
-if [ $? -ne 0 ]
-    echo "alias update_vim='/home/wj/.config/nvim/vi_config.sh'" >> $HOME/.bashrc
 
 #git clone https://github.com/kdurant/bookmark
 
