@@ -24,7 +24,7 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet main "basic structure" b
+snippet masm "basic structure" b
 assume cs: ${1:codesg}
 
 $1 segment
@@ -48,4 +48,24 @@ endsnippet
 snippet return "program return" b
 mov ax,	4c00H
 int 21H
+endsnippet
+
+
+snippet text "define text segment" b
+.section    .text
+.globl	_start
+_start:
+    $1
+endsnippet
+
+snippet data "define data segment" b
+.section    .data
+${1:name}:
+    .${2:format} ${3:context}
+endsnippet
+
+
+snippet bss "define bss segment" b
+.section    .bss
+.${1:comm}  ${2:symbol}, ${3:len}
 endsnippet
