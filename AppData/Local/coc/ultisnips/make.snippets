@@ -88,3 +88,20 @@ default:
 clean:
 	$(CLEANUP)
 endsnippet
+
+snippet make_asm "asm make template" b
+CC = as 
+SYMBOLS += -gstabs
+TARGET = a.out
+SRC_FILES = cpuid.s
+
+all: default
+
+default:
+	@ $(CC) $(SYMBOLS) -o tmp.o $(SRC_FILES) 
+	@ ld -o $(TARGET) tmp.o
+
+.PHONY : clean
+clean:
+	rm *.o
+endsnippet
