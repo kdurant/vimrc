@@ -12,7 +12,7 @@ int main(void)
 }
 endsnippet
 
-snippet main	"main function"
+snippet main_void	"int main(void)"
 int main(void)
 {
     ${1:/*code*/}
@@ -21,6 +21,14 @@ int main(void)
 }
 endsnippet
 
+snippet main_arg	"int main(int argc, char *argv[])"
+int main(int argc, char *argv[])
+{
+    ${1:/*code*/}
+
+    return 0;
+}
+endsnippet
 
 snippet #if "#if ... #endif"
 #if ${1:DEBUG}

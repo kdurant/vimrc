@@ -69,3 +69,14 @@ snippet bss "define bss segment" b
 .section    .bss
 .${1:comm}  ${2:symbol}, ${3:len}
 endsnippet
+
+snippet fun	"att function templete" b
+.type	${1:name},  @function
+$1:
+    pushl   %ebp
+    movl    %esp,   %ebp
+    $2
+    movl    %ebp,   %esp
+    popl    %ebp
+    ret
+endsnippet
