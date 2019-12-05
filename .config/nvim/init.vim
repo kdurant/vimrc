@@ -56,7 +56,7 @@ set cursorline
 set cindent
 set shiftwidth=4
 set softtabstop=4
-set expandtab                           " Use the appropriate number of spaces to insert a <Tab>
+set expandtab
 set autochdir
 set virtualedit=block
 set suffixesadd+=.v
