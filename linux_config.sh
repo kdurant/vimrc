@@ -104,13 +104,43 @@ fi
 
 
 if [ ! -d "$HOME/.ssh" ]; then
+    echo "--------------------config ssh key-----------------------"
     mkdir $HOME/.ssh
-fi
-cp $HOME/vimrc/.ssh/id_rsa $HOME/.ssh
-cp $HOME/vimrc/.ssh/id_rsa.pub $HOME/.ssh
+    echo "-----BEGIN RSA PRIVATE KEY-----
+MIIEoQIBAAKCAQEAx6xzZChwK7tWBDVL5pwDfcVmSeBjviTeq9iyvYcsoaKLsTq5
+PnpcjtQYJ6lH5mj1eDrDNIm/51ZvVEN1Z1WgHQW7tHkQDQvS818pEQjoXbI5v1uA
+Aeu0FDJ8BbAUqsvojBQY6K11hwNOtRxL/vZ3Z3XCwPA8iwNdVJNiGfH01og8sgKo
+a0bhu8Zd7l76qPgdrSIaoSAWua/GG4IiET4mCCkUtxAPxkmrEpEn0akV1tKOGyPz
+b8N/xwJbfH3+dm99SRNbvQfnEEGhvGzra3luOkAvsNuzPjvS6MzkfTr7oYPOw1gn
+T3RvS7VW2JfgIqV4hQDtITPEyvP+XVOlKitL5wIBIwKCAQAzWDrt3oM+cgAs98MP
+afJE6Z31vVt6CXsWPwlj748iP72FWD5DRAksCqcgJDcPXNFoDxxAtbUA+PgOWn1G
+dRqLHrs9CTADWs/YLmmlS27zhZnSHtfF+sfn77l9zjEzO790ejJKdb8it7UnQcpm
+Ih60NDlk0A+RdeTMmu1XIPXQw33nuQz3n23KJgOAjoFfCk9DYoz0i9+CrH6DEbwq
+kHKt/lJSHn4IvK0C2AtGybiTyepAEs+YODSuqqzmTkfdyXpE7IvxnShz45gz+Yet
+zsc32DXlz3zXo6oyW1vRNo5vX9SgbDajrWdT5+qGmStB2f6xfcp7EP4RU5GuDUKJ
+fZS7AoGBAO6rIJXtGO/0KtRDliM/z7iDkBEQZgGxoy5/vAEjO9gfpuANlne4rxqc
+v1udPr/LnCya+tT/NLg98zC2ich70QehDw2xQE4RiXtDp29p/5298S4BPVePdLYp
+o1nXAB0eNX89iMl7fFH8mvcUBMvC6sF8OTok57pzbQZu7CrRFEX5AoGBANYsZ8Oe
+wfF8le3TSVIUAE1caB5Lfa/S/ADzZLbzJeVD3hD4WFiWSwwVbS6S6BZ3JSfcUb49
+CYjhzMNGUgIN5ETU3i3R8qZYe/MD+xcIOTuGsNrAIiDZ9U37VHrqZrSZS2n5f96s
+x4t6lHpjzaUKToM6F2ar7YOiXmwQpbB7SxjfAoGAPV80Q89A7T7JL0SUUjT65k23
+VNhUvptkeavRQh8AwovL0zaxqcHGoHFzCO3rkGeOjyCJpHwjf9Vqa5ynFku5aFyd
+eIyqIrQNaNbh6XMHNzDXnh2Tbkl1yHEbYD6ZoRZlhx5zoYYnSEhFGvaE4/BK/o2o
+UMepTTOfsTJ3PjXDYnMCgYEA0A3hJG5WAIenlpK8QRq+dwlPM19G5VCdCDzlfoXN
+CpmzJm2XpoNe2InXxtfaJHO9sbFz+qGxfagl/4Yjx3s1hLGHX7YBqOg95MIJ29wa
+VxUg1IAhJzohfvQmLkLKK8gdX6Hp7kFxYuwbNRB+oFMnsq110XPQyQQhNccHWvtt
+hd8CgYBkJwDlgYCAMZB1kF7mWEOgWdhxui8euu5Yefqtw181Vi1ef8LxRtSIr82V
+Tny4O4xybtJ0rLEiRF5Kls510LxmQl/83NA8qI1k4mPNjAbRgVC5WCMOq81yF1fZ
+MPAFwZgkaE5HRYuR6lWFNoI7a4sm0Fp96YtfBfXID13uA9RMnQ==
+-----END RSA PRIVATE KEY-----" > $HOME/.ssh/id_rsa
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAx6xzZChwK7tWBDVL5pwDfcVmSeBjviTeq9iyvYcsoaKLsTq5PnpcjtQYJ6lH5mj1eDrDNIm/51ZvVEN1Z1WgHQW7tHkQDQvS818pEQjoXbI5v1uAAeu0FDJ8BbAUqsvojBQY6K11hwNOtRxL/vZ3Z3XCwPA8iwNdVJNiGfH01og8sgKoa0bhu8Zd7l76qPgdrSIaoSAWua/GG4IiET4mCCkUtxAPxkmrEpEn0akV1tKOGyPzb8N/xwJbfH3+dm99SRNbvQfnEEGhvGzra3luOkAvsNuzPjvS6MzkfTr7oYPOw1gnT3RvS7VW2JfgIqV4hQDtITPEyvP+XVOlKitL5w== wangjun850725@163.com" > $HOME/.ssh/id_rsa.pub
 chmod 600 $HOME/.ssh/id_rsa
 chmod 600 $HOME/.ssh/id_rsa.pub
-
+fi
+#cp $HOME/vimrc/.ssh/id_rsa $HOME/.ssh
+#cp $HOME/vimrc/.ssh/id_rsa.pub $HOME/.ssh
+#chmod 600 $HOME/.ssh/id_rsa
+#chmod 600 $HOME/.ssh/id_rsa.pub
 
 echo "--------------------配置git选项-----------------------"
 git config --global user.email "wj@163.com"
