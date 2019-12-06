@@ -138,7 +138,7 @@ fi
 echo "--------------------alias 更新vim命令-----------------------"
 cat $HOME/.bashrc | grep update_vim
 if [ $? -ne 0 ]
-    echo "alias update_vim='/home/wj/vimrc/vi_config.sh'" >> $HOME/.bashrc
+    echo "alias update_vim='/home/wj/program/vi_config.sh'" >> $HOME/.bashrc
 fi
 
 
