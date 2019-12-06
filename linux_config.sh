@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 更换源
+# 1.更换源 
 echo "----------------更换软件源-------------------------"
 # https://developer.aliyun.com/mirror
 if [ ! -e "/etc/apt/sources.list.bak" ]; then
