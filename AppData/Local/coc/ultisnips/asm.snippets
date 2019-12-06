@@ -80,3 +80,11 @@ $1:
     popl    %ebp
     ret
 endsnippet
+
+snippet syscall "system call templete" b
+movl	%{1:num},   %eax
+movl	%{2:para1}, %ebx
+movl	%{3:para2}, %ecx
+movl	%{4:para3}, %edx
+int	$0x80
+endsnippet
