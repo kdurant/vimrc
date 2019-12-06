@@ -4,7 +4,11 @@
 
 if [ ! -d "$HOME/vimrc" ]; then
     echo "--------------------download config file---------------------"
-    git clone https://github.com/kdurant/vimrc $HOME/vimrc
+    if [ -f "$HOME/.ssh/id_rsa" ]; then
+        git clone git@github.com:kdurant/vimrc.git $HOME/vimrc
+    else
+        git clone https://github.com/kdurant/vimrc $HOME/vimrc
+    fi;
 else
     echo "--------------------update config file-----------------------"
     GIT_DIR=$HOME/vimrc/.git git pull
