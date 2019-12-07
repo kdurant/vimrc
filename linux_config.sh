@@ -197,6 +197,8 @@ else
 fi
 
 
+# chrome bookmark
+# token d2ba53bdcbcc670877f01b02a63656f2cd790d20
 # 安装交叉编译器
 # if which arm-linux-gnueabihf-gcc; then
 #     echo "Has install linaro!"
