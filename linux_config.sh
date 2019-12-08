@@ -62,6 +62,7 @@ if [ -z `which global` ]; then  sudo apt install global; fi
 if [ -z `which lua` ]; then  sudo apt install lua5.3; fi
 if [ -z `which pip` ]; then  sudo apt install python3-pip; fi
 if [ -z `which pip3` ]; then  sudo apt install python-pip; fi
+if [ -z `which cgdb` ]; then  sudo apt install cgdb; fi
 
 sudo apt install lsb-core lib32stdc++6
 sudo apt install gcc-multilib g++-multilib
@@ -160,7 +161,7 @@ if [ $? -ne 0 ]  # 非WSL系统
 else
     cat $HOME/.bashrc | grep nvim
     if [ $? -ne 0 ]; then
-        echo "alias nvim='/home/wj/program//squashfs-root/usr/bin/nvim'" >> $HOME/.bashrc
+        echo "alias nvim='/home/wj/program/squashfs-root/usr/bin/nvim'" >> $HOME/.bashrc
     fi
 fi
 
@@ -208,3 +209,16 @@ fi
 #     source ~/.bashrc
 # fi
 
+# wget https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.13/5.13.2/qt-opensource-linux-x64-5.13.2.run
+
+# wget https://vscode.cdn.azure.cn/stable/f359dd69833dd8800b54d458f6d37ab7c78df520/code_1.40.2-1574694120_amd64.deb
+# sudo dpkg -i ripgrep_11.0.2_amd64.deb
+# wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-preview-64-bit.deb
+
+# sudo mount -t ntfs /dev/sda4 onedrive/
+
+##################################美化###################################
+# sudo apt install gnome-tweak-tool
+# sudo apt install chrome-gnome-shell
+# sudo apt install gnome-shell-extensions
+# sudo apt install arc-theme
