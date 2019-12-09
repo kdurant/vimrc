@@ -53,9 +53,9 @@ endsnippet
 
 snippet text "define text segment" b
 .section    .text
-.globl	_start
-_start:
-    $1
+.globl	${1:_start}
+$1:
+    $2
 endsnippet
 
 snippet data "define data segment" b
