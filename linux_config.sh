@@ -224,3 +224,11 @@ fi
 # sudo apt install chrome-gnome-shell
 # sudo apt install gnome-shell-extensions
 # sudo apt install arc-theme
+
+# mkdir .themes
+# mkdir .icons
+# git clone https://github.com/Wuyanz/GNOME-OSX-II-Theme.git ~/.themes
+# git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git ~/.icons
+# git clone https://github.com/micheleg/dash-to-dock.git
+# make
+# make install 
