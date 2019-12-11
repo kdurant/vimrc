@@ -54,6 +54,7 @@ sudo apt upgrade
 echo "----------------安装帮助手册-------------------------"
 sudo apt install manpages-de manpages-de-dev manpages-dev glibc-doc manpages-posix-dev manpages-posix manpages-zh
 
+if [ -z `which terminator` ]; then  sudo apt install terminator; fi
 # 
 echo "----------------python vim相关-------------------------"
 if [ -z `which dos2unix` ]; then  sudo apt install dos2unix; fi
