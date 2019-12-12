@@ -52,6 +52,7 @@ Plug 'NLKNguyen/papercolor-theme'
             "Plug 'vim-scripts/vim-do-syntax'
 call plug#end()
 
+if g:is_win
 let g:color_list = ["codeschool", "jellybeans", "one", 
                 \ "quantum", "ayu", "apprentice",
                 \ "material-monokai", "james", 
@@ -61,6 +62,17 @@ let g:color_list = ["codeschool", "jellybeans", "one",
                 "\ "snazzy", "github", 
                 "\ "inkstained", 
                 "\ "nova",
+else
+let g:color_list = ["jellybeans", "one", 
+                \ "quantum", "ayu", "apprentice",
+                \ "material-monokai",
+                \ "deus",
+                \ "gruvbox", "PaperColor"
+                \ "snazzy",
+                \ "inkstained", 
+                \ "nova",
+                \]
+endif
 if &rtp =~ 'mine'
     let s:colorscheme = g:color_list[strftime("%S")%(len(g:color_list))]
     exec 'colorscheme '. s:colorscheme
