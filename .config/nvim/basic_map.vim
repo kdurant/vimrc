@@ -17,10 +17,10 @@ if g:isnvim
     tnoremap <C-l> <C-\><C-N><C-w>l
     tnoremap <C-h> <C-\><C-N><C-w>h
     tnoremap <C-j> <C-\><C-N><C-w>j
-    nnoremap P  ""gP
-    xnoremap P  "_d""gP
-    nnoremap p  ""gp
-    xnoremap p  "_d""gp
+    "nnoremap P  ""gP
+    "xnoremap P  "_d""gP
+    "nnoremap p  ""gp
+    "xnoremap p  "_d""gp
 endif
 nmap    <space>wj   <C-W>-
 nmap    <space>wk   <C-W>+
