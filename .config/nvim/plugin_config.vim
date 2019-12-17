@@ -138,6 +138,7 @@ if &rtp =~ 'vim-easy-align'
     nmap    <space>a)      :normal ml<cr>:0,$EasyAlign /\..*(.*\zs)\ze/ {'left_margin': 4, 'right_margin':0}<cr>'l
     xmap <space>aa  <Plug>(EasyAlign)
     nmap <space>aa  <Plug>(EasyAlign)
+    let g:easy_align_ignore_groups = []
 
     "align '=' that in parameter, assign statement
     nmap    <silent>    ,=      :AlignCtrl lp4P1<cr>:AlignCtrl g [^<\|^>]\s\zs=\ze\s.*;<cr>:AlignCtrl W<cr>:%Align[^<\|^>]\s\zs=\ze\s.*;<cr>
