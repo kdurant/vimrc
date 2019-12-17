@@ -53,13 +53,13 @@ Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 if g:is_win
-let g:color_list = ["codeschool", "jellybeans", "one", 
+let g:color_list = ["codeschool", "jellybeans",
                 \ "quantum", "ayu", "apprentice",
                 \ "material-monokai", "james", 
                 \ "ceudah", "deus",
                 \ "gruvbox", "PaperColor"
                 \]
-                "\ "snazzy", "github", 
+                "\ "snazzy", "github", "one"
                 "\ "inkstained", 
                 "\ "nova",
 else
