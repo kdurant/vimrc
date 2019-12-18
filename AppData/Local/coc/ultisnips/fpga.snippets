@@ -84,9 +84,16 @@ snippet localparam  "localparam ..."
 localparam              ${1:LHS} = ${2:RHS};
 endsnippet
 
-snippet inout   "inout declaration"
-tri [7:0] ${1:nand_data} = 100'bz;
-assign (weak1, weak0) $1 = 0;
+snippet tri   "inout port in testbench"
+tri [${1:data_width}:00] ${1:nand_data} = $1'bz;
+assign (weak1, weak0) $2 = 0;
+endsnippet
+
+snippet inout   "inout port template"
+assign                  ${1:inout_port} = ${2:enable} ? ${3:data_out} : 16'hzzzz ;
+assign                  ${4:data_in} = $1;
+//$2 = 1时，输出$3; $2 = 1, 端口设置为高阻，当做输入端口
+//$4为外部输入的数据
 endsnippet
 
 snippet edge "detect edge"
