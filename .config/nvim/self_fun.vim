@@ -31,49 +31,46 @@ function! CompileFile()
         endif
 
     elseif &filetype == 'c' || &filetype == 'cpp' || &filetype == 'java'
-        if &filetype == 'c' 
-            if file_readable('Makefile')
-                set makeprg=make
-            else
-                set makeprg=gcc\ -std=c99\ -o\ %<.exe\ %
-            endif
 
-        elseif &filetype == 'java' | set makeprg=javac\ %
-        else                | set makeprg=g++\ -o\ %<.exe\ %
+        if file_readable('Makefile')
+            set makeprg=make
+        else
+            if &filetype == 'c' | set makeprg=gcc\ -std=c99\ %
+            else | set makeprg=g++\ %
+            endif
         endif
         silent exe "make"
+
+        " l:flag = 0, 没有错误和警告；
+        " l:flag = 1，有警告，但没有错误
+        " l:flag = 2, 有错误
         if getqflist() == []    "compile correct and no warning
             let l:flag = 0 | silent exe "ccl" |
-            if &filetype == 'java'
-                echo iconv(system("java " . expand('%:r')), "utf-8", &enc)
-            else
-                exe "!%<.exe"
-            endif
         else
             for l:inx in getqflist()
                 for l:val in values(l:inx)
-                    if l:val =~ 'error' | let l:flag = 1 | break
-                    elseif l:val =~ 'warning' | let l:flag = 2
+                    if l:val =~ 'error' | let l:flag = 2 | break
+                    elseif l:val =~ 'warning' | let l:flag = 1
                     else | let l:flag = 0
                     endif
                 endfor
                 if l:val =~ 'error' | break | endif
             endfor
         endif
-        if l:flag == 1| exe "cw"
-        elseif l:flag == 2
+
+        if l:flag == 1
             let l:select = input('There are warnings! [r]un or [s]olve? ')
             if l:select ==  'r'
-                if &filetype == 'java'
-                    echo iconv(system("java " . expand('%:r')), "utf-8", &enc)
-                else
-                    exe "!%<.exe"
-                    exe "cw"
-                endif
+                if g:is_win | exe "!%<.exe"
+                else | exe "!./a.out" | endif
             elseif l:select == 's' | exe "cw"
             else | echohl ErrorMsg | echo "input error!"
             endif
-        else | exe "cw"
+        elseif l:flag == 2
+            exe "copen"
+        else 
+            if g:is_win | exe "!%<.exe"
+            else | exe "!./a.out" | endif
         endif
     elseif &filetype == 'cs'
         set makeprg = csc\ \nologo\ %
