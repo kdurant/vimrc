@@ -61,7 +61,7 @@ function! CompileFile()
         if l:flag == 1
             let l:select = input('There are warnings! [r]un or [s]olve? ')
             if l:select ==  'r'
-                if g:is_win | exe "!%<.exe"
+                if g:is_win | exe "!a.exe"
                 else | exe "!./a.out" | endif
             elseif l:select == 's' | exe "cw"
             else | echohl ErrorMsg | echo "input error!"
@@ -69,7 +69,7 @@ function! CompileFile()
         elseif l:flag == 2
             exe "copen"
         else 
-            if g:is_win | exe "!%<.exe"
+            if g:is_win | exe "!a.exe"
             else | exe "!./a.out" | endif
         endif
     elseif &filetype == 'cs'
