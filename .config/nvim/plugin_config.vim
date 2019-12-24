@@ -271,11 +271,9 @@ if &rtp =~ 'LeaderF'
     let g:Lf_UseMemoryCache=0
     let g:Lf_WindowHeight = 0.4
     let g:Lf_WorkingDirectoryMode ='Ac'
-    let g:Lf_GtagsAutoGenerate = 1
     let g:Lf_DefaultMode = 'NameOnly'
     let g:Lf_CommandMap = {'<C-]>': ['<C-V>'], '<C-X>': ['<C-S>']}
     let g:Lf_WindowPosition = 'popup'
-    let g:Lf_Gtagsconf = "c:/home/gtags.conf"
     "let g:Lf_Gtagslabel="native-pygments"
 
     let g:Lf_WildIgnore = {
@@ -301,8 +299,10 @@ if &rtp =~ 'LeaderF'
             \ 'Gtags': 0
             \}
 
-    map <expr> <space>fs      (&filetype == 'c') ? ":Leaderf gtags --result ctags-x<cr>" : "jk"
-    let g:which_key_map.f.s = 'language symbol'
+    "let g:Lf_GtagsAutoGenerate = 1
+    "let g:Lf_Gtagsconf = "c:/home/gtags.conf"
+    "map <expr> <space>fs      (&filetype == 'c') ? ":Leaderf gtags --result ctags-x<cr>" : "jk"
+    "let g:which_key_map.f.s = 'language symbol'
 endif
 
 if &rtp =~ 'FlyGrep'
