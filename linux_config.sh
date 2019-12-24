@@ -101,7 +101,7 @@ if [ ! -d "$HOME/vimrc" ]; then
     fi;
 else
     echo "--------------------update config file-----------------------"
-    GIT_DIR=$HOME/vimrc/.git git pull
+    cd $HOME/vimrc;  git pull
 fi
 
 
@@ -151,6 +151,7 @@ git config --global alias.st "status"
 git config --global alias.br "branch"
 git config --global alias.lo "log --graph --pretty=oneline"
 git config --global alias.co "commit -m"
+git config --global core.autocrlf input
 
 
 ls -l /mnt/c
