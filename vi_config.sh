@@ -11,7 +11,7 @@ if [ ! -d "$HOME/vimrc" ]; then
     fi;
 else
     echo "--------------------update config file-----------------------"
-    GIT_DIR=$HOME/vimrc/.git git pull
+    cd $HOME/vimrc; git pull
 fi
 
 if [ ! -d $HOME/.config/nvim ]; then
