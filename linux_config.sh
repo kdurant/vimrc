@@ -145,8 +145,8 @@ fi
 #chmod 600 $HOME/.ssh/id_rsa.pub
 
 echo "--------------------配置git选项-----------------------"
-git config --global user.email "wj@163.com"
-git config --global user.name "wj"
+git config --global user.email "wangjun850725@163.com"
+git config --global user.name "kdurant"
 git config --global alias.st "status"
 git config --global alias.br "branch"
 git config --global alias.lo "log --graph --pretty=oneline"
@@ -171,7 +171,7 @@ fi
 echo "--------------------alias 更新vim命令-----------------------"
 cat $HOME/.bashrc | grep update_vim
 if [ $? -ne 0 ]
-    echo "alias update_vim='/home/wj/program/vi_config.sh'" >> $HOME/.bashrc
+    echo "alias update_vim='/home/wj/vimrc/vi_config.sh'" >> $HOME/.bashrc
 fi
 
 
