@@ -1,4 +1,4 @@
-call plug#begin('~/nvim/bundle')
+call plug#begin('~/.config/nvim/bundle')
 "Plug 'kshenoy/vim-signature'
 "Plug 'SirVer/ultisnips'
 
