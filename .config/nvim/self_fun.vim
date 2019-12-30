@@ -25,7 +25,7 @@ function! CompileFile()
         exe "make" | exe "cw"
     elseif &filetype == 'rust'
         if iconv(system("rustc " . expand('%')), "cp936", &enc) !~ 'error'
-            exe "!%<.exe"
+            if g:is_win | exe "!%<.exe" | else | exe "!./%<" | endif
         else
             echo iconv(system("rustc " . expand('%')), "cp936", &enc)
         endif
