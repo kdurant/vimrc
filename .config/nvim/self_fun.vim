@@ -32,7 +32,7 @@ function! CompileFile()
 
     elseif &filetype == 'c' || &filetype == 'cpp' || &filetype == 'java'
 
-        if file_readable('Makefile')
+        if file_readable('makefile')
             set makeprg=make
         else
             if &filetype == 'c' | set makeprg=gcc\ -std=c99\ %

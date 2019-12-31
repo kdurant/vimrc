@@ -1,4 +1,5 @@
 {
+    "python.jediEnabled": false,
     "git.enableGutters": false,
     "languageserver": {
         "clangd": {
