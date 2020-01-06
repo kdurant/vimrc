@@ -51,6 +51,32 @@ begin
 end
 endsnippet
 
+snippet rst_syn "generate synthesis reset" 
+\`timescale  1 ns/1 ps
+
+module generate_rst #
+(
+    parameter               CLK_CNT = 500
+)
+(
+    input                       clk,
+    output                      rst
+);
+
+reg     [31:00]             cnt = 0;
+
+always @ (posedge clk)
+begin
+    if(cnt <= (CLK_CNT << 2))
+        cnt <= cnt + 1'b1;
+end
+
+//产生指定时钟周期个数宽度的高电平reset信号
+assign                  rst = (cnt >= CLK_CNT) && (cnt < (CLK_CNT << 1)) ? 1: 0;
+
+endmodule
+endsnippet
+
 snippet if "if...begin...end"
 if(${1:/*condition*/})
 begin

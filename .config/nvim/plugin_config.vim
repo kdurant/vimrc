@@ -274,6 +274,7 @@ if &rtp =~ 'LeaderF'
     let g:Lf_DefaultMode = 'NameOnly'
     let g:Lf_CommandMap = {'<C-]>': ['<C-V>'], '<C-X>': ['<C-S>']}
     let g:Lf_WindowPosition = 'popup'
+    let g:Lf_ShowRelativePath=0
     "let g:Lf_Gtagslabel="native-pygments"
 
     let g:Lf_WildIgnore = {
