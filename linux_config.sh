@@ -75,7 +75,7 @@ sudo apt install gcc-multilib g++-multilib
 if [ ! -d "$HOME/.pip" ]; then
     mkdir  $HOME/.pip; cd $HOME/.pip
     echo "[global] 
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple" > pip.config
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple" > pip.conf
 fi
 
 # if [ -z `pip list | grep pynvim` ]; then 
