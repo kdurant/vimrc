@@ -56,15 +56,18 @@ sudo apt install manpages-de manpages-de-dev manpages-dev glibc-doc manpages-pos
 
 if [ -z `which terminator` ]; then  sudo apt install terminator; fi
 # 
-echo "----------------python vim相关-------------------------"
+
+echo "---------------系统工具相关-------------------------"
 if [ -z `which dos2unix` ]; then  sudo apt install dos2unix; fi
 if [ -z `which cppman` ]; then  sudo apt install cppman; fi
 if [ -z `which cmake` ]; then  sudo apt install cmake; fi
 if [ -z `which global` ]; then  sudo apt install global; fi
 if [ -z `which lua` ]; then  sudo apt install lua5.3; fi
+if [ -z `which cgdb` ]; then  sudo apt install cgdb; fi
+
+echo "----------------python vim相关-------------------------"
 if [ -z `which pip` ]; then  sudo apt install python3-pip; fi
 if [ -z `which pip3` ]; then  sudo apt install python-pip; fi
-if [ -z `which cgdb` ]; then  sudo apt install cgdb; fi
 
 sudo apt install lsb-core lib32stdc++6
 sudo apt install gcc-multilib g++-multilib
