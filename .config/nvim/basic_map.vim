@@ -96,4 +96,5 @@ nnoremap <silent> <F5> :update<Bar>silent !start chrome.exe "file://%:p"<CR>
 
 nmap <space>fo  :call system('explorer .')<cr>
 let g:which_key_map.f.o = '打开当前文件目录'
-
+nmap <F3> i<C-R>=strftime("%Y-%m-%d %I:%M")<CR><Esc>
+imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M")<CR><Esc>
