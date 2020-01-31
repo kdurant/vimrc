@@ -24,7 +24,7 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet compile_flags "clangd lsp " b
+snippet clangd_tips "clangd basic format " b
 -I./inc
 
 -isystem
@@ -32,4 +32,24 @@ D:\Program\mingw64\x86_64-w64-mingw32\include
 
 -isystem
 D:\Program\mingw64\lib\gcc\x86_64-w64-mingw32\7.3.0\include\c++
+endsnippet
+
+snippet clangd_qt "qt clangd setting " b
+-fPIC
+-isystem
+/opt/Qt5.13.2/5.13.2/gcc_64/include/
+-isystem
+/opt/Qt5.13.2/5.13.2/gcc_64/include/QtCore
+-isystem
+/opt/Qt5.13.2/5.13.2/gcc_64/include/QtGui
+-isystem
+/opt/Qt5.13.2/5.13.2/gcc_64/include/QtWidgets
+-isystem
+/opt/Qt5.13.2/5.13.2/gcc_64/include/QtCharts
+-isystem
+/opt/Qt5.13.2/5.13.2/gcc_64/include/QtNetwork
+-isystem
+/opt/Qt5.13.2/5.13.2/gcc_64/include/QtSerialPort
+-isystem
+/opt/Qt5.13.2/5.13.2/gcc_64/include/QtTest
 endsnippet
