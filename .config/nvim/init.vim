@@ -36,6 +36,7 @@ autocmd BufLeave *.svh  set tags-=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/
 set number
 set mouse=a
 set clipboard+=unnamed
+set clipboard+=unnamedplus
 set scrolloff=3
 set linebreak
 set noswapfile

@@ -64,14 +64,16 @@ let g:color_list = ["codeschool", "jellybeans",
                 "\ "nova",
 else
 let g:color_list = ["jellybeans", "one", 
-                \ "quantum", "ayu", "apprentice",
+                \ "quantum","apprentice",
                 \ "material-monokai",
                 \ "deus",
                 \ "gruvbox", "PaperColor",
-                \ "snazzy",
+                \ "snazzy", "ayu", 
                 \ "inkstained", 
                 \ "nova",
                 \]
+                " \"ayu",
+
 endif
 if &rtp =~ 'mine'
     let s:colorscheme = g:color_list[strftime("%S")%(len(g:color_list))]
