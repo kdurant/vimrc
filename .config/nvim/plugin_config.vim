@@ -313,6 +313,9 @@ endif
 if &rtp =~ 'coc.nvim'
     set updatetime=300
     set hidden
+    autocmd FileType verilog let b:coc_pairs_disabled = ['`', '<']
+    autocmd FileType systemverilog let b:coc_pairs_disabled = ['`', '<']
+    
     nmap <silent> <space>gd <Plug>(coc-definition)
     "nmap <silent> <space>gy <Plug>(coc-type-definition)
     "nmap <silent> <space>gi <Plug>(coc-implementation)
