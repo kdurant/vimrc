@@ -68,7 +68,7 @@ let g:color_list = ["jellybeans", "one",
                 \ "material-monokai",
                 \ "deus",
                 \ "gruvbox", "PaperColor",
-                \ "snazzy", "ayu", 
+                \ "snazzy", 
                 \ "inkstained", 
                 \ "nova",
                 \]
