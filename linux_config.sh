@@ -59,6 +59,7 @@ if [ -z `which terminator` ]; then  sudo apt install terminator; fi
 
 echo "---------------系统工具相关-------------------------"
 if [ -z `which dos2unix` ]; then  sudo apt install dos2unix; fi
+if [ -z `which hexedit` ]; then  sudo apt install hexedit; fi
 if [ -z `which tig` ]; then  sudo apt install tig; fi
 if [ -z `which cppman` ]; then  sudo apt install cppman; fi
 if [ -z `which cmake` ]; then  sudo apt install cmake; fi
