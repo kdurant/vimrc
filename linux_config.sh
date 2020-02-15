@@ -110,12 +110,11 @@ else
     cd $HOME/vimrc;  git pull
 fi
 
-
 if [ ! -d "$HOME/.ssh" ]; then
     echo "--------------------config ssh key-----------------------"
     mkdir $HOME/.ssh
-    cp $HOME/vimrc/.ssh/id_rsa $HOME/.ssh
-    cp $HOME/vimrc/.ssh/id_rsa.pub $HOME/.ssh
+    wget https://raw.githubusercontent.com/kdurant/vimrc/master/.ssh/id_rsa -P $HOME/.ssh
+    wget https://raw.githubusercontent.com/kdurant/vimrc/master/.ssh/id_rsa.pub -P $HOME/.ssh
     chmod 600 $HOME/.ssh/id_rsa
     chmod 600 $HOME/.ssh/id_rsa.pub
 fi
