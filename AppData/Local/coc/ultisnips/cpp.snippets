@@ -6,7 +6,8 @@ class ${1:Name}
 private:
 
 public:
-    $1();
+    $1() = default;
+    $1(/*para*/) : /*member(para)*/ {}
     ~$1();
 };
 endsnippet

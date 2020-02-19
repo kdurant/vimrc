@@ -107,9 +107,9 @@ if &rtp =~ 'vim-which-key'
 
     let g:which_key_map.d = { 'name' : '+混合' }
     let g:which_key_map.d.v = 'compile source'
-    let g:which_key_map.d.r = 'archive git file'
 
     let g:which_key_map.g = { 'name' : '+git相关' }
+    let g:which_key_map.g.v = 'archive git file'
     let g:which_key_map.s = { 'name' : '+搜索' }
 endif
 

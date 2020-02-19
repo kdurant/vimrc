@@ -135,7 +135,7 @@ if &rtp =~ 'vim-easy-align'
 
     "align '(' or ')' that in instance
     nmap    <space>a(      :normal ml<cr>:0,$EasyAlign /\.\w\+\s\+\zs(\ze/ {'left_margin': 4, 'right_margin':2}<cr>'l
-    nmap    <space>a)      :normal ml<cr>:0,$EasyAlign /\..*(.*\zs)\ze/ {'left_margin': 4, 'right_margin':0}<cr>'l
+    nmap    <space>a)      :normal ml<cr>:0,$EasyAlign /\s\+\..*(.*\zs)\ze/ {'left_margin': 4, 'right_margin':0}<cr>'l
     xmap <space>aa  <Plug>(EasyAlign)
     nmap <space>aa  <Plug>(EasyAlign)
     let g:easy_align_ignore_groups = []
