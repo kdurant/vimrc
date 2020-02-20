@@ -7,7 +7,8 @@ private:
 
 public:
     $1() = default;
-    $1(/*para*/) : /*member(para)*/ {}
+    $1(const $1& cpy);
+    $1& operate=(const $1& assign);
     ~$1();
 };
 endsnippet
