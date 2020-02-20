@@ -8,8 +8,15 @@ private:
 public:
     $1() = default;
     $1(const $1& cpy);
-    $1& operate=(const $1& assign);
+    $1& operator=(const $1& assign)
+    {
+        //this->m_a = as.m_a;
+	return *this;
+    };
     ~$1();
+
+    // 类内声明，类外定义，非成员函数，但可以直接访问类私有变量
+    // friend void func($1 & data);  
 };
 endsnippet
 
