@@ -212,3 +212,49 @@ fi
 # git clone https://github.com/micheleg/dash-to-dock.git
 # make
 # make install 
+
+# manjaro配置
+
+## 1 更换国内源
+```bash
+sudo pacman-mirrors -i -c China -m rank
+sudo pacman -Syy
+```
+
+## 添加清华源
+
+/etc/pacman.conf中追加
+```
+[archlinuxcn]
+SigLevel = Optional TrustAll
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+```
+
+```bash
+sudo pacman -Sy
+sudo pacman -S archlinuxcn-keyring
+```
+
+## 安装yay
+/etc/pacman.conf中追加
+```
+[archlinuxfr] 
+Server = http://repo.archlinux.fr/$arch
+```
+sudo pacman -Sy yay
+
+## 安装搜狗输入法
+```bash
+sudo pacman -S fcitx fcitx-configtool fcitx-gtk2 fcitx-gtk3 fcitx-qt4 fcitx-qt5 fcitx-sogoupinyin fcitx-configtool
+```
+用文本编辑器打开~/.xprofile，没有就新建，在其末尾添加以下几行：
+```
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+```
+
+
+
+# KDE
+* .config/yukuakerc
