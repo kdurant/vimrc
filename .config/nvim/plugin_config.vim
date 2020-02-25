@@ -134,7 +134,7 @@ if &rtp =~ 'vim-easy-align'
     nmap    <silent>    ,#      :AlignCtrl lp4P0<cr>:AlignCtrl g \S\+.\+\zs\/\/\ze\(\s*\S\+\)\@=<cr>:AlignCtrl W<cr>:%Align\/\/<cr>
 
     "align '(' or ')' that in instance
-    nmap    <space>a(      :normal ml<cr>:0,$EasyAlign /\.\w\+\s\+\zs(\ze/ {'left_margin': 4, 'right_margin':2}<cr>'l
+    nmap    <space>a(      :normal ml<cr>:0,$EasyAlign /\.\w\+\s\{0,}\zs(\ze/ {'left_margin': 4, 'right_margin':2}<cr>'l
     nmap    <space>a)      :normal ml<cr>:0,$EasyAlign /\s\+\..*(.*\zs)\ze/ {'left_margin': 4, 'right_margin':0}<cr>'l
     xmap <space>aa  <Plug>(EasyAlign)
     nmap <space>aa  <Plug>(EasyAlign)

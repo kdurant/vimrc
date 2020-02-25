@@ -18,6 +18,7 @@ tags
 _vsvimrc
 my_info
 tmp*
+mru
 
 .*
 !.gitconfig
