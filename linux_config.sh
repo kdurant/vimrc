@@ -49,12 +49,43 @@ sudo apt update
 sudo apt upgrade
 
 # ~/.config/user-dirs.dirs
+```
+XDG_DESKTOP_DIR="$HOME/desktop"
+XDG_DOWNLOAD_DIR="$HOME/download"
+XDG_TEMPLATES_DIR="$HOME/template"
+XDG_PUBLICSHARE_DIR="$HOME/public"
+XDG_DOCUMENTS_DIR="$HOME/document"
+XDG_MUSIC_DIR="$HOME/music"
+XDG_PICTURES_DIR="$HOME/picture"
+XDG_VIDEOS_DIR="$HOME/video"
+```
+
+# 安装chrome
+sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -
+sudo apt update
+sudo apt install google-chrome-stable
+
+#安装vscode
+sudo sh -c "echo 'deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo apt update
+sudo apt install code
+
 
 # 安装帮助手册
 echo "----------------安装帮助手册-------------------------"
 sudo apt install manpages-de manpages-de-dev manpages-dev glibc-doc manpages-posix-dev manpages-posix manpages-zh
 
-if [ -z `which terminator` ]; then  sudo apt install terminator; fi
+if [ -z `which guake` ]; then  sudo apt install guake; fi
+sudo apt install fonts-firacode
+
+wget http://codybonney.com/files/fonts/Monaco_Linux.ttf
+sudo mkdir /usr/share/fonts/truetype/ttf-monaco
+mv Monaco_Linux.ttf
+sudo mkfontdir
+fc-cache
 # 
 
 echo "---------------系统工具相关-------------------------"
@@ -69,8 +100,8 @@ if [ -z `which lua` ]; then  sudo apt install lua5.3; fi
 if [ -z `which cgdb` ]; then  sudo apt install cgdb; fi
 
 echo "----------------python vim相关-------------------------"
-if [ -z `which pip` ]; then  sudo apt install python3-pip; fi
-if [ -z `which pip3` ]; then  sudo apt install python-pip; fi
+if [ -z `which pip` ]; then  sudo apt install python-pip; fi
+if [ -z `which pip3` ]; then  sudo apt install python3-pip; fi
 
 sudo apt install lsb-core lib32stdc++6
 sudo apt install gcc-multilib g++-multilib
