@@ -134,7 +134,7 @@ if &rtp =~ 'vim-easy-align'
     nmap    <silent>    ,#      :AlignCtrl lp4P0<cr>:AlignCtrl g \S\+.\+\zs\/\/\ze\(\s*\S\+\)\@=<cr>:AlignCtrl W<cr>:%Align\/\/<cr>
 
     "align '(' or ')' that in instance
-    nmap    <space>a(      :normal ml<cr>:0,$EasyAlign /\.\w\+\s\{0,}\zs(\ze/ {'left_margin': 4, 'right_margin':2}<cr>'l
+    nmap    <space>a(      :normal ml<cr>:0,$EasyAlign /\s\+\.\w\+\s\{0,}\zs(\ze/ {'left_margin': 4, 'right_margin':2}<cr>'l
     nmap    <space>a)      :normal ml<cr>:0,$EasyAlign /\s\+\..*(.*\zs)\ze/ {'left_margin': 4, 'right_margin':0}<cr>'l
     xmap <space>aa  <Plug>(EasyAlign)
     nmap <space>aa  <Plug>(EasyAlign)
@@ -322,16 +322,16 @@ if &rtp =~ 'coc.nvim'
     "nmap <silent> <space>gr <Plug>(coc-references)
 
     call coc#add_extension(
-                \ 'coc-word', 
-                \ 'coc-json', 
-                \ 'coc-snippets', 
-                \ 'coc-tag', 
                 \ 'coc-calc', 
-                \ 'coc-syntax', 
-                \ 'coc-translator',
+                \ 'coc-json', 
                 \ 'coc-lists', 
+                \ 'coc-marketplace',
                 \ 'coc-pairs', 
-                \ 'coc-marketplace'
+                \ 'coc-snippets', 
+                \ 'coc-syntax', 
+                \ 'coc-tag', 
+                \ 'coc-translator',
+                \ 'coc-word'
                 \ )
     "autocmd CursorHold * call CocActionAsync('doHover')
     vmap <space>ef  <Plug>(coc-format-selected)
@@ -353,6 +353,22 @@ if &rtp =~ 'coc.nvim'
 
     nmap <space>cr      :CocRestart<cr>
     let g:which_key_map.c.r = 'restart coc'
+
+    "大于100Kb禁用coc
+    let g:trigger_size = 1024 * 200
+
+    augroup hugefile
+        autocmd!
+        autocmd BufReadPre *
+                    \ let size = getfsize(expand('<afile>')) |
+                    \ if (size > g:trigger_size) || (size == -2) |
+                    \   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
+                    \   exec 'CocDisable' |
+                    \ else |
+                    \   exec 'CocEnable' |
+                    \ endif |
+                    \ unlet size
+    augroup END
 endif
 
 if &rtp =~ 'lightline.vim'
