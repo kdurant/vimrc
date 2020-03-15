@@ -73,19 +73,33 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo apt update
 sudo apt install code
 
+# 安装nvim
+sudo apt install xclip
+sudo apt install python3-neovim
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt update
+sudo apt install neovim
+
+# 安装fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 # 安装帮助手册
 echo "----------------安装帮助手册-------------------------"
 sudo apt install manpages-de manpages-de-dev manpages-dev glibc-doc manpages-posix-dev manpages-posix manpages-zh
 
 if [ -z `which guake` ]; then  sudo apt install guake; fi
+
+# 字体
 sudo apt install fonts-firacode
 
 wget http://codybonney.com/files/fonts/Monaco_Linux.ttf
 sudo mkdir /usr/share/fonts/truetype/ttf-monaco
-mv Monaco_Linux.ttf
+mv Monaco_Linux.ttf /usr/share/fonts/truetype/ttf-monaco
 sudo mkfontdir
 fc-cache
+
+sudo apt install ttf-wqy-microhei ttf-wqy-zenhei ttf-dejavu
 # 
 
 echo "---------------系统工具相关-------------------------"
@@ -100,7 +114,6 @@ if [ -z `which lua` ]; then  sudo apt install lua5.3; fi
 if [ -z `which cgdb` ]; then  sudo apt install cgdb; fi
 
 echo "----------------python vim相关-------------------------"
-if [ -z `which pip` ]; then  sudo apt install python-pip; fi
 if [ -z `which pip3` ]; then  sudo apt install python3-pip; fi
 
 sudo apt install lsb-core lib32stdc++6
@@ -208,6 +221,38 @@ else
     echo "Has install clang"
 fi
 
+# 安装qtcreator
+
+#wget http://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.9/5.9.9/qt-opensource-linux-x64-5.9.9.run 
+sudo apt install qtcreator qt5-default qt5-doc qt5-doc-html qtbase5-doc-html qtbase5-examples
+sudo apt install gcc-multilib g++-multilib
+sudo apt install xterm
+
+#xterm*faceName:Consolas:antialias=True:pixelsize=16
+#xterm*faceNameDoublesize:WenQuanYi Zen Hei:antialias=True:pixelsize=16
+#xterm*locale:zh_CN.UTF-8
+#xterm*geometry:50x20
+#xterm*dynamicColors:true
+#Xft.dpi: 96
+#xpdf.title: PDF
+#XTerm*locale: true
+#XTerm*utf8Title: true
+#XTerm*fontMenu*fontdefault*Label: Default
+#XTerm*faceSize: 12 
+#XTerm*faceSize1: 12
+#XTerm*faceSize2: 12
+#XTerm*faceSize3: 12
+#XTerm*faceSize4: 12
+#XTerm*faceSize5: 12
+#XTerm*faceSize6: 12
+#XTerm.cjkWidth:true
+#XTerm*background: #1c5572
+#XTerm*foreground: white
+#XTerm*scrollBar: true
+#XTerm*rightScrollBar: true
+#XTerm*jumpScroll:  true
+#XTerm*SaveLines:  1000
+#sudo xrdb -load ~/.Xresources
 
 # chrome bookmark
 # token d2ba53bdcbcc670877f01b02a63656f2cd790d20
@@ -229,63 +274,3 @@ fi
 # wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-preview-64-bit.deb
 
 # sudo mount -t ntfs /dev/sda4 onedrive/
-
-##################################美化###################################
-# sudo apt install gnome-tweak-tool
-# sudo apt install chrome-gnome-shell
-# sudo apt install gnome-shell-extensions
-# sudo apt install arc-theme
-
-# mkdir .themes
-# mkdir .icons
-# git clone https://github.com/Wuyanz/GNOME-OSX-II-Theme.git ~/.themes
-# git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git ~/.icons
-# git clone https://github.com/micheleg/dash-to-dock.git
-# make
-# make install 
-
-# manjaro配置
-
-## 1 更换国内源
-```bash
-sudo pacman-mirrors -i -c China -m rank
-sudo pacman -Syy
-```
-
-## 添加清华源
-
-/etc/pacman.conf中追加
-```
-[archlinuxcn]
-SigLevel = Optional TrustAll
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
-```
-
-```bash
-sudo pacman -Sy
-sudo pacman -S archlinuxcn-keyring
-```
-
-## 安装yay
-/etc/pacman.conf中追加
-```
-[archlinuxfr] 
-Server = http://repo.archlinux.fr/$arch
-```
-sudo pacman -Sy yay
-
-## 安装搜狗输入法
-```bash
-sudo pacman -S fcitx fcitx-configtool fcitx-gtk2 fcitx-gtk3 fcitx-qt4 fcitx-qt5 fcitx-sogoupinyin fcitx-configtool
-```
-用文本编辑器打开~/.xprofile，没有就新建，在其末尾添加以下几行：
-```
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
-```
-
-
-
-# KDE
-* .config/yukuakerc
