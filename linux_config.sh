@@ -226,6 +226,7 @@ fi
 
 #wget http://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.9/5.9.9/qt-opensource-linux-x64-5.9.9.run 
 sudo apt install qtcreator qt5-default qt5-doc qt5-doc-html qtbase5-doc-html qtbase5-examples
+sudo apt install libqt5charts5-dev qtdeclarative5-dev
 sudo apt install gcc-multilib g++-multilib
 sudo apt install xterm
 
