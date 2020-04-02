@@ -41,6 +41,7 @@ set scrolloff=3
 set linebreak
 set noswapfile
 set nowritebackup
+set noignorecase
 set wrap
 set splitbelow
 if g:is_win
