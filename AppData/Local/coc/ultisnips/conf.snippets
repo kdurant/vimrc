@@ -376,3 +376,14 @@ target_wrapper.*
 *.qmlproject.user
 *.qmlproject.user.*
 endsnippet
+
+
+
+snippet add_verilog "add file in quartus qsf" b
+set_global_assignment -name VERILOG_FILE ${1:path/name}
+endsnippet
+
+snippet add_qsys "add qsys in quartus qsf" b
+set_global_assignment -name QSYS_FILE kernel.qsys
+endsnippet
+
