@@ -227,6 +227,8 @@ noremap     <space>;       :Dit<space>
 
 nmap     <space>gg      :call jobstart('gitk --all')<cr>
 let g:which_key_map.g.g = '打开GUI视图'
+nmap     <space>gl      :echo iconv(system('git log ' . expand("%:p")), "utf-8", &enc)<cr>
+let g:which_key_map.g.l = '显示当前文件修改历史记录'
 
 nmap    <space>gv      :Dit archive -o master.zip HEAD
 let g:which_key_map.g.v = '打包当前commit'
