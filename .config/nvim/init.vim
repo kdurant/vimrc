@@ -42,15 +42,9 @@ set linebreak
 set noswapfile
 set nowritebackup
 set noignorecase
-set wrap
+set nowrap
 set splitbelow
-if g:is_win
-    set fileformat=dos
-    set fileformats=dos
-elseif g:is_unix
-    set fileformat=unix
-    set fileformats=unix
-endif
+set fileformats=dos,unix,mac
 set confirm
 set splitright
 set cursorline
