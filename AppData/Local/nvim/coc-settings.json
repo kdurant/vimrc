@@ -1,26 +1,7 @@
 {
-    "python.jediEnabled": false,
     "git.enableGutters": false,
-    "languageserver": {
-        "clangd": {
-            "command": "clangd",
-            "args": [
-                "--background-index"
-            ],
-            "rootPatterns": [
-                "compile_flags.txt",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
-            "filetypes": [
-                "c",
-                "cpp"
-            ]
-        }
-    },
     "calc.replaceOriginalExpression": false,
+    "clangd.semanticHighlighting": true,
     "list.insertMappings": {
         "<C-v>": "action:vsplit",
         "<C-s>": "action:split",

@@ -221,28 +221,24 @@ end
 endsnippet
 
 snippet sync        "signal sync"
-module sync
+module sync #
 (
-    input   wire                clk,
-    input   wire                rst,
+    parameter               WIDTH = 8
+)
+(
+    input                       clk,
+    input                       rst,
 
-    input   wire                sig_in,
-    output  reg                 sig_out
+    input        [WIDTH-1:00]   sig_in,
+    output  reg  [WIDTH-1:00]   sig_out
 );
 
-reg                     sig_reg;
-always @ (posedge clk or negedge rst)
+
+reg     [WIDTH-1:00]    sig_reg;
+always @ (posedge clk)
 begin
-    if(~rst)
-    begin
-        sig_out <= 0;
-        sig_reg <= 0;
-    end
-    else
-    begin
-        sig_reg <= sig_in;
-        sig_out <= sig_reg;
-    end
+    sig_reg <= sig_in;
+    sig_out <= sig_reg;
 end
 endmodule
 endsnippet
