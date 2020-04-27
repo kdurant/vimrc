@@ -323,6 +323,7 @@ if &rtp =~ 'coc.nvim'
 
     call coc#add_extension(
                 \ 'coc-calc', 
+                \ 'coc-clangd', 
                 \ 'coc-json', 
                 \ 'coc-lists', 
                 \ 'coc-marketplace',
@@ -333,11 +334,6 @@ if &rtp =~ 'coc.nvim'
                 \ 'coc-translator',
                 \ 'coc-word'
                 \ )
-    "autocmd CursorHold * call CocActionAsync('doHover')
-    vmap <space>ef  <Plug>(coc-format-selected)
-    nmap <space>ef  <Plug>(coc-format-selected)
-
-    "inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : \<TAB>" 
 
     hi link CocFloating DiffAdd
     augroup mygroup
@@ -347,6 +343,9 @@ if &rtp =~ 'coc.nvim'
         " Update signature help on jump placeholder
         autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     augroup end
+
+    nmap <space>ds  :CocCommand clangd.switchSourceHeader<cr>
+    let g:which_key_map.d.s = 'switch header/implementation'
 
     nmap <space>df  <Plug>(coc-translator-p)
     let g:which_key_map.d.f = 'translator'

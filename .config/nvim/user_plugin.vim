@@ -28,7 +28,6 @@ Plug 'voldikss/vim-floaterm'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'liuchengxu/vim-clap'
 Plug 'Yggdroot/LeaderF'
-Plug 'pechorin/any-jump.vim'
 Plug 'dstein64/vim-startuptime'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
@@ -47,8 +46,6 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'romainl/Apprentice'
 Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
-
-Plug 'pechorin/any-jump.nvim'
 
             "Plug 'tpope/vim-fugitive', {'frozen': 1}
             "Plug 'vim-airline/vim-airline'      "增加100ms左右启动时间(opening buffers)
