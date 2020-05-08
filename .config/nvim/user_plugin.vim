@@ -29,7 +29,6 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'liuchengxu/vim-clap'
 Plug 'Yggdroot/LeaderF'
 Plug 'dstein64/vim-startuptime'
-Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 Plug 'joshdick/onedark.vim'
 Plug 'nanotech/jellybeans.vim'
