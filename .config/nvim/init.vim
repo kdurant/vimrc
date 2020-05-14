@@ -113,5 +113,3 @@ source ~/.config/nvim/basic_map.vim
 source ~/.config/nvim/self_fun.vim
 source ~/.config/nvim/plugin_map.vim
 source ~/.config/nvim/plugin_config.vim
-
-

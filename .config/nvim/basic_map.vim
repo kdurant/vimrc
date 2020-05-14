@@ -21,6 +21,7 @@ if g:isnvim
     "xnoremap P  "_d""gP
     "nnoremap p  ""gp
     "xnoremap p  "_d""gp
+    "
 endif
 nmap    <space>wj   <C-W>-
 nmap    <space>wk   <C-W>+
@@ -98,3 +99,9 @@ nmap <space>fo  :call system('explorer .')<cr>
 let g:which_key_map.f.o = '打开当前文件目录'
 nmap <F3> i<C-R>=strftime("%Y-%m-%d %I:%M")<CR><Esc>
 imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M")<CR><Esc>
+
+
+if g:is_unix
+    runtime ftplugin/man.vim
+    map K :Man 3 expand('<cword>')<cr>
+endif
