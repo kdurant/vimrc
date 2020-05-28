@@ -63,15 +63,14 @@ sudo apt upgrade
 
 
 # 安装nvim
-sudo apt install xclip curl
-sudo apt install python3-neovim
+sudo apt install -y xclip curl python3-neovim
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
 sudo apt install neovim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # 字体
-sudo apt install fonts-firacode
+sudo apt install -y fonts-firacode
 
 wget http://codybonney.com/files/fonts/Monaco_Linux.ttf
 sudo mkdir /usr/share/fonts/truetype/ttf-monaco
@@ -79,27 +78,17 @@ mv Monaco_Linux.ttf /usr/share/fonts/truetype/ttf-monaco
 sudo mkfontdir
 fc-cache
 
-sudo apt install ttf-wqy-microhei ttf-wqy-zenhei ttf-dejavu
+sudo apt install -y ttf-wqy-microhei ttf-wqy-zenhei ttf-dejavu
 # 
 
 echo "---------------系统工具相关-------------------------"
-if [ -z `which dos2unix` ]; then  sudo apt install dos2unix; fi
-if [ -z `which git` ]; then  sudo apt install git; fi
-if [ -z `which cloc` ]; then  sudo apt install cloc; fi
-if [ -z `which hexedit` ]; then  sudo apt install hexedit; fi
-if [ -z `which tig` ]; then  sudo apt install tig; fi
-if [ -z `which cppman` ]; then  sudo apt install cppman; fi
-if [ -z `which cmake` ]; then  sudo apt install cmake; fi
-if [ -z `which global` ]; then  sudo apt install global; fi
-if [ -z `which lua` ]; then  sudo apt install lua5.3; fi
-if [ -z `which cgdb` ]; then  sudo apt install cgdb; fi
-if [ -z `which htop` ]; then  sudo apt install htop; fi
+sudo apt -y install dos2unix git cloc hexedit tig cppman cmake global lua5.3 cgdb htop        
 
 echo "----------------python vim相关-------------------------"
 if [ -z `which pip3` ]; then  sudo apt install python3-pip; fi
 
-sudo apt install lsb-core lib32stdc++6
-sudo apt install gcc-multilib g++-multilib
+sudo apt install -y lsb-core lib32stdc++6
+sudo apt install -y gcc-multilib g++-multilib
 
 if [ ! -d "$HOME/.pip" ]; then
     mkdir  $HOME/.pip; cd $HOME/.pip
