@@ -418,6 +418,7 @@ if &rtp =~'vim-clang-format'
     let g:clang_format#style_options = {
                 \ "AlignConsecutiveAssignments" : "true",
                 \ "AlignConsecutiveDeclarations" : "true",
+                \ "AlignConsecutiveMacros" : "false",
                 \ "AllowShortBlocksOnASingleLine" : "false",
                 \ "AllowShortCaseLabelsOnASingleLine" : "false",
                 \ "AllowShortFunctionsOnASingleLine" : "None",

@@ -3,6 +3,7 @@ BasedOnStyle:  Google
 AccessModifierOffset : -4
 AlignConsecutiveAssignments: true
 AlignConsecutiveDeclarations: true
+AlignConsecutiveMacros : true
 AllowShortBlocksOnASingleLine: false
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
