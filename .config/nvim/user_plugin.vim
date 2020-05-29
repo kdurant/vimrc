@@ -3,7 +3,8 @@ call plug#begin('~/.config/nvim/bundle')
 "Plug 'SirVer/ultisnips'
 
 Plug 'junegunn/vim-easy-align'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vim-which-key'
 Plug 'rhysd/git-messenger.vim'
 

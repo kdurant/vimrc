@@ -103,7 +103,10 @@ fi
 
 if [ -z `pip3 list | grep ipython` ]; then sudo pip3 install ipython; fi
 
-if [ -z `which nodejs` ]; then  sudo apt install nodejs; fi
+if [ -z `which nodejs` ]; then  
+    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+fi
 if [ -z `which npm` ]; then  sudo apt install npm; fi
 npm config set registry http://registry.npm.taobao.org/
 if [ -z `which yarn` ]; then  sudo npm install -g yarn; fi
