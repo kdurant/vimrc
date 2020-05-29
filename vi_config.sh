@@ -34,13 +34,8 @@ cp $HOME/vimrc/.config/nvim/user_plugin.vim 	        $HOME/.config/nvim
 # chmod 755 $HOME/program/vi_config.sh
 # chmod 755 $HOME/program/linux_config.sh
 cp $HOME/vimrc/gtags.conf 			        $HOME/.config/gtags.conf
-cp $HOME/vimrc/AppData/Local/nvim/coc-settings.json 	$HOME/.config/nvim
+cp $HOME/vimrc/.config/nvim/coc-settings.json 	        $HOME/.config/nvim
 dos2unix $HOME/.config/nvim/coc-settings.json
-
-if [ ! -d $HOME/.config/coc/ultisnips ]; then
-    mkdir -p $HOME/.config/coc/ultisnips
-fi
-cp -r $HOME/vimrc/AppData/Local/coc/ultisnips $HOME/.config/coc
 
 #git clone https://github.com/kdurant/bookmark
 
