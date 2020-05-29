@@ -311,6 +311,7 @@ if &rtp =~ 'FlyGrep'
 endif
 
 if &rtp =~ 'coc.nvim'
+    let g:coc_config_home = "~/.config/nvim"
     set updatetime=300
     set hidden
     autocmd FileType verilog let b:coc_pairs_disabled = ['`', '<']

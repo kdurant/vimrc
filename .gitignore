@@ -1,6 +1,9 @@
 **/coc/extensions/**
 **/coc/*.json
 **/coc/snippets-mru
+**/coc/commands 
+**/coc/mru 
+
 
 neocomplete
 mplayer
