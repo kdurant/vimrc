@@ -23,7 +23,7 @@ if [ ! -d $HOME/program ]; then
 fi
 
 echo "--------------------复制vim配置文件-----------------------"
-cp $HOME/vimrc/.config/nvim/* 		                $HOME/.config/nvim
+cp -r $HOME/vimrc/.config/nvim/* 		                $HOME/.config/nvim
 dos2unix $HOME/.config/nvim/coc-settings.json
 
 #git clone https://github.com/kdurant/bookmark
