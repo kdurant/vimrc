@@ -20,6 +20,7 @@
     "snippets.ultisnips.directories": [
         "~/.config/nvim/ultisnips"
     ],
+    "snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
     "list.maxHeight": 15,
     "codeLens.enable": true,
     "suggest.languageSourcePriority": 99,

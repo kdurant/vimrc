@@ -82,7 +82,7 @@ sudo apt install -y ttf-wqy-microhei ttf-wqy-zenhei ttf-dejavu
 # 
 
 echo "---------------系统工具相关-------------------------"
-sudo apt -y install dos2unix git cloc hexedit tig cppman cmake global lua5.3 cgdb htop        
+sudo apt -y install dos2unix git cloc hexedit tig cppman cmake lua5.3 cgdb htop ripgrep
 
 echo "----------------python vim相关-------------------------"
 if [ -z `which pip3` ]; then  sudo apt install python3-pip; fi
@@ -123,7 +123,7 @@ chmod 600 $HOME/.ssh/id_rsa
 chmod 600 $HOME/.ssh/id_rsa.pub
 
 # git配置
-echo "----------------配置ssh-------------------------"
+echo "----------------配置git-------------------------"
 if [ ! -d "$HOME/vimrc" ]; then
     echo "--------------------download config file---------------------"
     if [ -f "$HOME/.ssh/id_rsa" ]; then
