@@ -399,3 +399,44 @@ IDDR_Ex01
 always @(posedge $2)
     $1_out <= {$1_fall, $1_rise};
 endsnippet
+
+
+snippet timer "generate timeout signal"
+\`timescale  1 ns/1 ps
+
+module timer #
+(
+    parameter               SYS_FREQ = 125_000_000,
+    parameter               TIME_OUT = 1_000  // unit: ns
+)
+(
+    input                       clk,
+    input                       rst,
+
+    input                       enable,
+    input                       clear,
+    output                      timeout
+);
+
+localparam              TIME_OUT_CNT = TIME_OUT/(1_000_000_000/SYS_FREQ);
+
+reg     [31:00]             cnt;
+
+always @ (posedge clk)
+begin
+    if(rst)
+        cnt <= 0;
+    else if(enable)
+    begin
+        if(clear)
+            cnt <= 0;
+        else if(cnt < TIME_OUT_CNT)
+            cnt <= cnt + 1'b1;
+    end
+    else
+        cnt <= 0;
+end
+
+assign                  timeout = (cnt == TIME_OUT_CNT-1);
+endmodule
+endsnippet

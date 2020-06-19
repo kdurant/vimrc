@@ -7,20 +7,20 @@ if [ ! -e "/etc/apt/sources.list.bak" ]; then
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 fi
 
-lsb_release -a | grep 19.04 
+lsb_release -a | grep 16.04 
 if [ $? == 0 ]; then
     grep aliyun /etc/apt/sources.list
     if [ $? -ne 0 ]; then
-        sudo sh -c "echo 'deb http://mirrors.aliyun.com/ubuntu/ disco main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ disco main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ disco-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ disco-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ disco-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ disco-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ disco-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ disco-backports main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ disco-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ disco-proposed main restricted universe multiverse' > /etc/apt/sources.list"
+        sudo sh -c "echo ' deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse ' > /etc/apt/sources.list"
     fi
 fi
 
@@ -40,6 +40,24 @@ deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe 
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse' > /etc/apt/sources.list"
     fi
 fi
+
+lsb_release -a | grep 19.04 
+if [ $? == 0 ]; then
+    grep aliyun /etc/apt/sources.list
+    if [ $? -ne 0 ]; then
+        sudo sh -c "echo 'deb http://mirrors.aliyun.com/ubuntu/ disco main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ disco main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ disco-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ disco-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ disco-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ disco-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ disco-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ disco-backports main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ disco-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ disco-proposed main restricted universe multiverse' > /etc/apt/sources.list"
+    fi
+fi
+
 
 lsb_release -a | grep 20.04 
 if [ $? == 0 ]; then
@@ -63,7 +81,7 @@ sudo apt upgrade
 
 
 # 安装nvim
-sudo apt install -y xclip curl python3-neovim
+sudo apt install -y xclip curl
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
 sudo apt install neovim
@@ -96,10 +114,10 @@ if [ ! -d "$HOME/.pip" ]; then
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple" > pip.conf
 fi
 
-# if [ -z `pip list | grep pynvim` ]; then 
-#     sudo pip install --upgrade pynvim
-#     sudo pip3 install --upgrade pynvim
-# fi
+if [ -z `pip list | grep pynvim` ]; then 
+    sudo pip install --upgrade pynvim
+    sudo pip3 install --upgrade pynvim
+fi
 
 if [ -z `pip3 list | grep ipython` ]; then sudo pip3 install ipython; fi
 
