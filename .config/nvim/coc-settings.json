@@ -20,7 +20,8 @@
     "snippets.ultisnips.directories": [
         "~/.config/nvim/ultisnips"
     ],
-    "snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
+    // coc snippets.editSnippets命令使用的目录,win7下无法识别~
+    // "snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
     "list.maxHeight": 15,
     "codeLens.enable": true,
     "suggest.languageSourcePriority": 99,
