@@ -23,6 +23,7 @@ _vsvimrc
 my_info
 tmp*
 mru
+gitk
 
 .*
 !.gitconfig
