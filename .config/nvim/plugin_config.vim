@@ -475,6 +475,12 @@ if exists('g:fvim_loaded')
                 \ })
 endif
 
+if exists("g:neovide")
+    set guifont=FiraCode\ NF:h18
+    let g:neovide_transparency=0.85
+    let g:neovide_cursor_vfx_mode = "sonicboom"
+endif
+
 if &rtp =~ 'rainbow'
     let g:rainbow_active = 1
 endif

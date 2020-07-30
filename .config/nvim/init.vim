@@ -33,6 +33,7 @@ autocmd BufEnter *.svh  set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/
 autocmd BufLeave *.svh  set tags-=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
 
 "set guifont=Monaco:h12
+"set guifont=FiraCode\ NF:h14
 set number
 set mouse=a
 set clipboard+=unnamed
