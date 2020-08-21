@@ -320,7 +320,9 @@ if &rtp =~ 'coc.nvim'
     nmap <silent> <space>gd <Plug>(coc-definition)
     "nmap <silent> <space>gy <Plug>(coc-type-definition)
     "nmap <silent> <space>gi <Plug>(coc-implementation)
-    "nmap <silent> <space>gr <Plug>(coc-references)
+    nmap <silent> <space>gr <Plug>(coc-references)
+    let g:which_key_map.g.d = 'go to definition'
+    let g:which_key_map.g.r = 'find references'
 
     call coc#add_extension(
                 \ 'coc-calc', 

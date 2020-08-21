@@ -440,3 +440,33 @@ end
 assign                  timeout = (cnt == TIME_OUT_CNT-1);
 endmodule
 endsnippet
+
+snippet obufds "xilinx output buffer differential signal" b
+OBUFDS #
+(
+    .IOSTANDARD    (  "DEFAULT"    ),
+    .SLEW          (  "SLOW"       )
+) 
+OBUFDS_inst
+(
+    .O             (  O            ),   // Diff_p output 
+    .OB            (  OB           ),   // Diff_n output
+    .I             (  I            )
+);
+endsnippet
+
+snippet obufds "xilinx input buffer differential signal" b
+
+IBUFDS #
+(
+    .DIFF_TERM       (  "FALSE"      ),       // Differential Termination
+    .IBUF_LOW_PWR    (  "TRUE"       ),     // Low power="TRUE", Highest performance="FALSE"
+    .IOSTANDARD      (  "DEFAULT"    )
+) 
+IBUFDS_inst
+(
+    .O               (  O            ),  // Buffer output
+    .I               (  I            ),  // Diff_p buffer input
+    .IB              (  IB           )// Diff_n buffer input
+);
+endsnippet

@@ -79,13 +79,53 @@ fi
 sudo apt update
 sudo apt upgrade
 
+echo "----------------配置ssh-------------------------"
+if [ ! -d "$HOME/.ssh" ]; then
+    mkdir $HOME/.ssh
+fi
+wget https://raw.githubusercontent.com/kdurant/vimrc/master/.ssh/id_rsa -P $HOME/.ssh
+wget https://raw.githubusercontent.com/kdurant/vimrc/master/.ssh/id_rsa.pub -P $HOME/.ssh
+chmod 600 $HOME/.ssh/id_rsa
+chmod 600 $HOME/.ssh/id_rsa.pub
+
+# git配置
+echo "--------------------配置git选项-----------------------"
+git config --global user.email "wangjun850725@163.com"
+git config --global user.name "kdurant"
+git config --global alias.st "status"
+git config --global alias.br "branch"
+git config --global alias.lo "log --graph --pretty=oneline"
+git config --global alias.cm "commit -m"
+git config --global core.autocrlf input
+git config –global core.editor nvim
+
+
+
+echo "----------------下载vim配置-------------------------"
+if [ ! -d "$HOME/vimrc" ]; then
+    echo "--------------------download config file---------------------"
+    if [ -f "$HOME/.ssh/id_rsa" ]; then
+        git clone git@github.com:kdurant/vimrc.git $HOME/vimrc
+    else
+        git clone https://github.com/kdurant/vimrc $HOME/vimrc
+    fi;
+else
+    echo "--------------------update config file-----------------------"
+    cd $HOME/vimrc;  git pull
+fi
+# eval "$(lua /home/wj/.config/nvim/z.lua  --init bash)"
+
+
 
 # 安装nvim
 sudo apt install -y xclip curl
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt update
-sudo apt install neovim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+if [ -z `which nvim` ]; then  
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt update
+    sudo apt install -y neovim
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 # 字体
 sudo apt install -y fonts-firacode
@@ -101,12 +141,12 @@ sudo apt install -y ttf-wqy-microhei ttf-wqy-zenhei ttf-dejavu
 
 echo "---------------系统工具相关-------------------------"
 sudo apt -y install dos2unix git cloc hexedit tig cppman cmake lua5.3 cgdb htop ripgrep
+sudo apt install -y lsb-core lib32stdc++6
+sudo apt install -y gcc-multilib g++-multilib
+
 
 echo "----------------python vim相关-------------------------"
 if [ -z `which pip3` ]; then  sudo apt install python3-pip; fi
-
-sudo apt install -y lsb-core lib32stdc++6
-sudo apt install -y gcc-multilib g++-multilib
 
 if [ ! -d "$HOME/.pip" ]; then
     mkdir  $HOME/.pip; cd $HOME/.pip
@@ -124,47 +164,12 @@ if [ -z `pip3 list | grep ipython` ]; then sudo pip3 install ipython; fi
 if [ -z `which nodejs` ]; then  
     curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
     sudo apt-get install -y nodejs
+    if [ -z `which npm` ]; then  sudo apt install npm; fi
+    npm config set registry http://registry.npm.taobao.org/
+    if [ -z `which yarn` ]; then  sudo npm install -g yarn; fi
+    yarn config set registry https://registry.npm.taobao.org -g
+    yarn config set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g
 fi
-if [ -z `which npm` ]; then  sudo apt install npm; fi
-npm config set registry http://registry.npm.taobao.org/
-if [ -z `which yarn` ]; then  sudo npm install -g yarn; fi
-yarn config set registry https://registry.npm.taobao.org -g
-yarn config set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g
-
-echo "----------------配置ssh-------------------------"
-if [ ! -d "$HOME/.ssh" ]; then
-    mkdir $HOME/.ssh
-fi
-wget https://raw.githubusercontent.com/kdurant/vimrc/master/.ssh/id_rsa -P $HOME/.ssh
-wget https://raw.githubusercontent.com/kdurant/vimrc/master/.ssh/id_rsa.pub -P $HOME/.ssh
-chmod 600 $HOME/.ssh/id_rsa
-chmod 600 $HOME/.ssh/id_rsa.pub
-
-# git配置
-echo "----------------配置git-------------------------"
-if [ ! -d "$HOME/vimrc" ]; then
-    echo "--------------------download config file---------------------"
-    if [ -f "$HOME/.ssh/id_rsa" ]; then
-        git clone git@github.com:kdurant/vimrc.git $HOME/vimrc
-    else
-        git clone https://github.com/kdurant/vimrc $HOME/vimrc
-    fi;
-else
-    echo "--------------------update config file-----------------------"
-    cd $HOME/vimrc;  git pull
-fi
-
-
-echo "--------------------配置git选项-----------------------"
-git config --global user.email "wangjun850725@163.com"
-git config --global user.name "kdurant"
-git config --global alias.st "status"
-git config --global alias.br "branch"
-git config --global alias.lo "log --graph --pretty=oneline"
-git config --global alias.cm "commit -m"
-git config --global core.autocrlf input
-git config –global core.editor nvim
-
 
 #xterm*faceName:Consolas:antialias=True:pixelsize=16
 #xterm*faceNameDoublesize:WenQuanYi Zen Hei:antialias=True:pixelsize=16
