@@ -97,7 +97,7 @@ git config --global alias.br "branch"
 git config --global alias.lo "log --graph --pretty=oneline"
 git config --global alias.cm "commit -m"
 git config --global core.autocrlf input
-git config –global core.editor nvim
+git config –-global core.editor nvim
 
 
 
@@ -255,6 +255,7 @@ if [[ 1 eq 0 ]]; then
     # sudo apt install clang-tools
     # sudo apt install clang-format
 
+    # ubuntu18.04 apt 安装的 clang 版本为 6.0
     which clang | grep clang 
     if [ $? -ne 0 ]; then
         echo "----------------安装clang-------------------------"

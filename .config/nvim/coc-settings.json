@@ -20,7 +20,7 @@
     "snippets.ultisnips.directories": [
         "~/.config/nvim/ultisnips"
     ],
-    "snippets.textmateSnippetsRoots": ["C:/Users/wangj/AppData/Roaming/Code/User/snippets"],
+    //"snippets.textmateSnippetsRoots": ["C:/Users/wangj/AppData/Roaming/Code/User/snippets"],
     // coc snippets.editSnippets命令使用的目录,win7下无法识别~
     // "snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
     "list.maxHeight": 15,
