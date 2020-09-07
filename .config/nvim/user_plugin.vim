@@ -47,6 +47,7 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'romainl/Apprentice'
 Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'altercation/vim-colors-solarized'
 
             "Plug 'tpope/vim-fugitive', {'frozen': 1}
             "Plug 'vim-airline/vim-airline'      "增加100ms左右启动时间(opening buffers)
