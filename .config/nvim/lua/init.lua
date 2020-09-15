@@ -1,6 +1,9 @@
 local global = require 'global'
 local options = require 'options'
+local autocmd = require 'event'
+
 local vim, api = vim, vim.api
+
 local M = {}
 -- 
 function M.createdir()
@@ -21,6 +24,8 @@ function M.load_core()
 
     local ops = options:new()
     ops:load_options()
+
+    autocmd.load_autocmds()
 end
  
 M.load_core()

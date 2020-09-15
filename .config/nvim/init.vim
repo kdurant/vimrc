@@ -26,25 +26,16 @@ endif
 
 source ~/.config/nvim/user_plugin.vim
 
-autocmd VimLeave * exec  "mksession! ~/.config/nvim_session.vim"
 map     <F7>        :so ~/.config/nvim_session.vim<cr>
 
 "set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
-autocmd BufEnter *.sv  set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
-autocmd BufLeave *.sv  set tags-=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
-autocmd BufEnter *.svh  set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
-autocmd BufLeave *.svh  set tags-=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
+"autocmd BufEnter *.sv  set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
+"autocmd BufLeave *.sv  set tags-=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
+"autocmd BufEnter *.svh  set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
+"autocmd BufLeave *.svh  set tags-=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
 
 "set guifont=Monaco:h12
 "set guifont=FiraCode\ NF:h14
-
-autocmd FocusGained * :checktime
-autocmd BufRead,BufNewFile *.cmd set filetype=cmd
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.ucf set filetype=ucf
-autocmd FileType lua  setlocal iskeyword+=.
-
-autocmd BufNewFile .gitignore let @i = "#basic\n.vscode\n*.pdf\n*.doc\n*.docx\n*.rar\n*.txt\n*.html\n*.jpg\n*.chm\n*.log\n*.zip\n*.xml\ntmp\nGPATH\nGRTAGS\nGTAGS*" | exe "normal \"iP"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 if &rtp =~ 'vim-which-key'
