@@ -13,6 +13,9 @@ let g:is_win = has('win32') || has('win64')
 let g:is_unix = has('unix')
 let g:isnvim = 1
 
+set runtimepath+=~/.config/nvim
+lua require ('init')
+
 let g:python3_host_skip_check=1
 if g:is_win
     let g:python3_host_prog = exepath('python')
@@ -34,35 +37,6 @@ autocmd BufLeave *.svh  set tags-=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/
 
 "set guifont=Monaco:h12
 "set guifont=FiraCode\ NF:h14
-set number
-set mouse=a
-set clipboard+=unnamed
-set clipboard+=unnamedplus
-set scrolloff=3
-set linebreak
-set noswapfile
-set nowritebackup
-set noignorecase
-set nowrap
-set splitbelow
-set fileformats=dos,unix,mac
-set confirm
-set splitright
-set cursorline
-
-set cindent
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set autochdir
-set virtualedit=block
-set suffixesadd+=.v
-
-set ignorecase
-set smartcase
-
-set completeopt+=noinsert
-set completeopt-=preview
 
 autocmd FocusGained * :checktime
 autocmd BufRead,BufNewFile *.cmd set filetype=cmd
