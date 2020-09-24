@@ -16,6 +16,7 @@ let g:isnvim = 1
 set runtimepath+=~/.config/nvim
 lua require ('init')
 
+
 let g:python3_host_skip_check=1
 if g:is_win
     let g:python3_host_prog = exepath('python')
@@ -75,6 +76,7 @@ if &rtp =~ 'vim-which-key'
 endif
 
 
+autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 source ~/.config/nvim/basic_map.vim
 source ~/.config/nvim/self_fun.vim
 source ~/.config/nvim/plugin_map.vim

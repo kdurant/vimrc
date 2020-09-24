@@ -406,3 +406,133 @@ unsigned long crc32(const unsigned char* s, unsigned int len)
     return crc32val ^ 0xffffffff;
 }
 endsnippet
+
+snippet socket_tcp_server "tcp server socket example" b
+int                socket_server, socket_client;
+struct sockaddr_in server_addr;
+struct sockaddr_in client_addr;
+int                err;
+
+socket_server = socket(AF_INET, SOCK_STREAM, 0);
+if(socket_server < 0)
+{
+    printf("socket error\n");
+    return -1;
+}
+
+bzero(&server_addr, sizeof(server_addr));
+server_addr.sin_family      = AF_INET;
+server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+server_addr.sin_port        = htons(PORT);
+
+err = bind(socket_server, (struct sockaddr *)&server_addr, sizeof(server_addr));
+if(err < 0)
+{
+    printf("errno = %d\n", errno);
+    printf("bind error\n");
+    return -1;
+}
+
+err = listen(socket_server, BACKLOG);
+if(err < 0)
+{
+    printf("listen error\n");
+    return -1;
+}
+
+while(1)
+{
+    int addrlen = sizeof(struct sockaddr);
+
+    socket_client = accept(socket_server, (struct sockaddr *)&client_addr, &addrlen);
+    if(socket_client < 0)
+    {
+	printf("continue to try\n");
+	continue;
+    }
+    while(1)
+    {
+	int len = recv(client_sockfd, rx_buffer, sizeof(rx_buffer) - 1, 0);
+	if(len < 0)
+	{
+	    shutdown(client_sockfd, 0);
+	    close(client_sockfd);
+	    break;
+	}
+	else if(len == 0)  //Connection closed
+	{
+	    shutdown(client_sockfd, 0);
+	    close(client_sockfd);
+	    break;
+	}
+	else
+	{
+	    // process the data received
+	}
+    }
+}
+endsnippet
+
+snippet socket_tcp_client "tcp client socket example" b
+struct sockaddr_in server_addr;
+int                err;
+
+bzero(&server_addr, sizeof(server_addr));
+server_addr.sin_family      = AF_INET;
+server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+server_addr.sin_port        = htons(PORT);
+
+inet_pton(AF_INET, argv[1], &server_addr.sin_addr);
+
+err = connect(s, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));
+if(err < 0)
+{
+    printf("connection failed\n");
+}
+
+while(1)
+{
+    size = read(0, buffer, 1024);
+
+    if(size > 0)
+    {
+	send(s, buffer, 1024, 0);
+	write(1, buffer, size);
+    }
+}
+endsnippet
+
+snippet gtk_glade_builder "use glade to generate UI" b
+// gcc -o main main.c \`pkg-config --cflags gtk+-3.0 --libs gtk+-3.0\` -export-dynamic
+gtk_init(&argc, &argv);
+
+GtkBuilder *builder = gtk_builder_new();
+gtk_builder_add_from_file(builder, "glade_test.glade", NULL);
+
+GtkWidget *window = GTK_WIDGET(gtk_builder_get_object(builder, "window_main"));
+gtk_builder_connect_signals(builder, NULL);
+
+gtk_widget_show(window);
+g_object_unref(builder);
+
+gtk_main();
+endsnippet
+
+snippet glib_main_loop "glib main loop template" b
+// gcc test.c \`pkg-config --cflags --libs glib-2.0\`
+GMainContext* ${1:context} = g_main_context_new();
+GMainLoop* ${2:loop} = g_main_loop_new($1, FALSE);
+GSource* ${3:source} = NULL;
+
+$3 = g_timeout_source_new_seconds(1);
+g_source_set_callback($3, ${4:callback}, $2, NULL);
+g_source_attach($3, $1);
+
+g_main_loop_run($2);
+endsnippet
+
+snippet glib_unit_test "glib unit test" b
+g_test_init(&argc, &argv, NULL);
+g_test_add_func("/package_name/unit", computationTest);
+return g_test_run();
+endsnippet

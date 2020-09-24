@@ -31,6 +31,7 @@ Plug 'liuchengxu/vim-clap'
 Plug 'Yggdroot/LeaderF'
 Plug 'dstein64/vim-startuptime'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'rafcamlet/nvim-luapad'
 
 Plug 'joshdick/onedark.vim'
 Plug 'nanotech/jellybeans.vim'

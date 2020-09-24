@@ -527,8 +527,8 @@ map <space>fa      :let g:Lf_ExternalCommand = 'rg --files --no-messages --no-ig
 map <space>fg      :let g:Lf_ExternalCommand = 'rg "%s" --files --no-messages'<cr>:Leaderf file<cr>
 map <space>fb      :Leaderf buffer<cr>
 map <space>fm      :Leaderf mru<cr>
-map <space>sw      :Leaderf rg -e<space>
-map <space>ss      :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<cr><cr>
+map <space>sw      :Leaderf rg -w<space>
+map <space>ss      :<C-U><C-R>=printf("Leaderf rg -w %s ", expand("<cword>"))<cr><cr>
 map <space>sf      :Leaderf rg<cr>
 
 "nmap <space>fa      :exe "cd " . Search_root()<cr>:CocList files<cr>

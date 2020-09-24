@@ -286,4 +286,9 @@ if [[ 1 eq 0 ]]; then
     # XDG_PICTURES_DIR="$HOME/picture"
     # XDG_VIDEOS_DIR="$HOME/video"
     # ```
+
+    # 安装壁纸自动切换软件
+    sudo add-apt-repository ppa:peterlevi/ppa
+    sudo apt-get update
+    sudo apt-get install variety variety-slideshow
 fi
