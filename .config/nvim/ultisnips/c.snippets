@@ -502,8 +502,38 @@ while(1)
 }
 endsnippet
 
+snippet gtk_basic_template "Description" b
+#include <gtk/gtk.h>
+
+void destroy(GtkWidget *widget, gpointer data)
+{
+    //  If don't call this callback, program will not quit outright.
+    gtk_main_quit();
+}
+
+int main(int argc, char *argv[])
+{
+    gtk_init(&argc, &argv);
+
+    GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(window), "My first program helloworld!");
+    gtk_container_set_border_width(GTK_CONTAINER(window), 150);
+
+    g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(destroy), NULL);
+
+    GtkWidget *button = gtk_button_new_with_label("Hello World");
+
+    gtk_container_add(GTK_CONTAINER(window), button);
+
+    gtk_widget_show_all(window);
+
+    gtk_main();
+    return 0;
+}
+endsnippet
+
 snippet gtk_glade_builder "use glade to generate UI" b
-// gcc -o main main.c \`pkg-config --cflags gtk+-3.0 --libs gtk+-3.0\` -export-dynamic
+// gcc -o main main.c \`pkg-config --cflags --libs gtk+-3.0\` -export-dynamic
 gtk_init(&argc, &argv);
 
 GtkBuilder *builder = gtk_builder_new();
