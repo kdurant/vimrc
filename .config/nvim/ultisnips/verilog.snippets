@@ -347,11 +347,11 @@ end
 always @ (*)
 begin
     if(~rst)
-        state_cnt_n <= 0;
+        state_cnt_n = 0;
     else if (cs != ns)
-        state_cnt_n <= 0;
+        state_cnt_n = 0;
     else
-        state_cnt_n <= state_cnt + 1'b1;
+        state_cnt_n = state_cnt + 1'b1;
 end
 endsnippet
 
