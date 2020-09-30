@@ -82,11 +82,18 @@ sudo apt upgrade
 echo "----------------配置ssh-------------------------"
 if [ ! -d "$HOME/.ssh" ]; then
     mkdir $HOME/.ssh
+    wget https://raw.githubusercontent.com/kdurant/vimrc/master/.ssh/id_rsa -P $HOME/.ssh
+    wget https://raw.githubusercontent.com/kdurant/vimrc/master/.ssh/id_rsa.pub -P $HOME/.ssh
+    chmod 600 $HOME/.ssh/id_rsa
+    chmod 600 $HOME/.ssh/id_rsa.pub
 fi
-wget https://raw.githubusercontent.com/kdurant/vimrc/master/.ssh/id_rsa -P $HOME/.ssh
-wget https://raw.githubusercontent.com/kdurant/vimrc/master/.ssh/id_rsa.pub -P $HOME/.ssh
-chmod 600 $HOME/.ssh/id_rsa
-chmod 600 $HOME/.ssh/id_rsa.pub
+
+echo "---------------系统工具相关-------------------------"
+sudo apt install -y dos2unix git cloc hexedit tig cppman cmake lua5.3 cgdb htop guake
+    if [ -z `which guake` ]; then  sudo apt install guake; fi
+sudo apt install -y lsb-core lib32stdc++6
+sudo apt install -y gcc-multilib g++-multilib
+
 
 # git配置
 echo "--------------------配置git选项-----------------------"
@@ -99,7 +106,15 @@ git config --global alias.cm "commit -m"
 git config --global core.autocrlf input
 git config –-global core.editor nvim
 
+echo "----------------安装neovim-------------------------"
+sudo apt install -y xclip curl
 
+if [ -z `which nvim` ]; then  
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt update
+    sudo apt install -y neovim
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 echo "----------------下载vim配置-------------------------"
 if [ ! -d "$HOME/vimrc" ]; then
@@ -115,34 +130,9 @@ else
 fi
 # eval "$(lua /home/wj/.config/nvim/z.lua  --init bash)"
 
-
-
-# 安装nvim
-sudo apt install -y xclip curl
-
-if [ -z `which nvim` ]; then  
-    sudo add-apt-repository ppa:neovim-ppa/unstable
-    sudo apt update
-    sudo apt install -y neovim
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
 # 字体
-sudo apt install -y fonts-firacode
-
-wget http://codybonney.com/files/fonts/Monaco_Linux.ttf
-sudo mkdir /usr/share/fonts/truetype/ttf-monaco
-mv Monaco_Linux.ttf /usr/share/fonts/truetype/ttf-monaco
-sudo mkfontdir
-fc-cache
-
-sudo apt install -y ttf-wqy-microhei ttf-wqy-zenhei ttf-dejavu
+sudo apt install -y fonts-firacode ttf-wqy-microhei ttf-wqy-zenhei ttf-dejavu
 # 
-
-echo "---------------系统工具相关-------------------------"
-sudo apt -y install dos2unix git cloc hexedit tig cppman cmake lua5.3 cgdb htop ripgrep
-sudo apt install -y lsb-core lib32stdc++6
-sudo apt install -y gcc-multilib g++-multilib
 
 
 echo "----------------python vim相关-------------------------"
@@ -246,9 +236,8 @@ if [[ 1 eq 0 ]]; then
 
     # 安装帮助手册
     echo "----------------安装帮助手册-------------------------"
-    sudo apt install manpages-de manpages-de-dev manpages-dev glibc-doc manpages-posix-dev manpages-posix manpages-zh
+    sudo apt install -y manpages-de manpages-de-dev manpages-dev glibc-doc manpages-posix-dev manpages-posix manpages-zh
 
-    if [ -z `which guake` ]; then  sudo apt install guake; fi
 
     # 安装clang 
     # sudo apt install clang 
