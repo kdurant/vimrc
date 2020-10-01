@@ -161,6 +161,24 @@ if [ -z `which nodejs` ]; then
     yarn config set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g
 fi
 
+
+echo "----------------install google-chrome-------------------------"
+if [ -z `which google-chrome` ]; then  
+    sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/
+    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -
+    sudo apt update
+    sudo apt install google-chrome-stable
+fi
+
+if [ -z `which code` ]; then  
+    sudo sh -c "echo 'deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    sudo apt update
+    sudo apt install code
+fi
+
+
 #xterm*faceName:Consolas:antialias=True:pixelsize=16
 #xterm*faceNameDoublesize:WenQuanYi Zen Hei:antialias=True:pixelsize=16
 #xterm*locale:zh_CN.UTF-8
@@ -216,19 +234,6 @@ if [[ 1 eq 0 ]]; then
     sudo apt install gcc-multilib g++-multilib
     sudo apt install xterm
 
-
-    # 安装chrome
-    sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/
-    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -
-    sudo apt update
-    sudo apt install google-chrome-stable
-
-    #安装vscode
-    sudo sh -c "echo 'deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-    sudo apt update
-    sudo apt install code
 
     # 安装fzf
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
