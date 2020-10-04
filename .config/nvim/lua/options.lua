@@ -17,7 +17,7 @@ end
 function options:load_options()
     self.mouse         = "a"
     self.number        = true
-    self.clipboard     = "unnamed"
+    self.clipboard     = "unnamed,unnamedplus"
     self.scrolloff     = 3
     self.linebreak     = true
     self.swapfile      = false

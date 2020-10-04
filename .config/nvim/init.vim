@@ -16,6 +16,7 @@ let g:isnvim = 1
 set runtimepath+=~/.config/nvim
 lua require ('init')
 
+source ~/.config/nvim/options.vim
 
 let g:python3_host_skip_check=1
 if g:is_win

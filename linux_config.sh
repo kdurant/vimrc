@@ -89,9 +89,9 @@ if [ ! -d "$HOME/.ssh" ]; then
 fi
 
 echo "---------------系统工具相关-------------------------"
-sudo apt install -y dos2unix git cloc hexedit tig cppman cmake lua5.3 cgdb htop guake
-    if [ -z `which guake` ]; then  sudo apt install guake; fi
-sudo apt install -y lsb-core lib32stdc++6
+sudo apt install -y dos2unix git gitk cloc hexedit tig cppman cmake lua5.2 cgdb htop
+if [ -z `which guake` ]; then  sudo apt install guake; fi
+sudo apt install -y lsb-core lib32stdc++6 libssl-dev 
 sudo apt install -y gcc-multilib g++-multilib
 
 
@@ -128,7 +128,17 @@ else
     echo "--------------------update config file-----------------------"
     cd $HOME/vimrc;  git pull
 fi
+
+echo "----------------配置z.lua-------------------------"
 # eval "$(lua /home/wj/.config/nvim/z.lua  --init bash)"
+EXIST_Z_LUA=`cat ~/.bashrc | grep z.lua | head -1`
+if [ ${#EXIST_Z_LUA} -eq 0 ]; then 
+	echo "eval \"\$(lua /home/wj/.config/nvim/z.lua  --init bash)\"" >> ~/.bashrc
+	source ~/.basrc
+else
+	echo "The path of z-lua had been in .bashrc"
+fi;
+
 
 # 字体
 sudo apt install -y fonts-firacode ttf-wqy-microhei ttf-wqy-zenhei ttf-dejavu
@@ -147,6 +157,7 @@ fi
 if [ -z `pip list | grep pynvim` ]; then 
     sudo pip install --upgrade pynvim
     sudo pip3 install --upgrade pynvim
+    pip3 install neovim-remote
 fi
 
 if [ -z `pip3 list | grep ipython` ]; then sudo pip3 install ipython; fi
@@ -155,12 +166,19 @@ if [ -z `which nodejs` ]; then
     curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
     sudo apt-get install -y nodejs
     if [ -z `which npm` ]; then  sudo apt install npm; fi
+    sudo npm install -g neovim
     npm config set registry http://registry.npm.taobao.org/
     if [ -z `which yarn` ]; then  sudo npm install -g yarn; fi
     yarn config set registry https://registry.npm.taobao.org -g
     yarn config set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g
 fi
 
+if [ -z `which sogoupinyin` ]; then  
+	wget -c "http://cdn2.ime.sogou.com/dl/index/1599192613/sogoupinyin_2.3.2.07_amd64-831.deb?st=mIrISbP50Wwi2H0e2Kz0Lg&e=1601565568&fn=sogoupinyin_2.3.2.07_amd64-831.deb" -O ~/tmp/sogoupinyin_2.3.2.07_amd64-831.deb
+	sudo dpkg -i ~/tmp/sogoupinyin_2.3.2.07_amd64-831.deb
+	sudo apt --fix-broken install
+	sudo dpkg -i ~/tmp/sogoupinyin_2.3.2.07_amd64-831.deb
+fi
 
 echo "----------------install google-chrome-------------------------"
 if [ -z `which google-chrome` ]; then  
@@ -170,6 +188,7 @@ if [ -z `which google-chrome` ]; then
     sudo apt install google-chrome-stable
 fi
 
+echo "----------------install vscode-------------------------"
 if [ -z `which code` ]; then  
     sudo sh -c "echo 'deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -177,6 +196,26 @@ if [ -z `which code` ]; then
     sudo apt update
     sudo apt install code
 fi
+
+echo "----------------install ripgrep-------------------------"
+if [ -z `which rg` ]; then 
+	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
+	sudo dpkg -i ripgrep_11.0.2_amd64.deb
+fi
+
+echo "----------------install gtk环境-------------------------"
+sudo apt install -y gnome-core pkg-config devhelp glade
+
+echo "----------------安装帮助手册-------------------------"
+sudo apt install -y manpages-de manpages-de-dev manpages-dev glibc-doc manpages-posix-dev manpages-posix
+
+sudo apt install -y shutter kazam neofetch
+sudo apt install -y variety
+sudo apt install -y clang-9 clangd-9 clang-format-9 clang-tools-9
+
+echo "----------------安装百度网盘-------------------------"
+wget -c "http://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/3.4.1/baidunetdisk_3.4.1_amd64.deb" -O ~/tmp/baidunetdisk_3.4.1_amd64.deb
+sudo dpkg -i ~/tmp/baidunetdisk_3.4.1_amd64.deb
 
 
 #xterm*faceName:Consolas:antialias=True:pixelsize=16
@@ -239,10 +278,6 @@ if [[ 1 eq 0 ]]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
 
-    # 安装帮助手册
-    echo "----------------安装帮助手册-------------------------"
-    sudo apt install -y manpages-de manpages-de-dev manpages-dev glibc-doc manpages-posix-dev manpages-posix manpages-zh
-
 
     # 安装clang 
     # sudo apt install clang 
@@ -281,8 +316,4 @@ if [[ 1 eq 0 ]]; then
     # XDG_VIDEOS_DIR="$HOME/video"
     # ```
 
-    # 安装壁纸自动切换软件
-    sudo add-apt-repository ppa:peterlevi/ppa
-    sudo apt-get update
-    sudo apt-get install variety variety-slideshow
 fi
