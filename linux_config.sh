@@ -91,7 +91,7 @@ fi
 echo "---------------系统工具相关-------------------------"
 sudo apt install -y dos2unix git gitk cloc hexedit tig cppman cmake lua5.2 cgdb htop
 if [ -z `which guake` ]; then  sudo apt install guake; fi
-sudo apt install -y lsb-core lib32stdc++6 libssl-dev 
+sudo apt install -y lsb-core lib32stdc++6 libssl-dev flex bison
 sudo apt install -y gcc-multilib g++-multilib
 
 
@@ -209,7 +209,7 @@ sudo apt install -y gnome-core pkg-config devhelp glade
 echo "----------------安装帮助手册-------------------------"
 sudo apt install -y manpages-de manpages-de-dev manpages-dev glibc-doc manpages-posix-dev manpages-posix
 
-sudo apt install -y shutter kazam neofetch
+sudo apt install -y shutter kazam neofetch geogebra
 sudo apt install -y variety
 sudo apt install -y clang-9 clangd-9 clang-format-9 clang-tools-9
 
@@ -270,7 +270,6 @@ if [[ 1 eq 0 ]]; then
     #wget http://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.9/5.9.9/qt-opensource-linux-x64-5.9.9.run 
     sudo apt install qtcreator qt5-default qt5-doc qt5-doc-html qtbase5-doc-html qtbase5-examples
     sudo apt install libqt5charts5-dev qtdeclarative5-dev
-    sudo apt install gcc-multilib g++-multilib
     sudo apt install xterm
 
 

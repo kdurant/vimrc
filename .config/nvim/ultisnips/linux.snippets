@@ -1,0 +1,36 @@
+snippet user_kernel_module "simple user kernel module template" b
+#include <linux/init.h>
+#include <linux/module.h>
+
+static int __init ${1:my_test}_init(void)
+{
+    printk("my first kernel module init\n");
+    return 0;
+}
+
+static void __exit $1_exit(void)
+{
+    printk("googbye\n");
+}
+
+module_init($1_init);
+module_exit($1_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("${2:Kdurant}");
+MODULE_DESCRIPTION("${3:my test kernel module}");
+MODULE_ALIAS("${4:mytest}");
+
+// makefile
+// obj-m += mytest.o
+// BASEINCLUDE ?= /lib/modules/$(shell uname -r)/build
+// all:
+// 	make -C $(BASEINCLUDE) M=$(PWD) modules
+// clean:
+// 	make -C $(BASEINCLUDE) M=$(PWD) clean
+// 	rm -f *.ko
+endsnippet
+
+snippet dev_drive_char "simple char device driver template" b
+
+endsnippet
