@@ -28,7 +28,7 @@ endif
 
 source ~/.config/nvim/user_plugin.vim
 
-map     <F7>        :so ~/.config/nvim_session.vim<cr>
+map     <F3>        :so ~/.config/nvim_session.vim<cr>
 
 "set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
 "autocmd BufEnter *.sv  set tags+=C:/questasim64_10.6c/verilog_src/uvm-1.1d/src/tags
