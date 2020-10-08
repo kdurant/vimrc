@@ -32,6 +32,7 @@ Plug 'Yggdroot/LeaderF'
 Plug 'dstein64/vim-startuptime'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rafcamlet/nvim-luapad'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 
 Plug 'joshdick/onedark.vim'
 Plug 'nanotech/jellybeans.vim'
