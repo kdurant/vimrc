@@ -69,7 +69,7 @@ map     K       \cr
 
 "tab settings
 map     <space>wt        :vs<cr>:e term://bash<cr>:set filetype=modelsim<cr>
-map     <expr><space>wo  g:is_unix ? ":tabnew ~/tmp/tmp.txt<cr>" : ":tabnew ~/.cache/tmp.txt<cr>"
+map     <expr><space>wo  g:is_unix ? ":tabnew /tmp/tmp.txt<cr>" : ":tabnew ~/.cache/tmp.txt<cr>"
 map     <space>1         1gt
 map     <space>2         2gt
 map     <space>3         3gt
