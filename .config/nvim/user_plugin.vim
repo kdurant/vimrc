@@ -30,7 +30,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'liuchengxu/vim-clap'
 Plug 'Yggdroot/LeaderF'
 Plug 'dstein64/vim-startuptime'
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+"Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rafcamlet/nvim-luapad'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 

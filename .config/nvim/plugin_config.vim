@@ -517,6 +517,26 @@ if &rtp =~ 'vim-clap'
     "nmap <space>fa      :Clap files ++finder=rg --no-ignore --hidden --files<cr>
 endif
 
+if &rtp =~ 'nvim-gdb'
+" until     执行完循环
+" continue  恢复程序运行，直到遇到断点或者程序结束
+" next      下一条语句，不进入函数内部
+" step      单步步入，进入函数内部
+" finish    执行完当前函数
+" 类似eclipse的调试快捷键
+    let g:nvimgdb_config_override = {
+                \ 'key_until':      '<f11>',     
+                \ 'key_continue':   '<f8>',
+                \ 'key_next':       '<f6>',
+                \ 'key_step':       '<f5>',
+                \ 'key_finish':     '<f7>',
+                \ 'key_breakpoint': '<f10>',
+                \ 'key_eval':       '<f9>',
+                \ 'codewin_command': 'vnew'
+                \ }
+endif
+
+
 """"""""""""""""""""""""""搜索插件配置""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "map <space>fa      :let g:ctrlp_user_command = 'rg %s --no-ignore --files --color=never --glob ""'<cr>:CtrlP<cr>
 "map <space>fg      :let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'<cr>:CtrlP<cr>
