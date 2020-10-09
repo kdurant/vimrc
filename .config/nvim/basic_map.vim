@@ -63,7 +63,6 @@ endif
 let g:which_key_map.d.c = '计算器'
 
 map     Y       y$
-map     K       \cr
 "map     <M-d>p      :call system("pyinstaller -F -w " . expand('%'))
 
 
@@ -97,9 +96,3 @@ map!    <M-l>           <Right>
 
 nmap <space>fo  :call system('explorer .')<cr>
 let g:which_key_map.f.o = '打开当前文件目录'
-
-
-if g:is_unix
-    runtime ftplugin/man.vim
-    map K :Man 3 expand('<cword>')<cr>
-endif

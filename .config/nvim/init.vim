@@ -77,7 +77,11 @@ if &rtp =~ 'vim-which-key'
 endif
 
 
+autocmd FileType c,cpp setlocal keywordprg=:Cppman
+let g:cppman_open_mode = "vertical"
+
 autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+
 source ~/.config/nvim/basic_map.vim
 source ~/.config/nvim/self_fun.vim
 source ~/.config/nvim/plugin_map.vim
