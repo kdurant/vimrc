@@ -534,6 +534,7 @@ if &rtp =~ 'nvim-gdb'
                 \ 'key_eval':       '<f9>',
                 \ 'codewin_command': 'vnew'
                 \ }
+    nmap <F12>  <esc>:GdbDebugStop<cr>
 endif
 
 
