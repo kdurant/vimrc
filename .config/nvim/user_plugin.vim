@@ -31,6 +31,7 @@ Plug 'liuchengxu/vim-clap'
 Plug 'Yggdroot/LeaderF'
 Plug 'dstein64/vim-startuptime'
 "Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'rafcamlet/nvim-luapad'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 Plug 'skywind3000/vim-cppman'

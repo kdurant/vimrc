@@ -1,3 +1,12 @@
+"=============================================================================
+" FileName    :	plugin_config.vim
+" Author      :	author
+" Email       :	email@email.com
+" Description :	
+" Version     :	1.0
+" LastChange  :	2020-10-12 15:03:47
+" ChangeLog   :	
+"=============================================================================
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "airline settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -537,6 +546,17 @@ if &rtp =~ 'nvim-gdb'
     nmap <F12>  <esc>:GdbDebugStop<cr>
 endif
 
+
+if &rtp =~ 'nvim-treesitter'
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = "all",     -- one of "all", "language", or a list of languages
+    highlight = {
+    enable = true,              -- false will disable the whole extension
+    },
+}
+EOF
+endif
 
 """"""""""""""""""""""""""搜索插件配置""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "map <space>fa      :let g:ctrlp_user_command = 'rg %s --no-ignore --files --color=never --glob ""'<cr>:CtrlP<cr>
