@@ -559,18 +559,17 @@ EOF
 endif
 
 """"""""""""""""""""""""""搜索插件配置""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"map <space>fa      :let g:ctrlp_user_command = 'rg %s --no-ignore --files --color=never --glob ""'<cr>:CtrlP<cr>
-"map <space>fg      :let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'<cr>:CtrlP<cr>
-"map <space>fb      :CtrlPBuffer<cr>
-"map <space>fm      :CtrlPMRUFiles<cr>
-
 map <space>fa      :let g:Lf_ExternalCommand = 'rg --files --no-messages --no-ignore -g !.git "%s"'<cr>:Leaderf file<cr>
 map <space>fg      :let g:Lf_ExternalCommand = 'rg "%s" --files --no-messages'<cr>:Leaderf file<cr>
 map <space>fb      :Leaderf buffer<cr>
 map <space>fm      :Leaderf mru<cr>
-map <space>sw      :Leaderf rg -w<space>
-map <space>ss      :<C-U><C-R>=printf("Leaderf rg -w %s ", expand("<cword>"))<cr><cr>
+
+map <space>sw      :Leaderf rg -s -w<space>
+map <space>ss      :<C-U><C-R>=printf("Leaderf rg -s -w %s ", expand("<cword>"))<cr><cr>
 map <space>sf      :Leaderf rg<cr>
+
+map <space>sc      :Leaderf rg -s -t c -w<space>
+map <space>sv      :Leaderf rg -s -t verilog -w<space>
 
 "nmap <space>fa      :exe "cd " . Search_root()<cr>:CocList files<cr>
 "nmap <space>fg      :CocList gfiles<cr>
@@ -585,3 +584,5 @@ let g:which_key_map.f.m = 'MRU'
 let g:which_key_map.s.w = 'search word input'
 let g:which_key_map.s.s = 'search word under cursor'
 let g:which_key_map.s.f = 'search fly'
+let g:which_key_map.s.c = 'search word in c file'
+let g:which_key_map.s.v = 'search word in verilog file'
