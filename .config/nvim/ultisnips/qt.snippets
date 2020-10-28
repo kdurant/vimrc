@@ -1,4 +1,4 @@
-snippet qtlog "qt log"
+snippet qt_log "qt log"
 #include <QtGlobal>
 #include <QtDebug>
 #include <QTextStream>
@@ -94,4 +94,10 @@ worker->moveToThread($1thread);
 $1thread.start();
 endsnippet
 
-
+snippet qt_timer "user QTimer" b
+QTimer *${1:timer} = new QTimer(this);
+connect($1, SIGNAL(timeout()), this, SLOT(${2:onTimeout}()));
+$1->setsetSingleShot(false);
+$1->setInterval(1000);
+$1.start();
+endsnippet

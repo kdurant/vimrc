@@ -455,17 +455,17 @@ while(1)
     }
     while(1)
     {
-	int len = recv(client_sockfd, rx_buffer, sizeof(rx_buffer) - 1, 0);
+	int len = recv(socket_client, rx_buffer, sizeof(rx_buffer) - 1, 0);
 	if(len < 0)
 	{
-	    shutdown(client_sockfd, 0);
-	    close(client_sockfd);
+	    shutdown(socket_client, 0);
+	    close(socket_client);
 	    break;
 	}
 	else if(len == 0)  //Connection closed
 	{
-	    shutdown(client_sockfd, 0);
-	    close(client_sockfd);
+	    shutdown(socket_client, 0);
+	    close(socket_client);
 	    break;
 	}
 	else
