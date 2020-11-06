@@ -62,3 +62,9 @@ $1->setsetSingleShot(false);
 $1->setInterval(1000);
 $1.start();
 endsnippet
+
+snippet qt_delay "delay by QEventloop" b
+QEventLoop eventloop;
+QTimer::singleShot(${1:delayTime(msec)}, &eventloop, SLOT(quit()));
+eventloop.exec();
+endsnippet
