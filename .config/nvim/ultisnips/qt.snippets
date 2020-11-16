@@ -65,6 +65,6 @@ endsnippet
 
 snippet qt_delay "delay by QEventloop" b
 QEventLoop eventloop;
-QTimer::singleShot(${1:delayTime(msec)}, &eventloop, SLOT(quit()));
+QTimer::singleShot(${1:delayTime(msec)}, &eventloop, &QEventLoop::quit);
 eventloop.exec();
 endsnippet
