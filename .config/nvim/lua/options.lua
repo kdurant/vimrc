@@ -16,7 +16,6 @@ end
 --
 function options:load_options()
     self.mouse         = "a"
-    self.number        = true
     self.clipboard     = "unnamed,unnamedplus"
     self.scrolloff     = 3
     self.linebreak     = true
@@ -42,6 +41,7 @@ function options:load_options()
     for name, value in pairs(self) do
         vim.o[name] = value
     end
+    vim.wo.number = true
 end
 
 return options
