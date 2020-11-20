@@ -221,6 +221,7 @@ endif
 function! GitCmd(git_cmd)
     exe "cd " . Search_root()
     echo iconv(system('git ' . a:git_cmd), "utf-8", &enc)
+    set autochdir
 endfunction
 command! -nargs=1 Dit call GitCmd(<f-args>)
 noremap     <space>;       :Dit<space>
