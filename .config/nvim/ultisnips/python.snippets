@@ -149,3 +149,61 @@ if __name__ == '__main__':
     #ui.setStyleSheet(style)
     sys.exit(app.exec_())
 endsnippet
+
+snippet tcp_server "simple tcp server example" b
+#-*- coding: UTF-8 -*- 
+import argparse
+import socket
+
+parser = argparse.ArgumentParser(description="simple tcp server program")
+parser.add_argument("--ip", default="127.0.0.1", help="tcp server ip address")
+parser.add_argument("--port", default=8888, type=int, help="tcp server port")
+args = parser.parse_args()
+
+server = socket.socket()
+server.bind((args.ip, args.port))
+server.listen(5)
+while True:
+    print ("wait for new tcp client to connect...")
+    connection, addr = server.accept()
+    print ('new client addr is : {0}'.format(addr))
+    
+    while True:
+        data = connection.recv(1024)
+        if not data:
+            print ("client actively disconnects the socket")
+            break
+        print(data)
+    connection.close() 
+endsnippet
+
+snippet tcp_client "simple tcp client example" b
+#-*- coding: UTF-8 -*-
+import argparse
+import socket
+import time
+
+parser = argparse.ArgumentParser(description="simple tcp client program")
+parser.add_argument("--ip", default="127.0.0.1", help="remote tcp server ip address")
+parser.add_argument("--port", default=8888, type=int, help="remote tcp client port")
+parser.add_argument("-t", "--timeout", default=0, type=int, help="tcp client timeout")
+args = parser.parse_args()
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect((args.ip, args.port))
+
+
+if args.timeout == 0:
+    client.settimeout(None)
+else:
+    client.settimeout(args.timeout)
+
+while True:
+    try:
+        data = client.recv(2048)
+
+    except socket.timeout:
+        print("There are no data in {0}s. Close socket.".format(args.timeout))
+        client.close()
+        break;
+endsnippet
