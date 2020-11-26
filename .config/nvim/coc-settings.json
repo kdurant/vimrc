@@ -1,5 +1,12 @@
 {
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfArgs": [
+        "--style",
+        "{based_on_style: google, indent_width: 4}"
+    ],
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
     "python.jediEnabled": false,
+
     "git.enableGutters": false,
     "calc.replaceOriginalExpression": false,
     "clangd.semanticHighlighting": true,
