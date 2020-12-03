@@ -207,3 +207,18 @@ while True:
         client.close()
         break;
 endsnippet
+
+
+snippet plot "simple plot template" b
+fig, ax = plt.subplots(2, 1, sharex=True)
+
+ax[0].plot(ch0, label="ch0")
+ax[0].set_title("title")
+ax[0].set_xlabel("x-label", fontsize=20)
+ax[0].set_ylabel("y-label", fontsize=15)
+ax[0].text(0, ch0.mean(), "text", fontsize=20)
+ax[0].annotate('annotate', xy=(x, y), xytext=(x+1, y+1), arrowprops=dict(facecolor='black', shrink=0.05))
+ax[0].grid(True)
+ax[0].legend()
+plt.show()
+endsnippet
